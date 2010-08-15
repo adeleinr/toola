@@ -54,51 +54,37 @@ ETHNICITY_CHOICES = (
     (3, 'Caucasian'),
 )
 
-class DemographicMap(models.Model):
-    description = models.CharField(max_length=200)
-    description_info = models.CharField(max_length=10)
-    
-    def __unicode__(self):
-       return self.description_info
-
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True, editable=False)
-    self_description = models.IntegerField('Tag Yourself', choices=SELF_DESC_CHOICES)
-    age = models.CharField(max_length=3)
     home_zipcode = models.CharField(max_length=5)
-    work_zipcode = models.CharField(max_length=5 , blank=True)
-    gender = models.IntegerField(choices=GENDER_CHOICES)
-    ethnicity = models.IntegerField(choices=ETHNICITY_CHOICES)
-    occupation = models.IntegerField('What do you do?', choices=OCCUPATION_CHOICES)
-    demographic_info = models.CharField(max_length=10, blank=True)
-    
+    gender = models.IntegerField(choices=GENDER_CHOICES)   
+    occupation = models.IntegerField('What do you do?', choices=OCCUPATION_CHOICES) 
+    self_description = models.IntegerField('Tag Yourself', choices=SELF_DESC_CHOICES)
     twitter = models.URLField(verify_exists=True, max_length=200, blank=True)
-    facebook = models.URLField(verify_exists=True, max_length=200, blank=True)
-    flickr = models.URLField(verify_exists=True, max_length=200, blank=True)
+
+    
+    #age = models.CharField(max_length=3)
+    #work_zipcode = models.CharField(max_length=5 , blank=True)
+    #ethnicity = models.IntegerField(choices=ETHNICITY_CHOICES)
+    #demographic_info = models.CharField(max_length=10, blank=True)
+    #facebook = models.URLField(verify_exists=True, max_length=200, blank=True)
+    #flickr = models.URLField(verify_exists=True, max_length=200, blank=True)
+
     
     # If we call this field of the object we will get a string of
     # tags separated by space. To get a list of tags we need to set
     # a set and getting function as seen below.
-    tags_string = TagField(help_text="Separate tags with spaces.", blank=False)
+    #tags_string = TagField(help_text="Separate tags with spaces.", blank=False)
         
     def get_self_description(self):
         return SELF_DESC_CHOICES[self.self_description][1]
 
-    def get_age(self):
-        return self.age
-
     def get_home_zipcode(self):
         return self.home_zipcode
-
-    def get_work_zipcode(self):
-        return self.work_zipcode
-
+    
     def get_gender(self):
         return GENDER_CHOICES[self.gender][1]
-
-    def get_ethnicity(self):
-        return ETHNICITY_CHOICES[self.ethnicity][1]
 
     def get_occupation(self):
         return OCCUPATION_CHOICES[self.self_description][1]
@@ -106,6 +92,19 @@ class UserProfile(models.Model):
     def get_twitter_url(self):
         return self.twitter
     
+    def __unicode__(self):
+        return self.user.username
+
+    def get_absolute_url(self):
+        return "/colorific/user_detail/%s" % (self.user.username)
+
+    '''
+    def get_age(self):
+        return self.age
+        
+    def get_work_zipcode(self):
+        return self.work_zipcode
+        
     def get_facebook_url(self):
         return self.facebook
     
@@ -118,15 +117,21 @@ class UserProfile(models.Model):
     def _set_tags(self, tag_list):
         Tag.objects.update_tags(self, tag_list)
         
-    def __unicode__(self):
-        return self.user.username
-
-    def get_absolute_url(self):
-        return "/colorific/user_detail/%s" % (self.user.username)
-       
+    def get_ethnicity(self):
+        return ETHNICITY_CHOICES[self.ethnicity][1]
+        
     tags = property(_get_tags, _set_tags)
+    '''    
+      
+    
 '''try:
     tagging.register(UserProfile)
 except tagging.AlreadyRegistered:
     pass
 '''
+
+class Tool(models.Model):
+    
+        def get_absolute_url(self):
+            return "/colorific/user_detail/%s" % (self.user.username)
+    

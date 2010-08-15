@@ -86,12 +86,9 @@ function delRow(row)
 			<table id="tools">
 				<tr>
 					<td>
-						<label>Tool Name. <span class="form-helper"> Eg. PyDev</span></label>
-						<br/>
 						<input type="text" id="toolInput">
 					</td>
 					<td>
-						<br/>
 						<button type="button" onclick="addRow()">Add</button>
 					</td>
 				</tr>
@@ -101,7 +98,7 @@ function delRow(row)
 		
 	</div>
 	
-	<div id="toolStatsModule" class="span-7 last">
+	<div class="span-7 last">
 	</div>
 	  
 	

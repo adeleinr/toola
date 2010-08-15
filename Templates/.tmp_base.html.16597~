@@ -19,8 +19,8 @@
                 <div class="menuModule span-18" >
                   <ul class="clearfix">
                     <li><a href="/colorific/">Home</a></li>
-                    <li><a href="/colorific/tools/">#Tools</a></li>
-                    <li><a href="/colorific/tools/people/">@People by Tools</a></li>
+                    <li><a href="/colorific/tags/">#Tags</a></li>
+                    <li><a href="/colorific/tags/people/">@People by Tags</a></li>
                     <li><a href="/colorific/register_user/" >Signup</a></li>
                     <li><a href="/colorific/login_user/" >Login</a></li>
                   </ul>

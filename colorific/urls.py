@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
-from tagging.models import Tag
+#from tagging.models import Tool
 from webme.colorific import views
-from webme.colorific.models import UserProfile
+from webme.colorific.models import UserProfile, Tool
 
 urlpatterns = patterns('',
 	url(r'^$', views.users_index),
@@ -16,8 +16,8 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-     url(r'^tags/$','django.views.generic.list_detail.object_list',
-                { 'queryset': Tag.objects.all() }),
+     url(r'^tools/$','django.views.generic.list_detail.object_list',
+                { 'queryset': Tool.objects.all() }),
 		
 
 )

@@ -42,7 +42,7 @@ def users_index(request):
 def user_detail(request, username):
     user = get_object_or_404(User, username=username)
     userProfile = user.get_profile()
-    user_count = UserProfile.objects.filter(demographic_info=userProfile.demographic_info).count()  
+    user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()  
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': user.get_profile(), 'user_count':user_count },
                               context_instance=RequestContext(request))
@@ -89,7 +89,13 @@ def register_user(request):
             try:
                 # Save user to db            
                 new_user = testUserForm.save()
-                new_user_profile = UserProfile(request.POST)
+                print testUserForm['home_zipcode']
+                new_user_profile = UserProfile.objects.create(user=new_user,
+                                               home_zipcode = request.POST['home_zipcode'],
+                                               gender = request.POST['gender'],
+                                               occupation = request.POST['occupation'],
+                                               self_description = request.POST['self_description'],
+                                               twitter = request.POST['twitter'])
         
                             
                 # Compute his/her demographic profile
@@ -97,7 +103,7 @@ def register_user(request):
                 # acquired from user and pass it to a function
                 # that computes the demographic icon for the user
                 # For now we are only caring about 2 ranges
-                
+                '''
                 age_range = 2
                 age = int(new_user_profile.age)
                 if age >=25 and age <= 34:
@@ -111,7 +117,7 @@ def register_user(request):
                                       new_user_profile.gender,
                                       new_user_profile.ethnicity,
                                       new_user_profile.self_description)
-    
+                '''
                 #new_user_profile.demographic_info = #computeDemo(demographic_info)
                 new_user_profile.save()
 

@@ -62,7 +62,7 @@ class RegistrationForm(ModelForm):
 	
 	class Meta:
 		model = UserProfile
-		exclude  = ('user','demographic_description',)
+		exclude  = ('user')
 		
 
 	
