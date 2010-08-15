@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+{{message}}
+<div id="main2" class="span-24 last">
+	
+</div>
+
+{% endblock %}

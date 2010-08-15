@@ -1,0 +1,181 @@
+body{
+	
+			padding:10px;
+			background-color: #5d9fc0;
+			font-size: 12px;
+			font-family: verdana,sans-serif;
+		}
+		.menuModule 
+		{ 
+			padding: 3px 10px 10px 10px;
+		}
+		
+		.menuModule ul 
+		{
+			margin: 0;
+			padding: 6px 0px 0 0px;
+			list-style: none;
+		}
+		
+		
+		.menuModule li 
+		{
+			display: inline;
+		}
+		
+		.menuModule a 
+		{
+			display: block;
+			float: left;
+			margin-left: 30px;
+			padding: 2px;
+			text-decoration: none;
+			font-size: 16px;
+			color: #DDEEF6;
+		}
+		.searchModule 
+		{
+			padding: 3px 10px 10px 10px;
+			float: right;
+			margin-right: 25px;
+		}
+		#registrationBox{
+
+			background-color:#DDEEF6;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 5px;
+			padding:10px 5px 5px 20px;
+			border:10px solid #ffffff;
+			
+		
+		}
+		#registration-slogan{
+			font-size:26px;
+			color: #ffffff;
+		}
+		#registration-slogan-cont{
+			font-size:20px;
+			color: #ffca2a;
+		}
+		
+		#registrationLeftForm{
+			margin-right:10px;
+		}
+		input[type="text"], input[type="password"] {
+			-moz-background-clip:border;
+			-moz-background-inline-policy:continuous;
+			background:#FFFFFF url(/media_rsc/images/inputShadow.png) repeat-x scroll 0 top;
+			border:1px solid #BEBEBE;
+			color:#666666;
+			font-size:100%;
+			padding-bottom:5px;
+			padding-left:5px;
+			padding-top:5px;
+			-moz-border-radius: 8px;
+			-webkit-border-radius: 8px;
+			border: 1px solid #CCC;
+		}
+		.inputMessage {
+			
+			width:665px;
+			
+		}
+		input[type="image"] {
+
+		}
+		input[type="submit"]{
+	
+		    background-color: #348dd3;
+		    border-color: #a3c8e9 #4379c0 #4379c0 #a3c8e9;
+		    border-style: solid;
+		    border-width: 1px;
+		    color: #fff;
+		    margin: 0;
+		    text-size:16px;
+		}
+		#header{
+
+			-moz-border-radius: 0px 0px 10px 10px;
+			-webkit-border-radius: 0px 0px 10px 10px;
+			/*border-bottom: 10px solid #235275;*/
+			background-color:#5599BB;
+			margin-bottom:10px;
+			margin-top: -10px;
+			height: 45px;
+			padding-left: 10px;
+			padding-right: 10px; 
+		}
+		#footer{
+		
+			-moz-border-radius: 10px 10px 0px 0px;
+			-webkit-border-radius: 10px 1px 0px 0px;
+			background-color:#5599BB;
+			margin-top:20px;
+		}
+		td
+		{
+			margin:1px;
+		}
+		th, td, caption
+		{
+			padding:0px;
+			margin:0px;
+		}
+		.error  {
+			background:none repeat scroll 0 0 #FBE3E4;
+			border-color:#FBC2C4;
+			color:#8A1F11;
+			-moz-border-radius: 5px 10px 0px 0px;
+			-webkit-border-radius: 5px 1px 0px 0px;
+		}
+		.error, .notice, .success {
+			border:2px solid #DDDDDD;
+			margin-bottom:5px;;
+			padding:0.5em;
+		}
+		
+		/*-------Template 2 ---------*/
+		#main2{
+			background-color:#ffffff;
+			border:2px solid #DDDDDD;
+			-moz-border-radius: 0px 0px 10px 10px;
+			-webkit-border-radius: 0px 0px 10px 10px;
+			padding: 20px 10px 30px 15px;
+			
+		}
+		
+		#header2{
+
+			background-color:#66afc9;
+			margin-top: -10px;
+			height: 50px;
+			border-bottom:30px solid #235275;
+			padding: 10px;
+		}
+		
+				h1{
+			font-size:22px;			
+		}
+		h2{
+			font-size:18px;			
+		}
+		h3{
+			font-size:16px;			
+		}
+		
+		/***** Tags Style*******/
+		.blue1{
+		  background-color: #DDEEF6;
+		}
+		.blue2{
+			
+		}
+		#tag{
+			
+			margin-bottom:10px;
+		}
+		
+		/******* General stuff for forms ********/
+		.form-helper{
+			color: #DDDDDD;
+		}
