@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="/media_rsc/css/create_toolbox.css" type="text/css" media="screen,projection" />
+    <link type="text/css" href="/media_rsc/js/jquery/css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" /> 
+
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
+	<script>
+
+function addRow()
+{
+    
+    var toolName = document.getElementById('id_tool_name');
+    if(toolName.value.length > 0){
+
+        var newdiv=document.createElement("tr");
+        var newtext=document.createTextNode(toolName.value);    
+        newdiv.innerHTML = "<td>"+toolName.value+"</td><td><input type='button' value='Delete' onclick='delRow(this)'></td>";
+        document.getElementById('tools').appendChild(newdiv);
+        toolName.value = "";
+    }
+    
+
+}
+
+function delRow(row)
+{
+    var index = row.parentNode.parentNode.rowIndex;
+    document.getElementById('tools').deleteRow(index);
+}
+
+</script>
+    
+{% endblock %}
+
+{% block content %}
+{{message}}
+
+<div id="main2" class="span-24 last">
+<!--
+	<form action=""> 
+	   Tool: <input type="text" id="txt1" onkeyup="showHint(this.value)" />
+	</form>
+	<p>Suggestions: <span id="txtHint"></span></p> 	
+-->	
+	<div id="userToolModule" class="span-6">
+		<h1>Your Tool Sets</h1>
+        {% for toolBox in userToolBoxes %}
+		  <div id="toolBoxModule">
+	          <span class="toolBoxTitle">{{toolBox.toolbox_name}}</span>
+			  <br />
+			  {% for tool in toolBox.tools.all %}
+			      {{tool.tool_name}}
+				  <br />
+			  {% endfor %}
+			  <br />		
+		  </div>  
+        {% endfor %} 
+
+	</div>
+	<div id="createToolModule" class="span-11">
+		<form method="post" action =".">
+	        <div class="span-10 last">
+		            <h1>New Tool Set</h1>
+			        <label for="id_toolbox_name">
+			            ToolBox Name. <span class="form-helper"> {{ toolBoxForm.toolbox_name.help_text }}</span>
+			        </label>
+			        <br/>   
+	                {{ toolBoxForm.toolbox_name }}
+					<br/>
+					<label for="id_toolbox_name">
+	                    Tools. <span class="form-helper"> {{ toolBoxForm.tools.help_text }}</span>
+	                </label>
+					<br/>
+					{{ toolBoxForm.tools }}  
+					<input type = "submit" name="submit" value="Save" />
+			</div>
+		 </form>
+		
+	</div>
+	
+	<div id="toolStatsModule" class="span-7 last">
+	   <script type="text/javascript">
+		    $(function() {
+		        var availableTags;// = ["ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure", "COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript", "Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme"];
+		        
+				$.ajax({
+				  url: 'http://localhost:8000/colorific/get_suggestions',
+				  success: function(data) {
+				    availableTags = data.split(",");
+				  }
+				});
+				
+				function split(val) {
+		            return val.split(/,\s*/);
+		        }
+		        function extractLast(term) {
+		            return split(term).pop();
+		        }
+		        
+		        $("#tags").autocomplete({
+		            minLength: 0,
+		            source: function(request, response) {
+		                // delegate back to autocomplete, but extract the last term
+		                response($.ui.autocomplete.filter(availableTags, extractLast(request.term)));
+		            },
+		            focus: function() {
+		                // prevent value inserted on focus
+		                return false;
+		            },
+		            select: function(event, ui) {
+		                var terms = split( this.value );
+		                // remove the current input
+		                terms.pop();
+		                // add the selected item
+		                terms.push( ui.item.value );
+		                // add placeholder to get the comma-and-space at the end
+		                terms.push("");
+		                this.value = terms.join(", ");
+		                return false;
+		            }
+		        });
+		    });
+		    </script>
+		
+		
+		
+		<div class="demo">
+		
+		<div class="ui-widget">
+		    <label for="tags">Tag programming languages: </label>
+		    <input id="tags" size="50" />
+		</div>
+		
+		</div><!-- End demo -->
+		
+		<div class="demo-description">
+		<p>
+		Usage: Type something, eg. "j" to see suggestions for tagging with programming languages. Select a value, then continue typing to add more.
+		</p>
+		<p>
+		This is an example showing how to use the source-option along with some events to enable autocompleting multiple values into a single field.
+		</p>
+		</div><!-- End demo-description -->
+	</div>
+	  
+	
+</div>
+
+
+{% endblock %}

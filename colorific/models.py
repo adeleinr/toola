@@ -130,8 +130,48 @@ except tagging.AlreadyRegistered:
     pass
 '''
 
+''' 
+    A ToolBox can have many Tools
+    The same Tool could be used in many ToolBoxes 
+    Tool is the granular thing
+    ToolBox is the big thing
+    Example
+    -------
+    p1 = Publication(id=None, title='The Python Journal')
+    a1 = Article(id=None, headline='Django lets you build Web apps easily')
+    a1.save()
+    a1.publications.add(p1)
+'''
 class Tool(models.Model):
+    tool_name = models.CharField(unique=True, max_length=200, help_text="Eg. PyDev")
+
+    #users = models.ManyToManyField(UserProfile)
     
-        def get_absolute_url(self):
-            return "/colorific/user_detail/%s" % (self.user.username)
+    def __unicode__(self):
+        return self.tool_name
+
+    def get_absolute_url(self):
+        return "/colorific/tool/%s" % (self.tool_name)
+    
+class StaticTool(models.Model):
+    tool_name = models.CharField(max_length=100)   
+    def __unicode__(self):
+        return self.tool_name
+
+    def get_absolute_url(self):
+        return "/colorific/tool/%s" % (self.tool_name)
+
+class ToolBox(models.Model):
+    toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
+    user = models.ForeignKey(UserProfile)
+    tools = models.ManyToManyField(Tool,max_length=300, help_text="Eg. PyDev")
+        
+    def __unicode__(self):
+        return self.toolbox_name
+    
+    def get_absolute_url(self):
+        return "/colorific/toolbox/%s" % (self.toolbox_name)
+
+
+
     

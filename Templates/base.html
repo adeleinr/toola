@@ -9,7 +9,10 @@
         <link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/print.css" type="text/css" media="print" />
         <!--[if IE]><link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif] --> 
         <link rel="stylesheet" href="/media_rsc/css/global.lib.css" type="text/css" media="screen,projection" />
-
+        {% block css %}
+        {% endblock %}
+		{% block js %}
+        {% endblock %}
    
     </head>
     
@@ -19,10 +22,16 @@
                 <div class="menuModule span-18" >
                   <ul class="clearfix">
                     <li><a href="/colorific/">Home</a></li>
+					<li><a href="/colorific/toolboxes/">#Toolboxes</a></li>
                     <li><a href="/colorific/tools/">#Tools</a></li>
-                    <li><a href="/colorific/tools/people/">@People by Tools</a></li>
-                    <li><a href="/colorific/register_user/" >Signup</a></li>
-                    <li><a href="/colorific/login_user/" >Login</a></li>
+                    <li><a href="/colorific/people/">@People</a></li>
+					{% if user %}
+					   <li><a href="/colorific/logout_user/" >Logout</a></li>
+					 {% else %}
+                        <li><a href="/colorific/register_user/" >Signup</a></li>
+                        <li><a href="/colorific/login_user/" >Login</a></li>
+					 {% endif %}
+					
                   </ul>
                  </div>
                  <div class="searchModule span-4 last">
@@ -30,15 +39,14 @@
                  </div>
             </div>
 			<!-- End header -->
+			
             {% block content %}
-
-
             {% endblock %}
 
             <!-- Begin Footer -->
             <div id="footer" class="span-24 last">
             </div>
-			 <!-- End Footer -->
+			<!-- End Footer -->
                               
 </div>
 </body>

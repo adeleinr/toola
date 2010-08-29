@@ -1,0 +1,29 @@
+.toolBoxModuleTabular{
+    margin-top:10px;
+}
+
+
+.toolBoxModuleTabular #stats{
+    background-color: #003366; 
+	height: 60px;  
+	-moz-border-radius: 10px 0px 0px 10px;
+    -webkit-border-radius: 10px 0px 0px 10px;
+	padding:10px;
+	color: #FFFFFF;
+}
+
+.toolBoxModuleTabular #toolboxes{
+  height: 60px;
+  padding:10px;
+}
+
+.toolBoxModuleTabular #toolboxes:hover{
+    background-color:#Fbfbfb;
+	-moz-border-radius: 0px 10px 10px 0px;
+    -webkit-border-radius: 0px 10px 10px 0px;
+	
+}
+
+.toolBoxModuleTabular #toolboxes td{
+ padding:px;
+}

@@ -1,0 +1,11 @@
+{% for toolBox in toolBoxes %}
+          <div id="toolBoxModule">
+              <span class="toolBoxTitleSmall">{{toolBox.toolbox_name}}</span>
+              <br />
+              {% for tool in toolBox.tools.all %}
+                  {{tool.tool_name}}
+                  <br />
+              {% endfor %}
+              <br />        
+          </div>  
+{% endfor %} 

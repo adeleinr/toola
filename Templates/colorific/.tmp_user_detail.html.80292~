@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main2" class="span-24 last">
+    {{message}}
+    <div id="toolBoxModule" class="span-13">
+       <h1>ToolBoxes</h1>
+	</div>
+    <div id="userInfoModule" class="span-10 last">
+         <img src="/media_rsc/images/khoi.png" />
+		 <h1>Khoi Vinh</h1>
+    </div>
+    
+</div>
+
+{% endblock %}

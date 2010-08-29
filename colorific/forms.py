@@ -1,7 +1,8 @@
 from django.forms import ModelForm
 from django import forms
-from colorific.models import UserProfile
+from colorific.models import UserProfile, Tool, ToolBox
 from django.contrib.auth.models import User
+
 
 AGE_RANGES = ('18-24', '25-34')
 
@@ -64,11 +65,6 @@ class RegistrationForm(ModelForm):
 		model = UserProfile
 		exclude  = ('user')
 		
-
-	
-
-      
-
 	#Django's form system automatically looks for any method whose name
 	#starts with clean_ and ends in the name of a form on the field,
 	#then calls it after the field's built-in validation rules have
@@ -89,3 +85,15 @@ class RegistrationForm(ModelForm):
 	#	return self.cleaned_data
 
 
+
+'''
+class ToolForm (ModelForm):		
+		class Meta:
+			model = Tool
+			exclude  = ('users', 'toolboxes')
+'''			
+class ToolBoxForm (ModelForm):
+		tools = forms.CharField(max_length=300, help_text="Comma separated tools", widget=forms.TextInput(attrs={'size':'35'}))	
+		class Meta:
+			model = ToolBox
+			exclude  = ('user')
