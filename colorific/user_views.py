@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 from colorific.models import UserProfile
 from colorific.forms import RegistrationForm, LoginForm
+from colorific.toolbox_views import get_all_toolboxes
    
 def home(request):
     return render_to_response('colorific/home.html',
