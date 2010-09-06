@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {{message}}
+
 <div id="main2" class="span-24 last">
-	<h1>Tools</h1>
-	{% for tool in object_list %}
-	   {{tool.tool_name}}
-	   <br />
-	{% endfor %}
+	 {% include "display_toolbox_detail.html" %}
 </div>
+
 
 {% endblock %}s

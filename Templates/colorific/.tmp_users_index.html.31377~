@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+{{message}}
+
+<div id="main2" class="span-24 last">
+	<h1>People</h1>
+	{% for userProfile in user_list %}
+        <a href="{{userProfile.get_absolute_url}}">{{ userProfile.user.username }}</a>
+    {%  endfor %}
+</div>
+
+{% endblock %}

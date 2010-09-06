@@ -1,0 +1,25 @@
+{% for toolBox in toolBoxes %}
+          <div class="toolBoxModuleTabular span-13 last">
+          	  <div id="stats" class="span-2">
+          	  	100
+				<br/>
+				TIGS
+          	  </div>
+			  <div id="toolboxes" class="span-10 last">
+	              <span class="toolBoxTitleSmall">{{toolBox.toolbox_name}}</span>
+				  <table>
+				  <tr>
+		              {% for tool in toolBox.tools.all %}
+		                  <td>{{tool.tool_name}}</td>
+						  {% ifequal forloop.counter0 4 %}
+						      </tr>
+							  <tr>
+						  {% endifequal %}
+		              {% endfor %}
+				  </table>
+	              <br />  
+			  </div>
+			  
+			        
+          </div>  
+{% endfor %} 

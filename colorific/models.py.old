@@ -5,6 +5,23 @@ import tagging
 from django.contrib.auth.models import User
 
 
+AGE_RANGES = ('18-24', '25-34')
+
+"""
+OCCUPATION_CHOICES = (
+    ('A Job', 'A Job'),
+    ('My own business','My own business'),
+    ('Engineer', 'Engineer'),
+    ('Health Professional', 'Health Professional'),
+    ('Teacher', 'Teacher'),
+    ('Student', 'Student'),
+    ('Parent at home', 'Parent at home'),
+    ('My job moved to China', 'My job moved to China'),
+    ('What job?', 'what job?'),
+
+)
+"""
+
 OCCUPATION_CHOICES = (
     (0, 'Tech Industry'),
     (1, 'Student'),
@@ -46,6 +63,19 @@ class UserProfile(models.Model):
     self_description = models.IntegerField('Tag Yourself', choices=SELF_DESC_CHOICES)
     twitter = models.URLField(verify_exists=True, max_length=200, blank=True)
 
+    
+    #age = models.CharField(max_length=3)
+    #work_zipcode = models.CharField(max_length=5 , blank=True)
+    #ethnicity = models.IntegerField(choices=ETHNICITY_CHOICES)
+    #demographic_info = models.CharField(max_length=10, blank=True)
+    #facebook = models.URLField(verify_exists=True, max_length=200, blank=True)
+    #flickr = models.URLField(verify_exists=True, max_length=200, blank=True)
+
+    
+    # If we call this field of the object we will get a string of
+    # tags separated by space. To get a list of tags we need to set
+    # a set and getting function as seen below.
+    #tags_string = TagField(help_text="Separate tags with spaces.", blank=False)
         
     def get_self_description(self):
         return SELF_DESC_CHOICES[self.self_description][1]
@@ -68,29 +98,38 @@ class UserProfile(models.Model):
     def get_absolute_url(self):
         return "/colorific/user_detail/%s" % (self.user.username)
 
-
-
+    '''
+    def get_age(self):
+        return self.age
+        
+    def get_work_zipcode(self):
+        return self.work_zipcode
+        
+    def get_facebook_url(self):
+        return self.facebook
     
-class StaticTool(models.Model):
-    tool_name = models.CharField(max_length=100)   
-    def __unicode__(self):
-        return self.tool_name
-
-    def get_absolute_url(self):
-        return "/colorific/tool/%s" % (self.tool_name)
+    def get_flickr_url(self):
+        return self.flickr
     
+    def _get_tags(self):
+      return Tag.objects.get_for_object(self)
 
-class Tool(models.Model):
-    tool_name = models.CharField(unique=True, max_length=200, help_text="Eg. PyDev")
-    active = models.BooleanField()
+    def _set_tags(self, tag_list):
+        Tag.objects.update_tags(self, tag_list)
+        
+    def get_ethnicity(self):
+        return ETHNICITY_CHOICES[self.ethnicity][1]
+        
+    tags = property(_get_tags, _set_tags)
+    '''    
+      
     
-    #users = models.ManyToManyField(UserProfile)
-    
-    def __unicode__(self):
-        return self.tool_name
+'''try:
+    tagging.register(UserProfile)
+except tagging.AlreadyRegistered:
+    pass
+'''
 
-    def get_absolute_url(self):
-        return "/colorific/tool/%s" % (self.tool_name)
 ''' 
     A ToolBox can have many Tools
     The same Tool could be used in many ToolBoxes 
@@ -103,17 +142,31 @@ class Tool(models.Model):
     a1.save()
     a1.publications.add(p1)
 '''
-class ToolNote(models.Model):
-    content = models.TextField(blank=True, max_length=350)
-    tool = models.ForeignKey(Tool)
-    toolbox = models.ForeignKey('ToolBox')
+class Tool(models.Model):
+    tool_name = models.CharField(unique=True, max_length=200, help_text="Eg. PyDev")
+    active = models.BooleanField()
+    
+    #users = models.ManyToManyField(UserProfile)
+    
+    def __unicode__(self):
+        return self.tool_name
+
+    def get_absolute_url(self):
+        return "/colorific/tool/%s" % (self.tool_name)
+    
+class StaticTool(models.Model):
+    tool_name = models.CharField(max_length=100)   
+    def __unicode__(self):
+        return self.tool_name
+
+    def get_absolute_url(self):
+        return "/colorific/tool/%s" % (self.tool_name)
 
 class ToolBox(models.Model):
     toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
     user = models.ForeignKey(UserProfile)
-    
     tools = models.ManyToManyField(Tool,max_length=300, help_text="Eg. PyDev")
-    popularity = models.PositiveIntegerField(blank=True)
+    popularity = models.PositiveIntegerField(blank=True);
         
     def __unicode__(self):
         return self.toolbox_name

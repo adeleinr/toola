@@ -44,9 +44,8 @@
 }
 
 #toolBoxModuleBig a{
-    color: #5d9fc0;
-    border: 1px solid #5d9fc0;
-    text-shadow: 0 1px 1px #666666;
+    background-color: #E3E9FF;
+    color: #19558D;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     padding:6px;

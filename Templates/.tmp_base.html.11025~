@@ -25,13 +25,12 @@
 					<li><a href="/colorific/toolboxes/">#Toolboxes</a></li>
                     <li><a href="/colorific/tools/">#Tools</a></li>
                     <li><a href="/colorific/people/">@People</a></li>
-					{% if user.username %}
-                       <li><a href="/colorific/create_toolbox/" >Add Toolbox</a></li>
+					{% if user %}
 					   <li><a href="/colorific/logout_user/" >Logout</a></li>
-					{% else %}
+					 {% else %}
                         <li><a href="/colorific/register_user/" >Signup</a></li>
                         <li><a href="/colorific/login_user/" >Login</a></li>
-					{% endif %}
+					 {% endif %}
 					
                   </ul>
                  </div>

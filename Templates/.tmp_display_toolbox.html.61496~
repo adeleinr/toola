@@ -5,5 +5,5 @@
 	  <a id="tool" href="">{{tool.tool_name}}</a>
 	  <br/>
 	{% endfor %}
-	<br />    
+	<br />        
 </div> 

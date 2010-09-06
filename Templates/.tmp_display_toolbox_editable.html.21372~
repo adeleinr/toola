@@ -1,0 +1,21 @@
+ <div id="toolBoxModuleBig">
+    <span class="toolBoxTitleBig">{{toolBox.toolbox_name}}</span>
+    <br />
+    {% for tool in toolBox.tools.all %}
+      <a id="tool" href="">{{tool.tool_name}}</a>
+      <br/>
+    {% endfor %}
+    <br />
+    <table>
+	{% for form in toolFormset.forms %}
+        {{form}}
+		<!--
+        {{ form.id }}
+        <ul>
+            <li>Tool Name: {{ form.tool_name }}</li>
+        </ul>  
+		{{form.toolnote.all}}           
+        -->
+    {% endfor %}
+    </table>    
+</div> 

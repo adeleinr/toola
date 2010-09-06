@@ -1,0 +1,50 @@
+/* Used for toolbox_detail */
+
+/* Toolbox specific */
+
+#toolBoxModuleDetail{
+    margin-top:10px;
+}
+
+#toolBoxIntro{
+	margin-bottom:10px;
+}
+#toolBoxIntro a{
+    text-decoration: none;
+}
+
+.toolBoxIntro {
+	font-size: 24px;
+}
+
+/* Tool specific */
+a.tool{
+	background-color: #E3E9FF;
+    color: #19558D;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding:6px;
+    margin-top:5px;
+    margin-bottom:5px;
+    white-space:nowrap;
+    text-decoration:none;
+    line-height:3.0; 
+}
+a:hover.tool{
+    color: #FE2E94; 
+}
+
+.toolnoteContent{
+	width:350px;
+	height:150px;
+}
+
+
+
+
+
+
+
+
+
+

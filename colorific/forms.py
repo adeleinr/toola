@@ -1,15 +1,13 @@
 from django.forms import ModelForm
 from django import forms
-from colorific.models import UserProfile, Tool, ToolBox
+from colorific.models import UserProfile, Tool, ToolBox, ToolNote
 from django.contrib.auth.models import User
 
-
-AGE_RANGES = ('18-24', '25-34')
 
 OCCUPATION_CHOICES = (
 	(0, 'Tech Industry'),
 	(1,'Student'),
-  (2, 'My own business'),
+    (2, 'My own business'),
 	(3, 'At home'),
 )
 
@@ -31,12 +29,6 @@ SELF_DESC_CHOICES = (
 	(8, 'Unknown'),
 )
 
-ETHNICITY_CHOICES = (
-	(0, 'Hispanic'),
-	(1, 'Asian'),
-	(2, 'African American'),
-	(3, 'Caucasian'),
-)
 
 
 class LoginForm(forms.Form):
@@ -85,15 +77,21 @@ class RegistrationForm(ModelForm):
 	#	return self.cleaned_data
 
 
-
-'''
 class ToolForm (ModelForm):		
 		class Meta:
 			model = Tool
-			exclude  = ('users', 'toolboxes')
-'''			
+			exclude  = ('active',)
+		
 class ToolBoxForm (ModelForm):
-		tools = forms.CharField(max_length=300, help_text="Comma separated tools", widget=forms.TextInput(attrs={'size':'35'}))	
+		tools = forms.CharField(max_length=300,
+			    help_text="Comma separated tools", widget=forms.TextInput(attrs={'size':'35'}))	
 		class Meta:
 			model = ToolBox
-			exclude  = ('user')
+			exclude  = ('user', 'popularity',)
+			
+class ToolNoteForm (ModelForm):
+		content = forms.CharField(max_length=300,
+		          widget=forms.Textarea(attrs={'class':'toolnoteContent'}))	
+		class Meta:
+			model = ToolNote
+

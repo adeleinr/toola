@@ -94,7 +94,7 @@ function delRow(row)
 					<input type = "submit" name="submit" value="Save" />
 					
 			</div>
-		    <div id="edit" class ="span-10 last">
+		    <div id="edit" class 'span-10 last'>
 		    	<h1>Newest ToolBox</h1>
 				 {% include "display_toolbox.html" %}
 		    </div>

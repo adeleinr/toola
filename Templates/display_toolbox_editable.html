@@ -1,0 +1,45 @@
+ {% block css %}
+    <link rel="stylesheet" href="/media_rsc/css/toolbox.css" type="text/css" media="screen,projection" />
+{% endblock %}
+ <div id="toolBoxModuleBig" class="span-24 last">
+    <span class="toolBoxTitleBig">{{toolBox.toolbox_name}}</span>
+    <br />
+    {% for tool in toolBox.tools.all %}
+      <a id="tool" href="">{{tool.tool_name}}</a>
+      <br/>
+    {% endfor %}
+    <br />
+    <table>
+	{% for form in toolFormset.forms %}
+        <div class="span-24 last">
+        	{{ form.id }}
+			<!--
+			{% for field in form %}
+				<div class="span-6">
+                     {{ field.label_tag }}              
+                    <br />
+                    {{ field }}
+                </div>
+            {% endfor %}
+            -->
+			<div class="span-6">
+                    <label for="">Tool Name</label>              
+                    <br />
+					{{ form.tool }}
+			</div>
+			<div class="span-10">
+                    <label for="">Notes</label> 
+                    <br/>   
+                    {{ form.content }}
+            </div>
+			<div class="span-6 last">
+                    <label for="">Delete</label> 
+                    <br/>   
+                    {{ form.DELETE }}
+            </div>
+        
+		</div> 
+		<hr/>
+		
+    {% endfor %}  
+</div> 
