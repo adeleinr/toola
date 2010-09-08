@@ -120,7 +120,7 @@ def create_toolbox(request):
 def user_toolbox_index(request):
     user = request.user
     userProfile = user.get_profile()
-    return render_to_response('colorific/user_toolbox_index.html', 
+    return render_to_response('colorific/user_toolbox_list.html', 
                               {'toolBoxes':get_all_toolboxes(userProfile.user)},
                               context_instance=RequestContext(request))
 
