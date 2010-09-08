@@ -1,7 +1,5 @@
 from django.db import models
 from django import forms
-from tagging.fields import TagField, Tag
-import tagging
 from django.contrib.auth.models import User
 
 
@@ -91,6 +89,14 @@ class Tool(models.Model):
 
     def get_absolute_url(self):
         return "/colorific/tool/%s" % (self.tool_name)
+    
+    def get_toolnote(self):
+        return self.toolnote_set.all()[0]
+    
+    def get_toolnote_set(self):
+        return self.toolnote_set.all()
+
+
 ''' 
     A ToolBox can have many Tools
     The same Tool could be used in many ToolBoxes 
@@ -104,9 +110,14 @@ class Tool(models.Model):
     a1.publications.add(p1)
 '''
 class ToolNote(models.Model):
-    content = models.TextField(blank=True, max_length=350)
+    content = models.TextField(blank=True, max_length=350,)
     tool = models.ForeignKey(Tool)
     toolbox = models.ForeignKey('ToolBox')
+    
+    def __unicode__(self):
+        return self.content
+    
+    
 
 class ToolBox(models.Model):
     toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
