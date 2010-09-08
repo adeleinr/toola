@@ -91,7 +91,14 @@ class ToolBoxForm (ModelForm):
 			
 class ToolNoteForm (ModelForm):
 		content = forms.CharField(max_length=300,
-		          widget=forms.Textarea(attrs={'class':'toolnoteContent'}))	
+								  required=False,
+		          				  widget=forms.Textarea(attrs={'class':'toolnoteContent'}),
+		          		    	  help_text="How do you use this tool?",)	
 		class Meta:
 			model = ToolNote
 
+class EditToolForm(forms.Form):
+	tool_name = forms.CharField(max_length=200, help_text="Eg. PyDev")
+	toolnote_content = forms.CharField(max_length=300,
+								  required=False,
+		                          widget=forms.Textarea())	

@@ -27,6 +27,8 @@ urlpatterns += patterns('',
      url(r'^toolboxes/(?P<toolbox_id>\d+)/$', toolbox_views.toolbox_detail),
      url(r'^create_toolbox/$', toolbox_views.create_toolbox),
      url(r'^edit_toolbox/(?P<toolbox_id>\d+)/$', toolbox_views.edit_toolbox),
+     url(r'^edit_tool/(?P<tool_id>\d+)/$', toolbox_views.edit_tool),
+     url(r'^user_toolbox_list/$', toolbox_views.user_toolbox_index),
 	 url(r'^get_suggestions/$', toolbox_views.get_suggestions),
 		
 )

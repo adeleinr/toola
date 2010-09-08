@@ -1,45 +1,26 @@
- {% block css %}
+{% block css %}
     <link rel="stylesheet" href="/media_rsc/css/toolbox.css" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="/media_rsc/css/edit_toolbox.css" type="text/css" media="screen,projection" />
 {% endblock %}
- <div id="toolBoxModuleBig" class="span-24 last">
-    <span class="toolBoxTitleBig">{{toolBox.toolbox_name}}</span>
-    <br />
-    {% for tool in toolBox.tools.all %}
-      <a id="tool" href="">{{tool.tool_name}}</a>
-      <br/>
-    {% endfor %}
-    <br />
-    <table>
-	{% for form in toolFormset.forms %}
-        <div class="span-24 last">
-        	{{ form.id }}
-			<!--
-			{% for field in form %}
-				<div class="span-6">
-                     {{ field.label_tag }}              
-                    <br />
-                    {{ field }}
-                </div>
-            {% endfor %}
-            -->
-			<div class="span-6">
-                    <label for="">Tool Name</label>              
-                    <br />
-					{{ form.tool }}
-			</div>
-			<div class="span-10">
-                    <label for="">Notes</label> 
-                    <br/>   
-                    {{ form.content }}
-            </div>
-			<div class="span-6 last">
-                    <label for="">Delete</label> 
-                    <br/>   
-                    {{ form.DELETE }}
-            </div>
-        
-		</div> 
-		<hr/>
-		
-    {% endfor %}  
+ <div id="toolBoxModuleEdit" class="span-24 last">
+ 	<h1>{{toolBox.toolbox_name}}</h1>
+	<form method="post" action=".">
+	        {% for tool in toolBox.tools.all %}   
+			 	<div id="toolEntry" class="span-24">
+			 		<div id="toolMeta" class="span-6">
+			 			<h2>{{ tool.tool_name }}</h2>	
+						<a href="/colorific/edit_tool/{{ tool.id }}">EDIT</a> <a href="/colorific/delete_tool/{{ tool.id }}">DELETE</a>		
+			 		</div>
+					<div id="toolNote" class="span-14 last">
+						{{ tool.get_toolnote.content }}
+					</div>
+					<div id="toolNote" class="span-3 last">
+                        {{ form.DELETE }}
+                    </div>
+			 	</div>
+			{% endfor %}
+			<input type = "submit" name="submit" value="Save" />
+	</form>
+ </div>
+
 </div> 

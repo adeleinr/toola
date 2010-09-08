@@ -6,9 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils import simplejson
 from django.forms.models import modelformset_factory, inlineformset_factory
 
-
-
-
 from colorific.forms import ToolBoxForm, ToolForm, ToolNoteForm
 from colorific.models import UserProfile, ToolBox, Tool, ToolNote
 
@@ -57,10 +54,6 @@ def create_toolbox(request):
     user = request.user
     userProfile = user.get_profile()
     newest_toolBox = get_newest_toolbox(userProfile.user)
-    
-    #ToolFormSet = modelformset_factory(Tool)
-
-    #formset = ToolFormSet(queryset=newest_toolBox.tools)
     
     toolBoxForm = ToolBoxForm()
     if request.method == "POST":
@@ -123,13 +116,20 @@ def create_toolbox(request):
                                }, 
                                context_instance=RequestContext(request))
     
+@login_required(redirect_field_name='colorific/login_user')
+def user_toolbox_index(request):
+    user = request.user
+    userProfile = user.get_profile()
+    return render_to_response('colorific/user_toolbox_index.html', 
+                              {'toolBoxes':get_all_toolboxes(userProfile.user)},
+                              context_instance=RequestContext(request))
 
 @login_required(redirect_field_name='colorific/login_user')
 def edit_toolbox(request, toolbox_id):
     
     message = ''
     #Get toolbox if it exists
-    toolbox = get_object_or_404(ToolBox, pk=toolbox_id)
+    toolBox = get_object_or_404(ToolBox, pk=toolbox_id)
     
     #Get user from session
     user = request.user
@@ -137,32 +137,47 @@ def edit_toolbox(request, toolbox_id):
     print userProfile.id
     
     #Check that this users owns this toolbox
-    if toolbox.user.id ==  userProfile.id:
-
-      if request.method == "POST":
-        # If the value of max_num is greater than the number of
-        # existing related objects, up to extra additional blank forms
-        # will be added to the formset, so long as the total number of
-        # forms does not exceed max_num:
-        ToolNoteFormSet = inlineformset_factory(ToolBox, ToolNote, extra=0, form=ToolNoteForm)
-        toolFormset = ToolNoteFormSet(instance=toolbox)
-        
-        if toolFormset.is_valid():
-          toolFormset.save()
-        
-          return render_to_response('colorific/edit_toolbox.html',
-                                   {'message':message,
-                                    'toolBox':toolbox,
-                                    'toolFormset':toolFormset,
-                                   }, 
-                                   context_instance=RequestContext(request))
+    if toolBox.user.id ==  userProfile.id:
+        return render_to_response('colorific/edit_toolbox.html', {'toolBox': toolBox}, 
+                              context_instance=RequestContext(request))
+          
     else:
         message = 'You do not own this toolbox'
         return render_to_response('colorific/edit_toolbox.html',
                                {'message':message,
                                }, 
                                context_instance=RequestContext(request))
-        
+
+
+def edit_tool(request, tool_id):
+    message = ''
+    #Get tool if it exists
+    tool = get_object_or_404(Tool, pk=tool_id)
+    toolnote = tool.get_toolnote_set()
+
+    #Get user from session
+    user = request.user
+    userProfile = user.get_profile()
+    
+    ToolFormSet = modelformset_factory(ToolNote, extra=0,form=ToolNoteForm)
+    
+    if request.method == "POST":
+      
+      toolFormset = ToolFormSet(request.POST, toolnote)        
+      if toolFormset.is_valid():
+        toolFormset.save()
+        toolFormset = ToolFormSet(queryset=toolnote) 
+        message = "Success"   
+    
+    else:
+      toolFormset = ToolFormSet(queryset=toolnote)
+    
+    return render_to_response('colorific/edit_tool.html',
+                                 {'message':message,
+                                  'toolFormset':toolFormset,
+                                 }, 
+                                 context_instance=RequestContext(request))
+             
     
 
 # TODO No used yet
