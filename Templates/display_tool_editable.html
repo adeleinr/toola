@@ -1,0 +1,40 @@
+{% block css %}
+    <link rel="stylesheet" href="/media_rsc/css/toolbox.css" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="/media_rsc/css/edit_tool.css" type="text/css" media="screen,projection" />
+{% endblock %}
+
+<div id="toolModuleEdit" class="span-24 last">
+    <form method="post" action=".">
+           {{ toolFormset.management_form }}
+            {% for form in toolFormset.forms %}   
+                {{ form.id }} 
+                <div id="toolEntry" class="span-24">
+                	<div class="span-24 last">
+                		{{form.toolbox}}
+					</div>
+                    <div id="toolMeta" class="span-6">
+                        {{ form.tool }}
+						{% if form.tool.errors %}
+                        <span class="error">
+                            {{ form.tool.errors|join:", " }}
+                        </span>
+                        {% endif %}
+						   
+                    </div>
+					
+                    <div id="toolNote" class="span-14 last">
+                    	{{form.content.help_text}}
+						<br/>
+                        {{ form.content }}
+						<br/>
+						{% if form.content.errors %}
+                        <span class="error">
+                            {{ form.content.errors|join:", " }}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+            <input type = "submit" name="submit" value="Save" />
+    </form>
+ </div>

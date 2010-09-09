@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{{message}}
+
+<div id="main2" class="span-24 last">
+	<h1>Toolboxes</h1>
+    {% for toolbox in object_list %}
+       <a href="{{toolbox.get_absolute_url}}">{{toolbox.toolbox_name}}</a>
+       <br />
+    {% endfor %}
+</div>
+
+
+{% endblock %}s

@@ -1,0 +1,71 @@
+{% block css %}
+    <link rel="stylesheet" href="/media_rsc/css/toolbox.css" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="/media_rsc/css/edit_toolbox.css" type="text/css" media="screen,projection" />
+{% endblock %}
+ <div id="toolBoxModuleEdit" class="span-24 last">
+ 	<h1>{{toolBox.toolbox_name}}</h1>
+	<form method="post" action=".">
+	       {{ toolFormset.management_form }}
+	        {% for form in toolFormset.forms %}   
+			    {{ form.id }} 
+			 	<div id="toolEntry" class="span-24">
+			 		<div id="toolMeta" class="span-6">
+			 			<h2>{{ form.tool }}</h2>	
+						<a href="/colorific/edit_tool/{{ form.initial.id }}">EDIT</a> <a href="">DELETE</a>		
+			 		</div>
+					<div id="toolNote" class="span-14 last">
+						{{ form.content }}
+					</div>
+					<div id="toolNote" class="span-3 last">
+                        {{ form.DELETE }}
+                    </div>
+			 	</div>
+			{% endfor %}
+			<input type = "submit" name="submit" value="Save" />
+	</form>
+ </div>
+<!--
+ <div id="toolBoxModuleBig" class="span-24 last">
+    <span class="toolBoxTitleBig">{{toolBox.toolbox_name}}</span>
+    <form method="post" action=".">
+    	{{ toolFormset.management_form }}
+		{% for form in toolFormset.forms %}
+	        <div class="span-24 last">
+	        	{{ form.id }}
+				<div class="span-6">
+	                    <label for="">Tool Name</label>              
+	                    <br />
+						{{ form.tool }}
+						<br/>
+	                    {% if form.tool.errors %}
+	                    <span class="error">
+	                        {{ form.tool.errors|join:", " }}
+	                    </span>
+	                    {% endif %}
+    
+				</div>
+				<div class="span-10">
+	                    <label for="">Notes</label> 
+	                    <br/>   
+	                    {{ form.content }}
+						<br/>
+                        {% if form.content.errors %}
+                        <span class="error">
+                            {{ form.content.errors|join:", " }}
+                        </span>
+                        {% endif %}
+	            </div>
+				<div class="span-6 last">
+	                    <label for="">Delete</label> 
+	                    <br/>   
+	                    {{ form.DELETE }}
+	            </div>
+	        
+			</div> 
+			<hr/>
+			
+	    {% endfor %}  
+	    <input type = "submit" name="submit" value="Save" />
+	</form>
+    -->
+</div> 

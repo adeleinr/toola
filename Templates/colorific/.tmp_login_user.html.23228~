@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+{{message}}
+
+<div id="main2" class="span-24 last">
+	<div id="loginBox" class="span-8">
+		<h1>Sign In</h1>
+		
+		<form method="post" action =".">
+			<table>
+			<tr>
+				<td>
+					<label for="id_username">Username:</label>  			
+				</td>
+				<td>
+					{{ loginForm.username }}
+				</td>
+				<td>
+					{% if loginForm.username.errors %}
+					<span class="error">
+						{{ loginForm.username.errors|join:", " }}
+					</span>
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="id_password">Password:</label>  			
+				</td>
+				<td>
+					{{ loginForm.password }}
+				</td>
+				<td>
+					{% if loginForm.password.errors %}
+					<span class="error">
+						{{ loginForm.password.errors|join:", " }}
+					</span>
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+		 	</table>
+			<div align="left">
+				<input type = "submit" name="submit" value="Submit" />
+			</div>
+		</form>
+	
+	</div>
+	<div id="adBox" class="span-15 last">
+	</div>
+</div>
+
+{% endblock %}

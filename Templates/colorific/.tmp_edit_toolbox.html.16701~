@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+{{message}}
+
+<div id="main2" class="span-24 last">
+	 <h1>Edit Toolbox</h1>
+     {% include "display_toolbox_editable.html" %}
+</div>
+
+{% endblock %}s

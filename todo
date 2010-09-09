@@ -2,4 +2,5 @@
 -find better way to organize the urls
 -find better way to organize the views, models and forms
 -read and fix TextField according to http://docs.djangoproject.com/en/dev/ref/databases/#mysql-collation
--remove .pycs from github repository 
+-remove .pycs from github repository
+-add blueprint to our repository
