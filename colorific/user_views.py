@@ -11,22 +11,20 @@ from colorific.models import UserProfile
 from colorific.forms import RegistrationForm, LoginForm
 from colorific.toolbox_views import get_all_toolboxes
    
-def home(request):
-    return render_to_response('colorific/home.html',
-                              context_instance=RequestContext(request))
 def users_index(request):
     return render_to_response('colorific/users_index.html',
                               { 'user_list': UserProfile.objects.all()},
                               context_instance=RequestContext(request))
 
+# TODO: Remove username from request
 @login_required(redirect_field_name='colorific/login_user')
 def user_detail(request, username):
     user = get_object_or_404(User, username=username)
     userProfile = user.get_profile()
     user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()  
     return render_to_response('colorific/user_detail.html',
-                              { 'userProfile': user.get_profile(), 
-                               'user_count':user_count,
+                              { 'userProfile': userProfile, 
+                               'user_count': user_count,
                               'toolBoxes': get_all_toolboxes(user)},
                               context_instance=RequestContext(request))
 
@@ -43,9 +41,9 @@ def login_user(request):
         if user.is_active:
           login(request, user)
           # Redirect to a success page
-          return HttpResponseRedirect('/colorific/create_toolbox/')
+          return HttpResponseRedirect('/colorific/user_detail/' + username)
         else:
-          message = 'Your account is disables'
+          message = 'Your account is disabled'
           
       else:
         message = 'Invalid login information'
@@ -54,7 +52,7 @@ def login_user(request):
       testLoginForm = LoginForm(request.POST)
        
   
-    return render_to_response('colorific/login_user.html', {'loginForm':loginForm, 
+    return render_to_response('colorific/login_user.html', {'loginForm': loginForm, 
                 'message':message}, context_instance=RequestContext(request))
     
   
@@ -66,14 +64,12 @@ def register_user(request):
     if request.method == 'POST':
         # Create a form with data to validate form
         testUserForm = RegistrationForm(request.POST)
-        print testUserForm 
     
         if testUserForm.is_valid():
             # Use the form data
             try:
                 # Save user to db            
                 new_user = testUserForm.save()
-                print testUserForm['home_zipcode']
                 new_user_profile = UserProfile.objects.create(user=new_user,
                                                home_zipcode = request.POST['home_zipcode'],
                                                gender = request.POST['gender'],
@@ -82,13 +78,13 @@ def register_user(request):
                                                twitter = request.POST['twitter'])
 
                 new_user_profile.save()
-
-                return HttpResponseRedirect('/colorific/user_detail/', )
+                
+                return HttpResponseRedirect('/colorific/user_detail/' + new_user.username)
                 
             except Exception, e:    
                     message = e
         else:
-            #User needs to try again
+            # User needs to try again
             userForm = testUserForm
             message = 'Invalid form data'
 

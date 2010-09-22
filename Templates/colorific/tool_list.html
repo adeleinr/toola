@@ -1,12 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 {{message}}
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }  
+</style>
+
 <div id="main2" class="span-24 last">
 	<h1>Tools</h1>
+  <ul>
 	{% for tool in object_list %}
-	   {{tool.tool_name}}
-	   <br />
+	   <li>{{tool.tool_name}}</li>
 	{% endfor %}
+  </ul>
 </div>
 
 {% endblock %}s

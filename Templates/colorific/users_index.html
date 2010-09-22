@@ -2,11 +2,20 @@
 {% block content %}
 {{message}}
 
+<style>
+  ul {
+    list-style: none;
+    padding: 0;    
+  } 
+</style>
+
 <div id="main2" class="span-24 last">
 	<h1>People</h1>
+  <ul>
 	{% for userProfile in user_list %}
-        <a href="{{userProfile.get_absolute_url}}">{{ userProfile.user.username }}</a>
-    {%  endfor %}
+    <li><a href="{{userProfile.get_absolute_url}}">{{ userProfile.user.username }}</a></li>
+  {%  endfor %}
+  </ul>
 </div>
 
 {% endblock %}
