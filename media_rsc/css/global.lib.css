@@ -5,6 +5,11 @@ body{
 	font-size: 12px;
 	font-family: verdana,sans-serif;
 }
+body a{
+    
+    text-decoration:none;
+	color: #19558D;
+}
 .menuModule 
 { 
 	padding: 3px 10px 10px 5px;
@@ -61,7 +66,7 @@ body{
 #registrationLeftForm{
 	margin-right:10px;
 }
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], textarea {
 	-moz-background-clip:border;
 	-moz-background-inline-policy:continuous;
 	background:#FFFFFF url(/media_rsc/images/inputShadow.png) repeat-x scroll 0 top;
@@ -75,6 +80,8 @@ input[type="text"], input[type="password"] {
 	-webkit-border-radius: 8px;
 	border: 1px solid #CCC;
 }
+
+
 .inputMessage {
 	
 	width:665px;

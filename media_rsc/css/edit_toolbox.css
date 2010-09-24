@@ -18,13 +18,16 @@
 #toolBoxModuleEdit a:hover{
     color: #FE2E94;   
 }
+#toolBoxModuleEdit h1{   
+    font-size: 30px;
+}
 
 #toolEntry{
 	border-bottom: 1px solid #DDDDDD;
-	font-size: 0.8em;
+	font-size: 1em;
 }
 #toolEntry h1{
-    font-size: 14px;;
+    font-size: 14px;
 }
 #toolEntry h2{
     font-size: 12px;;
@@ -32,6 +35,9 @@
 #toolMeta{
 	padding-top: 5px;
 }
+#toolMeta a{
+    font-size: 0.8em;
+}
 #toolNote{
-	padding-top: 5px;
+	padding-top: 10px;
 }

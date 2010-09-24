@@ -117,21 +117,8 @@ class ToolNote(models.Model):
     def __unicode__(self):
         return self.content
     
-class ToolBox(models.Model):
-    toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
-    user = models.ForeignKey(UserProfile)
     
-    tools = models.ManyToManyField(Tool,max_length=300, help_text="Eg. PyDev")
-    popularity = models.PositiveIntegerField(blank=True)
-        
-    def __unicode__(self):
-        return self.toolbox_name
-    
-    def get_absolute_url(self):
-        return "/colorific/toolboxes/%s" % (self.id)
-    
-    
-'''
+
 class ToolBox(models.Model):
     toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
     user = models.ForeignKey(UserProfile)
@@ -155,7 +142,7 @@ class Foo(models.Model):
         unique_together = ('toolbox', 'tool')
         
     
-'''
+
 
 
     

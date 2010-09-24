@@ -26,9 +26,9 @@ def user_detail(request, username):
     user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()  
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': user.get_profile(), 
-                               'user_count':user_count,
-                              'toolBoxes': get_all_toolboxes(user)},
-                              context_instance=RequestContext(request))
+                                'user_count':user_count,
+                                'toolBoxes': get_all_toolboxes(user)},
+                                 context_instance=RequestContext(request))
 
 def login_user(request):
   
