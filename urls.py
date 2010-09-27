@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+    (r'^api/',include('api.urls')),
     (r'^colorific/',include('colorific.urls')),
     (r'^media_rsc/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media_rsc'}),	
 )
