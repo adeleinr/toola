@@ -16,7 +16,6 @@ class UserProfileHandler(BaseHandler):
 class ToolsHandler(BaseHandler):
   model = Tool
 
-# Create a task => curl -i -H "Accept: application/json" -X POST -d "tool_name=php&active=true" http://django:8000/api/toolboxes
 # List the tasks => http://django:8000/api/toolboxes
 class ToolboxesHandler(BaseHandler):
   model = ToolBox
