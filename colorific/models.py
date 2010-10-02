@@ -112,13 +112,7 @@ class Tool(models.Model):
     a1.save()
     a1.publications.add(p1)
 '''
-class ToolNote(models.Model):
-    content = models.TextField(blank=True, max_length=350,)
-    tool = models.ForeignKey(Tool)
-    toolbox = models.ForeignKey('ToolBox')
-    
-    def __unicode__(self):
-        return self.content
+
     
 class ToolBox(models.Model):
     toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
@@ -146,31 +140,5 @@ class ToolBoxToolRelation(models.Model):
     class Meta:
         unique_together = ('toolbox', 'tool')    
     
-'''
-class ToolBox(models.Model):
-    toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
-    user = models.ForeignKey(UserProfile)
-    
-    tools = models.ManyToManyField(Tool,max_length=300, help_text="Eg. PyDev", through = 'Foo')
-    popularity = models.PositiveIntegerField(blank=True)
-        
-    def __unicode__(self):
-        return self.toolbox_name
-    
-    def get_absolute_url(self):
-        return "/colorific/toolboxes/%s" % (self.id)
-    
-    
-class Foo(models.Model):
-    toolbox = models.ForeignKey(ToolBox)
-    tool = models.ForeignKey(Tool)
-    note = models.CharField() 
-    
-    class Meta:
-        unique_together = ('toolbox', 'tool')
-        
-    
-'''
-
 
     
