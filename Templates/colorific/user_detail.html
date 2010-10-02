@@ -8,14 +8,14 @@
 {% block content %}
 <div id="main2" class="span-24 last">
     {{message}}
+	<div id="userInfoModule" class="span-10 last">
+         <img src="/media_rsc/images/khoi.png" />
+         <h1>{{userProfile.user.first_name}}</h1>
+    </div>
     <div class="span-13">
        <h1>{{userProfile.user.username}}'s ToolBoxes</h1>
 	   {% include "display_toolboxes_tabular.html" %}
 	</div>
-    <div id="userInfoModule" class="span-10 last">
-         <img src="/media_rsc/images/khoi.png" />
-		 <h1>{{userProfile.user.first_name}}</h1>
-    </div>
     
 </div>
 

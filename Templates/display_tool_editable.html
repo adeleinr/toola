@@ -5,36 +5,33 @@
 
 <div id="toolModuleEdit" class="span-24 last">
     <form method="post" action=".">
-           {{ toolFormset.management_form }}
-            {% for form in toolFormset.forms %}   
-                {{ form.id }} 
+                {{ toolForm.id }} 
                 <div id="toolEntry" class="span-24">
                 	<div class="span-24 last">
-                		{{form.toolbox}}
+                		{{toolForm.toolbox}} 
+						<a href="/colorific/delete_tool/{{ toolBoxToolRelation.toolbox.id }}/{{ toolBoxToolRelation.tool.id }}">DELETE</a>
 					</div>
                     <div id="toolMeta" class="span-6">
-                        {{ form.tool }}
-						{% if form.tool.errors %}
+                        {{ toolForm.tool }} 
+						{% if toolForm.tool.errors %}
                         <span class="error">
-                            {{ form.tool.errors|join:", " }}
+                            {{ toolForm.tool.errors|join:", " }}
                         </span>
-                        {% endif %}
-						   
-                    </div>
-					
-                    <div id="toolNote" class="span-14 last">
-                    	{{form.content.help_text}}
-						<br/>
-                        {{ form.content }}
-						<br/>
-						{% if form.content.errors %}
-                        <span class="error">
-                            {{ form.content.errors|join:", " }}
-                        </span>
-                        {% endif %}
-                    </div>
+                        {% endif %}	
+						
+						<br />
+						{{toolForm.note.help_text}}
+	                    <br/>
+	                    {{ toolForm.note }}
+	                    <br/>
+	                    {% if toolForm.note.errors %}
+	                    <span class="error">
+	                        {{ toolForm.note.errors|join:", " }}
+	                    </span>
+	                    {% endif %}	   
+	                    </div>
+
                 </div>
-            {% endfor %}
             <input type = "submit" name="submit" value="Save" />
     </form>
  </div>

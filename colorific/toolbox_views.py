@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils import simplejson
 from django.forms.models import modelformset_factory, inlineformset_factory
 
-from colorific.forms import ToolBoxForm, ToolForm, ToolNoteForm
-from colorific.models import UserProfile, ToolBox, Tool, ToolNote
+from colorific.forms import ToolBoxForm, ToolNoteForm, ToolForm
+from colorific.models import UserProfile, ToolBox, Tool, ToolNote, ToolBoxToolRelation
 
 #TODO not used yet
 def get_toolbox_popularity(request, toolbox_id):
@@ -29,6 +29,8 @@ def get_newest_toolbox(user):
 
 def get_all_toolboxes(user):
     return ToolBox.objects.filter(user__user__username = user.username)
+
+
 
 
 def get_suggestions(request):
@@ -85,29 +87,25 @@ def create_toolbox(request):
                         newTool.active = True
                         print newTool
                         newTool.save()
-                        tool_note = ToolNote()
-                        tool_note.tool = newTool
-                        tool_note.toolbox = toolBox
-                        tool_note.save()
-                        toolBox.tools.add(newTool)
+                        
+                        # We cant do this because we are specifying the
+                        # 'though' table 
+                        # toolBox.tools.add(newTool) -> Does not work
+                        # Instead we need to create every relation entry
+                        toolBoxToolRelation = ToolBoxToolRelation.objects.create(toolbox = toolBox,
+                                                                                 tool= newTool)
+                        
 
                 message = 'success'
-                toolBoxForm = ToolBoxForm()
  
-                return render_to_response('colorific/create_toolbox.html',
-                                   {'message':message,
-                                    'toolBoxForm':toolBoxForm, 
-                                    'toolBoxes':ToolBox.objects.filter(user__user__username = userProfile.user.username),
-                                    'toolBox':newest_toolBox,
-                                   },
-                                   context_instance=RequestContext(request))
+                return HttpResponseRedirect('/colorific/create_toolbox')
+                
             except Exception, e:    
                 message = e
             # Do something.
         else:
             message = 'Invalid form data'
-
-
+        
     return render_to_response('colorific/create_toolbox.html',
                                {'message':message,
                                 'toolBoxForm':toolBoxForm,
@@ -123,6 +121,7 @@ def user_toolbox_index(request):
     return render_to_response('colorific/user_toolbox_list.html', 
                               {'toolBoxes':get_all_toolboxes(userProfile.user)},
                               context_instance=RequestContext(request))
+
 
 @login_required(redirect_field_name='colorific/login_user')
 def edit_toolbox(request, toolbox_id):
@@ -148,33 +147,33 @@ def edit_toolbox(request, toolbox_id):
                                }, 
                                context_instance=RequestContext(request))
 
-
-def edit_tool(request, tool_id):
+@login_required(redirect_field_name='colorific/login_user')
+def edit_tool(request, toolbox_id, tool_id):
     message = ''
     #Get tool if it exists
     tool = get_object_or_404(Tool, pk=tool_id)
-    toolnote = tool.get_toolnote_set()
-
+    toolBoxToolRelation = get_object_or_404(ToolBoxToolRelation,
+                                            toolbox = toolbox_id, 
+                                            tool = tool_id)
     #Get user from session
     user = request.user
     userProfile = user.get_profile()
-    
-    ToolFormSet = modelformset_factory(ToolNote, extra=0,form=ToolNoteForm)
-    
+        
     if request.method == "POST":
       
-      toolFormset = ToolFormSet(request.POST, toolnote)        
-      if toolFormset.is_valid():
-        toolFormset.save()
-        toolFormset = ToolFormSet(queryset=toolnote) 
+      toolForm = ToolForm(request.POST, instance=toolBoxToolRelation)        
+      if toolForm.is_valid():
+        toolForm.save()
+        toolForm = ToolForm(instance=toolBoxToolRelation)
         message = "Success"   
     
     else:
-      toolFormset = ToolFormSet(queryset=toolnote)
+      toolForm = ToolForm(instance=toolBoxToolRelation)    
     
     return render_to_response('colorific/edit_tool.html',
                                  {'message':message,
-                                  'toolFormset':toolFormset,
+                                  'toolForm':toolForm,
+                                  'toolBoxToolRelation':toolBoxToolRelation,
                                  }, 
                                  context_instance=RequestContext(request))
              
@@ -184,11 +183,24 @@ def edit_tool(request, tool_id):
 def delete_toolbox(request):
     toolForm = ToolForm()
     message = ''
-    return render_to_response('colorific/delete_toolbox.html', {'message':message,
+    return render_to_response('/colorific/delete_toolbox.html', {'message':message,
                                                                 'toolForm':toolForm}, 
                                  context_instance=RequestContext(request))
     
-def delete_tool(request):
-    message = ''
-    return render_to_response('colorific/delete_tool.html', {'message':message},
-                                 context_instance=RequestContext(request))
+#TODO Since this is a GET we need to confirm if the user
+# wants to delete. Or else we would need to change this to be a POST
+@login_required(redirect_field_name='colorific/login_user')
+def delete_tool(request, toolbox_id, tool_id):
+    tool = get_object_or_404(Tool, pk=tool_id)
+    #if request.method == 'POST':
+    toolBoxToolRelations = ToolBoxToolRelation.objects.filter(tool=tool_id, toolbox=toolbox_id)
+    if toolBoxToolRelations[0].toolbox.user.id == request.user.id:
+            toolBoxToolRelations[0].delete()
+            return HttpResponseRedirect('/colorific/edit_toolbox/'+str(toolbox_id))
+        
+    '''
+    else:
+        
+        return HttpResponseRedirect('/colorific/edit_tool/'+str(toolbox_id)+'/'+str(tool_id))
+    '''
+

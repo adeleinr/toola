@@ -90,12 +90,15 @@ class Tool(models.Model):
     def get_absolute_url(self):
         return "/colorific/tool/%s" % (self.tool_name)
     
+    
+        
+    '''
     def get_toolnote(self):
         return self.toolnote_set.all()[0]
     
     def get_toolnote_set(self):
         return self.toolnote_set.all()
-
+    '''
 
 ''' 
     A ToolBox can have many Tools
@@ -119,9 +122,8 @@ class ToolNote(models.Model):
     
 class ToolBox(models.Model):
     toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
-    user = models.ForeignKey(UserProfile)
-    
-    tools = models.ManyToManyField(Tool,max_length=300, help_text="Eg. PyDev")
+    user = models.ForeignKey(UserProfile)    
+    tools = models.ManyToManyField(Tool,max_length=300, help_text="Eg. PyDev", through = 'ToolBoxToolRelation')
     popularity = models.PositiveIntegerField(blank=True)
         
     def __unicode__(self):
@@ -130,6 +132,19 @@ class ToolBox(models.Model):
     def get_absolute_url(self):
         return "/colorific/toolboxes/%s" % (self.id)
     
+    # Returns the relation entries for all the tools
+    # in this toolbox by looking at the relation table,
+    # not the toolbox table itself
+    def get_toolbox_tools(self):
+        return ToolBoxToolRelation.objects.filter(toolbox = self)
+
+class ToolBoxToolRelation(models.Model):
+    toolbox = models.ForeignKey(ToolBox)
+    tool = models.ForeignKey(Tool)
+    note = models.TextField(blank=True, max_length=350,)
+    
+    class Meta:
+        unique_together = ('toolbox', 'tool')    
     
 '''
 class ToolBox(models.Model):

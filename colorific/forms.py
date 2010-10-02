@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from colorific.models import UserProfile, Tool, ToolBox, ToolNote
+from colorific.models import UserProfile, Tool, ToolBox, ToolNote, ToolBoxToolRelation
 from django.contrib.auth.models import User
 
 
@@ -77,28 +77,34 @@ class RegistrationForm(ModelForm):
 	#	return self.cleaned_data
 
 
-class ToolForm (ModelForm):		
-		class Meta:
-			model = Tool
-			exclude  = ('active',)
 		
 class ToolBoxForm (ModelForm):
-		tools = forms.CharField(max_length=300,
-			    help_text="Comma separated tools", widget=forms.TextInput(attrs={'size':'35'}))	
-		class Meta:
-			model = ToolBox
-			exclude  = ('user', 'popularity',)
+	tools = forms.CharField(max_length=300,
+		    help_text="Comma separated tools", widget=forms.TextInput(attrs={'size':'35'}))	
+	class Meta:
+		model = ToolBox
+		exclude  = ('user', 'popularity',)
 			
 class ToolNoteForm (ModelForm):
-		content = forms.CharField(max_length=300,
-								  required=False,
-		          				  widget=forms.Textarea(attrs={'class':'toolnoteContent'}),
-		          		    	  help_text="How do you use this tool?",)	
-		class Meta:
-			model = ToolNote
+	content = forms.CharField(max_length=300,
+							  required=False,
+	          				  widget=forms.Textarea(attrs={'class':'toolnoteContent'}),
+	          		    	  help_text="How do you use this tool?",)	
+	class Meta:
+		model = ToolNote
 
 class EditToolForm(forms.Form):
 	tool_name = forms.CharField(max_length=200, help_text="Eg. PyDev")
 	toolnote_content = forms.CharField(max_length=300,
 								  required=False,
 		                          widget=forms.Textarea())	
+	
+class ToolForm(ModelForm):
+	note = forms.CharField(max_length=300,
+							  required=False,
+	          				  widget=forms.Textarea(attrs={'class':'toolnoteContent'}),
+	          		    	  help_text="How do you use this tool?",)	
+	class Meta:
+		model = ToolBoxToolRelation
+	
+	
