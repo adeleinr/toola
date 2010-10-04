@@ -16,10 +16,10 @@ from colorific.toolbox_views import get_all_toolboxes
    
 def users_index(request):
   # TODO: API Call is not working for me
-  PEOPLE_API_URL = 'http://django:8000/api/people'
-  users = simplejson.load(urllib.urlopen(PEOPLE_API_URL))
+  #PEOPLE_API_URL = 'http://django:8000/api/people'
+  #users = simplejson.load(urllib.urlopen(PEOPLE_API_URL))
   return render_to_response('colorific/users_index.html',
-                            { 'user_list': users},
+                            { 'user_list': UserProfile.objects.all()},
                             context_instance=RequestContext(request))  
 
 # TODO: Remove username from request
