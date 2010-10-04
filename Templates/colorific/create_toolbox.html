@@ -5,47 +5,16 @@
 {% endblock %}
 {% block js %}
     <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
-	<script>
-
-function addRow()
-{
-    
-    var toolName = document.getElementById('id_tool_name');
-    if(toolName.value.length > 0){
-
-        var newdiv=document.createElement("tr");
-        var newtext=document.createTextNode(toolName.value);    
-        newdiv.innerHTML = "<td>"+toolName.value+"</td><td><input type='button' value='Delete' onclick='delRow(this)'></td>";
-        document.getElementById('tools').appendChild(newdiv);
-        toolName.value = "";
-    }
-    
-
-}
-
-function delRow(row)
-{
-    var index = row.parentNode.parentNode.rowIndex;
-    document.getElementById('tools').deleteRow(index);
-}
-
-</script>
-    
+    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>    
 {% endblock %}
+{% block title %}Create Toolbox{% endblock %}
 
 {% block content %}
 {{message}}
 
 <div id="main2" class="span-24 last">
-<!--
-	<form action=""> 
-	   Tool: <input type="text" id="txt1" onkeyup="showHint(this.value)" />
-	</form>
-	<p>Suggestions: <span id="txtHint"></span></p> 	
--->	
 	<div id="userToolModule" class="span-6">
-		<h1>Your Tool Sets</h1>
+		<h1>Your Setup</h1>
         {% include "display_toolboxes.html" %}
 
 	</div>
@@ -104,55 +73,55 @@ function delRow(row)
 	
 	<div id="userImageModule" class="span-5 last">
 		<img src="/media_rsc/images/khoi_medium.png"/>
-		<h1>Khoi Vinh </h1>
+		<h1>{{userProfile.user.first_name}}</h1>
 	</div>
 	  
 	
 </div>
 
 <script type="text/javascript">
-            $(function() {
-                            
-                function split(val) {
-                    return val.split(/,\s*/);
-                }
-                function extractLast(term) {
-                    return split(term).pop();
-                }
+$(function() {
                 
-                $("#id_tools").autocomplete({
-                    minLength: 1,
-					delay: 0,
-                    source: function(request, response) {
-                        $.getJSON(
-                          "http://localhost:8000/colorific/get_suggestions/",
-                          {term : extractLast(request.term)},
-                           response);
-                    },
-                    search: function() {
-                        // custom minLength
-                        var term = extractLast(this.value);
-                        if (term.length < 2) {
-                            return false;
-                        }
-                    },
-                    focus: function() {
-                        // prevent value inserted on focus
-                        return false;
-                    },
-                    select: function(event, ui) {
-                        var terms = split( this.value );
-                        // remove the current input
-                        terms.pop();
-                        // add the selected item
-                        terms.push( ui.item.value );
-                        // add placeholder to get the comma-and-space at the end
-                        terms.push("");
-                        this.value = terms.join(", ");
-                        return false;
-                    },
-                });
-            });
-            </script>
+    function split(val) {
+        return val.split(/,\s*/);
+    }
+    function extractLast(term) {
+        return split(term).pop();
+    }
+    
+    $("#id_tools").autocomplete({
+        minLength: 1,
+		delay: 0,
+        source: function(request, response) {
+            $.getJSON(
+              "http://localhost:8000/colorific/get_suggestions/",
+              {term : extractLast(request.term)},
+               response);
+        },
+        search: function() {
+            // custom minLength
+            var term = extractLast(this.value);
+            if (term.length < 2) {
+                return false;
+            }
+        },
+        focus: function() {
+            // prevent value inserted on focus
+            return false;
+        },
+        select: function(event, ui) {
+            var terms = split( this.value );
+            // remove the current input
+            terms.pop();
+            // add the selected item
+            terms.push( ui.item.value );
+            // add placeholder to get the comma-and-space at the end
+            terms.push("");
+            this.value = terms.join(", ");
+            return false;
+        },
+    });
+});
+</script>
 
 {% endblock %}

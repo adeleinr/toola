@@ -3,8 +3,4 @@ settings.py
 .project
 .settings
 .pydevproject
-<<<<<<< HEAD
-.tmp*
-=======
 .tmp*.*
->>>>>>> e51ae5b4461dab5c9f9cad891a3c4e12cfd61195

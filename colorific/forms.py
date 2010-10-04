@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from colorific.models import UserProfile, Tool, ToolBox, ToolNote, ToolBoxToolRelation
+from colorific.models import UserProfile, Tool, ToolBox, ToolBoxToolRelation
 from django.contrib.auth.models import User
 
 
@@ -85,13 +85,6 @@ class ToolBoxForm (ModelForm):
 		model = ToolBox
 		exclude  = ('user', 'popularity',)
 			
-class ToolNoteForm (ModelForm):
-	content = forms.CharField(max_length=300,
-							  required=False,
-	          				  widget=forms.Textarea(attrs={'class':'toolnoteContent'}),
-	          		    	  help_text="How do you use this tool?",)	
-	class Meta:
-		model = ToolNote
 
 class EditToolForm(forms.Form):
 	tool_name = forms.CharField(max_length=200, help_text="Eg. PyDev")

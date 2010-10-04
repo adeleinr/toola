@@ -35,6 +35,12 @@ ETHNICITY_CHOICES = (
     (3, 'Caucasian'),
 )
 
+class Task(models.Model):
+    name = models.CharField(max_length=50)
+    complete = models.BooleanField(default=False, null=False)
+
+    def __unicode__(self):
+        return self.name
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True, editable=False)

@@ -10,18 +10,24 @@ from django.contrib.auth.decorators import login_required
 from colorific.models import UserProfile
 from colorific.forms import RegistrationForm, LoginForm
 from colorific.toolbox_views import get_all_toolboxes
+
+#import urllib, simplejson
    
 def users_index(request):
-    return render_to_response('colorific/users_index.html',
-                              { 'user_list': UserProfile.objects.all()},
-                              context_instance=RequestContext(request))
+  # TODO: API Call is not working for me
+  PEOPLE_API_URL = 'http://django:8000/api/people'
+  users = simplejson.load(urllib.urlopen(PEOPLE_API_URL))
+  return render_to_response('colorific/users_index.html',
+                            { 'user_list': users},
+                            context_instance=RequestContext(request))  
 
 # TODO: Remove username from request
 @login_required(redirect_field_name='colorific/login_user')
 def user_detail(request, username):
     user = get_object_or_404(User, username=username)
     userProfile = user.get_profile()
-    user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()  
+    user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
+    
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': userProfile, 
                                 'user_count': user_count,

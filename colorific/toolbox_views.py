@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils import simplejson
 from django.forms.models import modelformset_factory, inlineformset_factory
 
-from colorific.forms import ToolBoxForm, ToolNoteForm, ToolForm
-from colorific.models import UserProfile, ToolBox, Tool, ToolNote, ToolBoxToolRelation
+from colorific.forms import ToolBoxForm, ToolForm
+from colorific.models import UserProfile, ToolBox, Tool, ToolBoxToolRelation
 
 #TODO not used yet
 def get_toolbox_popularity(request, toolbox_id):
@@ -109,8 +109,9 @@ def create_toolbox(request):
     return render_to_response('colorific/create_toolbox.html',
                                {'message':message,
                                 'toolBoxForm':toolBoxForm,
-                                'toolBoxes':ToolBox.objects.filter(user__user__username = userProfile.user.username),
+                                'toolBoxes':ToolBox.objects.filter(user__user__username = userProfile.user.username)[:5],
                                 'toolBox':newest_toolBox,
+                                'userProfile':userProfile
                                }, 
                                context_instance=RequestContext(request))
     
