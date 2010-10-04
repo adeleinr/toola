@@ -94,7 +94,7 @@ $(function() {
 		delay: 0,
         source: function(request, response) {
             $.getJSON(
-              "http://localhost:8000/colorific/get_suggestions/",
+              "/colorific/get_suggestions/",
               {term : extractLast(request.term)},
                response);
         },

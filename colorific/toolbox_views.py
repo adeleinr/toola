@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import simplejson
 from django.forms.models import modelformset_factory, inlineformset_factory
 
+
 from colorific.forms import ToolBoxForm, ToolForm
 from colorific.models import UserProfile, ToolBox, Tool, ToolBoxToolRelation
 

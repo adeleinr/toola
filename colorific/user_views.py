@@ -6,12 +6,13 @@ from django.forms.models import inlineformset_factory
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.utils import simplejson
+import urllib
 
 from colorific.models import UserProfile
 from colorific.forms import RegistrationForm, LoginForm
 from colorific.toolbox_views import get_all_toolboxes
 
-#import urllib, simplejson
    
 def users_index(request):
   # TODO: API Call is not working for me
