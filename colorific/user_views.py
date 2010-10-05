@@ -15,7 +15,6 @@ from colorific.toolbox_views import get_all_toolboxes
 
 import httplib   
 def users_index(request):
-  # TODO: API Call is not working for me
   PEOPLE_API_URL = 'http://localhost:8081/api/people'
   res = urllib.urlopen(PEOPLE_API_URL)
   users = simplejson.load(res)
