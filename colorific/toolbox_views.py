@@ -3,13 +3,29 @@ from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import loader, RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.utils import simplejson
 from django.forms.models import modelformset_factory, inlineformset_factory
+from django.utils import simplejson
+import urllib
 
 
 from colorific.forms import ToolBoxForm, ToolForm
 from colorific.models import UserProfile, ToolBox, Tool, ToolBoxToolRelation
+from colorific.APIConfig import APIConfig
 
+
+'''
+============================================================
+===================   TOOLBOX VIEWS     ====================
+============================================================
+'''
+
+
+def toolbox_index(request):
+  res = urllib.urlopen(APIConfig.TOOLBOX_API_URL)
+  toolboxes = simplejson.load(res)
+  return render_to_response('colorific/toolbox_index.html',
+                            { 'toolboxes': toolboxes},
+                            context_instance=RequestContext(request)) 
 #TODO not used yet
 def get_toolbox_popularity(request, toolbox_id):
     toolbox = get_object_or_404(ToolBox, pk=toolbox_id)
@@ -30,9 +46,6 @@ def get_newest_toolbox(user):
 
 def get_all_toolboxes(user):
     return ToolBox.objects.filter(user__user__username = user.username)
-
-
-
 
 def get_suggestions(request):
     response = ""
@@ -61,7 +74,6 @@ def create_toolbox(request):
     toolBoxForm = ToolBoxForm()
     if request.method == "POST":
         toolBoxForm = ToolBoxForm(request.POST)
-        print toolBoxForm
         if toolBoxForm.is_valid():
             try:
                 toolBoxForm.user = userProfile
@@ -86,7 +98,6 @@ def create_toolbox(request):
                         # TODO: need more efficient way to know if a tool
                         # has been used or not
                         newTool.active = True
-                        print newTool
                         newTool.save()
                         
                         # We cant do this because we are specifying the
@@ -135,7 +146,6 @@ def edit_toolbox(request, toolbox_id):
     #Get user from session
     user = request.user
     userProfile = user.get_profile()
-    print userProfile.id
     
     #Check that this users owns this toolbox
     if toolBox.user.id ==  userProfile.id:
@@ -148,6 +158,29 @@ def edit_toolbox(request, toolbox_id):
                                {'message':message,
                                }, 
                                context_instance=RequestContext(request))
+
+# TODO No used yet
+def delete_toolbox(request):
+    toolForm = ToolForm()
+    message = ''
+    return render_to_response('/colorific/delete_toolbox.html', {'message':message,
+                                                                'toolForm':toolForm}, 
+                                 context_instance=RequestContext(request))
+    
+
+'''
+============================================================
+===================   TOOLS VIEWS     ======================
+============================================================
+'''
+TOOL_API_URL = 'http://localhost:8000/api/tools'
+
+def tool_index(request):
+  res = urllib.urlopen(APIConfig.TOOL_API_URL)
+  tools = simplejson.load(res)
+  return render_to_response('colorific/tool_index.html',
+                            { 'tools': tools},
+                            context_instance=RequestContext(request)) 
 
 @login_required(redirect_field_name='colorific/login_user')
 def edit_tool(request, toolbox_id, tool_id):
@@ -181,14 +214,6 @@ def edit_tool(request, toolbox_id, tool_id):
              
     
 
-# TODO No used yet
-def delete_toolbox(request):
-    toolForm = ToolForm()
-    message = ''
-    return render_to_response('/colorific/delete_toolbox.html', {'message':message,
-                                                                'toolForm':toolForm}, 
-                                 context_instance=RequestContext(request))
-    
 #TODO Since this is a GET we need to confirm if the user
 # wants to delete. Or else we would need to change this to be a POST
 @login_required(redirect_field_name='colorific/login_user')

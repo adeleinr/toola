@@ -7,16 +7,24 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.utils import simplejson
-import urllib
+import urllib, urllib2, base64
 
 from colorific.models import UserProfile
 from colorific.forms import RegistrationForm, LoginForm
 from colorific.toolbox_views import get_all_toolboxes
+from colorific.APIConfig import APIConfig
 
-import httplib   
+
+   
 def users_index(request):
-  PEOPLE_API_URL = 'http://localhost:8081/api/people'
-  res = urllib.urlopen(PEOPLE_API_URL)
+  print APIConfig.USERPROFILE_API_URL
+            
+  res = urllib.urlopen(APIConfig.USERPROFILE_API_URL)
+  '''
+  print urllib.urlopen( 'http://www.google.fr/search', 
+       urllib.urlencode( my_string_list ) 
+    ).read()
+  '''
   users = simplejson.load(res)
   return render_to_response('colorific/users_index.html',
                             { 'user_list': users},
@@ -24,6 +32,7 @@ def users_index(request):
 
 # TODO: Remove username from request
 @login_required(redirect_field_name='colorific/login_user')
+
 def user_detail(request, username):
     user = get_object_or_404(User, username=username)
     userProfile = user.get_profile()

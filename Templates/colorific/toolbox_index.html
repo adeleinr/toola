@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% block title %}Tools{% endblock %}
 {% block content %}
 {{message}}
 
@@ -11,12 +10,13 @@
 </style>
 
 <div id="main2" class="span-24 last">
-	<h1>Tools</h1>
-  <ul>
-	{% for tool in object_list %}
-	   <li>{{tool.tool_name}}</li>
-	{% endfor %}
-  </ul>
+	<h1>Toolboxes</h1>
+    <ul>
+    {% for toolbox in toolboxes %}
+      <li><a href="{{toolbox.absolute_url}}">{{toolbox.toolbox_name}}</a></li>
+    {% endfor %}
+    </ul>
 </div>
+
 
 {% endblock %}s

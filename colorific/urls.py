@@ -20,10 +20,8 @@ urlpatterns += patterns('',
 
 # Toolbox related pages
 urlpatterns += patterns('',
-  url(r'^tools/$','django.views.generic.list_detail.object_list',
-      { 'queryset': Tool.objects.filter(active = True) }),
-  url(r'^toolboxes/$', 'django.views.generic.list_detail.object_list',
-      { 'queryset': ToolBox.objects.all() }),
+  url(r'^tools/$', toolbox_views.tool_index),
+  url(r'^toolboxes/$', toolbox_views.toolbox_index),
   url(r'^toolboxes/(?P<toolbox_id>\d+)/$', toolbox_views.toolbox_detail),
   url(r'^create_toolbox/$', toolbox_views.create_toolbox),
   url(r'^edit_toolbox/(?P<toolbox_id>\d+)/$', toolbox_views.edit_toolbox),

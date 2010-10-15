@@ -41,27 +41,60 @@ class Task(models.Model):
 
     def __unicode__(self):
         return self.name
+    
+class UserProfileLookupTables:
+    OCCUPATION_CHOICES = (
+        (0, 'Tech Industry'),
+        (1, 'Student'),
+        (2, 'My own business'),
+        (3, 'At home'),
+        (3, 'At home'),
+    )
+    
+    GENDER_CHOICES = (
+        (0, 'Male'),
+        (1, 'Female'),
+    )
+    
+    SELF_DESC_CHOICES = (
+        (0, 'Techie'),
+        (1, 'College Life'),
+        (2, 'Artsie'),
+        (3, 'Nerd'),
+        (4, 'Normal Human Being'),
+         (5, 'Professional Traveler'),
+        (6, 'Mystic'),
+        (7, 'Health Sapient'),
+        (8, 'Unknown'),
+    )
+    
+    ETHNICITY_CHOICES = (
+        (0, 'Hispanic'),
+        (1, 'Asian'),
+        (2, 'African American'),
+        (3, 'Caucasian'),
+    )
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True, editable=False)
     home_zipcode = models.CharField(max_length=5)
-    gender = models.IntegerField(choices=GENDER_CHOICES)   
-    occupation = models.IntegerField('What do you do?', choices=OCCUPATION_CHOICES) 
-    self_description = models.IntegerField('Tag Yourself', choices=SELF_DESC_CHOICES)
+    gender = models.IntegerField(choices=UserProfileLookupTables.GENDER_CHOICES)   
+    occupation = models.IntegerField('What do you do?', choices=UserProfileLookupTables.OCCUPATION_CHOICES) 
+    self_description = models.IntegerField('Tag Yourself', choices=UserProfileLookupTables.SELF_DESC_CHOICES)
     twitter = models.URLField(verify_exists=True, max_length=200, blank=True)
 
-        
-    def get_self_description(self):
-        return SELF_DESC_CHOICES[self.self_description][1]
 
     def get_home_zipcode(self):
         return self.home_zipcode
     
     def get_gender(self):
-        return GENDER_CHOICES[self.gender][1]
+        return UserProfileLookupTables.GENDER_CHOICES[self.gender][1]
 
     def get_occupation(self):
-        return OCCUPATION_CHOICES[self.self_description][1]
+        return UserProfileLookupTables.OCCUPATION_CHOICES[self.self_description][1]
+                
+    def get_self_description(self):
+        return UserProfileLookupTables.SELF_DESC_CHOICES[self.self_description][1]
     
     def get_twitter_url(self):
         return self.twitter
@@ -72,17 +105,7 @@ class UserProfile(models.Model):
     def get_absolute_url(self):
         return "/colorific/user_detail/%s" % (self.user.username)
 
-
-
-    
-class StaticTool(models.Model):
-    tool_name = models.CharField(max_length=100)   
-    def __unicode__(self):
-        return self.tool_name
-
-    def get_absolute_url(self):
-        return "/colorific/tool/%s" % (self.tool_name)
-    
+   
 
 class Tool(models.Model):
     tool_name = models.CharField(unique=True, max_length=200, help_text="Eg. PyDev")
@@ -131,7 +154,7 @@ class ToolBox(models.Model):
     
     def get_absolute_url(self):
         return "/colorific/toolboxes/%s" % (self.id)
-    
+        
     # Returns the relation entries for all the tools
     # in this toolbox by looking at the relation table,
     # not the toolbox table itself
