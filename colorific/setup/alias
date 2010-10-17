@@ -1,0 +1,5 @@
+alias open='google-chrome http://localhost:8000/colorific; google-chrome http://localhost:8084/api'
+alias mysite='cd /web/webme/'
+alias restart_site='mysite; sudo python manage.py runserver_plus 8000'
+alias restart_api='mysite; sudo python manage.py runserver_plus 8084'
+
