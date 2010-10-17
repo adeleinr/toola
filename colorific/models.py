@@ -1,47 +1,7 @@
 from django.db import models
 from django import forms
 from django.contrib.auth.models import User
-
-
-OCCUPATION_CHOICES = (
-    (0, 'Tech Industry'),
-    (1, 'Student'),
-  (2, 'My own business'),
-    (3, 'At home'),
-    (3, 'At home'),
-)
-
-GENDER_CHOICES = (
-    (0, 'Male'),
-    (1, 'Female'),
-)
-
-SELF_DESC_CHOICES = (
-    (0, 'Techie'),
-    (1, 'College Life'),
-    (2, 'Artsie'),
-    (3, 'Nerd'),
-    (4, 'Normal Human Being'),
-     (5, 'Professional Traveler'),
-    (6, 'Mystic'),
-    (7, 'Health Sapient'),
-    (8, 'Unknown'),
-)
-
-ETHNICITY_CHOICES = (
-    (0, 'Hispanic'),
-    (1, 'Asian'),
-    (2, 'African American'),
-    (3, 'Caucasian'),
-)
-
-class Task(models.Model):
-    name = models.CharField(max_length=50)
-    complete = models.BooleanField(default=False, null=False)
-
-    def __unicode__(self):
-        return self.name
-    
+   
 class UserProfileLookupTables:
     OCCUPATION_CHOICES = (
         (0, 'Tech Industry'),
@@ -144,7 +104,7 @@ class Tool(models.Model):
 
     
 class ToolBox(models.Model):
-    toolbox_name = models.CharField(max_length=100, help_text="Eg. My Django Tools.")
+    toolbox_name = models.CharField(max_length=100, help_text="Example: Django Setup.")
     user = models.ForeignKey(UserProfile)    
     tools = models.ManyToManyField(Tool,max_length=300, help_text="Eg. PyDev", through = 'ToolBoxToolRelation')
     popularity = models.PositiveIntegerField(blank=True)

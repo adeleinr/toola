@@ -80,7 +80,7 @@ class RegistrationForm(ModelForm):
 		
 class ToolBoxForm (ModelForm):
 	tools = forms.CharField(max_length=300,
-		    help_text="Comma separated tools", widget=forms.TextInput(attrs={'size':'35'}))	
+		    help_text="Example: eclipse, firebug, screen, Ubuntu", widget=forms.TextInput(attrs={'size':'35'}))	
 	class Meta:
 		model = ToolBox
 		exclude  = ('user', 'popularity',)
