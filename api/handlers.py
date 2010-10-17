@@ -1,10 +1,9 @@
 from piston.handler import BaseHandler, AnonymousBaseHandler
 from piston.utils import rc
-from colorific.models import Task, UserProfile, Tool, ToolBox, ToolBoxToolRelation
+from colorific.models import UserProfile, Tool, ToolBox, ToolBoxToolRelation
 from django.shortcuts import get_object_or_404
 from django.db import IntegrityError
 from django.utils import simplejson
-
 
 class UserProfileHandler(BaseHandler):
   

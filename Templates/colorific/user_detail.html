@@ -8,42 +8,12 @@
 {% block title %}{{userProfile.user.first_name}}'s Profile{% endblock %}
 
 {% block content %}
-<style>
-  div.title {
-    border-top: 1px dashed #666;
-    border-bottom: 1px dashed #666;
-    background-color: #E1ECFE;
-    color: #000000;
-    padding: 5px;
-    font-weight: bold;
-    width: 290px;
-  }
-
-  div.title_content {
-    width: 550px;  
-  } 
-   
-  #toolBoxModuleBig {
-    margin-top: 0px;
-    padding: 0px;
-    margin-bottom: 0px;
-  }
-  
-  .content {
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-bottom: 10px;
-  }
-  
-  #web_life.content a {
-    display: block;
-  }
-</style>  
+<div id="overlay"></div>
 <div id="main2" class="span-24 last">
   {{message}}
 	<div id="userInfoModule" class="span-8 colborder">
-    <!--<img src="http://b.vimeocdn.com/ps/267/267288_300.jpg" />-->
-	<img src="http://www.resizr.com/resized/df81.jpg"/>
+  <img src="http://b.vimeocdn.com/ps/267/267288_300.jpg" />
+	<!--<img src="http://www.resizr.com/resized/df81.jpg"/>-->
     <div class="title">TAGS</div>
     <div id="toolBoxModuleBig" class="content">
       <a href="" id="tool">python</a>

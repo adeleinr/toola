@@ -1,29 +1,70 @@
-.toolBoxModuleTabular{
-    margin-top:10px;
+.toolBoxModuleTabular {
+  margin-top:10px;
 }
 
-
-.toolBoxModuleTabular #stats{
-    background-color: #003366; 
-	height: 60px;  
-	-moz-border-radius: 10px 0px 0px 10px;
-    -webkit-border-radius: 10px 0px 0px 10px;
-	padding:10px;
-	color: #FFFFFF;
+.toolBoxModuleTabular #stats {
+  background-color: #003366; 
+  height: 60px;  
+  -moz-border-radius: 10px 0px 0px 10px;
+  -webkit-border-radius: 10px 0px 0px 10px;
+  padding:10px;
+  color: #FFFFFF;
 }
 
-.toolBoxModuleTabular #toolboxes{
+.toolBoxModuleTabular #toolboxes {
   height: 60px;
   padding:10px;
 }
 
-.toolBoxModuleTabular #toolboxes:hover{
-    background-color:#Fbfbfb;
-	-moz-border-radius: 0px 10px 10px 0px;
-    -webkit-border-radius: 0px 10px 10px 0px;
-	
+.toolBoxModuleTabular #toolboxes:hover {
+  background-color:#Fbfbfb;
+  -moz-border-radius: 0px 10px 10px 0px;
+  -webkit-border-radius: 0px 10px 10px 0px;
 }
 
-.toolBoxModuleTabular #toolboxes td{
- padding:px;
+.toolBoxModuleTabular #toolboxes td {
+  padding:px;
+}
+
+div.title {
+  border-top: 1px dashed #666;
+  border-bottom: 1px dashed #666;
+  background-color: #E1ECFE;
+  color: #000000;
+  padding: 5px;
+  font-weight: bold;
+  width: 290px;
+}
+
+div.title_content {
+  width: 550px;  
+} 
+ 
+#toolBoxModuleBig {
+  margin-top: 0px;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.content {
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+#web_life.content a {
+  display: block;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  width: 100%;
+  height: 100%;
+  background-color: #7F7F7F;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+  display: none;
 }
