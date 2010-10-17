@@ -6,22 +6,15 @@ from django.db import IntegrityError
 from django.utils import simplejson
 
 
-# Create a task => curl -i -H "Accept: application/json" -X POST -d "name=dohomework&complete=true" http://django:8000/api/task
-# List the tasks => http://django:8000/api/tasks
-class TaskHandler(BaseHandler):
-  model = Task
-
-
 class UserProfileHandler(BaseHandler):
   
   model = UserProfile
   anonymous = 'AnonymousUserProfileHandler'
-  fields = ('id', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
+  fields = ('id', 'toolbox', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
  
-
   @classmethod
   def gender(cls, myinstance):
-    return myinstance.get_self_description()
+    return myinstance.get_gender()
 
   @classmethod
   def occupation(cls, myinstance):
@@ -38,7 +31,7 @@ class UserProfileHandler(BaseHandler):
 # List the users  => http://django:8000/api/people
 # Get a user      => http://django:8000/api/people/1
 class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
-  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
+  fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
       
 
 # List the tools  => http://django:8000/api/tools
@@ -146,24 +139,43 @@ class ToolsHandler(BaseHandler):
 # List the toolboxes => http://django:8000/api/toolboxes
 # Get a toolbox      => http://django:8000/api/toolboxes/15
 # Create a toolbox   => curl -i -X POST -d "toolbox_name=mytoolbox9&tools=tool1,tool2&userprofile_id=1" http://localhost:8084/api/toolboxes
+#                    => curl -i -X POST -H 'Content-Type: application/json' -d '{"toolbox_name": "mytoolbox", "userprofile_id":1, "tools": [{"tool_name": "test1", "note":"my note"},{"tool_name": "test2", "note":"my note"},{"tool_name": "test3", "note":"my note"}]}' http://localhost:8084/api/toolboxes
 # Delete a toolbox   => curl -i -X DELETE  http://localhost:8084/api/toolboxes/14/
 # Update a toolbox   => curl -i -X PUT -d "toolbox_name=New name" http://localhost:8084/api/toolboxes/15/
+
 class ToolboxesHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = ToolBox
   fields = ('id', 'toolbox_name', 'popularity', 'absolute_url', 'tools')
             
   def create(self, request):
-    print request
     # This option is for when the input comes
     # structured like in JSON format for example
     if request.content_type:
         data = request.data
-        print data       
-        '''
-        em = self.model(title=data['title'], content=data['content'])
-        em.save()
-        '''            
+
+        userProfile = get_object_or_404(UserProfile, pk=data['userprofile_id'])
+        
+        toolBox = self.model(toolbox_name = data['toolbox_name'],
+                             popularity = 0,
+                             user = userProfile)
+        toolBox.save()
+                
+        for tool in data['tools']: 
+            try:
+              newTool = Tool.objects.get(tool_name=tool['tool_name'])
+            except: 
+              newTool = Tool.objects.create(tool_name=tool['tool_name'])
+
+            # For now we are just recording that this
+            # this tool has been used by someone everytime
+            # TODO: need more efficient way to know if a tool
+            # has been used or not
+            newTool.active = True
+            newTool.save()
+            toolBoxToolRelation = ToolBoxToolRelation.objects.create(toolbox = toolBox,
+                                                                     tool= newTool)  
+          
         return rc.CREATED
     else:
         userProfile = get_object_or_404(UserProfile, pk=request.POST['userprofile_id'])
@@ -203,6 +215,7 @@ class ToolboxesHandler(BaseHandler):
                 
         '''
         super(ExpressiveTestModel, self).create(request)'''
+
 
   def delete(self, request, toolbox_id):
     toolbox = ToolBox.objects.get(pk=toolbox_id)
