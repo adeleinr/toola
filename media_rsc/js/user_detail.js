@@ -32,7 +32,7 @@
       success: function(json) {
         if (json.result === "ok") {
           UserDetail.closeCreateToolbox();
-          UserDetail.listToolbox();
+          UserDetail.updatelistToolbox();
         } else {
           alert("A System error has occurred, please try again");
         }
@@ -43,7 +43,7 @@
     });
   }
 
-  UserDetail.listToolbox = function() {
+  UserDetail.updatelistToolbox = function() {
     $.ajax({
       url: 'http://django:8000/colorific/proxy/toolboxes',
       type: "GET",
