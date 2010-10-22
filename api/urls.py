@@ -5,7 +5,6 @@ from api.handlers import UserProfileHandler, AnonymousUserProfileHandler, ToolsH
 
 from django_piston_authentication import DjangoAuthentication
 
-
 #auth = HttpBasicAuthentication(realm='My sample API')
 
 auth = DjangoAuthentication()

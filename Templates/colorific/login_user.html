@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/media_rsc/css/login.css" type="text/css" media="screen,projection" />
+{% endblock %}
 {% block content %}
 {{message}}
 
@@ -44,10 +47,13 @@
 			<div align="left">
 				<input type = "submit" name="submit" value="Submit" />
 			</div>
-		</form>
-	
+		</form>	
 	</div>
 	<div id="adBox" class="span-15 last">
+		{% load facebook_tags %}
+        {% facebook_button %}
+        {% facebook_js %}
+        <a href="#" onclick="javascript:FB.logout(function(response){ document.location = '/colorific/logout_user' })">Logout</a>
 	</div>
 </div>
 

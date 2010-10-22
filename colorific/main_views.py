@@ -10,7 +10,7 @@ def home(request):
   userForm = RegistrationForm()
   message = ''
   user = request.user
-  
+      
   if user is not None and user.is_authenticated():
       return HttpResponseRedirect('/colorific/user_detail/'  + user.username)
     
@@ -22,23 +22,26 @@ def home(request):
             
           if testUserForm.is_valid():
               # Use the form data
-              try:
+            try:
                   # Save user to db            
                   new_user = testUserForm.save()
                   
+                  '''
                   new_user_profile = UserProfile.objects.create(user=new_user,
                                                  home_zipcode = request.POST['home_zipcode'],
                                                  gender = request.POST['gender'],
                                                  occupation = request.POST['occupation'],
                                                  self_description = request.POST['self_description'],
                                                  twitter = request.POST['twitter'])
-    
-                  new_user_profile.save()              
+                  '''
+                  new_user_profile = UserProfile.objects.create(user=new_user,
+                                     home_zipcode = request.POST['home_zipcode'])
+
                   user = authenticate(username=request.POST['username'], password=request.POST['password'])
                   login(request, user)
                   
                   return HttpResponseRedirect('/colorific/user_detail/'  + user.username)
-              except Exception, e:    
+            except Exception, e:    
                       message = e
           else:
               #User needs to try again

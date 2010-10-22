@@ -5,24 +5,12 @@ from django.shortcuts import get_object_or_404
 from django.db import IntegrityError
 from django.utils import simplejson
 
-
-class UserProfileHandler(BaseHandler):  
+class UserProfileHandler(BaseHandler):
+  
   model = UserProfile
   anonymous = 'AnonymousUserProfileHandler'
-  fields = ('id', 'toolbox', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
- 
-  @classmethod
-  def gender(cls, myinstance):
-    return myinstance.get_gender()
-
-  @classmethod
-  def occupation(cls, myinstance):
-    return myinstance.get_occupation()
-
-  @classmethod
-  def self_description(cls, myinstance):
-    return myinstance.get_self_description()
-
+  fields = ('id', 'toolbox', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'absolute_url')
+  
   @classmethod
   def absolute_url(cls, myinstance):
     return myinstance.get_absolute_url()
@@ -30,15 +18,14 @@ class UserProfileHandler(BaseHandler):
 # List the users  => http://django:8000/api/people
 # Get a user      => http://django:8000/api/people/1
 class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
-  fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
-      
+  #fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
+  fields = ('id', 'toolbox', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url')   
 
 # List the tools  => http://localhost:8084/api/tools
 # Get a tool      => http://localhost:8084/api/tools/15/2003
 # Create a tool   => curl -i -X POST -d "tool_name=mycooltool&toolbox_id=15" http://localhost:8084/api/tools
 # Delete a tool   => curl -i -X DELETE  http://localhost:8084/api/tools/14/1
 # Update a tool   => curl -i -X PUT -d "note=Testing api" http://localhst:8084/api/tools/15/2008/
-
 class ToolsHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = Tool
@@ -65,7 +52,6 @@ class ToolsHandler(BaseHandler):
        return Tool.objects.filter(active = True)
    
   def create(self, request):
-    print request
     # This option is for when the input comes
     # structured like in JSON format for example
     if request.content_type:
@@ -111,11 +97,9 @@ class ToolsHandler(BaseHandler):
     
   
   def update(self, request, toolbox_id, tool_id):
-    print "hello1"
     tool = Tool.objects.get(pk=tool_id) 
     toolBoxToolRelation = ToolBoxToolRelation.objects.get(toolbox = toolbox_id, 
                                                           tool = tool_id) 
-    print "hello1"
     toolBoxToolRelation.note = request.POST.get('note')
     
     
@@ -153,7 +137,13 @@ class ToolSuggestionsHander(BaseHandler):
     
     response = simplejson.dumps(result_list)
     return response
-    
+
+# List the toolboxes => http://django:8000/api/toolboxes
+# Get a toolbox      => http://django:8000/api/toolboxes/15
+# Create a toolbox   => curl -i -X POST -d "toolbox_name=mytoolbox9&tools=tool1,tool2&userprofile_id=1" http://localhost:8084/api/toolboxes
+#                    => curl -i -X POST -H 'Content-Type: application/json' -d '{"toolbox_name": "mytoolbox", "userprofile_id":1, "tools": [{"tool_name": "test1", "note":"my note"},{"tool_name": "test2", "note":"my note"},{"tool_name": "test3", "note":"my note"}]}' http://localhost:8084/api/toolboxes
+# Delete a toolbox   => curl -i -X DELETE  http://localhost:8084/api/toolboxes/14/
+# Update a toolbox   => curl -i -X PUT -d "toolbox_name=New name" http://localhost:8084/api/toolboxes/15/    
 class ToolboxesHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = ToolBox

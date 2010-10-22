@@ -16,15 +16,8 @@ from colorific.APIConfig import APIConfig
 
 
    
-def users_index(request):
-  print APIConfig.USERPROFILE_API_URL
-            
+def users_index(request):           
   res = urllib.urlopen(APIConfig.USERPROFILE_API_URL)
-  '''
-  print urllib.urlopen( 'http://www.google.fr/search', 
-       urllib.urlencode( my_string_list ) 
-    ).read()
-  '''
   users = simplejson.load(res)
   return render_to_response('colorific/users_index.html',
                             { 'user_list': users},
@@ -36,7 +29,8 @@ def users_index(request):
 def user_detail(request, username):
     user = get_object_or_404(User, username=username)
     userProfile = user.get_profile()
-    user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
+    #user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
+    user_count = 0
     
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': userProfile, 
@@ -52,7 +46,6 @@ def login_user(request):
       username = request.POST['username']
       password = request.POST['password']
       user = authenticate(username=username, password=password)
-      
       if user is not None:
         if user.is_active:
           login(request, user)
@@ -71,43 +64,8 @@ def login_user(request):
     return render_to_response('colorific/login_user.html', {'loginForm': loginForm, 
                 'message':message}, context_instance=RequestContext(request))
     
-  
-def register_user(request):
-
-    userForm = RegistrationForm()
-    message = ''
+def socialregistration_setup(request):
     
-    if request.method == 'POST':
-        # Create a form with data to validate form
-        testUserForm = RegistrationForm(request.POST)
+    new_user_profile = UserProfile.objects.create(user=new_user)
     
-        if testUserForm.is_valid():
-            # Use the form data
-            try:
-                # Save user to db            
-                new_user = testUserForm.save()
-                new_user_profile = UserProfile.objects.create(user=new_user,
-                                               home_zipcode = request.POST['home_zipcode'],
-                                               gender = request.POST['gender'],
-                                               occupation = request.POST['occupation'],
-                                               self_description = request.POST['self_description'],
-                                               twitter = request.POST['twitter'])
-
-                new_user_profile.save()
-                
-                return HttpResponseRedirect('/colorific/user_detail/' + new_user.username)
-                
-            except Exception, e:    
-                    message = e
-        else:
-            # User needs to try again
-            userForm = testUserForm
-            message = 'Invalid form data'
-
-
-    return render_to_response('colorific/register_user.html', {'userForm':userForm,
-                                                               'message':message}, 
-                                 context_instance=RequestContext(request))
-
     
-

@@ -5,45 +5,16 @@
 <link rel="stylesheet" href="/media_rsc/css/user_detail.css" type="text/css" media="screen,projection" />
 {% endblock %}
 
-{% block title %}{{userProfile.user.first_name}}'s Profile{% endblock %}
+{% block title %}{{userProfile.user.username}}'s Profile{% endblock %}
 
 {% block content %}
-<style>
-  div.title {
-    border-top: 1px dashed #666;
-    border-bottom: 1px dashed #666;
-    background-color: #E1ECFE;
-    color: #000000;
-    padding: 5px;
-    font-weight: bold;
-    width: 290px;
-  }
-
-  div.title_content {
-    width: 550px;  
-  } 
-   
-  #toolBoxModuleBig {
-    margin-top: 0px;
-    padding: 0px;
-    margin-bottom: 0px;
-  }
-  
-  .content {
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-bottom: 10px;
-  }
-  
-  #web_life.content a {
-    display: block;
-  }
-</style>  
+<div id="overlay"></div>
 <div id="main2" class="span-24 last">
   {{message}}
-	<div id="userInfoModule" class="span-8 colborder">
-    <img src="http://b.vimeocdn.com/ps/267/267288_300.jpg" />
-    <div class="title">TAGS</div>
+   <div id="userInfoModule" class="span-8 colborder">
+        <img src="/media_rsc/images/khoi.png" />
+
+   <div class="title">TAGS</div>
     <div id="toolBoxModuleBig" class="content">
       <a href="" id="tool">python</a>
       <a href="" id="tool">django</a>
@@ -68,12 +39,12 @@
     </div>
   </div>
   <div class="span-13">
-    <div class="title title_content">{{userProfile.user.first_name}}'s DESCRIPTION</div>
+    <div class="title title_content">{{userProfile.user.username}}'s DESCRIPTION</div>
     <div class="content">
       I have been working in web stuff for several years, you don't need to get certified, you just really need to get your hands dirty, that's the way you learn the web, it's an open platform at the end.  
     </div>
     
-    <div class="title title_content">{{userProfile.user.first_name}}'s SETUP</div>
+    <div class="title title_content">{{userProfile.user.username}}'s SETUP</div>
     {% include "display_toolboxes_tabular.html" %}
   </div>
 </div>

@@ -11,5 +11,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^api/',include('api.urls')),
     (r'^colorific/',include('colorific.urls')),
-    (r'^media_rsc/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media_rsc'}),	
+    (r'^media_rsc/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media_rsc'}),
+    (r'^socialregistration/',include('socialregistration.urls')),
+	
 )

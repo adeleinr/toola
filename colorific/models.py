@@ -1,7 +1,7 @@
 from django.db import models
 from django import forms
 from django.contrib.auth.models import User
-   
+
 class UserProfileLookupTables:
     OCCUPATION_CHOICES = (
         (0, 'Tech Industry'),
@@ -37,11 +37,11 @@ class UserProfileLookupTables:
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True, editable=False)
-    home_zipcode = models.CharField(max_length=5)
-    gender = models.IntegerField(choices=UserProfileLookupTables.GENDER_CHOICES)   
-    occupation = models.IntegerField('What do you do?', choices=UserProfileLookupTables.OCCUPATION_CHOICES) 
-    self_description = models.IntegerField('Tag Yourself', choices=UserProfileLookupTables.SELF_DESC_CHOICES)
-    twitter = models.URLField(verify_exists=True, max_length=200, blank=True)
+    home_zipcode = models.CharField(max_length=5, blank=True)
+    #gender = models.IntegerField(choices=UserProfileLookupTables.GENDER_CHOICES, blank=True)   
+    #occupation = models.IntegerField('What do you do?', choices=UserProfileLookupTables.OCCUPATION_CHOICES, blank=True) 
+    #self_description = models.IntegerField('Tag Yourself', choices=UserProfileLookupTables.SELF_DESC_CHOICES, blank=True)
+    #twitter = models.URLField(verify_exists=True, max_length=200, blank=True)
 
 
     def get_home_zipcode(self):
@@ -108,6 +108,11 @@ class ToolBox(models.Model):
     user = models.ForeignKey(UserProfile)    
     tools = models.ManyToManyField(Tool,max_length=300, help_text="Eg. PyDev", through = 'ToolBoxToolRelation')
     popularity = models.PositiveIntegerField(blank=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        get_latest_by = 'pub_date'
+
         
     def __unicode__(self):
         return self.toolbox_name

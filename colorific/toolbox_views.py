@@ -39,13 +39,13 @@ def toolbox_detail(request, toolbox_id):
 
 def get_newest_toolbox(user):
     try:
-        toolbox = ToolBox.objects.filter(user__user__username = user.username).latest('id')
+        toolbox = ToolBox.objects.filter(user__user__username = user.username).latest()
         return toolbox;
     except: 
         return ''
 
 def get_all_toolboxes(user):
-    return ToolBox.objects.filter(user__user__username = user.username)
+    return ToolBox.objects.filter(user__user__username = user.username).order_by('-pub_date')
 
 def get_suggestions(request):
     response = ""
@@ -74,6 +74,7 @@ def create_toolbox(request):
     toolBoxForm = ToolBoxForm()
     if request.method == "POST":
         toolBoxForm = ToolBoxForm(request.POST)
+        print toolBoxForm
         if toolBoxForm.is_valid():
             try:
                 toolBoxForm.user = userProfile
