@@ -1,7 +1,6 @@
-settings.py
 *.pyc
 .project
-.settings_local
+settings_local.py
 .production_settings
 .pydevproject
 .tmp*.*
