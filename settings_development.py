@@ -44,9 +44,6 @@ MEDIA_URL = 'http://localhost/webme/media_rsc/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '-!n_uj5njxc9j_p38s9cxu9u6dnbq^+txf+92rluj7qpnu3kcl'
-
 TEMPLATE_CONTEXT_PROCESSORS =  (
   'django.core.context_processors.request',
 )
