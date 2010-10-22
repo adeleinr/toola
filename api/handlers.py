@@ -15,8 +15,8 @@ class UserProfileHandler(BaseHandler):
   def absolute_url(cls, myinstance):
     return myinstance.get_absolute_url()
 
-# List the users  => http://django:8000/api/people
-# Get a user      => http://django:8000/api/people/1
+# List the users  => http://localhost:8000/api/people
+# Get a user      => http://localhost:8000/api/people/1
 class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
   #fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
   fields = ('id', 'toolbox', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url')   
@@ -138,8 +138,8 @@ class ToolSuggestionsHander(BaseHandler):
     response = simplejson.dumps(result_list)
     return response
 
-# List the toolboxes => http://django:8000/api/toolboxes
-# Get a toolbox      => http://django:8000/api/toolboxes/15
+# List the toolboxes => http://localhost:8084/api/toolboxes
+# Get a toolbox      => http://localhost:8084/api/toolboxes/15
 # Create a toolbox   => curl -i -X POST -d "toolbox_name=mytoolbox9&tools=tool1,tool2&userprofile_id=1" http://localhost:8084/api/toolboxes
 #                    => curl -i -X POST -H 'Content-Type: application/json' -d '{"toolbox_name": "mytoolbox", "userprofile_id":1, "tools": [{"tool_name": "test1", "note":"my note"},{"tool_name": "test2", "note":"my note"},{"tool_name": "test3", "note":"my note"}]}' http://localhost:8084/api/toolboxes
 # Delete a toolbox   => curl -i -X DELETE  http://localhost:8084/api/toolboxes/14/

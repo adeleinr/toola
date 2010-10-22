@@ -81,14 +81,12 @@ input[type="text"], input[type="password"], textarea {
 	width:665px;
 }
 
-input[type="submit"] {
-    background-color: #348dd3;
-    border-color: #a3c8e9 #4379c0 #4379c0 #a3c8e9;
-    border-style: solid;
-    border-width: 1px;
-    color: #fff;
-    margin: 0;
-    text-size:16px;
+input[type="submit"], input[type="button"] {
+  background-color: #5D9FC0;
+  border: 1px solid #FFFFFF;
+  color: #fff;
+  text-size: 12px;
+  padding: 5px;
 }
 
 #header {

@@ -10,7 +10,7 @@ from django.utils import simplejson
 import urllib, urllib2, base64
 
 from colorific.models import UserProfile
-from colorific.forms import RegistrationForm, LoginForm
+from colorific.forms import RegistrationForm, LoginForm, ToolBoxForm
 from colorific.toolbox_views import get_all_toolboxes
 from colorific.APIConfig import APIConfig
 
@@ -19,6 +19,7 @@ from colorific.APIConfig import APIConfig
 def users_index(request):           
   res = urllib.urlopen(APIConfig.USERPROFILE_API_URL)
   users = simplejson.load(res)
+  
   return render_to_response('colorific/users_index.html',
                             { 'user_list': users},
                             context_instance=RequestContext(request))  
@@ -32,10 +33,14 @@ def user_detail(request, username):
     #user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
     user_count = 0
     
+    
+    toolBoxForm = ToolBoxForm()
+    
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': userProfile, 
                                 'user_count': user_count,
-                                'toolBoxes': get_all_toolboxes(user)},
+                                'toolBoxes': get_all_toolboxes(user),
+                                'toolBoxForm': toolBoxForm},
                                 context_instance=RequestContext(request))
 
 def login_user(request):

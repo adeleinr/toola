@@ -174,7 +174,6 @@ def delete_toolbox(request):
 ===================   TOOLS VIEWS     ======================
 ============================================================
 '''
-TOOL_API_URL = 'http://localhost:8000/api/tools'
 
 def tool_index(request):
   res = urllib.urlopen(APIConfig.TOOL_API_URL)
