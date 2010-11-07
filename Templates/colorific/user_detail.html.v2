@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link type="text/css" href="/media_rsc/js/jquery/css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" /> 
+<link rel="stylesheet" href="/media_rsc/css/create_toolbox.css" type="text/css" media="screen,projection" />
+<link rel="stylesheet" href="/media_rsc/css/user_detail.css" type="text/css" media="screen,projection" />
+{% endblock %}
+
+{% block title %}{{userProfile.user.username}}'s Profile{% endblock %}
+
+{% block content %}
+<div id="main2" class="span-24 last">
+   {{message}}
+   <div id="userInfoModule" class="span-7 colborder">
+   	<div id="userPicture">
+	   <img src="{{ userProfile.picture_url }}"/>
+	</div
+
+	<div class="title">TAGS</div>
+	<div id="toolBoxModuleBig" class="content">
+	  <a href="#" id="tool">python</a>
+	  <a href="#" id="tool">django</a>
+	  <a href="#" id="tool">google-app-engine</a>
+	</div>
+	<div class="title">SIMILAR PEOPLE</div>
+	<div id="toolBoxModuleBig" class="content">
+        <img src="/media_rsc/images/12.jpg"/>
+		<img src="/media_rsc/images/13.jpg"/>
+		<img src="/media_rsc/images/14.png"/>
+		<img src="/media_rsc/images/12.jpg"/>
+	</div>
+	<div class="title">WEB LIFE</div>
+	<div id="web_life" class="content">
+	  <a href="//orlandopozo.com">orlandopozo.com</a>
+	  <a href="//log.orlandopozo.com">log.orlandopozo.com</a>
+	  <a href="//flickr.com/opozo">flickr.com/opozo</a>
+	</div>
+	<div class="title">COMMENTS</div>
+	<div class="content">
+	  <div>- This guy knows PHP ;)</div>      
+	  <div>- This guy is a JavaScript guru</div>
+	</div>
+  </div>
+  <div class="span-15 last">
+  	<div id="bigHeading">
+  		{{userProfile.user.first_name}} {{userProfile.user.last_name}}
+    </div>
+
+    <div class="content">
+    	I have been working in web stuff for several years, you don't need to get certified, you just really need to get your hands dirty, that's the way you learn the web, it's an open platform at the end.  
+    </div>
+	<div id="setup-pics">
+		<img src="/media_rsc/images/1.jpg"/>
+		<img src="/media_rsc/images/2.jpg"/>
+	</div>
+	
+	
+    <div class="abutton">
+    	<a id="add_toolbox" href="#">+ Add toolbox</a>
+        <a id="add_toolbox" href="#">+ Add Photo</a>
+    </div>
+	<br/>
+    {% include "display_toolboxes_tabular_nopicture.html" %}
+  </div>
+</div>
+
+
+
+<div id="overlay"></div>
+<div id="create-toolbox-inline" class="create-toolbox-inline span-10 last">
+  <div id="create-toolbox-inline-header">
+    <h2>&nbsp;Create a toolbox</h2>
+  </div>
+  <ul>
+    <li> 
+      <div>
+        <label for="id_toolbox_name">
+          ToolBox Name. <span class="form-helper"> {{ toolBoxForm.toolbox_name.help_text }}</span>
+        </label>
+      </div>
+      {{ toolBoxForm.toolbox_name }}
+    </li>
+    <li>
+      {% if toolBoxForm.toolbox_name.errors %}
+        <span class="error">
+          {{toolBoxForm.toolbox_name.errors|join:", " }}
+        </span>
+      {% endif %}
+    </li>
+    <li>
+      <div>
+        <label for="id_tools">
+          Tools. <span class="form-helper"> {{ toolBoxForm.tools.help_text }}</span>
+        </label>
+      </div>
+      <div class="ui-widget">
+        {{ toolBoxForm.tools }} 
+      </div> 
+    </li>
+    <li>
+      {% if toolBoxForm.tools.errors %}
+        <span class="error">
+          {{toolBoxForm.tools.errors|join:", " }}
+        </span>
+      {% endif %}
+    </li>
+  </ul>
+  <div class="toolbar">
+    <input id="create-toolbox-inline-save" type="button" name="submit" value="Save" />
+    <input id="create-toolbox-inline-close" type="button" name="submit" value="Close" />
+    <input id="user-profile-id" type="hidden" value="{{userProfile.id}}" />
+  </div>
+</div>
+<script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
+<script src="/media_rsc/js/user_detail.js"></script>
+{% endblock %}

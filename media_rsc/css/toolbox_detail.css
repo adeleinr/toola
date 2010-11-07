@@ -1,0 +1,64 @@
+.toolBoxIntro {
+    font-size: 35px;
+	color: #4CC8E4;
+}
+
+#toolBoxIntro {
+	margin-left: 20px;
+}
+
+#toolboxTab{
+	position: relative;
+    background-color: #ffffff;
+    height: 70px;
+    border-bottom: 1px solid #EEF0F3;
+    padding-top: 10px;
+    font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif
+}
+
+#toolboxTab:hover{
+    background-color: #EEF0F3;
+}
+
+#toolboxTab h5{
+    margin-bottom: 5px;
+    font-size: 18px;
+	color: #3f4043;
+}
+
+
+#tools{
+    margin-right: 0px;
+	margin-top: 5px;
+	
+}
+
+#tools li{
+    display: inline;
+    padding-right: 5px;
+}
+#tools a{
+    text-decoration: none;
+}
+
+#author{
+    color: #85898F
+	font-size: 18px;
+}
+
+#toolNumber{
+	font-size: 50px;
+	color: #B5B9C0;
+	font-weight: bold;
+	margin-left:15px;
+	margin-top:15px;
+}
+
+#toolBox p{	
+	color: #85898F;
+}
+
+#description{
+	margin-top: 10px;
+	margin-bottom: 30px;
+}

@@ -1,17 +1,39 @@
 {% block css %}
-    <link rel="stylesheet" href="/media_rsc/css/toolbox.css" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="/media_rsc/css/toolbox_detail.css" type="text/css" media="screen,projection" />
 {% endblock %}
- <div id="toolBoxModuleDetail">
- 	<div id="toolBoxIntro">
-		<span class="toolBoxIntro">{{toolBox.toolbox_name}}</span>
-		<br />
-		by <a href="{{toolBox.user.get_absolute_url}}">{{toolBox.user.user.username}}</a>
+<div id="toolBox">
+    <div id="toolBoxIntro" class="span-8">
+	    <div id-"title">
+	        <span class="toolBoxIntro">{{toolbox.toolbox_name}}</span>
+	        <br />
+	        by <a href="{{toolbox.user.absolute_url}}">{{toolbox.user.user.username}}</a>
+	    </div>
+		<div id="description">
+			<p>
+                This is the stuff I use daily to be productive.
+            </p>
+		</div>
+		<div id="pictures">
+            <img src="/media_rsc/images/1.jpg"/>
+            <img src="/media_rsc/images/2.jpg"/>
+        </div>
+
 	</div>
-	<div id="tools">
-		{% for tool in toolBox.tools.all %}
-		  <a class="tool" href="">{{tool.tool_name}}</a>
-		  <br/>
-		{% endfor %}
-	</div>
+	<div id="toolBoxContent" class="span-15 last">
+		{% for toolentry in toolbox.toolboxtoolrelations %}		    
+		<div class="span-10 last"id="toolboxTab" url="{{toolentry.tool.absolute_url}}">
+	            <div id="main" class="span-10 last">
+		            <div id="toolNumber" class="span-2">
+		                {{forloop.counter}}
+		            </div>
+		            <div id="tools" class="span-7 last">
+		                <h5>{{toolentry.tool.tool_name}}</h5>
+						<p>{{toolentry.note}}</p>
+		            </div>
+	            </div>  
+	     </div>
+		 {% endfor %}
+    </div>
+</div>
+ 
    
-</div> 

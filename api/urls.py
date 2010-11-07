@@ -19,9 +19,11 @@ toolboxes_resource = Resource(ToolboxesHandler)
 
 urlpatterns = patterns('',
    url(r'^people/$', user_profile_resource, { 'emitter_format': 'json' }),
+   url(r'^people/(?P<userprofile_id>\d+)/$', user_profile_resource, { 'emitter_format': 'json' }),
    url(r'^tools/$', tools_resource, { 'emitter_format': 'json' }),
    url(r'^tools/(?P<toolbox_id>\d+)/(?P<tool_id>\d+)/$', tools_resource, { 'emitter_format': 'json' }),
    url(r'^tool_suggestions/$', tools_suggestions_resouce, { 'emitter_format': 'json' }),
    url(r'^toolboxes/$', toolboxes_resource, { 'emitter_format': 'json' }),
-   url(r'^toolboxes/(?P<id>.+)/$', toolboxes_resource),
+   url(r'^toolboxes/(?P<toolbox_id>\d+)/$', toolboxes_resource),
+   url(r'^toolboxes/(?P<username>\w+)/$', toolboxes_resource),
 )

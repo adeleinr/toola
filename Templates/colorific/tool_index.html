@@ -13,8 +13,8 @@
 <div id="main2" class="span-24 last">
 	<h1>Tools</h1>
   <ul>
-	{% for tool in tools %}
-	   <li>{{tool.tool_name}}</li>
+	{% for toolentry in tools %}
+	   <li>{{toolentry.tool.tool_name}}</li>
 	{% endfor %}
   </ul>
 </div>

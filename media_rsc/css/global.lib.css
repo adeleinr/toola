@@ -58,36 +58,15 @@ body a {
 	color: #ffca2a;
 }
 
+
 #registrationLeftForm {
-	margin-right:10px;
+	margin-top:10px;
+}
+#registrationRightForm {
+  margin-top:10px;
 }
 
-input[type="text"], input[type="password"], textarea {
-	-moz-background-clip:border;
-	-moz-background-inline-policy:continuous;
-	background:#FFFFFF url(/media_rsc/images/inputShadow.png) repeat-x scroll 0 top;
-	border:1px solid #BEBEBE;
-	color:#666666;
-	font-size:100%;
-	padding-bottom:5px;
-	padding-left:5px;
-	padding-top:5px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border: 1px solid #CCC;
-}
 
-.inputMessage {
-	width:665px;
-}
-
-input[type="submit"], input[type="button"] {
-  background-color: #5D9FC0;
-  border: 1px solid #FFFFFF;
-  color: #fff;
-  text-size: 12px;
-  padding: 5px;
-}
 
 #header {
 	-moz-border-radius: 0px 0px 10px 10px;
@@ -157,12 +136,95 @@ h3 {
 	font-size:16px;			
 }
 
-/***** Tools Style*******/
-.blue1 {
-  background-color: #DDEEF6;
-}
-
 /******* General stuff for forms ********/
 .form-helper {
 	color: #DDDDDD;
+	font-size: 14px;
+}
+
+/****************************************/
+#bigHeading {
+  
+    font-weight: normal;
+    font-style: normal;
+    font-size:45px;
+    font-family:Helvetica Neue,sans-serif !important;
+    text-shadow:0 0 1px rgba(0, 0, 0, 0.01);
+    font-weight: 100;
+    color: #525760;
+  
+
+}
+
+/*************************************/
+/*      Buttons, Links and Inputs    */
+/*************************************/
+
+.abutton{
+     padding-top:30px;
+     padding-bottom:30px;
+}
+
+.abutton a {
+  -moz-border-radius:5px 5px 5px 5px;
+  -webkit-border-radius:5px 5px 5px 5px;
+  background:none repeat scroll 0 0 #256098;
+  color:#FFFFFF;
+  padding:8px 15px;
+  font-weight:normal;
+  font-size:14px;
+  line-height:18px;
+  text-transform:uppercase;
+  font: "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif;
+}
+.editButton a:hover{
+  -moz-border-radius:5px 5px 5px 5px;
+  -webkit-border-radius:5px 5px 5px 5px;
+  line-height:9px;
+  color: #f0ebe2;
+}
+
+.editButton a{
+  font-size: 9px;
+  float:right;
+}
+
+
+input[type="text"], input[type="password"], textarea {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  background:#FFFFFF url(/media_rsc/images/inputShadow.png) repeat-x scroll 0 top;
+  border:1px solid #BEBEBE;
+  color:#666666;
+  font-size:100%;
+  padding-bottom:5px;
+  padding-left:5px;
+  padding-top:5px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border: 1px solid #CCC;
+}
+
+.inputMessage {
+  width:665px;
+}
+
+input[type="submit"], input[type="button"] {
+  /*background-color: #5D9FC0;
+  border: 1px solid #FFFFFF;
+  color: #fff;
+  text-size: 12px;
+  padding: 5px;*/
+	
+	
+	 border: none;
+	-moz-border-radius:5px 5px 5px 5px;
+  -webkit-border-radius:5px 5px 5px 5px;
+  background:none repeat scroll 0 0 #256098;
+  color:#FFFFFF;
+  padding:8px 15px;
+  font-weight:normal;
+  font-size:14px;
+  text-transform:uppercase;
+  font: "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif;
 }

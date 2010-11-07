@@ -10,13 +10,9 @@
 </style>
 
 <div id="main2" class="span-24 last">
-	<h1>Toolboxes</h1>
-    <ul>
-    {% for toolbox in toolboxes %}
-      <li><a href="{{toolbox.absolute_url}}">{{toolbox.toolbox_name}}</a></li>
-    {% endfor %}
-    </ul>
+	<h1>Latest Toolboxes</h1>
+     {% include "display_toolboxes_tabular_picture.html" %}
 </div>
 
 
-{% endblock %}s
+{% endblock %}

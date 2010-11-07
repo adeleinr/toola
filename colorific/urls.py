@@ -15,6 +15,7 @@ urlpatterns += patterns('',
   url(r'^login_user/$', user_views.login_user),
   url(r'^logout_user/$', 'django.contrib.auth.views.logout_then_login',
       {'login_url':'/colorific/login_user'}),
+  url(r'^edit_user/$', user_views.edit_user),
 )
 
 # Toolbox related pages

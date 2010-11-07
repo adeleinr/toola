@@ -4,3 +4,4 @@ settings_local.py
 .production_settings
 .pydevproject
 .tmp*.*
+/media_rsc/images/icons_big/*

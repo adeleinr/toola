@@ -29,31 +29,6 @@
     color: #5d9fc0;
 }
 
-#toolBoxModuleBig{
-    margin-top:10px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    background-color:#Fbfbfb;
-	padding: 5px;
-}
-
-#toolBoxModuleBig a{
-    background-color: #E3E9FF;
-    color: #19558D;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    padding:12px;
-    margin-top:12px;
-    margin-bottom:12px;
-    white-space:nowrap;
-    text-decoration:none;
-    line-height:5.0;   
-}
-#toolBoxModuleBig a:hover{
-    color: #FFFFFF;
-	background-color: #19558D;   
-}
-
 #userToolModule{
     margin-right: 15px;
 }

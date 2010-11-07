@@ -1,0 +1,50 @@
+{% block css %}
+<link rel="stylesheet" href="/media_rsc/css/toolboxes_tabular_picture.css" type="text/css" media="screen,projection" />
+{% endblock %}
+
+<div id="toolboxes">
+	{% for toolBox in toolboxes %}
+	<div class="clickable span-15 last"id="toolboxTab"  url="{{toolBox.absolute_url}}">
+	        <div id="main" class="span-15 last">
+	        <div id="userPicture" class="span-2">
+	            <img src="{{ toolBox.user.picture_thumbnail }}"/>
+	        </div>
+	        <div id="tools" class="span-10">
+	            <h5>{{toolBox.toolbox_name}}
+				     <span id="author"> 
+					    by <a href="{{toolBox.user.absolute_url}}">{{toolBox.user.user.username}}</a>
+					 </span>
+				</h5>
+				{% for tool in toolBox.tools %}
+	              <li><a href="">{{tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
+	            {% endfor %}
+	        </div>
+	
+	        <div id="score" class="span-1">
+	                <span id="scoreNumber">50</span>
+	                <br/>
+	                TIGS
+	        </div>
+	        <div id="thumbUp" class="span-1 last">
+	            <img src="/media_rsc/images/icons_small/arrowup.png"/>
+	        </div>
+	        
+	        </div>
+	        <div id="social-links" class="span-3 last">
+	            <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="xetup">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	        </div>
+	
+	 </div>
+	 {% endfor %} 	 
+</div>
+
+{% block js %}
+<script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
+<script>
+    $("div.clickable").click(
+    function()
+    {
+        window.location = $(this).attr("url");
+    });
+ </script> 
+{% endblock %}

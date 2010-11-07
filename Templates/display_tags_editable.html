@@ -1,0 +1,8 @@
+{% block css %}
+<link rel="stylesheet" href="/media_rsc/css/tag.css" type="text/css" media="screen,projection" />
+{% endblock %}
+<div class="tag">
+	{% for tag in userProfile.tags.all %}
+	<a href="#">{{tag.name}} <img src="/media_rsc/images/icons_tiny/delete.png"/></a>
+	{% endfor %}
+</div>

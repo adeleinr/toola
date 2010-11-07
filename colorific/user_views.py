@@ -7,10 +7,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.utils import simplejson
-import urllib, urllib2, base64
+import urllib, urllib2
 
 from colorific.models import UserProfile
-from colorific.forms import RegistrationForm, LoginForm, ToolBoxForm
+from colorific.forms import RegistrationForm, LoginForm, ToolBoxForm, EditUserForm, EditSocialUserForm
 from colorific.toolbox_views import get_all_toolboxes
 from colorific.APIConfig import APIConfig
 
@@ -32,14 +32,13 @@ def user_detail(request, username):
     userProfile = user.get_profile()
     #user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
     user_count = 0
-    
-    
+
     toolBoxForm = ToolBoxForm()
     
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': userProfile, 
                                 'user_count': user_count,
-                                'toolBoxes': get_all_toolboxes(user),
+                                'toolboxes': get_all_toolboxes(userProfile.user.username),
                                 'toolBoxForm': toolBoxForm},
                                 context_instance=RequestContext(request))
 
@@ -68,9 +67,41 @@ def login_user(request):
   
     return render_to_response('colorific/login_user.html', {'loginForm': loginForm, 
                 'message':message}, context_instance=RequestContext(request))
-    
-def socialregistration_setup(request):
-    
-    new_user_profile = UserProfile.objects.create(user=new_user)
-    
+  
+@login_required(redirect_field_name='colorific/login_user')    
+def edit_user(request):
+  message = ''
+  user = request.user
+  userProfile = user.get_profile()
+     
+  if request.method == 'POST':
+    # Create a form with data to validate form
+    if request.facebook:
+      editUserForm = EditSocialUserForm(request.POST, instance = userProfile)
+    else:
+      editUserForm = EditUserForm(request.POST, instance = userProfile)
+ 
+    if editUserForm.is_valid():
+        # Use the form data
+      try:
+        # Save user data
+        editUserForm.save()
+        
+        print editUserForm
+        
+
+      except Exception, e:    
+        message = e
+    else:
+        #User needs to try again)
+        message = 'Invalid form data' 
+        
+  else:
+    if request.facebook:
+      editUserForm = EditSocialUserForm(instance = userProfile)
+    else:
+      editUserForm = EditUserForm(instance = userProfile)
+  
+  return render_to_response('colorific/edit_user.html', {'message': message, 'editUserForm': editUserForm, 'userProfile':userProfile },
+        context_instance=RequestContext(request))
     

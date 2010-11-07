@@ -1,6 +1,7 @@
 from django.db import models
 from django import forms
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 class UserProfileLookupTables:
     OCCUPATION_CHOICES = (
@@ -42,11 +43,15 @@ class UserProfile(models.Model):
     #occupation = models.IntegerField('What do you do?', choices=UserProfileLookupTables.OCCUPATION_CHOICES, blank=True) 
     #self_description = models.IntegerField('Tag Yourself', choices=UserProfileLookupTables.SELF_DESC_CHOICES, blank=True)
     #twitter = models.URLField(verify_exists=True, max_length=200, blank=True)
-
+    picture_url = models.URLField(max_length=200, blank=True)
+    picture_thumbnail = models.URLField(max_length=200, blank=True)
+    '''picture = models.ImageField(help_text=('Upload an image (max %s kilobytes)' %settings.MAX_PHOTO_UPLOAD_SIZE),
+                                upload_to='jakido/avatar',blank=True, null= True)'''
+    tags = TaggableManager()
 
     def get_home_zipcode(self):
         return self.home_zipcode
-    
+    '''
     def get_gender(self):
         return UserProfileLookupTables.GENDER_CHOICES[self.gender][1]
 
@@ -58,6 +63,7 @@ class UserProfile(models.Model):
     
     def get_twitter_url(self):
         return self.twitter
+    '''
     
     def __unicode__(self):
         return self.user.username
@@ -127,12 +133,10 @@ class ToolBox(models.Model):
         return ToolBoxToolRelation.objects.filter(toolbox = self)
 
 class ToolBoxToolRelation(models.Model):
-    toolbox = models.ForeignKey(ToolBox)
+    toolbox = models.ForeignKey(ToolBox, related_name='toolboxtoolrelations')
     tool = models.ForeignKey(Tool)
     note = models.TextField(blank=True, max_length=350,)
     
     class Meta:
         unique_together = ('toolbox', 'tool')    
-    
-
     

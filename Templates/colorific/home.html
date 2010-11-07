@@ -2,42 +2,38 @@
 {% block content %}
 
 <div id="registrationBox" class="span-24">
-  <div class="span-9 colborder">
-    <h1> What do you use to get the job done?</h1>
+  <div id="registrationLeftForm" class="span-10 colborder">
+    <h1> How do you get the job done?</h1>
   
-    <br />
-    A general ToolBox might include this:
-    <br />
-    <br />
-  
-    <h3>Daily ToolBox</h3>
+ 
+    <h3>1. Context</h3>
+		<h5>Where do you do your craft?</h5>
     <ul>
-      <li>IDEs text editors</li>
-      <li>Bookmarks organizers</li>
-      <li>Where do you keep your cheatsheets?</li>
-      <li>Any TODO list software?</li>
-      <li>Calendar?</li>
-      <li>Brainstorming tools</li>
-      <li>Backup software</li>
-      <li>Wikis</li>
+      <li>Share pictures of your desk setup, room, table</li>
+      <li>Tell us everything</li>
     </ul>
+
     
-    A specific ToolBox might include:
+    <h3>2. Toolbox</h3>
+		<h5>What tools do you use?</h5>
     
-    <br />
-    <br />
-    
-    <h3>Django Dev ToolBox</h3>
-    
+		Example: Meet Jack is a Software Engineer. For his daily work he uses:
     <ul>
         <li>IDEs: Aptana, PyDev, textmate</li>
         <li>Technologies (Django, Python, Apache Lucene, nginx, PylonsHQ, Apache Thrift, etc)</li>
         <li>DBs: SQLLite, BigTable, NoSQL
         <li>Code Review and Management: Git, Github, rietveld</li>
+    </ul> 
+		
+		<h3>3. Info Sources</h3>
+    <h5>Where do you get your inspiration from?</h5>
+    <ul>
+        <li>Hacker News</li>
+        <li>Friendfeed</li>
     </ul>  
   </div>
         
-  <div class="span-12">
+  <div id="registrationRightForm" class="span-12">
     <h1>Sign up</h1>
     {{message}}
     

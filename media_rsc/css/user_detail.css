@@ -1,3 +1,46 @@
+
+/* User Related style */
+#userPicture img{
+    border: 1px solid black;	
+}
+div.title {
+  border-bottom: 1px solid #EEEEEE;
+  color: #B5B9C0;
+  padding: 3px;
+  font-weight: bold;
+  width: 280px;
+}
+
+div.title_content {
+  width: 550px;  
+} 
+ 
+
+.content {
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  color: #85898F;
+}
+
+#web_life.content a {
+  display: block;
+}
+
+
+#userPicture{
+    text-align:center;
+}
+
+
+/* ToolBox Related style */
+
+#toolBoxModuleBig {
+  margin-top: 0px;
+  padding: 5px;
+  margin-bottom: 0px;
+}
+
 .toolBoxModuleTabular {
   margin-top:10px;
 }
@@ -11,35 +54,6 @@
   color: #FFFFFF;
 }
 
-div.title {
-  border-top: 1px dashed #666;
-  border-bottom: 1px dashed #666;
-  background-color: #E1ECFE;
-  color: #000000;
-  padding: 5px;
-  font-weight: bold;
-  width: 290px;
-}
-
-div.title_content {
-  width: 550px;  
-} 
- 
-#toolBoxModuleBig {
-  margin-top: 0px;
-  padding: 0px;
-  margin-bottom: 0px;
-}
-
-.content {
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-bottom: 10px;
-}
-
-#web_life.content a {
-  display: block;
-}
 
 #overlay {
   position: absolute;
@@ -104,3 +118,15 @@ ul li {
   height: 60px;
   padding: 10px;
 }
+
+
+
+#setup-pics{
+	margin-top: 10px;
+}
+
+
+
+
+
+

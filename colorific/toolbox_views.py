@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.forms.models import modelformset_factory, inlineformset_factory
 from django.utils import simplejson
-import urllib
+import urllib, urllib2
 
 
 from colorific.forms import ToolBoxForm, ToolForm
@@ -19,13 +19,18 @@ from colorific.APIConfig import APIConfig
 ============================================================
 '''
 
-
 def toolbox_index(request):
   res = urllib.urlopen(APIConfig.TOOLBOX_API_URL)
   toolboxes = simplejson.load(res)
   return render_to_response('colorific/toolbox_index.html',
                             { 'toolboxes': toolboxes},
                             context_instance=RequestContext(request)) 
+  
+def get_all_toolboxes(username):
+    res = urllib2.urlopen(APIConfig.TOOLBOX_API_URL+str(username))
+    toolboxes = simplejson.load(res)
+    return toolboxes
+
 #TODO not used yet
 def get_toolbox_popularity(request, toolbox_id):
     toolbox = get_object_or_404(ToolBox, pk=toolbox_id)
@@ -33,8 +38,9 @@ def get_toolbox_popularity(request, toolbox_id):
                               context_instance=RequestContext(request))
 
 def toolbox_detail(request, toolbox_id):
-    toolbox = get_object_or_404(ToolBox, pk=toolbox_id)
-    return render_to_response('colorific/toolbox_detail.html', {'toolBox': toolbox}, 
+    res = urllib.urlopen(APIConfig.TOOLBOX_API_URL+str(toolbox_id))
+    toolbox = simplejson.load(res)
+    return render_to_response('colorific/toolbox_detail.html', {'toolbox': toolbox}, 
                               context_instance=RequestContext(request))
 
 def get_newest_toolbox(user):
@@ -44,8 +50,6 @@ def get_newest_toolbox(user):
     except: 
         return ''
 
-def get_all_toolboxes(user):
-    return ToolBox.objects.filter(user__user__username = user.username).order_by('-pub_date')
 
 def get_suggestions(request):
     response = ""
@@ -133,7 +137,7 @@ def user_toolbox_index(request):
     user = request.user
     userProfile = user.get_profile()
     return render_to_response('colorific/user_toolbox_list.html', 
-                              {'toolBoxes':get_all_toolboxes(userProfile.user)},
+                              {'toolboxes':get_all_toolboxes(userProfile.user.username)},
                               context_instance=RequestContext(request))
 
 

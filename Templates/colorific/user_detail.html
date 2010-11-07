@@ -4,50 +4,64 @@
 <link type="text/css" href="/media_rsc/js/jquery/css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" /> 
 <link rel="stylesheet" href="/media_rsc/css/create_toolbox.css" type="text/css" media="screen,projection" />
 <link rel="stylesheet" href="/media_rsc/css/user_detail.css" type="text/css" media="screen,projection" />
+<link rel="stylesheet" href="/media_rsc/css/toolbox.css" type="text/css" media="screen,projection" />
 {% endblock %}
 
 {% block title %}{{userProfile.user.username}}'s Profile{% endblock %}
 
 {% block content %}
 <div id="main2" class="span-24 last">
-  {{message}}
-   <div id="userInfoModule" class="span-8 colborder">
-      <img src="/media_rsc/images/khoi.png" />
+   {{message}}
+   <div id="userInfoModule" class="span-7 colborder">
+    <div id="userPicture">
+       <img src="{{ userProfile.picture_url }}"/>
+    </div
+	<div class="title editButton">TAGS 
+    <a class="editButton" href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/> EDIT TAGS</a>
+  </div>
+  <div id="toolBoxModuleBig" class="tool">
+    	{% for tag in userProfile.tags.all %}
+      <a href="#">{{tag.name}}</a>
+      {% endfor %}
+  </div>
 
-   <div class="title">TAGS</div>
-    <div id="toolBoxModuleBig" class="content">
-      <a href="#" id="tool">python</a>
-      <a href="#" id="tool">django</a>
-      <a href="#" id="tool">google-app-engine</a>
-    </div>
+	<div class="title">ABOUT</div>
+	<div id="toolBoxModuleBig" class="content">
+		My home and work setups are identical: early-2008 octocore Mac Pros, each with two 24" Dell monitors, 6 GB of RAM, two-disk software RAID-0 with a third disk as an internal Time Machine, the Microsoft Natural Ergonomic Keyboard 4000, and the Magic Mouse.
+
+    At work, I sit in an Aeron at an electrically height-adjustable desk so I can stand when I feel like it. Fog Creek generously showed us theirs and we ordered the same ones. At home, I sit in an Embody at a Galant.
+  </div>
     <div class="title">SIMILAR PEOPLE</div>
     <div id="toolBoxModuleBig" class="content">
-      <a href="#" id="tool">adeleinr</a>
-      <a href="#" id="tool">oferrer</a>
-      <a href="#" id="tool">fotingo</a>
-    </div>
-    <div class="title">WEB LIFE</div>
-    <div id="web_life" class="content">
-      <a href="//orlandopozo.com">orlandopozo.com</a>
-      <a href="//log.orlandopozo.com">log.orlandopozo.com</a>
-      <a href="//flickr.com/opozo">flickr.com/opozo</a>
-    </div>
-    <div class="title">COMMENTS</div>
-    <div class="content">
-      <div>- This guy knows PHP ;)</div>      
-      <div>- This guy is a JavaScript guru</div>
+        <img src="/media_rsc/images/12.jpg"/>
+        <img src="/media_rsc/images/13.jpg"/>
+        <img src="/media_rsc/images/14.png"/>
+        <img src="/media_rsc/images/12.jpg"/>
     </div>
   </div>
-  <div class="span-13">
-    <div class="title title_content">{{userProfile.user.username}}'s DESCRIPTION</div>
-    <div class="content">
-      I have been working in web stuff for several years, you don't need to get certified, you just really need to get your hands dirty, that's the way you learn the web, it's an open platform at the end.  
+  
+  
+  <div class="span-15 last">
+    <div id="bigHeading">
+        {{userProfile.user.first_name}} {{userProfile.user.last_name}}
+    </div>  
+    <div class="abutton">
+        <a id="add_toolbox" href="#">+ Add toolbox</a>
     </div>
-    
-    <div class="title title_content">{{userProfile.user.username}}'s SETUP (<a id="add_toolbox" href="#">Add toolbox</a>)</div>
-    {% include "display_toolboxes_tabular.html" %}
+    <br/>
+    {% include "display_toolboxes_tabular_nopicture.html" %}
+	<div id="setup-pics" class="span-15 last">
+		<div class="abutton">
+            <a id="add_toolbox" href="#">+ Add Photo</a>
+        </div>
+        <img src="/media_rsc/images/1.jpg"/>
+        <img src="/media_rsc/images/2.jpg"/>
+    </div> 
   </div>
 </div>
+
+
+
 <div id="overlay"></div>
 <div id="create-toolbox-inline" class="create-toolbox-inline span-10 last">
   <div id="create-toolbox-inline-header">
@@ -90,7 +104,7 @@
   <div class="toolbar">
     <input id="create-toolbox-inline-save" type="button" name="submit" value="Save" />
     <input id="create-toolbox-inline-close" type="button" name="submit" value="Close" />
-    <input id="user-profile-id" type="hidden" value="{{userProfile.user.id}}" />
+    <input id="user-profile-id" type="hidden" value="{{userProfile.id}}" />
   </div>
 </div>
 <script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>

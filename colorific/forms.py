@@ -4,33 +4,6 @@ from colorific.models import UserProfile, Tool, ToolBox, ToolBoxToolRelation
 from django.contrib.auth.models import User
 
 
-OCCUPATION_CHOICES = (
-	(0, 'Tech Industry'),
-	(1,'Student'),
-    (2, 'My own business'),
-	(3, 'At home'),
-)
-
-
-GENDER_CHOICES = (
-	(0,'Male'),
-	(1,'Female'),
-)
-
-SELF_DESC_CHOICES = (
-	(0, 'Techie'),
-	(1, 'College Life'),
-	(2, 'Artsie'),
-	(3, 'Nerd'),
-	(4, 'Normal Human Being'),
- 	(5, 'Professional Traveler'),
-	(6, 'Mystic'),
-	(7, 'Health Sapient'),
-	(8, 'Unknown'),
-)
-
-
-
 class LoginForm(forms.Form):
 		username = forms.CharField(max_length=30, label='Username')
 		password = forms.CharField(max_length=20, widget=forms.PasswordInput(render_value=False))
@@ -41,8 +14,7 @@ class RegistrationForm(ModelForm):
 	password = forms.CharField(max_length=20, widget=forms.PasswordInput(render_value=False))
 	first_name =  forms.CharField( max_length=30)	
 	email = forms.EmailField()
-
-
+	
 	def save(self):
 		new_user = User.objects.create_user(username=self.cleaned_data['username'],
 						    password=self.cleaned_data['password'],
@@ -75,8 +47,29 @@ class RegistrationForm(ModelForm):
 	#	if 'password1' is self.cleaned_data and 'password2' is self.cleaned_data:
 	#		raise forms.ValidationError("You must type the same password each time")
 	#	return self.cleaned_data
+	
+# This is a simplified version of the edit form
+# since a facebook user for example does not
+# have to edit stuff here
+class EditSocialUserForm(ModelForm):
+		
+	class Meta:
+		model = UserProfile
+		fields = ('tags',)
 
-
+class EditUserForm(ModelForm):
+	# user object fields
+	username = forms.CharField(max_length=30, label='Username')
+	password = forms.CharField(max_length=20, widget=forms.PasswordInput(render_value=False))
+	first_name =  forms.CharField( max_length=30)	
+	email = forms.EmailField()
+	
+	#user profile object fields
+	tags = forms.CharField(max_length=200, help_text="Comma separated", required=False)
+	
+	class Meta:
+		model = UserProfile
+		exclude  = ('user')
 		
 class ToolBoxForm (ModelForm):
 	tools = forms.CharField(max_length=300,
