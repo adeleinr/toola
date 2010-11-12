@@ -73,13 +73,52 @@
 [184.106.152.183] out: New python executable in ./bin/python
 [184.106.152.183] out: Installing setuptools............done.
 [184.106.152.183] sudo: cd /web/webme; mkdir releases; mkdir shared; mkdir packages;
-[localhost] run: git archive --format=tar master | gzip > 20101112125844.tar.gz
-[184.106.152.183] sudo: mkdir /web/webme/releases/20101112125844
-[184.106.152.183] put: 20101112125844.tar.gz -> /tmp/20101112125844.tar.gz
-[184.106.152.183] sudo: mv /tmp/20101112125844.tar.gz /web/webme/packages/
-[184.106.152.183] sudo: cd /web/webme/releases/20101112125844 && tar zxf ../../packages/20101112125844.tar.gz
-[localhost] run: rm 20101112125844.tar.gz
-[184.106.152.183] sudo: cd /web/webme; pip install -E . -r ./releases/20101112125844/requirements.txt
-[184.106.152.183] out: Double requirement given: debug-toolbar from git+git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar (from -r ./releases/20101112125844/requirements.txt (line 6)) (aready in debug-toolbar (from -r ./releases/20101112125844/requirements.txt (line 3)), name='debug-toolbar')
+[localhost] run: git archive --format=tar master | gzip > 20101112130323.tar.gz
+[184.106.152.183] sudo: mkdir /web/webme/releases/20101112130323
+[184.106.152.183] put: 20101112130323.tar.gz -> /tmp/20101112130323.tar.gz
+[184.106.152.183] sudo: mv /tmp/20101112130323.tar.gz /web/webme/packages/
+[184.106.152.183] sudo: cd /web/webme/releases/20101112130323 && tar zxf ../../packages/20101112130323.tar.gz
+[localhost] run: rm 20101112130323.tar.gz
+[184.106.152.183] sudo: cd /web/webme; pip install -E . -r ./releases/20101112130323/requirements.txt
+[184.106.152.183] out: Downloading/unpacking django-extensions (from -r ./releases/20101112130323/requirements.txt (line 2))
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb): 
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):   3%  4.1Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):   7%  8.2Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  11%  12Kb 
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  15%  16Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  19%  20Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  23%  24Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  27%  28Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  31%  32Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  35%  36Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  39%  40Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  42%  45Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  46%  49Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  50%  53Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  54%  57Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  58%  61Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  62%  65Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  66%  69Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  70%  73Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  74%  77Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  78%  81Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  82%  86Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  85%  90Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  89%  94Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  93%  98Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):  97%  102Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb): 100%  104Kb
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb):            
+[184.106.152.183] out:   Downloading django-extensions-0.5.tar.gz (104Kb): 104Kb downloaded
+[184.106.152.183] out:   Running setup.py egg_info for package django-extensions
+[184.106.152.183] out: Obtaining debug-toolbar from git+git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar (from -r ./releases/20101112130323/requirements.txt (line 5))
+[184.106.152.183] out:   Cloning git://github.com/robhudson/django-debug-toolbar.git to ./src/debug-toolbar
+[184.106.152.183] out:   Running setup.py egg_info for package debug-toolbar
+[184.106.152.183] out: Downloading/unpacking sorl-thumbnail (from -r ./releases/20101112130323/requirements.txt (line 4))
+[184.106.152.183] out:   Downloading sorl-thumbnail-10.12-alpha.tar.gz
+[184.106.152.183] out:   Running setup.py egg_info for package sorl-thumbnail
+[184.106.152.183] out: Downloading/unpacking taggit (from -r ./releases/20101112130323/requirements.txt (line 3))
+[184.106.152.183] out:   Could not find any downloads that satisfy the requirement taggit (from -r ./releases/20101112130323/requirements.txt (line 3))
+[184.106.152.183] out: No distributions at all found for taggit (from -r ./releases/20101112130323/requirements.txt (line 3))
 [184.106.152.183] out: Storing complete log in /home/webme/.pip/pip.log
 Disconnecting from 184.106.152.183... done.
