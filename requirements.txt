@@ -1,1 +1,6 @@
-Django
+Django==1.1.1
+django_extensions
+debug_toolbar
+socialregistration
+taggit
+sorl.thumbnail

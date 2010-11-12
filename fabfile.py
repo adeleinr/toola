@@ -79,24 +79,27 @@ def upload_tar_from_git():
     sudo('mv /tmp/%s.tar.gz %s/packages/'%(env.release, env.code_root))
     sudo('cd %s/releases/%s && tar zxf ../../packages/%s.tar.gz'% (env.code_root,env.release, env.release ))
     local('rm %s.tar.gz'% (env.release))
-def install_site():
-    "Add the virtualhost file to apache"
-    require('release', provided_by=[deploy, setup])
-    sudo('cd %s/releases/%s; cp %s%s_%s%s /etc/apache2/sites-available/'% (env.code_root, env.project_name, env.virtualhost, env.code_root, env_project_name))
-    sudo('cd /etc/apache2/sites-available/; a2ensite %s'% (env.project_name)) 
+
 def install_requirements():
     "Install the required packages from the requirements file using pip"
     require('release', provided_by=[deploy, setup])
     sudo('cd %s; pip install -E . -r ./releases/%s/requirements.txt'% (env.code_root, env.release))
+
+def install_site():
+    "Add the virtualhost file to apache"
+    require('release', provided_by=[deploy, setup])
+    sudo('cd %s/releases/%s; cp %s /etc/apache2/sites-available/'% (env.code_root, env.release, env.project_name))
+    sudo('cd /etc/apache2/sites-available/; a2ensite %s'% (env.project_name)) 
+
 def symlink_current_release():
     "Symlink our current release"
     require('release', provided_by=[deploy, setup])
-    sudo('cd %s; rm releases/previous; mv releases/current releases/previous;' % (env.code_root))
+    #sudo('cd %s; rm releases/previous; mv releases/current releases/previous;' % (env.code_root))
     sudo('cd %s; ln -s %s releases/current'% (env.code_root, env.release))
 def migrate():
     "Update the database"
     require('project_name')
-    sudo('cd %s/releases/current/%s;  ../../../bin/python manage.py syncdb --noinput'% (env.code_root, env.project_name))
+    sudo('cd %s/releases/current/;  ../../bin/python manage.py syncdb --noinput'% (env.code_root))
 def restart_webserver():
     "Restart the web server"
     sudo('/etc/init.d/apache2 restart')
