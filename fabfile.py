@@ -27,6 +27,7 @@ def setup():
     sudo('aptitude install -y python-setuptools')
     sudo('easy_install pip')
     sudo('pip install virtualenv')
+    sudo('aptitude install -y git')
     sudo('aptitude install -y apache2')
     sudo('aptitude install -y libapache2-mod-wsgi')
     # we want rid of the defult apache config
