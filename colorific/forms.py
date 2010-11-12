@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from colorific.models import UserProfile, Tool, ToolBox, ToolBoxToolRelation
+from colorific.models import UserProfile, Tool, ToolBox, ToolBoxToolRelation, Image
 from django.contrib.auth.models import User
 
 
@@ -55,7 +55,7 @@ class EditSocialUserForm(ModelForm):
 		
 	class Meta:
 		model = UserProfile
-		fields = ('tags',)
+		fields = ('tags','pictures')
 
 class EditUserForm(ModelForm):
 	# user object fields
@@ -93,4 +93,15 @@ class ToolForm(ModelForm):
 	class Meta:
 		model = ToolBoxToolRelation
 	
-	
+
+class ImageForm(ModelForm):
+	    class Meta:
+	        model = Image
+	    def __init__(self, user, *args, **kwargs):
+					super(ImageForm, self).__init__(*args, **kwargs)
+					self._user = user
+
+
+
+			
+			

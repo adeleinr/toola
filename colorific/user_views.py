@@ -2,15 +2,17 @@ from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import loader, RequestContext
 from django.forms.formsets import formset_factory
-from django.forms.models import inlineformset_factory
+from django.forms.models import inlineformset_factory, modelformset_factory
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.utils import simplejson
 import urllib, urllib2
+from django.utils.functional import curry
 
-from colorific.models import UserProfile
-from colorific.forms import RegistrationForm, LoginForm, ToolBoxForm, EditUserForm, EditSocialUserForm
+
+from colorific.models import UserProfile, Image
+from colorific.forms import RegistrationForm, LoginForm, ToolBoxForm, EditUserForm, EditSocialUserForm, ImageForm
 from colorific.toolbox_views import get_all_toolboxes
 from colorific.APIConfig import APIConfig
 
@@ -73,35 +75,53 @@ def edit_user(request):
   message = ''
   user = request.user
   userProfile = user.get_profile()
+  
+  ImageFormSet = modelformset_factory(Image, form=ImageForm, extra=3)
+  print "hello"
+  ImageFormSet.form = staticmethod(curry(ImageForm, userProfile))
+  
+  if request.facebook:
+      editUserForm = EditSocialUserForm(instance = userProfile)
+  else:
+      editUserForm = EditUserForm(instance = userProfile)
+    
+  formset = ImageFormSet(queryset=Image.objects.none())
+
      
   if request.method == 'POST':
-    # Create a form with data to validate form
-    if request.facebook:
-      editUserForm = EditSocialUserForm(request.POST, instance = userProfile)
-    else:
-      editUserForm = EditUserForm(request.POST, instance = userProfile)
- 
-    if editUserForm.is_valid():
-        # Use the form data
-      try:
-        # Save user data
-        editUserForm.save()
-        
-        print editUserForm
-        
-
-      except Exception, e:    
-        message = e
-    else:
-        #User needs to try again)
-        message = 'Invalid form data' 
-        
-  else:
-    if request.facebook:
-      editUserForm = EditSocialUserForm(instance = userProfile)
-    else:
-      editUserForm = EditUserForm(instance = userProfile)
+    
+    if 'profileSubmit' in request.POST:
+      # Create a form with data to validate form
+      if request.facebook:
+        editUserForm = EditSocialUserForm(request.POST, instance = userProfile)
+      else:
+        editUserForm = EditUserForm(request.POST, instance = userProfile)
+   
+      if editUserForm.is_valid():
+          # Use the form data
+        try:
+          # Save user data
+          editUserForm.save()
+          
   
-  return render_to_response('colorific/edit_user.html', {'message': message, 'editUserForm': editUserForm, 'userProfile':userProfile },
+        except Exception, e:    
+          message = e
+      else:
+          #User needs to try again)
+          message = 'Invalid form data' 
+    elif 'imageSubmit'in request.POST:
+      formset = ImageFormSet(request.POST, request.FILES, queryset=Image.objects.none())
+      if formset.is_valid():
+        instances = formset.save(commit=False)
+        for image in instances:
+            try:
+               image.user = userProfile
+               image.save()
+            except Image.DoesNotExist:
+               message = 'does not exit'
+
+
+  
+  return render_to_response('colorific/edit_user.html', {'message': message, 'editUserForm': editUserForm,'formset':formset, 'userProfile':userProfile },
         context_instance=RequestContext(request))
     

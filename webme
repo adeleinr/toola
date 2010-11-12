@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+        WSGIDaemonProcess webme-production user=webme group=webme threads=10 python-path=/web/webme/lib/python2.6/site-packages
+        WSGIProcessGroup project_name-production
+        WSGIScriptAlias / /web/webme/apache/django.wsgi
+        <Directory /web/webme/releases/current/webme>
+            Order deny,allow
+            Allow from all
+        </Directory>
+        ErrorLog /var/log/apache2/error.log
+        LogLevel warn
+        CustomLog /var/log/apache2/access.log combined
+</VirtualHost>

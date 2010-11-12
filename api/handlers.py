@@ -12,7 +12,7 @@ class UserProfileHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = UserProfile
   anonymous = 'AnonymousUserProfileHandler'
-  fields = ('id', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'absolute_url', 'picture_url', 'picture_thumbnail', 'tags')
+  fields = ('id', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'absolute_url', 'picture_url', 'picture_thumbnail', 'tags', 'pictures')
   
   def read(self, request, userprofile_id = None):
     if userprofile_id:       
@@ -31,12 +31,15 @@ class UserProfileHandler(BaseHandler):
   @classmethod
   def tags(cls, myinstance):
     return myinstance.tags.all()
+  @classmethod
+  def pictures(cls, myinstance):
+    return myinstance.pictures.all()
 
 # List the users  => http://localhost:8000/api/people
 # Get a user      => http://localhost:8000/api/people/1
 class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
   #fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
-  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url', 'tags')   
+  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url', 'tags', 'pictures')   
 
 # List the tools  => http://localhost:8084/api/tools
 # Get a tool      => http://localhost:8084/api/tools/15/2003

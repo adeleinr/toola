@@ -2,6 +2,8 @@ from django.db import models
 from django import forms
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from sorl.thumbnail.fields import ImageWithThumbnailsField
+import os
 
 class UserProfileLookupTables:
     OCCUPATION_CHOICES = (
@@ -35,6 +37,7 @@ class UserProfileLookupTables:
         (2, 'African American'),
         (3, 'Caucasian'),
     )
+    
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True, editable=False)
@@ -48,6 +51,7 @@ class UserProfile(models.Model):
     '''picture = models.ImageField(help_text=('Upload an image (max %s kilobytes)' %settings.MAX_PHOTO_UPLOAD_SIZE),
                                 upload_to='jakido/avatar',blank=True, null= True)'''
     tags = TaggableManager()
+    
 
     def get_home_zipcode(self):
         return self.home_zipcode
@@ -71,7 +75,25 @@ class UserProfile(models.Model):
     def get_absolute_url(self):
         return "/colorific/user_detail/%s" % (self.user.username)
 
-   
+
+
+class Image(models.Model):
+    def get_image_path(instance, filename):
+      print "create path"
+      val="uploads/images/profiles/" + str(instance.user.id)+"_"+filename
+      print val
+      return val 
+    user = models.ForeignKey(UserProfile, editable=False, related_name='pictures')
+    #picture = models.ImageField(upload_to=get_image_path, null=True, blank=True)
+    picture = ImageWithThumbnailsField(upload_to='uploads/images/profiles/',
+                                       null=True, blank=True,
+                                       thumbnail={'size': (80, 80)},
+                                       extra_thumbnails={
+                                                      'medium': {'size': (100, 100), 'options': ['crop', 'upscale']},
+                                                      'large': {'size': (200, 400)},
+                                       },
+    )  
+    
 
 class Tool(models.Model):
     tool_name = models.CharField(unique=True, max_length=200, help_text="Eg. PyDev")
@@ -85,29 +107,6 @@ class Tool(models.Model):
     def get_absolute_url(self):
         return "/colorific/tool/%s" % (self.tool_name)
     
-    
-        
-    '''
-    def get_toolnote(self):
-        return self.toolnote_set.all()[0]
-    
-    def get_toolnote_set(self):
-        return self.toolnote_set.all()
-    '''
-
-''' 
-    A ToolBox can have many Tools
-    The same Tool could be used in many ToolBoxes 
-    Tool is the granular thing
-    ToolBox is the big thing
-    Example
-    -------
-    p1 = Publication(id=None, title='The Python Journal')
-    a1 = Article(id=None, headline='Django lets you build Web apps easily')
-    a1.save()
-    a1.publications.add(p1)
-'''
-
     
 class ToolBox(models.Model):
     toolbox_name = models.CharField(max_length=100, help_text="Example: Django Setup.")
