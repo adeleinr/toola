@@ -1,6 +1,5 @@
 Django==1.1.1
 django_extensions
-debug_toolbar
 taggit
 sorl-thumbnail
 -e git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar

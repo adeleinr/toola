@@ -61,7 +61,7 @@
 [184.106.152.183] out: Need to get 66.8kB of archives. After unpacking 242kB will be used.
 [184.106.152.183] out: Writing extended state information...
 [184.106.152.183] out: Err http://archive.ubuntu.com/ubuntu/ lucid/universe libapache2-mod-wsgi 2.8-2
-[184.106.152.183] out:   404  Not Found [IP: 91.189.88.30 80]
+[184.106.152.183] out:   404  Not Found [IP: 91.189.92.171 80]
 [184.106.152.183] out: Reading package lists...
 [184.106.152.183] out: Building dependency tree...
 [184.106.152.183] out: Reading state information...
@@ -73,7 +73,13 @@
 [184.106.152.183] out: New python executable in ./bin/python
 [184.106.152.183] out: Installing setuptools............done.
 [184.106.152.183] sudo: cd /web/webme; mkdir releases; mkdir shared; mkdir packages;
-[localhost] run: git archive --format=tar master | gzip > 20101112125756.tar.gz
-[184.106.152.183] sudo: mkdir /web/webme/releases/20101112125756
-[184.106.152.183] put: 20101112125756.tar.gz -> /tmp/20101112125756.tar.gz
+[localhost] run: git archive --format=tar master | gzip > 20101112125844.tar.gz
+[184.106.152.183] sudo: mkdir /web/webme/releases/20101112125844
+[184.106.152.183] put: 20101112125844.tar.gz -> /tmp/20101112125844.tar.gz
+[184.106.152.183] sudo: mv /tmp/20101112125844.tar.gz /web/webme/packages/
+[184.106.152.183] sudo: cd /web/webme/releases/20101112125844 && tar zxf ../../packages/20101112125844.tar.gz
+[localhost] run: rm 20101112125844.tar.gz
+[184.106.152.183] sudo: cd /web/webme; pip install -E . -r ./releases/20101112125844/requirements.txt
+[184.106.152.183] out: Double requirement given: debug-toolbar from git+git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar (from -r ./releases/20101112125844/requirements.txt (line 6)) (aready in debug-toolbar (from -r ./releases/20101112125844/requirements.txt (line 3)), name='debug-toolbar')
+[184.106.152.183] out: Storing complete log in /home/webme/.pip/pip.log
 Disconnecting from 184.106.152.183... done.
