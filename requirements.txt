@@ -3,4 +3,4 @@ django_extensions
 debug_toolbar
 taggit
 sorl-thumbnail
--e git://github.com/flashingpumpkin/django-socialregistration.git#egg=socialregistration
+-e git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar
