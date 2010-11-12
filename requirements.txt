@@ -1,6 +1,6 @@
 Django==1.1.1
 django_extensions
 debug_toolbar
-socialregistration
 taggit
-sorl.thumbnail
+sorl-thumbnail
+-e git clone git://github.com/flashingpumpkin/django-socialregistration.git#egg=socialregistration

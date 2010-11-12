@@ -89,7 +89,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'colorific',
     'django_extensions',
-    'debug_toolbar',
     'socialregistration',
     'taggit',
     'sorl.thumbnail',
