@@ -14,7 +14,11 @@
    {{message}}
    <div id="userInfoModule" class="span-7 colborder">
     <div id="userPicture">
-       <img src="{{ userProfile.picture_url }}"/>
+    	{% if userProfile.picture_url %}
+        <img src="{{ userProfile.picture_url }}"/>
+      {% else %}
+			  <img class="blank-avatar" src="/media_rsc/images/avatar.png"/>
+			{% endif %}
     </div
 	<div class="title editButton">TAGS 
     <a class="editButton" href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/> EDIT TAGS</a>

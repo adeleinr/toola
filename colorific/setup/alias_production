@@ -1,0 +1,4 @@
+alias mysite='cd /web/webme/releases/current/webme/'
+alias restart_site='sudo /etc/init.d/apache2 restart'
+alias syncdb='mysite; sudo python manage.py syncdb; cd -;'
+alias shell='mysite; sudo ../../../bin/python manage.py shell; cd -;'

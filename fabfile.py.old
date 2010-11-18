@@ -18,7 +18,7 @@ def environment():
     
     
 def virtualenv(command):
-    with cd(env.code_root):
+    with cd(env.directory):
         sudo(env.activate + '&&' + command, user=env.deploy_user)
 # tasks
 def test():
@@ -31,7 +31,8 @@ def setup():
     """
     require('hosts', provided_by=[environment])
     require('code_root')
-    sudo('apt-get install -y python-setuptools')
+    sudo('gcc')
+    sudo('aptitude install -y python-setuptools python-dev')
     sudo('easy_install pip')
     sudo('pip install virtualenv')
     sudo('apt-get -y install git-core')
@@ -54,12 +55,10 @@ def deploy():
     env.release = time.strftime('%Y%m%d%H%M%S')
     upload_tar_from_git()
     install_requirements()
-    install_nonpython_requirements()
-    configure_project_specific_stuff()
     install_site()
     symlink_current_release()
-    migrate()
-    restart_webserver()
+    #migrate()
+    #restart_webserver()
 def deploy_version(version):
     "Specify a specific version to be made live"
     require('hosts', provided_by=[environment])
@@ -94,19 +93,7 @@ def install_requirements():
     "Install the required packages from the requirements file using pip"
     require('release', provided_by=[deploy, setup])
     sudo('cd %s; pip install -E . -r ./releases/%s/requirements.txt'% (env.code_root, env.release))
-    
 
-def install_nonpython_requirements():
-    "Install the required packages that cannot be installed with pip"
-    require('code_root')
-    sudo('cd %s/releases/current/%s/media_rsc/css; git clone git://github.com/joshuaclayton/blueprint-css.git'% (env.code_root, env.project_name))
-
-def configure_project_specific_stuff():
-    "Configure misc stuff for this project"
-    require('code_root')
-    put('/usr/local/lib/python2.6/dist-packages/django_socialregistration-0.4.2-py2.6.egg/socialregistration/views.py', '%s/src/socialregistration/socialregistration'% (env.code_root))
- 
-    
 def install_site():
     "Add the virtualhost file to apache"
     require('release', provided_by=[deploy, setup])

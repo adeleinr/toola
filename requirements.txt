@@ -2,4 +2,9 @@ Django==1.1.1
 django_extensions
 django-taggit
 sorl-thumbnail
+django-piston
+pil
+
+-e git://github.com/flashingpumpkin/django-socialregistration.git#egg=socialregistration
+-e git://github.com/facebook/python-sdk#egg=facebook
 -e git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar

@@ -3,6 +3,11 @@
 #userPicture img{
     border: 1px solid black;	
 }
+
+#userPicture  img.blank-avatar{
+  border: 0px;
+}
+
 div.title {
   border-bottom: 1px solid #EEEEEE;
   color: #B5B9C0;
