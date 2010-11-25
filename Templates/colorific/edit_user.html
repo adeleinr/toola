@@ -121,27 +121,5 @@
       </form>
         {% include "display_tags_editable.html" %}
 	 </div>
-	 <div id="pictures" class="span-16 last">
-
-     <div>
-       {% for picture in userProfile.pictures.all %}
-          <!--<img src="{{ picture.picture.url }}"/>-->
-					{{ picture.picture.thumbnail_tag }}<br/>
-					{{ picture.picture.extra_thumbnails_tag.medium }}<br/>
-					{{ picture.picture.extra_thumbnails_tag.large }}<br/>
-       {% endfor %}
-     </div>
-		 
-		 <form enctype="multipart/form-data" action="/colorific/edit_user/" method="post">
-		    {{ formset.management_form }}
-		    <table>
-		        {% for form in formset.forms %}
-		        {{ form }}
-		        {% endfor %}
-		    </table>
-				<input type = "submit" name="imageSubmit" value="Save" />
-	  </form>
-		
-	 </div>
 </div>
 {% endblock %}

@@ -7,7 +7,12 @@
 	<div class="clickable span-15 last"id="toolboxTab"  url="{{toolBox.absolute_url}}">
 	        <div id="main" class="span-15 last">
 	        <div id="userPicture" class="span-2">
-	            <img src="{{ toolBox.user.picture_thumbnail }}"/>
+	        	 {% if toolBox.user.picture_thumbnail %}
+	             <img src="{{ toolBox.user.picture_thumbnail }}"/>
+						 {% else %}
+						   <img src="/media_rsc/images/avatar_tiny.png"/>
+						 {% endif %}
+						 
 	        </div>
 	        <div id="tools" class="span-10">
 	            <h5>{{toolBox.toolbox_name}}

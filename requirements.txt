@@ -1,7 +1,7 @@
 Django==1.1.1
 django_extensions
 django-taggit
-sorl-thumbnail
+sorl-thumbnail==3.2.5
 django-piston
 pil
 

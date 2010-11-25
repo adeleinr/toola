@@ -130,6 +130,27 @@ ul li {
 	margin-top: 10px;
 }
 
+#imageUpload-form{	
+
+}
+#show-pics{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#add-toolbox{
+
+}
+
+div.title2 {
+  border-bottom: 1px solid #EEEEEE;
+  color: #B5B9C0;
+  padding: 3px;
+  font-weight: bold;
+	font-size:18px;
+	width: 580px;
+}
+
 
 
 

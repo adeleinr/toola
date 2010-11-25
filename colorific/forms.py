@@ -27,7 +27,7 @@ class RegistrationForm(ModelForm):
 	
 	class Meta:
 		model = UserProfile
-		exclude  = ('user')
+		exclude  = ('user',)
 		
 	#Django's form system automatically looks for any method whose name
 	#starts with clean_ and ends in the name of a form on the field,
@@ -55,7 +55,7 @@ class EditSocialUserForm(ModelForm):
 		
 	class Meta:
 		model = UserProfile
-		fields = ('tags','pictures')
+		fields = ('tags',)
 
 class EditUserForm(ModelForm):
 	# user object fields
@@ -69,7 +69,7 @@ class EditUserForm(ModelForm):
 	
 	class Meta:
 		model = UserProfile
-		exclude  = ('user')
+		exclude  = ('user',)
 		
 class ToolBoxForm (ModelForm):
 	tools = forms.CharField(max_length=300,

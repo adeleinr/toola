@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 # User profile related pages
 urlpatterns += patterns('',
   url(r'^people/$', user_views.users_index),
+  url(r'^people/(?P<username>[-\w]+)/$', user_views.user_detail_public),
   url(r'^user_detail/(?P<username>[-\w]+)/$', user_views.user_detail),
   url(r'^login_user/$', user_views.login_user),
   url(r'^logout_user/$', 'django.contrib.auth.views.logout_then_login',

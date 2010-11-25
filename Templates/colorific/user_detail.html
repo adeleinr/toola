@@ -13,7 +13,7 @@
 <div id="main2" class="span-24 last">
    {{message}}
    <div id="userInfoModule" class="span-7 colborder">
-    <div id="userPicture">
+    <div id="userPicture editButton">
     	{% if userProfile.picture_url %}
         <img src="{{ userProfile.picture_url }}"/>
       {% else %}
@@ -21,7 +21,7 @@
 			{% endif %}
     </div
 	<div class="title editButton">TAGS 
-    <a class="editButton" href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/> EDIT TAGS</a>
+    <a href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/> EDIT TAGS</a>
   </div>
   <div id="toolBoxModuleBig" class="tool">
     	{% for tag in userProfile.tags.all %}
@@ -37,30 +37,49 @@
   </div>
     <div class="title">SIMILAR PEOPLE</div>
     <div id="toolBoxModuleBig" class="content">
-        <img src="/media_rsc/images/12.jpg"/>
-        <img src="/media_rsc/images/13.jpg"/>
-        <img src="/media_rsc/images/14.png"/>
-        <img src="/media_rsc/images/12.jpg"/>
+				{% for user in similar_users %}
+				  <a href="{{user.get_absolute_public_url}}"><img src="{{user.picture_thumbnail}}"/></a>  
+				{% endfor %}
     </div>
   </div>
   
   
-  <div class="span-15 last">
-    <div id="bigHeading">
+  <div id="userToolboxModule" class="span-15 last">
+    <div id="bigHeading" class="span-14 last">
         {{userProfile.user.first_name}} {{userProfile.user.last_name}}
-    </div>  
-    <div class="abutton">
-        <a id="add_toolbox" href="#">+ Add toolbox</a>
+    </div> 
+		<div id="setup-pics" class="span-14 last">
+			<div class="title2">What does your workspace look like?</div>
+      <div id="imageUpload-form" class="abutton">
+              <form enctype="multipart/form-data" action="" method="post">
+                  {{ formset.management_form }}
+                  <table>
+                      {% for form in formset.forms %}
+                      {{ form }}
+                      {% endfor %}
+                  </table>
+                  <input type = "submit" name="imageSubmit" value="+ Add Photo" />
+              </form>
+
+      </div>
+      <div id="show-pics" class="span-14 last">
+				{% for picture in userProfile.get_pictures %}
+	         {{ picture.picture.extra_thumbnails_tag.medium }}
+	      {% endfor %}
+				<br/>
+				<a href="">View All Pictures</a>
+			</div>
+		</div>
+
+    <div id="add-toolbox" class="abutton" class="span-14 last">
+			 <div class="title2">What tools do you use to be productive?</div>
+			 <br/>
+			 <a id="add_toolbox" href="#">+ Add toolbox</a>
     </div>
+		       
     <br/>
     {% include "display_toolboxes_tabular_nopicture.html" %}
-	<div id="setup-pics" class="span-15 last">
-		<div class="abutton">
-            <a id="add_toolbox" href="#">+ Add Photo</a>
-        </div>
-        <img src="/media_rsc/images/1.jpg"/>
-        <img src="/media_rsc/images/2.jpg"/>
-    </div> 
+		<a href="">View All Toolboxes</a>
   </div>
 </div>
 

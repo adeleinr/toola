@@ -26,22 +26,68 @@ def users_index(request):
                             { 'user_list': users},
                             context_instance=RequestContext(request))  
 
+
+def user_detail_public(request, username):
+   user = get_object_or_404(User, username=username)
+   userProfile = user.get_profile()
+  
+   toolBoxForm = ToolBoxForm()
+   
+   similar_users = userProfile.tags.similar_objects()
+   
+     
+   return render_to_response('colorific/user_detail_public.html',
+                             { 'userProfile': userProfile, 
+                               'toolboxes': get_all_toolboxes(userProfile.user.username),
+                               'toolBoxForm': toolBoxForm,
+                               'similar_users':similar_users},
+                               context_instance=RequestContext(request))
+   
 # TODO: Remove username from request
 @login_required(redirect_field_name='colorific/login_user')
-
 def user_detail(request, username):
     user = get_object_or_404(User, username=username)
     userProfile = user.get_profile()
+    
+    if request.user.username != username:
+      return HttpResponseRedirect(userProfile.get_absolute_public_url())
+      
     #user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
     user_count = 0
 
     toolBoxForm = ToolBoxForm()
     
+    ImageFormSet = modelformset_factory(Image, form=ImageForm, extra=1)
+
+    ImageFormSet.form = staticmethod(curry(ImageForm, userProfile))
+    
+    formset = ImageFormSet(queryset=Image.objects.none())
+    
+    similar_users = userProfile.tags.similar_objects()
+    
+    if request.method == 'POST':
+    
+      if 'imageSubmit' in request.POST:
+        
+        formset = ImageFormSet(request.POST, request.FILES, queryset=Image.objects.none())
+        if formset.is_valid():
+          instances = formset.save(commit=False)
+          for image in instances:
+              try:
+                 image.user = userProfile
+                 image.save()
+              except Image.DoesNotExist:
+                 message = 'does not exit'
+                 
+ 
+    
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': userProfile, 
                                 'user_count': user_count,
                                 'toolboxes': get_all_toolboxes(userProfile.user.username),
-                                'toolBoxForm': toolBoxForm},
+                                'toolBoxForm': toolBoxForm,
+                                'formset':formset,
+                                'similar_users': similar_users},
                                 context_instance=RequestContext(request))
 
 def login_user(request):
@@ -76,17 +122,11 @@ def edit_user(request):
   user = request.user
   userProfile = user.get_profile()
   
-  ImageFormSet = modelformset_factory(Image, form=ImageForm, extra=3)
-  print "hello"
-  ImageFormSet.form = staticmethod(curry(ImageForm, userProfile))
-  
   if request.facebook:
       editUserForm = EditSocialUserForm(instance = userProfile)
   else:
       editUserForm = EditUserForm(instance = userProfile)
     
-  formset = ImageFormSet(queryset=Image.objects.none())
-
      
   if request.method == 'POST':
     
@@ -109,19 +149,7 @@ def edit_user(request):
       else:
           #User needs to try again)
           message = 'Invalid form data' 
-    elif 'imageSubmit'in request.POST:
-      formset = ImageFormSet(request.POST, request.FILES, queryset=Image.objects.none())
-      if formset.is_valid():
-        instances = formset.save(commit=False)
-        for image in instances:
-            try:
-               image.user = userProfile
-               image.save()
-            except Image.DoesNotExist:
-               message = 'does not exit'
-
-
   
-  return render_to_response('colorific/edit_user.html', {'message': message, 'editUserForm': editUserForm,'formset':formset, 'userProfile':userProfile },
+  return render_to_response('colorific/edit_user.html', {'message': message, 'editUserForm': editUserForm,'userProfile':userProfile },
         context_instance=RequestContext(request))
     

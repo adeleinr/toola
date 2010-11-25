@@ -55,6 +55,9 @@ class UserProfile(models.Model):
 
     def get_home_zipcode(self):
         return self.home_zipcode
+      
+    def get_pictures(self):
+        return self.pictures.all().order_by('-id')[:5]
     '''
     def get_gender(self):
         return UserProfileLookupTables.GENDER_CHOICES[self.gender][1]
@@ -74,6 +77,9 @@ class UserProfile(models.Model):
 
     def get_absolute_url(self):
         return "/colorific/user_detail/%s" % (self.user.username)
+      
+    def get_absolute_public_url(self):
+        return "/colorific/people/%s" % (self.user.username)
 
 
 

@@ -12,7 +12,7 @@ class UserProfileHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = UserProfile
   anonymous = 'AnonymousUserProfileHandler'
-  fields = ('id', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'absolute_url', 'picture_url', 'picture_thumbnail', 'tags', 'pictures')
+  fields = ('id', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'absolute_url','absolute_public_url' 'picture_url', 'picture_thumbnail', 'tags', 'pictures')
   
   def read(self, request, userprofile_id = None):
     if userprofile_id:       
@@ -29,6 +29,10 @@ class UserProfileHandler(BaseHandler):
   def absolute_url(cls, myinstance):
     return myinstance.get_absolute_url()
   @classmethod
+  def absolute_public_url(cls, myinstance):
+    return myinstance.get_absolute_public_url()
+  
+  @classmethod
   def tags(cls, myinstance):
     return myinstance.tags.all()
   @classmethod
@@ -39,7 +43,7 @@ class UserProfileHandler(BaseHandler):
 # Get a user      => http://localhost:8000/api/people/1
 class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
   #fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
-  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url', 'tags', 'pictures')   
+  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url', 'absolute_public_url', 'tags', 'pictures')   
 
 # List the tools  => http://localhost:8084/api/tools
 # Get a tool      => http://localhost:8084/api/tools/15/2003
@@ -171,7 +175,7 @@ class ToolSuggestionsHander(BaseHandler):
 class ToolboxesHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = ToolBox
-  fields = ('id', 'toolbox_name', 'popularity', 'absolute_url', 'tools', 'user', ('toolboxtoolrelations', ()),)
+  fields = ('id', 'toolbox_name', 'popularity', 'absolute_url', 'tools', ('user', ()), ('toolboxtoolrelations', ()),)
   
   def read(self, request, toolbox_id = None, username = None):     
     if toolbox_id:       
