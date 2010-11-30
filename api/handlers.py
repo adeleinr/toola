@@ -234,7 +234,6 @@ class ToolboxesHandler(BaseHandler):
         # and create tools from it
         # Then call 'add' to save to the relation
         # table
-        print request.POST['tools']
         for tool in request.POST['tools'].split(","):
             tool = tool.rstrip().lstrip().lower()                  
             if not tool.isspace() and len(tool) > 0:
