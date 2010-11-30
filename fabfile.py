@@ -45,6 +45,7 @@ def setup():
     sudo('apt-get -y install git-core')
     sudo('aptitude install -y apache2')
     sudo('aptitude install -y libapache2-mod-wsgi')
+    sudo('apt-get install libjpeg-dev zlib1g-dev')
     # we want rid of the defult apache config
     sudo('cd /etc/apache2/sites-available/; a2dissite default;')
     sudo('mkdir -p %s; cd %s; virtualenv .;source ./bin/activate'% (env.code_root, env.code_root))

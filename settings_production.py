@@ -1,6 +1,8 @@
 import os
 from settings_local import *
 from settings import HOSTNAME
+ 
+
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -38,7 +40,7 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media_rsc')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://'+HOSTNAME+'/media_rsc/'
+MEDIA_URL = 'http://'+PRODUCTION_IP+'/media_rsc/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.

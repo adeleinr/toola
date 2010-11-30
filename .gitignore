@@ -5,3 +5,5 @@ settings_local.py
 .pydevproject
 .tmp*.*
 /media_rsc/images/icons_big/*
+private_local.sh
+private_remote.sh

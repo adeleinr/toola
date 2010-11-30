@@ -68,16 +68,16 @@
 [184.106.152.183] sudo: cd /web/webme; mkdir releases; mkdir shared; mkdir packages;
 [184.106.152.183] sudo: chown webme -R /web
 [184.106.152.183] sudo: chgrp webme -R /web
-[localhost] run: git archive --format=tar master | gzip > 20101124162525.tar.gz
-[184.106.152.183] sudo: mkdir -p /web/webme/releases/20101124162525/webme
-[184.106.152.183] put: 20101124162525.tar.gz -> /tmp/20101124162525.tar.gz
-[184.106.152.183] sudo: mv /tmp/20101124162525.tar.gz /web/webme/packages/
-[184.106.152.183] sudo: cd /web/webme/releases/20101124162525/webme && tar zxf ../../../packages/20101124162525.tar.gz
-[184.106.152.183] sudo: chown webme -R /web/webme/releases/20101124162525/webme
-[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/20101124162525/webme
-[localhost] run: rm 20101124162525.tar.gz
-[184.106.152.183] sudo: cd /web/webme; pip install -E . -r /web/webme/releases/20101124162525/webme/requirements.txt
-[184.106.152.183] out: Downloading/unpacking pil (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 6))
+[localhost] run: git archive --format=tar master | gzip > 20101124172024.tar.gz
+[184.106.152.183] sudo: mkdir -p /web/webme/releases/20101124172024/webme
+[184.106.152.183] put: 20101124172024.tar.gz -> /tmp/20101124172024.tar.gz
+[184.106.152.183] sudo: mv /tmp/20101124172024.tar.gz /web/webme/packages/
+[184.106.152.183] sudo: cd /web/webme/releases/20101124172024/webme && tar zxf ../../../packages/20101124172024.tar.gz
+[184.106.152.183] sudo: chown webme -R /web/webme/releases/20101124172024/webme
+[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/20101124172024/webme
+[localhost] run: rm 20101124172024.tar.gz
+[184.106.152.183] sudo: cd /web/webme; pip install -E . -r /web/webme/releases/20101124172024/webme/requirements.txt
+[184.106.152.183] out: Downloading/unpacking pil (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 6))
 [184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb): 
 [184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   0%  4.1Kb
 [184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   1%  8.2Kb
@@ -208,10 +208,10 @@
 [184.106.152.183] out:   Running setup.py egg_info for package pil
 [184.106.152.183] out:     WARNING: '' not a valid package name; please use only.-separated package names in setup.py
 [184.106.152.183] out:     WARNING: '' not a valid package name; please use only.-separated package names in setup.py
-[184.106.152.183] out: Obtaining socialregistration from git+git://github.com/flashingpumpkin/django-socialregistration.git#egg=socialregistration (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 8))
+[184.106.152.183] out: Obtaining socialregistration from git+git://github.com/flashingpumpkin/django-socialregistration.git#egg=socialregistration (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 8))
 [184.106.152.183] out:   Cloning git://github.com/flashingpumpkin/django-socialregistration.git to ./src/socialregistration
 [184.106.152.183] out:   Running setup.py egg_info for package socialregistration
-[184.106.152.183] out: Downloading/unpacking Django==1.1.1 (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 1))
+[184.106.152.183] out: Downloading/unpacking Django==1.1.1 (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 1))
 [184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb): 
 [184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  4.1Kb
 [184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  8.2Kb
@@ -1587,24 +1587,26 @@
 [184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):            
 [184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb): 5.6Mb downloaded
 [184.106.152.183] out:   Running setup.py egg_info for package Django
-[184.106.152.183] out: Requirement already satisfied (use --upgrade to upgrade): django-extensions in /usr/local/lib/python2.6/dist-packages (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 2))
-[184.106.152.183] out: Obtaining debug-toolbar from git+git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 10))
+[184.106.152.183] out: Requirement already satisfied (use --upgrade to upgrade): django-extensions in /usr/local/lib/python2.6/dist-packages (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 2))
+[184.106.152.183] out: Obtaining debug-toolbar from git+git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 10))
 [184.106.152.183] out:   Cloning git://github.com/robhudson/django-debug-toolbar.git to ./src/debug-toolbar
 [184.106.152.183] out:   Running setup.py egg_info for package debug-toolbar
-[184.106.152.183] out: Downloading/unpacking django-taggit (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 3))
+[184.106.152.183] out: Downloading/unpacking django-taggit (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 3))
 [184.106.152.183] out:   Downloading django-taggit-0.9.1.tar.gz
 [184.106.152.183] out:   Running setup.py egg_info for package django-taggit
-[184.106.152.183] out: Obtaining facebook from git+git://github.com/facebook/python-sdk#egg=facebook (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 9))
+[184.106.152.183] out: Obtaining facebook from git+git://github.com/facebook/python-sdk#egg=facebook (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 9))
 [184.106.152.183] out:   Cloning git://github.com/facebook/python-sdk to ./src/facebook
 [184.106.152.183] out:   Running setup.py egg_info for package facebook
-[184.106.152.183] out: Requirement already satisfied (use --upgrade to upgrade): sorl-thumbnail in /usr/local/lib/python2.6/dist-packages (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 4))
-[184.106.152.183] out: Downloading/unpacking django-piston (from -r /web/webme/releases/20101124162525/webme/requirements.txt (line 5))
+[184.106.152.183] out: Downloading/unpacking sorl-thumbnail==3.2.5 (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 4))
+[184.106.152.183] out:   Downloading sorl-thumbnail-3.2.5.tar.gz
+[184.106.152.183] out:   Running setup.py egg_info for package sorl-thumbnail
+[184.106.152.183] out: Downloading/unpacking django-piston (from -r /web/webme/releases/20101124172024/webme/requirements.txt (line 5))
 [184.106.152.183] out:   Downloading django-piston-0.2.2.tar.gz
 [184.106.152.183] out:   Running setup.py egg_info for package django-piston
-[184.106.152.183] out: Downloading/unpacking oauth2 (from socialregistration->-r /web/webme/releases/20101124162525/webme/requirements.txt (line 8))
+[184.106.152.183] out: Downloading/unpacking oauth2 (from socialregistration->-r /web/webme/releases/20101124172024/webme/requirements.txt (line 8))
 [184.106.152.183] out:   Downloading oauth2-1.2.0.tar.gz
 [184.106.152.183] out:   Running setup.py egg_info for package oauth2
-[184.106.152.183] out: Downloading/unpacking python-openid (from socialregistration->-r /web/webme/releases/20101124162525/webme/requirements.txt (line 8))
+[184.106.152.183] out: Downloading/unpacking python-openid (from socialregistration->-r /web/webme/releases/20101124172024/webme/requirements.txt (line 8))
 [184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb): 
 [184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   1%  4.1Kb
 [184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   2%  8.2Kb
@@ -1700,7 +1702,7 @@
 [184.106.152.183] out:     warning: no files found matching 'CHANGELOG'
 [184.106.152.183] out:     warning: no files found matching '*.css' under directory 'doc'
 [184.106.152.183] out:     warning: no files found matching '*.html' under directory 'doc'
-[184.106.152.183] out: Downloading/unpacking httplib2 (from oauth2->socialregistration->-r /web/webme/releases/20101124162525/webme/requirements.txt (line 8))
+[184.106.152.183] out: Downloading/unpacking httplib2 (from oauth2->socialregistration->-r /web/webme/releases/20101124172024/webme/requirements.txt (line 8))
 [184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb): 
 [184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):   7%  4.1Kb
 [184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  15%  8.2Kb
@@ -1719,7 +1721,7 @@
 [184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):           
 [184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb): 53Kb downloaded
 [184.106.152.183] out:   Running setup.py egg_info for package httplib2
-[184.106.152.183] out: Installing collected packages: debug-toolbar, Django, django-piston, django-taggit, facebook, httplib2, oauth2, pil, python-openid, socialregistration
+[184.106.152.183] out: Installing collected packages: debug-toolbar, Django, django-piston, django-taggit, facebook, httplib2, oauth2, pil, python-openid, socialregistration, sorl-thumbnail
 [184.106.152.183] out:   Running setup.py develop for debug-toolbar
 [184.106.152.183] out:     Creating /web/webme/lib/python2.6/site-packages/django-debug-toolbar.egg-link (link to .)
 [184.106.152.183] out:     Adding django-debug-toolbar 0.8.4 to easy-install.pth file
@@ -1850,18 +1852,21 @@
 [184.106.152.183] out:     Adding django-socialregistration 0.4.2 to easy-install.pth file
 [184.106.152.183] out:     
 [184.106.152.183] out:     Installed /web/webme/src/socialregistration
-[184.106.152.183] out: Successfully installed debug-toolbar Django django-piston django-taggit facebook httplib2 oauth2 pil python-openid socialregistration
+[184.106.152.183] out:   Found existing installation: sorl-thumbnail 10.12-alpha
+[184.106.152.183] out:     Not uninstalling sorl-thumbnail at /usr/local/lib/python2.6/dist-packages, outside environment /web/webme
+[184.106.152.183] out:   Running setup.py install for sorl-thumbnail
+[184.106.152.183] out: Successfully installed debug-toolbar Django django-piston django-taggit facebook httplib2 oauth2 pil python-openid socialregistration sorl-thumbnail
 [184.106.152.183] out: Cleaning up...
 [184.106.152.183] sudo: chown webme -R /web
 [184.106.152.183] sudo: chgrp webme -R /web
-[184.106.152.183] sudo: cd /web/webme/releases/20101124162525/webme/media_rsc/css; git clone git://github.com/joshuaclayton/blueprint-css.git
-[184.106.152.183] out: Initialized empty Git repository in /web/webme/releases/20101124162525/webme/media_rsc/css/blueprint-css/.git/
-[184.106.152.183] sudo: chown webme -R /web/webme/releases/20101124162525/webme
-[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/20101124162525/webme
+[184.106.152.183] sudo: cd /web/webme/releases/20101124172024/webme/media_rsc/css; git clone git://github.com/joshuaclayton/blueprint-css.git
+[184.106.152.183] out: Initialized empty Git repository in /web/webme/releases/20101124172024/webme/media_rsc/css/blueprint-css/.git/
+[184.106.152.183] sudo: chown webme -R /web/webme/releases/20101124172024/webme
+[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/20101124172024/webme
 [184.106.152.183] put: /usr/local/lib/python2.6/dist-packages/django_socialregistration-0.4.2-py2.6.egg/socialregistration/views.py -> /web/webme/src/socialregistration/socialregistration/views.py
-[184.106.152.183] sudo: chown webme -R /web/webme/releases/20101124162525/webme
-[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/20101124162525/webme
-[184.106.152.183] sudo: cd /web/webme; ln -s 20101124162525 releases/current; chown webme -R releases/current; chgrp webme -R releases/current
+[184.106.152.183] sudo: chown webme -R /web/webme/releases/20101124172024/webme
+[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/20101124172024/webme
+[184.106.152.183] sudo: cd /web/webme; ln -s 20101124172024 releases/current; chown webme -R releases/current; chgrp webme -R releases/current
 [184.106.152.183] sudo: cd /web/webme/releases/current/webme; cp webme /etc/apache2/sites-available/
 [184.106.152.183] sudo: cd /etc/apache2/sites-available/; a2ensite webme
 Disconnecting from 184.106.152.183... done.

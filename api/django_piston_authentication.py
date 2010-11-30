@@ -4,7 +4,7 @@ from django.contrib.auth import login as auth_login
 from django.http import HttpResponseRedirect
 from django.utils.http import urlquote
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from webme import settings
+import settings
 
 class DjangoAuthentication(object):
     """
