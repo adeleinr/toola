@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/media_rsc/css/main.css" type="text/css" media="screen,projection" />
+{% endblock %}
 {% block content %}
 
 <div id="registrationBox" class="span-24">
@@ -182,8 +186,14 @@
         </table>
         <div align="left">
             <input type = "submit" name="submit" value="Submit" />
-        </div>
+        </div>				
     </form>
+    <div id="facebook">
+      {% load facebook_tags %}
+      {% facebook_button %}
+      {% facebook_js %}
+    </div>
+		
     </div>
 </div>
 

@@ -40,34 +40,6 @@ body a {
 	margin-right: 25px;
 }
 
-#registrationBox {
-	background-color:#DDEEF6;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 5px;
-	padding:10px 5px 5px 20px;
-	border:10px solid #ffffff;
-}
-
-#registration-slogan {
-	font-size:26px;
-	color: #ffffff;
-}
-
-#registration-slogan-cont {
-	font-size:20px;
-	color: #ffca2a;
-}
-
-
-#registrationLeftForm {
-	margin-top:10px;
-}
-#registrationRightForm {
-  margin-top:10px;
-}
-
-
-
 #header {
 	-moz-border-radius: 0px 0px 10px 10px;
 	-webkit-border-radius: 0px 0px 10px 10px;

@@ -11,6 +11,8 @@
     {% block css %}
     {% endblock %}
     {% block js %}
+      {% load facebook_tags %}
+      {% facebook_js %}
     {% endblock %}
   </head>
   <body>
@@ -18,8 +20,6 @@
     
       <!-- Start header -->
       <div id="header" class="span-24 last">
-      	{% load facebook_tags %}
-                 {% facebook_js %}
         <div class="menuModule span-18" >
           <ul class="clearfix">
             <li><a href="/colorific/">Home</a></li>
@@ -29,9 +29,15 @@
             {% if request.user.username %}
             <li><a href="/colorific/create_toolbox/" >Add Toolbox</a></li>
             <li><a href="/colorific/user_toolbox_list/" >MyToolboxes</a></li>
-						<li><a href="/colorific/logout_user/">Logout</a></li>
+							{% if request.facebook %}
+							    <a href="#" onclick="javascript:FB.logout(function(response){ document.location = '/colorific/logout_user' })">Logout</a>
+	            {% else %}
+							    <li><a href="/colorific/logout_user/">Logout</a></li>
+							{% endif %}
+						{% else %}
             <li><a href="/colorific/login_user/" >Login</a></li>
-            {% endif %}
+						{% endif %}
+            
           </ul>
         </div>
         <div class="searchModule span-4 last">
