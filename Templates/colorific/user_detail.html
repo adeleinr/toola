@@ -12,35 +12,37 @@
 {% block content %}
 <div id="main2" class="span-24 last">
    {{message}}
-   <div id="userInfoModule" class="span-7 colborder">
-    <div id="userPicture editButton">
-    	{% if userProfile.picture_url %}
-        <img src="{{ userProfile.picture_url }}"/>
-      {% else %}
-			  <img class="blank-avatar" src="/media_rsc/images/avatar.png"/>
+   <div id="userInfoModule" class="span-6 colborder">   	
+			{% if userProfile.picture_url %}
+			    <div id="userPicture editButton">
+			        <img src="{{ userProfile.picture_url }}"/>
+			    </div>
+			{% else %}
+			    <div id="userPicture editButton">
+			        <img class="blank-avatar" src="/media_rsc/images/avatar.png"/>
+			    </div>
 			{% endif %}
-    </div
-	<div class="title editButton">TAGS 
-    <a href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/> EDIT TAGS</a>
-  </div>
-  <div id="toolBoxModuleBig" class="tool">
-    	{% for tag in userProfile.tags.all %}
-      <a href="#">{{tag.name}}</a>
-      {% endfor %}
-  </div>
-
-	<div class="title">ABOUT</div>
-	<div id="toolBoxModuleBig" class="content">
-		My home and work setups are identical: early-2008 octocore Mac Pros, each with two 24" Dell monitors, 6 GB of RAM, two-disk software RAID-0 with a third disk as an internal Time Machine, the Microsoft Natural Ergonomic Keyboard 4000, and the Magic Mouse.
-
-    At work, I sit in an Aeron at an electrically height-adjustable desk so I can stand when I feel like it. Fog Creek generously showed us theirs and we ordered the same ones. At home, I sit in an Embody at a Galant.
-  </div>
-    <div class="title">SIMILAR PEOPLE</div>
-    <div id="toolBoxModuleBig" class="content">
-				{% for user in similar_users %}
-				  <a href="{{user.get_absolute_public_url}}"><img src="{{user.picture_thumbnail}}"/></a>  
-				{% endfor %}
-    </div>
+			<div class="title editButton">TAGS 
+		    <a href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/> EDIT TAGS</a>
+		  </div>
+		  <div id="toolBoxModuleBig" class="tool">
+		    	{% for tag in userProfile.tags.all %}
+		      <a href="#">{{tag.name}}</a>
+		      {% endfor %}
+		  </div>
+		
+			<div class="title">ABOUT</div>
+			<div id="toolBoxModuleBig" class="content">
+				My home and work setups are identical: early-2008 octocore Mac Pros, each with two 24" Dell monitors, 6 GB of RAM, two-disk software RAID-0 with a third disk as an internal Time Machine, the Microsoft Natural Ergonomic Keyboard 4000, and the Magic Mouse.
+		
+		    At work, I sit in an Aeron at an electrically height-adjustable desk so I can stand when I feel like it. Fog Creek generously showed us theirs and we ordered the same ones. At home, I sit in an Embody at a Galant.
+		  </div>
+	    <div class="title">SIMILAR PEOPLE</div>
+	    <div id="toolBoxModuleBig" class="content">
+					{% for user in similar_users %}
+					  <a href="{{user.get_absolute_public_url}}"><img src="{{user.picture_thumbnail}}"/></a>  
+					{% endfor %}
+	    </div>
   </div>
   
   

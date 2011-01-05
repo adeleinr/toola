@@ -1,6 +1,6 @@
 #toolboxTab{
     background-color: #ffffff;
-    height: 90px;
+    height: 100px;
     border-bottom: 1px solid #EEF0F3;
     padding-top: 10px;
     font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif
@@ -8,6 +8,20 @@
 
 #toolboxTab:hover{
     background-color: #EEF0F3;
+}
+
+#toolboxTab ul {
+  height:39px;
+  list-style:none outside none;
+  margin-bottom:5px;
+  margin-top:15px;
+  overflow:hidden;
+  padding-left: 0px;
+}
+
+#toolboxTab ul li{
+  padding-left: 1px;  
+  
 }
 
 #toolboxTab h5{

@@ -13,11 +13,6 @@ from colorific.models import UserProfile, ToolBox, Tool, ToolBoxToolRelation
 from colorific.APIConfig import APIConfig
 
 
-'''
-============================================================
-===================   TOOLBOX VIEWS     ====================
-============================================================
-'''
 
 def toolbox_index(request):
   res = urllib.urlopen(APIConfig.TOOLBOX_API_URL)
@@ -49,6 +44,7 @@ def get_newest_toolbox(user):
         return toolbox;
     except: 
         return ''
+      
 
 
 def get_suggestions(request):
@@ -65,6 +61,8 @@ def get_suggestions(request):
         response = simplejson.dumps(result_list)
       
     return HttpResponse(response, content_type="application/json")
+  
+
 
 @login_required(redirect_field_name='colorific/login_user')
 # TODO: Need to find out how to pass the info from the ToolBoxForm

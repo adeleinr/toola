@@ -15,15 +15,17 @@
 						 
 	        </div>
 	        <div id="tools" class="span-10">
-	            <h5>{{toolBox.toolbox_name}}
-				     <span id="author"> 
-					    by <a href="{{toolBox.user.absolute_url}}">{{toolBox.user.user.username}}</a>
-					 </span>
-				</h5>
-				{% for tool in toolBox.tools %}
-	              <li><a href="">{{tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
-	            {% endfor %}
-	        </div>
+							<h5>{{toolBox.toolbox_name}}
+							<span id="author"> 
+							by <a href="{{toolBox.user.absolute_url}}">{{toolBox.user.user.username}}</a>
+							</span>
+							</h5>
+							<ul>
+							{% for tool in toolBox.tools %}
+							      <li><a href="">{{tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
+							{% endfor %}
+							</ul>
+		      </div>
 	
 	        <div id="score" class="span-1">
 	                <span id="scoreNumber">50</span>

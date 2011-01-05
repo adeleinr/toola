@@ -6,6 +6,11 @@ from django.shortcuts import get_object_or_404
 from django.db import IntegrityError
 from django.utils import simplejson
 
+# Used for Search Only
+import haystack
+from haystack.indexes import *
+from haystack.query import SearchQuerySet
+
 # List the users  => http://localhost:8084/api/people
 # Get a user      => http://localhost:8084/api/people/1
 class UserProfileHandler(BaseHandler):
@@ -54,7 +59,7 @@ class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
 class ToolsHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = ToolBoxToolRelation
-  fields = ('id', ('tool', ('tool_name', 'id')), 'note')
+  fields = ('id', ('tool', ('tool_name', 'id', 'absolute_url')), 'note', )
   
   @classmethod
   def absolute_url(cls, myinstance):
@@ -65,9 +70,6 @@ class ToolsHandler(BaseHandler):
         try:
             toolBoxToolRelation = ToolBoxToolRelation.objects.get(toolbox = toolbox_id, 
                                                               tool = tool_id) 
-            # assuming obj is a model instance
-            #from django.core import serializers
-            #serialized_obj = serializers.serialize('json', [toolBoxToolRelation, ])
 
             return toolBoxToolRelation
         except ToolBoxToolRelation.DoesNotExist:
@@ -107,12 +109,13 @@ class ToolsHandler(BaseHandler):
     # We do not want to remove this tool
     # once added it stays but we set it to
     # inactive
-    tool.active = False
+    #tool.active = False
     tool.save()
     
     # We do remove the relationship entry
     toolBoxToolRelations = ToolBoxToolRelation.objects.filter(tool=tool_id, toolbox=toolbox_id)
     '''
+    TODO
     print request.user
     if not request.user == toolBoxToolRelations[0].toolbox.user.id:
         return rc.FORBIDDEN # returns HTTP 401
@@ -149,7 +152,7 @@ class ToolsHandler(BaseHandler):
 
 # Get a suggestion for a tool => http://localhost:8084/api/tool_suggestions/?term=eclipse
 
-class ToolSuggestionsHander(BaseHandler):
+class ToolSuggestionsHandler(BaseHandler):
   allowed_methods = ('GET')
   
   def read(self, request):
@@ -164,6 +167,63 @@ class ToolSuggestionsHander(BaseHandler):
     
     response = simplejson.dumps(result_list)
     return response
+  
+  
+# Get a search suggestion for 
+# a tool or toolbox => http://localhost:8084/api/search_suggestions/?term=eclipse
+# Get a partial suggestion for
+# a tool => http://localhost:8084/api/search_suggestions/?term=eclip
+class SearchSuggestionsHandler(BaseHandler):
+  allowed_methods = ('GET')
+  
+  def read(self, request):
+    response = ""
+    term = request.GET['term']
+    result_list = [] 
+    
+    # Do a partial search and filter tools  that
+    # are not being used by any users.
+    results = SearchQuerySet().models(ToolBox, Tool).filter(text__startswith=term).exclude(active=False)
+
+    '''
+    TODO use this limit? 
+    limit = request.GET('limit')  
+    if limit: 
+        results = results[:int(limit)] 
+    '''
+    item_dict = {}
+
+    for item in results:  
+      if (isinstance(item.object, Tool)):
+        item_dict = { 'id': item.object.id , 'value':item.object.tool_name}
+      elif (isinstance(item.object, ToolBox)):
+        item_dict = { 'id': item.object.id , 'value':item.object.toolbox_name}
+        
+      result_list.append(item_dict)
+
+    return result_list
+  
+# Search for tools or toolboxes
+# => http://localhost:8084/api/search/?term=eclipse
+class SearchHandler(BaseHandler):
+  allowed_methods = ('GET')
+  
+  def read(self, request):
+    response = ""
+    term = request.GET['term']
+    result_list = [] 
+    
+    # Do a partial search and filter tools  that
+    # are not being used by any users.
+    results = SearchQuerySet().models(ToolBox, Tool).filter(text=term).exclude(active=False)
+
+    item_dict = {}
+
+
+    for item in results:  
+      result_list.append(item.object) 
+
+    return result_list
 
 # List the toolboxes     => http://localhost:8084/api/toolboxes
 # Get a toolbox          => http://localhost:8084/api/toolboxes/15

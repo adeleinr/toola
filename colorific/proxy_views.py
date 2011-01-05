@@ -23,3 +23,10 @@ def toolboxes(request):
   json = simplejson.dumps(data)
 
   return HttpResponse(json, content_type="application/json")
+
+def search_suggestions(request):
+  url = "%s?term=%s" % (APIConfig.SEARCH_API_URL, request.GET['term'])
+  result = urllib.urlopen(url).read() # HTTP GET Request
+
+  # TODO: Read HTTP header from API
+  return HttpResponse(result, content_type="application/json")

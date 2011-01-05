@@ -4,7 +4,7 @@ from settings import HOSTNAME
 
 HOST_IP = '184.106.152.183'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'socialregistration',
     'taggit',
     'sorl.thumbnail',
+    'haystack',
 )
 
 

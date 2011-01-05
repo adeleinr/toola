@@ -26,7 +26,7 @@
     var userProfile = $('#user-profile-id')[0].value;
     
     $.ajax({
-      url: 'http://localhost/colorific/proxy/toolbox/',
+      url: 'http://HOST_IP_TAG/colorific/proxy/toolbox/',
       type: "GET",
       data: 'toolbox_name=' + toolboxName + '&tools=' + tools + '&userprofile_id=' + userProfile,
       success: function(json) {
@@ -45,7 +45,7 @@
 
   UserDetail.updatelistToolbox = function() {
     $.ajax({
-      url: 'http://localhost:80/colorific/proxy/toolboxes/',
+      url: 'http://HOST_IP_TAG:80/colorific/proxy/toolboxes/',
       type: "GET",
       success: function(json) {
         json = $.parseJSON(json);

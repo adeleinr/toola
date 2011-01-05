@@ -13,7 +13,7 @@ div.title {
   color: #B5B9C0;
   padding: 3px;
   font-weight: bold;
-  width: 280px;
+  width: 240px;
 }
 
 div.title_content {
@@ -32,8 +32,7 @@ div.title_content {
   display: block;
 }
 
-
-#userPicture{
+#noPicture{
     text-align:center;
 }
 
@@ -109,7 +108,6 @@ ul {
 
 ul li {
   padding: 0;
-  margin-left: -10px;
 }
 
 .toolbar {
@@ -151,6 +149,16 @@ div.title2 {
 	width: 580px;
 }
 
+#bigHeading {
+  
+    font-weight: normal;
+    font-style: normal;
+    font-size:30px;
+    text-shadow:0 0 1px rgba(0, 0, 0, 0.01);
+    color: #525760;
+  
+
+}
 
 
 

@@ -3,16 +3,12 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>{% block title %}{% endblock %}</title>
-    
+    <link rel="stylesheet" href="/media_rsc/js/jquery/css/redmond/jquery-ui-1.8.4.custom.css" type="text/css" /> 
     <link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/screen.css" type="text/css" media="screen, projection" />  
     <link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/print.css" type="text/css" media="print" />
     <!--[if IE]><link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif] --> 
     <link rel="stylesheet" href="/media_rsc/css/global.lib.css" type="text/css" media="screen,projection" />
     {% block css %}
-    {% endblock %}
-    {% block js %}
-      {% load facebook_tags %}
-      {% facebook_js %}
     {% endblock %}
   </head>
   <body>
@@ -40,9 +36,11 @@
             
           </ul>
         </div>
-        <div class="searchModule span-4 last">
-          <input id="search" type="text" name="search" maxlength="50" placeholder="What tool is it?">
-        </div>
+        <div class="ui-widget searchModule span-4 last">
+        	<form method="get" action="/colorific/search">
+        		<input type="text" name="q" id="id_search_term" maxlength="50" placeholder="Find a topic" />
+          </form>
+				</div>
       </div>
       <!-- End header -->
     			
@@ -51,9 +49,22 @@
     
       <!-- Begin Footer -->
       <div id="footer" class="span-24 last">
+      	<ul>
+      		<li><a href="/colorific/about">About</a></li>
+					<li><a href="">Feedback</a></li>
+					<li><a href="">Contact</a></li>
+      	</ul>
       </div>
       <!-- End Footer -->
                                 
     </div>
+		
+		{% block js %}
+    {% load facebook_tags %}
+    {% facebook_js %}
+    <script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
+    <script src="/media_rsc/js/base.js"></script>
+		{% endblock %}
   </body>
 </html>

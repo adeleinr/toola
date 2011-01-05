@@ -1,6 +1,8 @@
 import os
 from settings_local import *
 
+HOST_IP = 'localhost'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -93,6 +95,7 @@ INSTALLED_APPS = (
     'socialregistration',
     'taggit',
     'sorl.thumbnail',
+    'haystack',
 )
 
 
@@ -104,6 +107,10 @@ LOGIN_REDIRECT_URL = "/colorific"
 DEBUG_TOOLBAR_CONFIG = {
    'INTERCEPT_REDIRECTS': False,
 }
+
+HAYSTACK_SITECONF = 'webme.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'solr'
+HAYSTACK_SOLR_URL = 'http://127.0.0.1:8983/solr'
 
 
 

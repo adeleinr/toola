@@ -1,11 +1,12 @@
 from django.conf.urls.defaults import *
 #from tagging.models import Tool
-from webme.colorific import main_views, user_views, toolbox_views, proxy_views
+from webme.colorific import main_views, user_views, toolbox_views, proxy_views, search_views
 from webme.colorific.models import UserProfile, Tool, ToolBox
 
 # General views
 urlpatterns = patterns('',
   url(r'^$', main_views.home),
+  url(r'^about/$', main_views.about),
 )
 
 # User profile related pages
@@ -30,10 +31,12 @@ urlpatterns += patterns('',
   url(r'^delete_tool/(?P<toolbox_id>\d+)/(?P<tool_id>\d+)/$', toolbox_views.delete_tool),
   url(r'^user_toolbox_list/$', toolbox_views.user_toolbox_index),
   url(r'^get_suggestions/$', toolbox_views.get_suggestions),
+  url(r'^search/$', search_views.search),
 )
 
 # Toolbox proxies
 urlpatterns += patterns('',
   url(r'^proxy/toolbox/$', proxy_views.toolbox),
-  url(r'^proxy/toolboxes/$', proxy_views.toolboxes)
+  url(r'^proxy/toolboxes/$', proxy_views.toolboxes),
+  url(r'^proxy/search_suggestions/$', proxy_views.search_suggestions)
 )

@@ -4,3 +4,5 @@
 -read and fix TextField according to http://docs.djangoproject.com/en/dev/ref/databases/#mysql-collation
 -add blueprint to our repository
 -Peak at how to reimplement registration from socialregistration forms
+
+-Implement toolbox editing

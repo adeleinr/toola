@@ -6,6 +6,10 @@ from django.contrib.auth import authenticate, login
 from colorific.forms import RegistrationForm
 from colorific.models import UserProfile
 
+def about(request):
+  return render_to_response('colorific/about.html',
+        context_instance=RequestContext(request))
+  
 def home(request):
   userForm = RegistrationForm()
   message = ''

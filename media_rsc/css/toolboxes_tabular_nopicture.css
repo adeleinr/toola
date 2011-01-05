@@ -1,9 +1,9 @@
 #toolboxTab{
-	position: relative;
+	  padding: 10px;
+	  position: relative;
     background-color: #ffffff;
-    height: 85px;
+    height: 100px;
     border-bottom: 1px solid #EEF0F3;
-    padding: 10px 10px 0px 0px;
     font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif
 }
 
@@ -16,6 +16,21 @@
     margin-bottom: 5px;
     font-size: 16px;
 }
+
+
+#toolboxTab ul {
+  height:39px;
+  list-style:none outside none;
+  margin-bottom:5px;
+  margin-top:15px;
+  overflow:hidden;
+	padding-left: 0px;
+}
+#toolboxTab ul li{
+  padding-left: 1px;	
+	
+}
+
 #score{
     text-align: center;
     font-size: 12px;
@@ -32,7 +47,7 @@
     margin-right: 0px;
 }
 
-#tools li{
+#tools ul li{
     display: inline;
     padding-right: 5px;
 }
@@ -54,3 +69,5 @@
     margin-left:0px;
     padding-left:0px;
 }
+
+
