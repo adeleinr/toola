@@ -1,3 +1,10 @@
+"""
+Distributor ID:	Ubuntu
+Description:	Ubuntu 10.04 LTS
+Release:	10.04
+Codename:	lucid
+"""
+
 from fabric.api import *
 from fabric.contrib.project import rsync_project
 from fabric.contrib import files, console
