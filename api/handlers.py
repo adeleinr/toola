@@ -13,11 +13,13 @@ from haystack.query import SearchQuerySet
 
 # List the users  => http://localhost:8084/api/people
 # Get a user      => http://localhost:8084/api/people/1
+# Get all users but this one  => http://localhost:8084/api/people/?exclude=1
 class UserProfileHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = UserProfile
   anonymous = 'AnonymousUserProfileHandler'
-  fields = ('id', ('user', ('username', 'first_name', 'password')),'home_zipcode', 'absolute_url','absolute_public_url' 'picture_url', 'picture_thumbnail', 'tags', 'pictures')
+  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url','absolute_public_url' 'picture_url', 'picture_thumbnail', 'tags', 'pictures')
+  
   
   def read(self, request, userprofile_id = None):
     if userprofile_id:       
@@ -26,6 +28,8 @@ class UserProfileHandler(BaseHandler):
             return userProfile
         except UserProfile.DoesNotExist:
             return rc.NOT_FOUND     
+    elif 'exclude' in request.GET:
+      return UserProfile.objects.exclude(pk = request.GET['exclude'])   
     else:
        return UserProfile.objects.all()
       
@@ -48,7 +52,7 @@ class UserProfileHandler(BaseHandler):
 # Get a user      => http://localhost:8000/api/people/1
 class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
   #fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
-  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url', 'absolute_public_url', 'tags', 'pictures')   
+  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url', 'absolute_public_url', 'tags', 'pictures', 'picture_url', 'picture_thumbnail')   
 
 # List the tools  => http://localhost:8084/api/tools
 # Get a tool      => http://localhost:8084/api/tools/15/2003
@@ -59,7 +63,7 @@ class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
 class ToolsHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = ToolBoxToolRelation
-  fields = ('id', ('tool', ('tool_name', 'id', 'absolute_url')), 'note', )
+  fields = ('id', ('tool', ('tool_name', 'tool_semantic_id', 'id', 'absolute_url', )), 'note', )
   
   @classmethod
   def absolute_url(cls, myinstance):
@@ -180,10 +184,12 @@ class SearchSuggestionsHandler(BaseHandler):
     response = ""
     term = request.GET['term']
     result_list = [] 
-    
-    # Do a partial search and filter tools  that
-    # are not being used by any users.
-    results = SearchQuerySet().models(ToolBox, Tool).filter(text__startswith=term).exclude(active=False)
+
+    '''
+      To filter more we do something like this:
+      Eg. results = SearchQuerySet().models(ToolBox, Tool).filter(text__startswith=term).exclude(active=False)
+    '''
+    results = SearchQuerySet().models(ToolBox, ToolBoxToolRelation).filter(text__startswith=term)
 
     '''
     TODO use this limit? 
@@ -194,8 +200,8 @@ class SearchSuggestionsHandler(BaseHandler):
     item_dict = {}
 
     for item in results:  
-      if (isinstance(item.object, Tool)):
-        item_dict = { 'id': item.object.id , 'value':item.object.tool_name}
+      if (isinstance(item.object, ToolBoxToolRelation)):
+        item_dict = { 'id': item.object.id , 'value':item.object.tool.tool_name}
       elif (isinstance(item.object, ToolBox)):
         item_dict = { 'id': item.object.id , 'value':item.object.toolbox_name}
         
@@ -213,29 +219,38 @@ class SearchHandler(BaseHandler):
     term = request.GET['term']
     result_list = [] 
     
-    # Do a partial search and filter tools  that
-    # are not being used by any users.
-    results = SearchQuerySet().models(ToolBox, Tool).filter(text=term).exclude(active=False)
-
+    results = SearchQuerySet().models(ToolBox, ToolBoxToolRelation).filter(text=term)
+    
     item_dict = {}
 
-
     for item in results:  
-      result_list.append(item.object) 
+       # If this a ToolBoxToolRelation object then
+       # we need to grab the toolbox part of it
+       # For some strange reason if we sent the whole 
+       # ToolBoxToolRelation object to the template
+       # engine it cannot access the toolbox object,
+       # so we get it here
+       if (isinstance(item.object, ToolBoxToolRelation)):
+         result_list.append(item.object.toolbox)
+       # Else this object is already a toolBox
+       elif (isinstance(item.object, ToolBox)):
+         result_list.append(item.object)
 
     return result_list
 
 # List the toolboxes     => http://localhost:8084/api/toolboxes
 # Get a toolbox          => http://localhost:8084/api/toolboxes/15
 # Get a user's toolboxes => http://localhost:8084/api/toolboxes/15/adeleinr
-# Create a toolbox   => curl -i -X POST -d "toolbox_name=mytoolbox9&tools=tool1,tool2&userprofile_id=1" http://localhost:8084/api/toolboxes
+# Create a toolbox   => curl -i -X POST -d "toolbox_name=Django%20Tools&
+#                                           tools={%220%22:[%22Eclipse%22,%22/en/eclipse%22],%221%22:[%22Aptana%20IDE%22,%22/en/aptana_ide%22]}&
+#                                           userprofile_id=1" http://localhost:8084/api/toolboxes
 #                    => curl -i -X POST -H 'Content-Type: application/json' -d '{"toolbox_name": "mytoolbox", "userprofile_id":1, "tools": [{"tool_name": "test1", "note":"my note"},{"tool_name": "test2", "note":"my note"},{"tool_name": "test3", "note":"my note"}]}' http://localhost:8084/api/toolboxes
 # Delete a toolbox   => curl -i -X DELETE  http://localhost:8084/api/toolboxes/14/
 # Update a toolbox   => curl -i -X PUT -d "toolbox_name=New name" http://localhost:8084/api/toolboxes/15/    
 class ToolboxesHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = ToolBox
-  fields = ('id', 'toolbox_name', 'popularity', 'absolute_url', 'tools', ('user', ()), ('toolboxtoolrelations', ()),)
+  fields = ('id', 'toolbox_name', 'popularity', 'absolute_url', ('user', ()), ('toolboxtoolrelations', ()),)
   
   def read(self, request, toolbox_id = None, username = None):     
     if toolbox_id:       
@@ -258,6 +273,7 @@ class ToolboxesHandler(BaseHandler):
     # This option is for when the input comes
     # structured like in JSON format for example
     if request.content_type:
+      '''
         data = request.data
 
         userProfile = get_object_or_404(UserProfile, pk=data['userprofile_id'])
@@ -267,6 +283,8 @@ class ToolboxesHandler(BaseHandler):
                              user = userProfile)
         toolBox.save()
                 
+        tools = simplejson.loads(data['tools'])
+        
         for tool in data['tools']: 
             try:
               newTool = Tool.objects.get(tool_name=tool['tool_name'])
@@ -277,49 +295,58 @@ class ToolboxesHandler(BaseHandler):
             # this tool has been used by someone everytime
             # TODO: need more efficient way to know if a tool
             # has been used or not
-            newTool.active = True
-            newTool.save()
-            toolBoxToolRelation = ToolBoxToolRelation.objects.create(toolbox = toolBox,
-                                                                     tool= newTool)  
+            #newTool.active = True
+            #newTool.save()
+            #toolBoxToolRelation = ToolBoxToolRelation.objects.create(toolbox = toolBox,
+            #                                                          tool= newTool)  
           
         return rc.CREATED
-    else:
-        userProfile = get_object_or_404(UserProfile, pk=request.POST['userprofile_id'])
-
-        toolBox = ToolBox.objects.create(toolbox_name = request.POST['toolbox_name'],
-                                                 popularity = 0,
-                                                 user = userProfile)
-        
-        # Parse the comma separated tool names
-        # and create tools from it
-        # Then call 'add' to save to the relation
-        # table
-        for tool in request.POST['tools'].split(","):
-            tool = tool.rstrip().lstrip().lower()                  
-            if not tool.isspace() and len(tool) > 0:
-                try:
-                    newTool = Tool.objects.get(tool_name=tool)
-                except: 
-                    newTool = Tool.objects.create(tool_name=tool)
-                    
-                # For now we are just recording that this
-                # this tool has been used by someone everytime
-                # TODO: need more efficient way to know if a tool
-                # has been used or not
-                newTool.active = True
-                newTool.save()
-                
-                # We cant do this because we are specifying the
-                # 'though' table 
-                # toolBox.tools.add(newTool) -> Does not work
-                # Instead we need to create every relation entry
-                toolBoxToolRelation = ToolBoxToolRelation.objects.create(toolbox = toolBox,
-                                                                         tool= newTool)
-                
-        return rc.CREATED
-                
         '''
-        super(ExpressiveTestModel, self).create(request)'''
+    else:
+      userProfile = get_object_or_404(UserProfile, pk=request.POST['userprofile_id'])
+
+      toolBox = ToolBox.objects.create(toolbox_name = request.POST['toolbox_name'],
+                                               popularity = 0,
+                                               user = userProfile)
+      tools = simplejson.loads(request.POST['tools'])
+      
+      print  tools.items()
+      
+      # Tools list look like this:
+      # [(u'1', [u'Aptana IDE', u'/en/aptana_ide']),
+      # (u'0', [u'Eclipse', u'/en/eclipse'])]
+      for _, value in tools.items():
+        tool_name = value[0]
+        tool_semantic_id = value[1]
+        
+        if not tool_name.isspace() and len(tool_name) > 0:
+          try:
+            newTool = Tool.objects.get(tool_name=tool_name, tool_semantic_id=tool_semantic_id)
+          except: 
+            try:
+              if tool_name.isspace() or len(tool_name) <= 0:
+                tool_semantic_id = 'noid'
+              newTool = Tool.objects.create(tool_name=tool_name,tool_semantic_id = tool_semantic_id )
+            except Exception, e:
+              print e
+              return rc.DUPLICATE_ENTRY
+                   
+            # For now we are just recording that
+            # this tool has been used by someone every time
+            # TODO: need to remove the active field
+            newTool.active = True
+            newTool.save()
+ 
+          # toolBox.tools.add(newTool) -> Does not work
+          # because we are specifying the 'though' table 
+          # Instead we need to create every relation entry
+          toolBoxToolRelation = ToolBoxToolRelation.objects.create(toolbox = toolBox,
+                                                                  tool= newTool) 
+         
+      return rc.CREATED
+                
+      '''
+      super(ExpressiveTestModel, self).create(request)'''
 
   def delete(self, request, toolbox_id):
     toolbox = ToolBox.objects.get(pk=toolbox_id)
@@ -333,11 +360,12 @@ class ToolboxesHandler(BaseHandler):
     return rc.DELETED # returns HTTP 204
   
   def update(self, request, toolbox_id):
-        toolbox =  toolbox = ToolBox.objects.get(pk=toolbox_id)        
-        toolbox.toolbox_name = request.PUT.get('toolbox_name')
-        toolbox.save()
+    toolbox =  toolbox = ToolBox.objects.get(pk=toolbox_id)        
+    toolbox.toolbox_name = request.PUT.get('toolbox_name')
+    toolbox.save()
+    
+    return toolbox
 
-        return toolbox
     
   @classmethod
   def absolute_url(cls, myinstance):

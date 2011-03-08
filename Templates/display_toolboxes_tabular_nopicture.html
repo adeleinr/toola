@@ -13,8 +13,14 @@
                      </span>
                 </h5>
 								<ul>
-                {% for tool in toolBox.tools %}
-                  <li><a href="">{{tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
+                {% for toolrelation in toolBox.toolboxtoolrelations %}
+									{% if toolrelation.tool.tool_semantic_id %}
+		                 <li><a href="http://freebase.com/view{{toolrelation.tool.tool_semantic_id}}">{{toolrelation.tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
+		              {% else %}
+		                 <li>{{toolrelation.tool.tool_name}}{% if not forloop.last %},{% endif %}</li>
+		              {% endif %}
+                {% empty %}
+                No Tools
                 {% endfor %}
 								</ul>
             </div>

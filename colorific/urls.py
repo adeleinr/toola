@@ -5,15 +5,18 @@ from webme.colorific.models import UserProfile, Tool, ToolBox
 
 # General views
 urlpatterns = patterns('',
-  url(r'^$', main_views.home),
+  url(r'^$', toolbox_views.toolbox_index),
   url(r'^about/$', main_views.about),
+  
 )
 
 # User profile related pages
 urlpatterns += patterns('',
   url(r'^people/$', user_views.users_index),
   url(r'^people/(?P<username>[-\w]+)/$', user_views.user_detail_public),
+  url(r'^user_detail/$', user_views.user_detail2),
   url(r'^user_detail/(?P<username>[-\w]+)/$', user_views.user_detail),
+  url(r'^signup_user/$', user_views.signup_user),
   url(r'^login_user/$', user_views.login_user),
   url(r'^logout_user/$', 'django.contrib.auth.views.logout_then_login',
       {'login_url':'/colorific/login_user'}),

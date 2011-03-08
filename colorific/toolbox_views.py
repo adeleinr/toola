@@ -17,8 +17,25 @@ from colorific.APIConfig import APIConfig
 def toolbox_index(request):
   res = urllib.urlopen(APIConfig.TOOLBOX_API_URL)
   toolboxes = simplejson.load(res)
+  
+  people = ''
+  user = request.user
+  # If the user is authenticated we do not want
+  # to show the user as part of the people
+  # cloud
+  if user.is_authenticated() : 
+    userProfile = user.get_profile()  
+    url = "%s?exclude=%d" % (APIConfig.USERPROFILE_API_URL, userProfile.id)
+    res = urllib.urlopen(url)
+  # Else get all the users
+  else:
+    res = urllib.urlopen(APIConfig.USERPROFILE_API_URL)
+    
+  people = simplejson.load(res)
+     
   return render_to_response('colorific/toolbox_index.html',
-                            { 'toolboxes': toolboxes},
+                            { 'toolboxes': toolboxes,
+                              'people': people},
                             context_instance=RequestContext(request)) 
   
 def get_all_toolboxes(username):

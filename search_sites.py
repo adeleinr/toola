@@ -2,7 +2,7 @@ import datetime
 import haystack
 from haystack.indexes import *
 from haystack import site
-from colorific.models import ToolBox, Tool
+from colorific.models import ToolBox, Tool, ToolBoxToolRelation
 
 ''' 
   should provide a Python import
@@ -27,13 +27,18 @@ class ToolBoxIndex(RealTimeSearchIndex):
     def get_queryset(self):
         """Used when the entire index for model is updated."""
         return ToolBox.objects.filter(pub_date__lte=datetime.datetime.now())
-      
+'''     
 class ToolIndex(RealTimeSearchIndex):
     text = CharField(document=True, use_template=True, model_attr='tool_name')
     active = BooleanField(model_attr='active')
-      
+'''   
+          
+class ToolBoxToolRelationIndex(RealTimeSearchIndex):
+    text = CharField(document=True, use_template=True, model_attr='tool.tool_name')
+    #tool = CharField(model_attr='tool')
+    #toolbox = CharField(model_attr='toolbox')
       
 site.register(ToolBox, ToolBoxIndex)
-site.register(Tool, ToolIndex)
+site.register(ToolBoxToolRelation, ToolBoxToolRelationIndex)
 
       

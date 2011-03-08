@@ -12,9 +12,13 @@
                        <a href="{{toolBox.user.absolute_url}}"> by {{toolBox.user.user.username}}</a>
                      </span>
                 </h5>
-                {% for tool in toolBox.tools %}
-                  <li><a href="">{{tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
-                {% endfor %}
+								<ul>
+                {% for toolrelation in toolBox.toolboxtoolrelations %}
+                  <li><a href="">{{toolrelation.tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
+                {% empty %}
+								No Tools
+								{% endfor %}
+								</ul>
             </div>
 
             <div id="score" class="span-1">
@@ -34,6 +38,8 @@
       </div>
     
      </div>
+		 {% empty %}
+        No Toolboxes
      {% endfor %}    
 </div>
 

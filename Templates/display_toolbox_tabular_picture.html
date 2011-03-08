@@ -14,9 +14,16 @@
               by <a href="{{item.user.absolute_url}}">{{item.user.user.username}}</a>
              </span>
 	           </h5>
-		         {% for tool in item.tools %}
-		                <li><a href="">{{tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
-		         {% endfor %}
+						  {% for toolrelation in item.toolboxtoolrelations %}
+              {% if toolrelation.tool.tool_semantic_id %}
+                 <li><a href="http://freebase.com/view{{toolrelation.tool.tool_semantic_id}}">{{toolrelation.tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
+              {% else %}
+                 <li>{{toolrelation.tool.tool_name}}{% if not forloop.last %},{% endif %}</li>
+              {% endif %}
+                  
+              {% empty %}
+                  No Tools
+              {% endfor %}
           </div>
   
           <div id="score" class="span-1">

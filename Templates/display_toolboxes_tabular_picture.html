@@ -3,28 +3,33 @@
 {% endblock %}
 
 <div id="toolboxes">
-	{% for toolBox in toolboxes %}
-	<div class="clickable span-15 last"id="toolboxTab"  url="{{toolBox.absolute_url}}">
-	        <div id="main" class="span-15 last">
+	{% for toolbox in toolboxes %}
+	<div class="clickable span-13 last"id="toolboxTab"  url="{{toolbox.absolute_url}}">
+	        <div id="main" class="span-13 last">
 	        <div id="userPicture" class="span-2">
-	        	 {% if toolBox.user.picture_thumbnail %}
-	             <img src="{{ toolBox.user.picture_thumbnail }}"/>
+	        	 {% if toolbox.user.picture_thumbnail %}
+	             <img src="{{ toolbox.user.picture_thumbnail }}"/>
 						 {% else %}
 						   <img src="/media_rsc/images/avatar_tiny.png"/>
 						 {% endif %}
 						 
 	        </div>
-	        <div id="tools" class="span-10">
-							<h5>{{toolBox.toolbox_name}}
+	        <div id="tools" class="span-9">
+							<h5>{{toolbox.toolbox_name}}
 							<span id="author"> 
-							by <a href="{{toolBox.user.absolute_url}}">{{toolBox.user.user.username}}</a>
+							by <a href="{{toolbox.user.absolute_public_url}}">{{toolbox.user.user.username}}</a>
 							</span>
 							</h5>
-							<ul>
-							{% for tool in toolBox.tools %}
-							      <li><a href="">{{tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
-							{% endfor %}
-							</ul>
+              {% for toolrelation in toolbox.toolboxtoolrelations %}
+							{% if toolrelation.tool.tool_semantic_id %}
+							   <li><a href="http://freebase.com/view{{toolrelation.tool.tool_semantic_id}}">{{toolrelation.tool.tool_name}}{% if not forloop.last %},{% endif %}</a></li>
+							{% else %}
+							   <li>{{toolrelation.tool.tool_name}}{% if not forloop.last %},{% endif %}</li>
+							{% endif %}
+                  
+              {% empty %}
+                  No Tools
+              {% endfor %}
 		      </div>
 	
 	        <div id="score" class="span-1">

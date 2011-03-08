@@ -99,7 +99,7 @@ $(function() {
     
     $("#id_tools").autocomplete({
         minLength: 1,
-		delay: 0,
+    		delay: 0,
         source: function(request, response) {
             $.getJSON(
               "/colorific/get_suggestions/",
@@ -124,7 +124,6 @@ $(function() {
             // add the selected item
             terms.push( ui.item.value );
             // add placeholder to get the comma-and-space at the end
-            terms.push("");
             this.value = terms.join(", ");
             return false;
         },

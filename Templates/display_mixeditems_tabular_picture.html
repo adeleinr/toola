@@ -4,11 +4,14 @@
 
 <div id="toolboxes">
   {% for item in items %} 
-	   {% include "display_toolbox_tabular_picture.html" %}
+	  {% if item.tool %}
+		  {{item.toolbox}}
+		{% else %}
+      {% include "display_toolbox_tabular_picture.html" %}
+		{% endif %}
 	{% empty %}
       <p>No results found.</p>
-  {% endfor %}
- 
+  {% endfor %} 
 </div>
 
 {% block js %}

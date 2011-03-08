@@ -22,7 +22,7 @@
 
   UserDetail.saveToolbox = function() {
     var toolboxName = $('#id_toolbox_name')[0].value;
-    var tools = $.trim($('#id_tools')[0].value);
+    var tools = $('id_toolIDs')[0].value;
     var userProfile = $('#user-profile-id')[0].value;
     
     $.ajax({
@@ -111,7 +111,7 @@ $(function() {
     function extractLast(term) {
         return split(term).pop();
     }
-    
+    /*
     $("#id_tools").autocomplete({
         minLength: 1,
         delay: 0,
@@ -134,9 +134,12 @@ $(function() {
             var terms = split( this.value );
             terms.pop();
             terms.push( ui.item.value );
-            terms.push("");
             this.value = terms.join(", ");
             return false;
         },
-    });
+    });*/
 });
+
+
+
+

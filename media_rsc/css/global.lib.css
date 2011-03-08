@@ -1,6 +1,7 @@
 body {
 	padding:10px;
-	background-color: #5d9fc0;
+	/*background-color: #5d9fc0;*/
+	background-color: #009CC1;
 	font-size: 0.7em;
 	font-family: verdana,sans-serif;
 }
@@ -34,6 +35,20 @@ body a {
   color: #DDEEF6;
 }
 
+.logoModule{
+	margin-top: 5px;
+	padding-left:5px;
+	color: #ffffff;
+	font-size: 24px;
+	font-weight: bold;
+}
+.logoModule a{
+	
+	text-decoration: none;
+	color: #ffffff;
+	
+}
+
 .searchModule {
 	padding: 3px 10px 10px 10px;
 	float: right;
@@ -43,7 +58,7 @@ body a {
 #header {
 	-moz-border-radius: 0px 0px 10px 10px;
 	-webkit-border-radius: 0px 0px 10px 10px;
-	background-color:#5599BB;
+	background-color:#0093b8;
 	margin-bottom:10px;
 	margin-top: -10px;
 	height: 45px;
@@ -52,8 +67,8 @@ body a {
 
 #footer {
 	-moz-border-radius: 10px 10px 0px 0px;
-	-webkit-border-radius: 10px 1px 0px 0px;
-	background-color:#5599BB;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	background-color:#0093b8;
 	margin-top:20px;
 	padding: 10px 10px 5px 10px;
 	
@@ -107,7 +122,9 @@ th, td, caption {
 	background-color:#ffffff;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
-	padding: 20px 10px 30px 15px;
+	-webkit-box-shadow:#555555 0 5px 10px -2px;
+	-moz-box-shadow:#555555 0 5px 10px -2px;
+	padding: 30px 5px 30px 20px;
 }
 
 #header2 {
@@ -119,11 +136,23 @@ th, td, caption {
 }
 
 h1 {
-  font-size:22px;			
+  font-size:22px;	
+	color: #333333 !important;
+	
 }
 
 h2 {
-  font-size:18px;			
+  font-family: 'Josefin Slab', serif;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 400;
+  /*text-shadow: 1px 1px 1px #aaa;*/
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  word-spacing: -0.093em;
+  line-height: 1.35;		
+	color: #666666;
 }
 
 h3 {
@@ -190,13 +219,6 @@ input[type="text"], input[type="password"], textarea {
 }
 
 input[type="submit"], input[type="button"] {
-  /*background-color: #5D9FC0;
-  border: 1px solid #FFFFFF;
-  color: #fff;
-  text-size: 12px;
-  padding: 5px;*/
-	
-	
 	 border: none;
 	-moz-border-radius:5px 5px 5px 5px;
   -webkit-border-radius:5px 5px 5px 5px;
@@ -206,5 +228,5 @@ input[type="submit"], input[type="button"] {
   font-weight:normal;
   font-size:14px;
   text-transform:uppercase;
-  font: "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif;
+  font: "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif;!important
 }

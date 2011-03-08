@@ -102,13 +102,15 @@ class Image(models.Model):
     
 
 class Tool(models.Model):
-    tool_name = models.CharField(unique=True, max_length=200, help_text="Eg. PyDev")
+    tool_name = models.CharField(max_length=150, help_text="Eg. PyDev")
     active = models.BooleanField()
+    tool_semantic_id = models.CharField(blank=True, max_length=150)
     
-    #users = models.ManyToManyField(UserProfile)
+    class Meta:    
+      unique_together = (("tool_name", "tool_semantic_id"),)
     
     def __unicode__(self):
-        return self.tool_name
+        return self.tool_name + " " + self.tool_semantic_id 
 
     def get_absolute_url(self):
         return "/colorific/tool/%s" % (self.tool_name)

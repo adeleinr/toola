@@ -1,14 +1,52 @@
 {% extends 'base.html' %}
 
+{% block title %}Search Toolboxes{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/media_rsc/css/search.css" type="text/css" media="screen,projection" />
+<link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+
 {% block content %}
 
-<div id="main2" class="span-24 last">
 
-    <form method="get" action=".">
-        <h3>Results for '{{term}}'</h3>
-
-        {% include "display_mixeditems_tabular_picture.html" %}
-
-    </form>
+<div id="box-top" class="span-24 last">
+    <div class="ui-widget span-24 prepend-2 last">
+      <form method="get" action="/colorific/search">
+          <div id="search-box" class="span-17">
+            <input type="text" name="q" id="" maxlength="50" size="60" placeholder="Search by topic or name. Eg: Web Development, Joe Smith, Yelp"/>
+          </div>
+          <div id="search-button" class="span-6 last">
+            <input type="submit" value="Search"/>
+          </div>
+      </form>
+    </div>
 </div>
+
+<div id="box-bottom" class="span-24 last">
+  <div id="toolboxes" class="span-13 last">    
+		{% if term %}
+      <h2>Results for <b>{{term}}</b></h2>
+		{% else %}
+		  <h2>Results</b></h2>
+		{% endif %}
+    {% include "display_mixeditems_tabular_picture.html" %} 
+  </div>
+</div>
+
+
+<!--
+<div id="main2" class="span-24 last">
+		
+
+    <h3>Results for '{{term}}'</h3>
+    {% include "display_mixeditems_tabular_picture.html" %}	
+		
+   <form method="get" action=".">
+          
+					<input type="submit" value="Search">
+               
+    </form>
+	-->
 {% endblock %}

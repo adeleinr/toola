@@ -17,6 +17,7 @@ from colorific.toolbox_views import get_all_toolboxes
 from colorific.APIConfig import APIConfig
 
 
+
    
 def users_index(request):           
   res = urllib.urlopen(APIConfig.USERPROFILE_API_URL)
@@ -45,8 +46,10 @@ def user_detail_public(request, username):
    
 # TODO: Remove username from request
 @login_required(redirect_field_name='colorific/login_user')
+
+#TODO Need to remove this function
 def user_detail(request, username):
-    user = get_object_or_404(User, username=username)
+    user = request.user
     userProfile = user.get_profile()
     
     if request.user.username != username:
@@ -89,6 +92,95 @@ def user_detail(request, username):
                                 'formset':formset,
                                 'similar_users': similar_users},
                                 context_instance=RequestContext(request))
+
+def user_detail2(request):
+    user = request.user
+    userProfile = user.get_profile()
+    
+      
+    #user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
+    user_count = 0
+
+    toolBoxForm = ToolBoxForm()
+    
+    ImageFormSet = modelformset_factory(Image, form=ImageForm, extra=1)
+
+    ImageFormSet.form = staticmethod(curry(ImageForm, userProfile))
+    
+    formset = ImageFormSet(queryset=Image.objects.none())
+    
+    similar_users = userProfile.tags.similar_objects()
+    
+    if request.method == 'POST':
+    
+      if 'imageSubmit' in request.POST:
+        
+        formset = ImageFormSet(request.POST, request.FILES, queryset=Image.objects.none())
+        if formset.is_valid():
+          instances = formset.save(commit=False)
+          for image in instances:
+              try:
+                 image.user = userProfile
+                 image.save()
+              except Image.DoesNotExist:
+                 message = 'does not exit'
+                 
+ 
+    
+    return render_to_response('colorific/user_detail.html',
+                              { 'userProfile': userProfile, 
+                                'user_count': user_count,
+                                'toolboxes': get_all_toolboxes(userProfile.user.username),
+                                'toolBoxForm': toolBoxForm,
+                                'formset':formset,
+                                'similar_users': similar_users},
+                                context_instance=RequestContext(request))
+
+
+def signup_user(request):
+  userForm = RegistrationForm()
+  message = ''
+  user = request.user
+      
+  if user is not None and user.is_authenticated():
+      return HttpResponseRedirect('/colorific/user_detail/'  + user.username)
+    
+  else:
+   
+    if request.method == 'POST':
+          # Create a form with data to validate form
+          testUserForm = RegistrationForm(request.POST)
+            
+          if testUserForm.is_valid():
+              # Use the form data
+            try:
+                  # Save user to db            
+                  new_user = testUserForm.save()
+                  
+                  '''
+                  new_user_profile = UserProfile.objects.create(user=new_user,
+                                                 home_zipcode = request.POST['home_zipcode'],
+                                                 gender = request.POST['gender'],
+                                                 occupation = request.POST['occupation'],
+                                                 self_description = request.POST['self_description'],
+                                                 twitter = request.POST['twitter'])
+                  '''
+                  new_user_profile = UserProfile.objects.create(user=new_user,
+                                     home_zipcode = request.POST['home_zipcode'])
+
+                  user = authenticate(username=request.POST['username'], password=request.POST['password'])
+                  login(request, user)
+                  
+                  return HttpResponseRedirect('/colorific/user_detail/'  + user.username)
+            except Exception, e:    
+                      message = e
+          else:
+              #User needs to try again
+              userForm = testUserForm
+              message = 'Invalid form data' 
+  
+  return render_to_response('colorific/signup_user.html', {'message': message, 'userForm': userForm },
+        context_instance=RequestContext(request))
 
 def login_user(request):
   

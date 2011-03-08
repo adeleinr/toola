@@ -9,12 +9,9 @@ def toolbox(request):
                             'tools' : request.GET['tools'],
                             'userprofile_id' : request.GET['userprofile_id'] } )
   
-  urllib.urlopen(APIConfig.TOOLBOX_API_URL, data).read() # HTTP POST Request
-
-  # TODO: Read HTTP header from API
-  json = simplejson.dumps({ 'result' : 'ok' })
-
-  return HttpResponse(json, content_type="application/json")
+  response = urllib.urlopen(APIConfig.TOOLBOX_API_URL, data).read() # HTTP POST Request
+  
+  return HttpResponse(response)
 
 def toolboxes(request):
   data = urllib.urlopen(APIConfig.TOOLBOX_API_URL).read() # HTTP GET Request

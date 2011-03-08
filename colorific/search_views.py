@@ -19,11 +19,10 @@ from colorific.models import ToolBox, Tool
 def search(request):
   message = ''
   if request.method == 'GET':
-      term = request.GET['q']
+      term = request.GET.get('q')
       url = "%s?term=%s" % (APIConfig.FULL_SEARCH_API_URL, term)
       res = urllib.urlopen(url)
       items = simplejson.load(res)
-      print items
 
           
   return render_to_response('colorific/search.html',
