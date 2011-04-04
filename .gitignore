@@ -4,7 +4,7 @@ settings_local.py
 .production_settings
 .pydevproject
 .tmp*.*
-/media_rsc/uploads/images/profiles/*
+/media_rsc/uploads/images/profiles/
 /media_rsc/images/icons_big/
 private_remote.sh
 lib/*
