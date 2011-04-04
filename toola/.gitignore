@@ -1,9 +1,0 @@
-*.pyc
-.project
-settings_local.py
-.production_settings
-.pydevproject
-.tmp*.*
-/media_rsc/images/icons_big/*
-/media_rsc/images/uploads/*
-private_remote.sh

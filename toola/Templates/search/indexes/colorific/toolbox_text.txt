@@ -1,2 +1,0 @@
-{{ object.toolbox_name }}
-{{ object.toolbox_name }}

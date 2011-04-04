@@ -1,1 +1,0 @@
-{{ object.tool.tool_name }}
