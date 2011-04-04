@@ -6,3 +6,4 @@ settings_local.py
 .tmp*.*
 /media_rsc/uploads/images/profiles/*
 private_remote.sh
+lib/*

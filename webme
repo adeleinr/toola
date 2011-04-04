@@ -1,0 +1,56 @@
+Listen 84
+Listen 8084
+
+NameVirtualHost *:84
+NameVirtualHost *:8084
+
+<VirtualHost *:84>
+        WSGIDaemonProcess webme-production user=webme group=webme threads=10 python-path=/web/webme/lib/python2.6/site-packages
+        WSGIProcessGroup webme-production
+        WSGIScriptAlias / /web/webme/releases/current/webme/apache/django.wsgi
+        <Directory /web/webme/releases/current/webme/apache>
+            Order deny,allow
+            Allow from all
+        </Directory>
+
+
+        Alias /robots.txt /web/webme/releases/current/webme/media_rsc/robots.txt
+        Alias /favicon.ico /web/webme/releases/current/webme/media_rsc/favicon.ico
+
+        Alias /media_rsc/ /web/webme/releases/current/webme/media_rsc/
+        <Directory /web/webme/releases/current/webme/media_rsc>
+            Order deny,allow
+            Allow from all
+        </Directory>
+        
+        ErrorLog /var/log/apache2/error.log
+        LogLevel warn
+        CustomLog /var/log/apache2/access.log combine
+
+</VirtualHost>
+
+<VirtualHost *:8084>
+        WSGIDaemonProcess webme-production-api user=webme group=webme threads=10 python-path=/web/webme/lib/python2.6/site-packages
+        WSGIProcessGroup webme-production-api
+        WSGIScriptAlias / /web/webme/releases/current/webme/apache/django.wsgi
+        <Directory /web/webme/releases/current/webme/apache>
+            Order deny,allow
+            Allow from all
+        </Directory>
+
+
+        Alias /robots.txt /web/webme/releases/current/webme/media_rsc/robots.txt
+        Alias /favicon.ico /web/webme/releases/current/webme/media_rsc/favicon.ico
+
+        Alias /media_rsc/ /web/webme/releases/current/webme/media_rsc/
+        <Directory /web/webme/releases/current/webme/media_rsc>
+            Order deny,allow
+            Allow from all
+        </Directory>
+
+        ErrorLog /var/log/apache2/error.log
+        LogLevel warn
+        CustomLog /var/log/apache2/access.log combine
+
+</VirtualHost>
+        

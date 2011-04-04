@@ -117,7 +117,7 @@ def install_nonpython_requirements():
     sudo('chgrp %s -R %s'% (env.user,env.whole_path))
     
     sudo('cd %s/lib; curl -O http://apache.mirrors.tds.net/lucene/solr/1.3.0/apache-solr-1.3.0.tgz' % (env.whole_path))
-    sudo('cd %s/lib; tar xvzf apache-solr-1.3.0.tgz' % (env.whole_path))
+    #sudo('cd %s/lib; tar xvzf apache-solr-1.3.0.tgz' % (env.whole_path))
     sudo('chown %s -R %s/lib'% (env.user,env.whole_path))
     sudo('chgrp %s -R %s/lib'% (env.user,env.whole_path))
 
