@@ -1,0 +1,4 @@
+org.apache.solr.common
+org.apache.solr.common.luke
+org.apache.solr.common.params
+org.apache.solr.common.util

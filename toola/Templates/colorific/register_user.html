@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block title %}Signup{% endblock %}
+{% block content %}
+
+
+<div id="registrationBox" class="span-13 last">
+    <h1>Sign up</h1>
+    {{message}}  
+    <form method="post" action =".">
+        <table>
+        <tr>
+            <td>
+                <label for="id_name">Name:</label>              
+            </td>
+            <td>
+                {{ userForm.first_name }}
+            </td>
+            <td>
+                {% if userForm.first_name.errors %}
+                <span class="error">
+                    {{ userForm.first_name.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="id_username">Username:</label>              
+            </td>
+            <td>
+                {{ userForm.username }}
+            </td>
+            <td>
+                {% if userForm.username.errors %}
+                <span class="error">
+                    {{ userForm.username.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="id_password">Password:</label>              
+            </td>
+            <td>
+                {{ userForm.password }}
+            </td>
+            <td>
+                {% if userForm.password.errors %}
+                <span class="error">
+                    {{ userForm.password.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="id_email">Email:</label>              
+            </td>
+            <td>
+                {{ userForm.email }}
+            </td>
+            <td>
+                {% if userForm.email.errors %}
+                <span class="error">
+                    {{ userForm.email.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="id_home_zipcode">Zipcode:</label>              
+            </td>
+            <td>
+                {{ userForm.home_zipcode }}
+            </td>
+            <td>
+                {% if userForm.home_zipcode.errors %}
+                <span class="error">
+                    {{ userForm.home_zipcode.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="id_occupation">What do you do:</label>              
+            </td
+            <td>
+                {{ userForm.occupation }}
+            </td>
+            <td>
+                {% if userForm.occupation.errors %}
+                <span class="error">
+                    {{ userForm.occupation.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="id_self_description">Describe yoursel:</label>              
+            </td>
+            <td>
+                {{ userForm.self_description }}
+            </td>
+            <td>
+                {% if userForm.self_description.errors %}
+                <span class="error">
+                    {{ userForm.self_description.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="id_gender">Gender:</label>              
+            </td
+            <td>
+                {{ userForm.gender }}
+            </td>
+            <td>
+                {% if userForm.gender.errors %}
+                <span class="error">
+                    {{ userForm.gender.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="id_twitter">Twitter:</label>              
+            </td>
+            <td>
+                {{ userForm.twitter }}
+            </td>
+            <td>
+                {% if userForm.twitter.errors %}
+                <span class="error">
+                    {{ userForm.twitter.errors|join:", " }}
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+        </table>
+        <div align="left">
+            <input type = "submit" name="submit" value="Submit" />
+        </div>
+    </form>
+</div>
+
+{% endblock %}s

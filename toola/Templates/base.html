@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/media_rsc/js/jquery/css/redmond/jquery-ui-1.8.4.custom.css" type="text/css" /> 
+    <link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/screen.css" type="text/css" media="screen, projection" />  
+    <link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/print.css" type="text/css" media="print" />
+    <!--[if IE]><link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif] --> 
+    <link rel="stylesheet" href="/media_rsc/css/global.lib.css?{% now "U" %}" type="text/css" media="screen,projection" />
+    {% block css %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container">
+    
+      <!-- Start header -->
+      <div id="header" class="span-24 last">
+      	<div class="logoModule span-2" >
+      		<a href="/colorific/toolboxes/">Toola</a>
+      	</div>
+        <div class="menuModule span-16" >
+          <ul class="clearfix">
+          	<li><a href="/colorific/toolboxes/">Explore</a></li>
+            <li><a href="/colorific/tools/">#Tools</a></li>
+            <li><a href="/colorific/people/">@People</a></li>
+            {% if request.user.username %}
+            <li><a href="/colorific/create_toolbox/" >Add Toolbox</a></li>
+            <li><a href="/colorific/user_toolbox_list/" >MyToolboxes</a></li>
+						<li><a href="/colorific/user_detail/{{request.user.username}}">Me</a></li>
+							{% if request.facebook.uid %}
+							    <li><a href="#" onclick="javascript:FB.logout(function(response){ document.location = '/colorific/logout_user' })">Logout</a></li>
+	            {% else %}
+							    <li><a href="/colorific/logout_user/">Logout</a></li>
+							{% endif %}
+						{% else %}
+						<li><a href="/colorific/signup_user/">Signup</a></li>
+            <li><a href="/colorific/login_user/" >Login</a></li>
+						{% endif %}
+            
+          </ul>
+        </div>
+        <div class="ui-widget searchModule span-4 last">
+        	<form method="get" action="/colorific/search">
+        		<input type="text" name="q" id="id_search_term" maxlength="50" placeholder="Find a topic" />
+          </form>
+				</div>
+      </div>
+      <!-- End header -->
+    			
+      {% block content %}
+      {% endblock %}
+    
+      <!-- Begin Footer -->
+      <div id="footer" class="span-24 last">
+      	<ul>
+      		<li><a href="/colorific/about">About</a></li>
+					<li><a href="">Feedback</a></li>
+					<li><a href="">Contact</a></li>
+      	</ul>
+      </div>
+      <!-- End Footer -->
+                                
+    </div>
+
+    {% load facebook_tags %}
+    {% facebook_js %}		
+    <script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
+    <script src="/media_rsc/js/base.js"></script>
+		<!-- Google Analytics -->
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<!-- end of Google Analytics --> 
+    {% block js %}
+		{% endblock %}
+  </body>
+</html>

@@ -14,25 +14,47 @@ from haystack.query import SearchQuerySet
 # List the users  => http://localhost:8084/api/people
 # Get a user      => http://localhost:8084/api/people/1
 # Get all users but this one  => http://localhost:8084/api/people/?exclude=1
+# Get users, limit      => http://localhost:8084/api/people/?limit=3
+# Get users, exclude and limit      => http://localhost:8084/api/people/?exclude=1&limit=3
+# Get users, tag and limit      => http://localhost:8084/api/people/?tag=web-dev&limit=3
 class UserProfileHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = UserProfile
   anonymous = 'AnonymousUserProfileHandler'
-  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url','absolute_public_url' 'picture_url', 'picture_thumbnail', 'tags', 'pictures')
+  fields = ('id', ('user', ('username', 'first_name')),
+            'home_zipcode', 'absolute_url','absolute_public_url',
+            'picture_url', 'picture_thumbnail', 'tags', 'pictures',)
   
   
   def read(self, request, userprofile_id = None):
+    
     if userprofile_id:       
         try:
             userProfile = UserProfile.objects.get(pk = userprofile_id) 
             return userProfile
         except UserProfile.DoesNotExist:
             return rc.NOT_FOUND     
-    elif 'exclude' in request.GET:
-      return UserProfile.objects.exclude(pk = request.GET['exclude'])   
-    else:
-       return UserProfile.objects.all()
+    else:    
+      users = []
+      if 'exclude' in request.GET:
+        ''' Exclude one user only '''
+        users = UserProfile.objects.exclude(pk = request.GET['exclude'])
+        
+      if 'tag' in request.GET:
+        users = UserProfile.objects.filter(tags__slug__in=request.GET['tag'])
+        print users
+    
+      if not users:
+        ''' Or get all users '''  
+        users = UserProfile.objects.all()
+        
       
+      ''' Now truncate list if limit specified ''' 
+      if 'limit' in request.GET: 
+        limit = int(request.GET['limit'])
+        users = users[:limit]  
+      
+      return users
   
   @classmethod
   def absolute_url(cls, myinstance):
@@ -52,7 +74,9 @@ class UserProfileHandler(BaseHandler):
 # Get a user      => http://localhost:8000/api/people/1
 class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
   #fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
-  fields = ('id', ('user', ('username', 'first_name')),'home_zipcode', 'absolute_url', 'absolute_public_url', 'tags', 'pictures', 'picture_url', 'picture_thumbnail')   
+  fields = ('id', ('user', ('username', 'first_name')),
+            'home_zipcode', 'absolute_url', 'absolute_public_url',
+            'tags', ('pictures',()), 'picture_url', 'picture_thumbnail')   
 
 # List the tools  => http://localhost:8084/api/tools
 # Get a tool      => http://localhost:8084/api/tools/15/2003
@@ -190,7 +214,6 @@ class SearchSuggestionsHandler(BaseHandler):
       Eg. results = SearchQuerySet().models(ToolBox, Tool).filter(text__startswith=term).exclude(active=False)
     '''
     results = SearchQuerySet().models(ToolBox, ToolBoxToolRelation).filter(text__startswith=term)
-
     '''
     TODO use this limit? 
     limit = request.GET('limit')  
@@ -201,9 +224,10 @@ class SearchSuggestionsHandler(BaseHandler):
 
     for item in results:  
       if (isinstance(item.object, ToolBoxToolRelation)):
-        item_dict = { 'id': item.object.id , 'value':item.object.tool.tool_name}
+        print item.object.toolbox
+        item_dict = { 'id': item.object.toolbox.id , 'value':item.object.tool.tool_name, 'type': 'Tool','desc': item.object.toolbox.toolbox_name}
       elif (isinstance(item.object, ToolBox)):
-        item_dict = { 'id': item.object.id , 'value':item.object.toolbox_name}
+        item_dict = { 'id': item.object.id , 'value':item.object.toolbox_name, 'type':'Toolbox', 'desc':''}
         
       result_list.append(item_dict)
 
@@ -240,7 +264,7 @@ class SearchHandler(BaseHandler):
 
 # List the toolboxes     => http://localhost:8084/api/toolboxes
 # Get a toolbox          => http://localhost:8084/api/toolboxes/15
-# Get a user's toolboxes => http://localhost:8084/api/toolboxes/15/adeleinr
+# Get a user's toolboxes => http://localhost:8084/api/toolboxes/adeleinr
 # Create a toolbox   => curl -i -X POST -d "toolbox_name=Django%20Tools&
 #                                           tools={%220%22:[%22Eclipse%22,%22/en/eclipse%22],%221%22:[%22Aptana%20IDE%22,%22/en/aptana_ide%22]}&
 #                                           userprofile_id=1" http://localhost:8084/api/toolboxes

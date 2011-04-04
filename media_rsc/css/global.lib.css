@@ -218,15 +218,32 @@ input[type="text"], input[type="password"], textarea {
   width:665px;
 }
 
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"], input[type="file"] {
 	 border: none;
 	-moz-border-radius:5px 5px 5px 5px;
   -webkit-border-radius:5px 5px 5px 5px;
   background:none repeat scroll 0 0 #256098;
   color:#FFFFFF;
-  padding:8px 15px;
+  padding:8px 15px !important;
   font-weight:normal;
   font-size:14px;
   text-transform:uppercase;
   font: "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif;!important
+}
+
+.header1{
+
+  background: #F0F0F0;
+  font-size: 18px;
+  padding:5px 5px 5px 10px;
+  /*text-shadow: rgba(0, 0, 0, 0.292969) 0 -1px 0 !important;*/
+  text-shadow:#FFFFFF 1px 1px 0;
+  -moz-border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  color: #888888;
+  margin-bottom: 10px;
+}
+
+.profileImage{
+  border:1px solid black;
 }

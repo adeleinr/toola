@@ -56,8 +56,11 @@ class UserProfile(models.Model):
     def get_home_zipcode(self):
         return self.home_zipcode
       
-    def get_pictures(self):
-        return self.pictures.all().order_by('-id')[:5]
+    #def get_pictures(self, num_pictures):
+    #    return self.pictures.all().order_by('-id')[num_pictures]
+    
+    def get_pictures(self, num_pictures):
+        return self.pictures.all().order_by('-id')[:num_pictures]
     '''
     def get_gender(self):
         return UserProfileLookupTables.GENDER_CHOICES[self.gender][1]
@@ -93,7 +96,7 @@ class Image(models.Model):
     #picture = models.ImageField(upload_to=get_image_path, null=True, blank=True)
     picture = ImageWithThumbnailsField(upload_to='uploads/images/profiles/',
                                        null=True, blank=True,
-                                       thumbnail={'size': (80, 80)},
+                                       thumbnail={'size': (80, 80), 'options': ('crop',)},
                                        extra_thumbnails={
                                                       'medium': {'size': (100, 100), 'options': ['crop', 'upscale']},
                                                       'large': {'size': (200, 400)},

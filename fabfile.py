@@ -13,7 +13,7 @@ from fabric.operations import *
 
 # globals
 env.project_name = 'webme'
-# environmentsvirtualhost_code_root
+
 def environment():
     "Use the local virtual server"
     env.hosts = ['184.106.152.183']
@@ -21,8 +21,7 @@ def environment():
     # This is used to change permissions
     env.code_root_parent = "/web" 
     env.user = 'webme'
-    env.deploy_user = 'webme'
-    
+    env.deploy_user = 'webme'   
     env.activate = 'source %s/bin/activate' %(env.code_root)
     
     
@@ -57,10 +56,9 @@ def setup():
     sudo('cd /etc/apache2/sites-available/; a2dissite default;')
     sudo('mkdir -p %s; cd %s; virtualenv .;source ./bin/activate'% (env.code_root, env.code_root))
     sudo('cd %s; mkdir releases; mkdir shared; mkdir packages;'% (env.code_root))
-    reset_permissions()
-    
+    reset_permissions()    
     deploy()
-    
+                                                                        
 
     
 def deploy():
@@ -105,7 +103,8 @@ def install_requirements():
     require('release', provided_by=[deploy, setup])
     require('whole_path', provided_by=[deploy, setup])
     sudo('cd %s; pip install -E . -r %s/requirements.txt'% (env.code_root,
-                                                            env.whole_path))
+                                                            env.whole_path))   
+   
     reset_permissions()
                                                                           
 
@@ -116,6 +115,11 @@ def install_nonpython_requirements():
     sudo('cd %s/media_rsc/css; git clone git://github.com/joshuaclayton/blueprint-css.git'% (env.whole_path))
     sudo('chown %s -R %s'% (env.user,env.whole_path))
     sudo('chgrp %s -R %s'% (env.user,env.whole_path))
+    
+    sudo('cd %s/lib; curl -O http://apache.mirrors.tds.net/lucene/solr/1.3.0/apache-solr-1.3.0.tgz' % (env.whole_path))
+    sudo('cd %s/lib; tar xvzf apache-solr-1.3.0.tgz' % (env.whole_path))
+    sudo('chown %s -R %s/lib'% (env.user,env.whole_path))
+    sudo('chgrp %s -R %s/lib'% (env.user,env.whole_path))
 
 def configure_project_specific_stuff():
     "Configure misc stuff for this project"
@@ -152,6 +156,8 @@ def migrate():
 
     
     
+'''=========================================================='''
+'''                    Unused Functions                      '''
 '''=========================================================='''
     
 def deploy_version(version):

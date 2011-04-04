@@ -1,0 +1,29 @@
+#registrationBox {
+  background-color:#DDEEF6;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 5px;
+  padding:10px 5px 10px 20px;
+  border:10px solid #ffffff;
+}
+
+#registration-slogan {
+  font-size:26px;
+  color: #ffffff;
+}
+
+#registration-slogan-cont {
+  font-size:20px;
+  color: #ffca2a;
+}
+
+
+#registrationLeftForm {
+  margin-top:10px;
+}
+#registrationRightForm {
+  margin-top:10px;
+}
+
+#facebook{
+	margin-top: 10px;
+}

@@ -1,0 +1,22 @@
+.people-cloud ul{
+  width: 250px;
+  list-style: none;
+  padding: 0;
+}
+
+.people-cloud li{ 
+  float: left;
+  width: 6em;
+  padding-top:10px;
+}
+
+.people-cloud{
+	float:left;
+}
+
+#people-per-tag{
+	
+	border-bottom: 1px solid #EEF0F3;
+	
+}
+

@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/media_rsc/css/edit_user.css" type="text/css" media="screen,projection" />
+
+{% endblock %}
+
+{% block title %}Edit Your Profile{% endblock %}
+
+{% block content %}
+<div id="main2" class="span-24 last">
+  {{message}}
+	<div id="userModuleEdit" class="prepend-6 class span-13 last">
+		  <span id="bigHeading">Who are you?</span>
+			<br/>
+			<br/>
+	    <form method="post" action=".">
+	      {{ editUserForm.id }} 
+	      <table>
+	      	<span class="form-helper">Comma separated tags</span>     
+					<tr>
+	            <td>
+	                {{ editUserForm.tags }}
+	            </td>
+	            <td>
+	                {% if editUserForm.tags.errors %}
+	                <span class="error">
+	                    {{ editUserForm.tags.errors|join:", " }}
+	                </span>
+	                {% endif %}
+	            </td>
+							<td><input type = "submit" name="profileSubmit" value="Save" /></td>
+                  
+	        </tr>
+					
+					<!--
+					{% if editUserForm.first_name %}
+	        <tr>
+	            <td>
+	                <label for="id_name">Name:</label>              
+	            </td>
+	            <td>
+	                {{ editUserForm.first_name }}
+	            </td>
+	            <td>
+	                {% if editUserForm.first_name.errors %}
+	                <span class="error">
+	                    {{ editUserForm.first_name.errors|join:", " }}
+	                </span>
+	                {% endif %}
+	            </td>
+	        </tr>
+					{% endif %}
+	        <tr>
+	            <td>
+	                <label for="id_username">Username:</label>              
+	            </td>
+	            <td>
+	                {{ editUserForm.username }}
+	            </td>
+	            <td>
+	                {% if editUserForm.username.errors %}
+	                <span class="error">
+	                    {{ editUserForm.username.errors|join:", " }}
+	                </span>
+	                {% endif %}
+	            </td>
+	        </tr>
+					{% if editUserForm.password %}
+	        <tr>
+	            <td>
+	                <label for="id_password">Password:</label>              
+	            </td>
+	            <td>
+	                {{ editUserForm.password }}
+	            </td>
+	            <td>
+	                {% if editUserForm.password.errors %}
+	                <span class="error">
+	                    {{ editUserForm.password.errors|join:", " }}
+	                </span>
+	                {% endif %}
+	            </td>
+	        </tr>
+					{% endif %}
+	        <tr>
+	            <td>
+	                <label for="id_email">Email:</label>              
+	            </td>
+	            <td>
+	                {{ editUserForm.email }}
+	            </td>
+	            <td>
+	                {% if editUserForm.email.errors %}
+	                <span class="error">
+	                    {{ editUserForm.email.errors|join:", " }}
+	                </span>
+	                {% endif %}
+	            </td>
+	        </tr>
+					{% if editUserForm.home_zipcode %}
+	        <tr>
+	            <td>
+	                <label for="id_home_zipcode">Zipcode:</label>              
+	            </td>
+	            <td>
+	                {{ editUserForm.home_zipcode }}
+	            </td>
+	            <td>
+	                {% if editUserForm.home_zipcode.errors %}
+	                <span class="error">
+	                    {{ editUserForm.home_zipcode.errors|join:", " }}
+	                </span>
+	                {% endif %}
+	            </td>
+	        </tr>
+					{% endif %}
+					-->
+        </table>          
+	
+      </form>
+        {% include "display_tags_editable.html" %}
+	 </div>
+</div>
+{% endblock %}

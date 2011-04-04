@@ -1,0 +1,37 @@
+{% block css %}
+    <link rel="stylesheet" href="/media_rsc/css/toolbox.css" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="/media_rsc/css/edit_tool.css" type="text/css" media="screen,projection" />
+{% endblock %}
+
+<div id="toolModuleEdit" class="span-24 last">
+    <form method="post" action=".">
+                {{ toolForm.id }} 
+                <div id="toolEntry" class="span-24">
+                	<div class="span-24 last">
+                		{{toolForm.toolbox}} 
+						<a href="/colorific/delete_tool/{{ toolBoxToolRelation.toolbox.id }}/{{ toolBoxToolRelation.tool.id }}">DELETE</a>
+					</div>
+                    <div id="toolMeta" class="span-6">
+                        {{ toolForm.tool }} 
+						{% if toolForm.tool.errors %}
+                        <span class="error">
+                            {{ toolForm.tool.errors|join:", " }}
+                        </span>
+                        {% endif %}	
+						
+						<br />
+						{{toolForm.note.help_text}}
+	                    <br/>
+	                    {{ toolForm.note }}
+	                    <br/>
+	                    {% if toolForm.note.errors %}
+	                    <span class="error">
+	                        {{ toolForm.note.errors|join:", " }}
+	                    </span>
+	                    {% endif %}	   
+	                    </div>
+
+                </div>
+            <input type = "submit" name="submit" value="Save" />
+    </form>
+ </div>

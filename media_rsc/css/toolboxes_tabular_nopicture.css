@@ -1,5 +1,7 @@
 #toolboxTab{
-	  padding: 10px;
+	  /*padding: 10px;*/
+		padding-top: 10px;
+		padding-bottom: 10px;
 	  position: relative;
     background-color: #ffffff;
     height: 100px;
@@ -9,7 +11,7 @@
 
 
 #toolboxTab:hover{
-    background-color: #EEF0F3;
+    background-color: #E3E9FF;
 }
 
 #toolboxTab h5{
@@ -35,16 +37,21 @@
     text-align: center;
     font-size: 12px;
     color: #85898F;
-    margin-top: 6px;
-    padding-left: 50px;
+    margin-top: 6px;		
 }
 #scoreNumber{
     font-size: 20px;
     color: #85898F;
 }
 
+#edit-links{
+  float:left;
+  margin-left:10px;\
+}
+
 #tools{
     margin-right: 0px;
+		margin-left: 10px;
 }
 
 #tools ul li{

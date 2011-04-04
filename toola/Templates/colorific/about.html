@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block css %}
+{% endblock %}
+{% block content %}
+{{message}}
+
+<div id="main2" class="span-24 last">
+    <h1> How do you get the job done?</h1>
+    <h3>1. Context</h3>
+    <h5>Where do you do your craft?</h5>
+    <ul>
+      <li>Share pictures of your desk setup, room, table</li>
+      <li>Tell us everything</li>
+    </ul>
+
+    
+    <h3>2. Toolbox</h3>
+    <h5>What tools do you use?</h5>
+    
+    Example: Meet Jack is a Software Engineer. For his daily work he uses:
+    <ul>
+        <li>IDEs: Aptana, PyDev, textmate</li>
+        <li>Technologies (Django, Python, Apache Lucene, nginx, PylonsHQ, Apache Thrift, etc)</li>
+        <li>DBs: SQLLite, BigTable, NoSQL
+        <li>Code Review and Management: Git, Github, rietveld</li>
+    </ul> 
+    
+    <h3>3. Info Sources</h3>
+    <h5>Where do you get your inspiration from?</h5>
+    <ul>
+        <li>Hacker News</li>
+        <li>Friendfeed</li>
+    </ul>  
+</div>
+
+{% endblock %}

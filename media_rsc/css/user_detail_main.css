@@ -122,24 +122,6 @@ ul li {
   padding: 10px;
 }
 
-
-
-#setup-pics{
-	margin-top: 10px;
-}
-
-#imageUpload-form{	
-
-}
-#show-pics{
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-#add-toolbox{
-
-}
-
 div.title2 {
   border-bottom: 1px solid #EEEEEE;
   color: #B5B9C0;
@@ -148,16 +130,7 @@ div.title2 {
 	width: 580px;
 }
 
-#bigHeading {
-  
-    font-weight: normal;
-    font-style: normal;
-    font-size:30px;
-    text-shadow:0 0 1px rgba(0, 0, 0, 0.01);
-    color: #525760;
-  
 
-}
 
 
 

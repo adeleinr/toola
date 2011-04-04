@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}My Toolboxes{% endblock %}
+{% block content %}
+{{message}}
+
+<div id="main2" class="span-24 last">
+    <h1>Toolboxes</h1>
+    {% for toolbox in toolboxes %}
+       <a href="/colorific/edit_toolbox/{{toolbox.id}}">{{toolbox.toolbox_name}}</a>
+       <br />
+    {% empty %}
+      No toolboxes
+    {% endfor %}
+</div>
+
+
+{% endblock %}s

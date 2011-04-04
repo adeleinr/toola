@@ -11,7 +11,7 @@
 </style>
 
 <div id="main2" class="span-24 last">
-	<h1>People</h1>
+	<h2>People</h2>
   <ul>
 	{% for userProfile in user_list %}
     <li><a href="{{userProfile.absolute_public_url}}">{{ userProfile.user.username }}</a></li>

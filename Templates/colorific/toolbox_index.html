@@ -3,7 +3,6 @@
 {% block css %}
 <link rel="stylesheet" href="/media_rsc/css/toolbox_index.css" type="text/css" media="screen,projection" />
 <link rel="stylesheet" href="/media_rsc/css/search.css" type="text/css" media="screen,projection" />
-<link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block content %}
@@ -11,9 +10,10 @@
 
 <div id="box-top" class="span-24 last">
     <div class="ui-widget span-24 prepend-2 last">
-	    <form method="get" action="/colorific/search">
+	    <form id="search-form" method="post" action="/colorific/search/">
 		    	<div id="search-box" class="span-17">
-		        <input type="text" name="q" id="" maxlength="50" size="60" placeholder="Search by topic or name. Eg: Web Development, Joe Smith, Yelp"/>
+		        <input type="text" name="q" id="id_search_term" maxlength="50" size="60" placeholder="Search by topic or name. Eg: Web Development, Joe Smith, Yelp"/>
+					  <input type="hidden" name="toolbox_id" id="id_toolbox_id" >
 					</div>
 					<div id="search-button" class="span-6 last">
 					  <input type="submit" value="Search"/>
@@ -37,7 +37,10 @@
 			{%endfor%}
 		</ul>
     <div id="people-cloud-desc">
-		  <p>Find people who know their stuff. See how they get their work done.</p>
+			  <p>
+			  	Find people who know their stuff. See how they get their work done.<br/>
+				  <a href="/colorific/people/">View More</a>
+			  </p>
 		</div>
 		
 	</div>
@@ -51,7 +54,9 @@
 {% endblock %}
 
 {% block js %}
-	<script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
-	<script src="/media_rsc/js/base.js"></script>
+<!-- Search Autocomplete -->    
+<script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
+<script src="/media_rsc/js/search_singleterm.js"></script>
+<!-- End of Search Autocomplete -->  
 {% endblock %}

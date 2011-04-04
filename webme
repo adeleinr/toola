@@ -1,10 +1,10 @@
-Listen 80
+Listen 84
 Listen 8084
 
-NameVirtualHost *:80
+NameVirtualHost *:84
 NameVirtualHost *:8084
 
-<VirtualHost *:80>
+<VirtualHost *:84>
         WSGIDaemonProcess webme-production user=webme group=webme threads=10 python-path=/web/webme/lib/python2.6/site-packages
         WSGIProcessGroup webme-production
         WSGIScriptAlias / /web/webme/releases/current/webme/apache/django.wsgi

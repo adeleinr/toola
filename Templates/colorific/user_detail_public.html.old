@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link type="text/css" href="/media_rsc/js/jquery/css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" /> 
+<link rel="stylesheet" href="/media_rsc/css/create_toolbox.css" type="text/css" media="screen,projection" />
+<link rel="stylesheet" href="/media_rsc/css/user_detail_main.css" type="text/css" media="screen,projection" />
+<link rel="stylesheet" href="/media_rsc/css/user_detail_public.css" type="text/css" media="screen,projection" />
+<link rel="stylesheet" href="/media_rsc/css/toolbox.css" type="text/css" media="screen,projection" />
+{% endblock %}
+
+{% block title %}{{userProfile.user.username}}'s Profile{% endblock %}
+
+{% block content %}
+<div id="main2" class="span-24 last">
+   {{message}}
+   <div id="userInfoModule" class="span-6 colborder">
+	   	{% if userProfile.picture_url %}
+	        <div id="userPicture editButton">
+	            <img src="{{ userProfile.picture_url }}"/>
+					</div>
+			{% else %}
+			    <div id="userPicture editButton">
+	            <img class="blank-avatar" src="/media_rsc/images/avatar.png"/>
+					</div>
+	    {% endif %}
+			<div class="title editButton">TAGS</div>
+		  <div id="toolBoxModuleBig" class="tool content">
+		      {% for tag in userProfile.tags.all %}
+		      <a href="#">{{tag.name}}</a>
+					{% empty %}
+          No tags
+		      {% endfor %}
+		  </div>
+		
+		  <div class="title">ABOUT</div>
+		  <div id="toolBoxModuleBig" class="content">
+		    <div class="short_content">
+		    	My home and work setups are identical: early-2008 octocore Mac Pros, each with two 24" Dell monitors, 6 GB of RAM, two-disk software RAID-0 with a third disk as an internal Time Machine, the Microsoft Natural Ergonomic Keyboard 4000, and the Magic Mouse.
+		    </div>
+			<a href="">Read More</a>
+			</div>
+			 
+	    <div class="title">SIMILAR PEOPLE</div>
+	    <div id="toolBoxModuleBig" class="content">
+	        {% for user in similar_users %}
+	         <a href="{{user.get_absolute_public_url}}">
+            {% if user.picture_thumbnail %}
+                <img src="{{user.picture_thumbnail}}"/>
+            {% else %}
+                <img src="/media_rsc/images/avatar_tiny.png"/>
+						{% endif %}
+            </a>  
+	        {% empty %}
+          No similar users
+					{% endfor %} 
+	    </div>
+  </div>
+  
+  
+  <div id="userToolboxModule" class="span-15 last">
+    <h2>{{userProfile.user.first_name}} {{userProfile.user.last_name}}</h2>
+    <div id="setup-pics" class="span-14 last">
+      <div class="title2">The workspace</div>
+			<div id="show-pics">
+      {% for picture in userProfile.get_pictures %}
+          {{ picture.picture.extra_thumbnails_tag.medium }}
+			{% empty %}
+          No pictures
+      {% endfor %}
+      <br/>
+			</div>
+      <a href="">View All Pictures</a>
+    </div>
+
+    <div id="add-toolbox" class="abutton" class="span-14 last">
+       <div class="title2">The Tools</div>
+    </div>
+           
+    <br/>
+    {% include "display_toolboxes_tabular_nopicture_noteditable.html" %}
+		<a href="">View All Toolboxes</a>
+  </div>
+</div>
+<script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
+{% endblock %}

@@ -27,7 +27,7 @@ def users_index(request):
                             { 'user_list': users},
                             context_instance=RequestContext(request))  
 
-
+#TODO Need to use API
 def user_detail_public(request, username):
    user = get_object_or_404(User, username=username)
    userProfile = user.get_profile()
@@ -36,9 +36,12 @@ def user_detail_public(request, username):
    
    similar_users = userProfile.tags.similar_objects()
    
+   workspace_pictures = userProfile.get_pictures(6)
+   
      
    return render_to_response('colorific/user_detail_public.html',
                              { 'userProfile': userProfile, 
+                               'workspace_pictures':workspace_pictures,
                                'toolboxes': get_all_toolboxes(userProfile.user.username),
                                'toolBoxForm': toolBoxForm,
                                'similar_users':similar_users},
@@ -48,6 +51,7 @@ def user_detail_public(request, username):
 @login_required(redirect_field_name='colorific/login_user')
 
 #TODO Need to remove this function
+#TODO Need to use API
 def user_detail(request, username):
     user = request.user
     userProfile = user.get_profile()
@@ -55,7 +59,7 @@ def user_detail(request, username):
     if request.user.username != username:
       return HttpResponseRedirect(userProfile.get_absolute_public_url())
       
-    #user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
+    
     user_count = 0
 
     toolBoxForm = ToolBoxForm()
@@ -83,15 +87,21 @@ def user_detail(request, username):
                  message = 'does not exit'
                  
  
-    
+    workspace_pictures = userProfile.get_pictures(6)
+     
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': userProfile, 
+                                'workspace_pictures': workspace_pictures,
                                 'user_count': user_count,
                                 'toolboxes': get_all_toolboxes(userProfile.user.username),
                                 'toolBoxForm': toolBoxForm,
                                 'formset':formset,
                                 'similar_users': similar_users},
                                 context_instance=RequestContext(request))
+
+
+
+#TODO Need to use API
 
 def user_detail2(request):
     user = request.user
@@ -125,17 +135,19 @@ def user_detail2(request):
               except Image.DoesNotExist:
                  message = 'does not exit'
                  
+                 
+    workspace_pictures = userProfile.get_pictures(6)
  
     
     return render_to_response('colorific/user_detail.html',
                               { 'userProfile': userProfile, 
+                                'workspace_pictures': workspace_pictures,
                                 'user_count': user_count,
                                 'toolboxes': get_all_toolboxes(userProfile.user.username),
                                 'toolBoxForm': toolBoxForm,
                                 'formset':formset,
                                 'similar_users': similar_users},
                                 context_instance=RequestContext(request))
-
 
 def signup_user(request):
   userForm = RegistrationForm()
@@ -245,3 +257,30 @@ def edit_user(request):
   return render_to_response('colorific/edit_user.html', {'message': message, 'editUserForm': editUserForm,'userProfile':userProfile },
         context_instance=RequestContext(request))
     
+
+def people_by_tag(request, tag = None):
+  
+  #tag is a slug
+  if tag:
+    limit_people = 50
+    url = "%s?tag=%s&limit=%d" % (APIConfig.USERPROFILE_API_URL, tag, limit_people)
+    res = urllib.urlopen(url)
+    people = simplejson.load(res)
+    
+    return render_to_response('colorific/people_by_tag.html',
+                                { 'people': people,
+                                  'tag': tag},
+                                  context_instance=RequestContext(request)) 
+  else:
+    
+    tags = UserProfile.tags.all(); 
+    tag_userprofile_map = {}
+    limit_people = 10  
+    
+    for tag in tags:
+      tag_userprofile_map[tag] = UserProfile.objects.filter(tags__name__in=[tag])[:limit_people]
+      
+    return render_to_response('colorific/people_by_tag.html',
+                               { 'tag_userprofile_map': tag_userprofile_map},
+                               context_instance=RequestContext(request))                         
+

@@ -4,6 +4,5 @@ settings_local.py
 .production_settings
 .pydevproject
 .tmp*.*
-/media_rsc/images/icons_big/*
-/media_rsc/images/uploads/*
+/media_rsc/uploads/images/profiles/*
 private_remote.sh

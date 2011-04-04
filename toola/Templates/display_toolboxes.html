@@ -1,0 +1,16 @@
+{% for toolBox in toolBoxes %}
+          <div id="toolBoxModule">
+             <a href="/colorific/edit_toolbox/{{toolBox.id}}">
+             	  <span class="toolBoxTitleSmall">{{toolBox.toolbox_name}}</span>
+			 </a>
+              <br />
+              {% for tool in toolBox.tools.all %}
+                  {{tool.tool_name}}
+                  <br />
+			  {% empty %}
+			      No toolboxes
+              {% endfor %}
+			  
+              <br />        
+          </div>  
+{% endfor %} 

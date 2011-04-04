@@ -1,0 +1,45 @@
+TODOs BY PAGE
+
+user_home (new page)
+--------------------
+
+-Show users with similar tags, tools, toolboxes 
+
+user_detail (public)
+---------------------
+-Make profile pic much smaller
+-Graceful degradation of facebook/twitter
+-When click on tags show other users with same tags.
+-Page for showing all pictures for a user
+-Fix toolsbox display to cut content on server side
+-Implement toolbox paging
+-When displaying tools in a toolbox, should I keep the link or just make it plain text?
+
+
+user_detail (private)
+---------------------
+
+
+toolbox_index (public)
+----------------------
+
+
+toolbox_detail (public)
+-----------------------
+
+-Fix
+
+toolbox_detail (private)
+-----------------------
+
+-Add/Remove a tool
+
+
+MISC TODOs
+-download font instead of pulling it from google
+-add autofocus to all fields
+-find better way to organize the urls
+-find better way to organize the views, models and forms
+-read and fix TextField according to http://docs.djangoproject.com/en/dev/ref/databases/#mysql-collation
+-add blueprint to our repository
+-Peak at how to reimplement registration from socialregistration forms

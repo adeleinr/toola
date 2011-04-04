@@ -1,0 +1,43 @@
+#toolBoxModuleEdit{
+    margin-top:10px;
+
+}
+
+#toolBoxModuleEdit a{
+    background-color: #E3E9FF;
+    color: #19558D;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding:6px;
+    margin-top:5px;
+    margin-bottom:5px;
+    white-space:nowrap;
+    text-decoration:none;
+    line-height:3.0;   
+}
+#toolBoxModuleEdit a:hover{
+    color: #FE2E94;   
+}
+#toolBoxModuleEdit h1{   
+    font-size: 30px;
+}
+
+#toolEntry{
+	border-bottom: 1px solid #DDDDDD;
+	font-size: 1em;
+}
+#toolEntry h1{
+    font-size: 14px;
+}
+#toolEntry h2{
+    font-size: 12px;;
+}
+#toolMeta{
+	padding-top: 5px;
+}
+#toolMeta a{
+    font-size: 0.8em;
+}
+#toolNote{
+	padding-top: 10px;
+}

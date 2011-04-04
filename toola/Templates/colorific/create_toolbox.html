@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="/media_rsc/css/create_toolbox.css" type="text/css" media="screen,projection" />
+    <link type="text/css" href="/media_rsc/js/jquery/css/redmond/jquery-ui-1.8.4.custom.css" rel="stylesheet" /> 
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>    
+{% endblock %}
+{% block title %}Create Toolbox{% endblock %}
+
+{% block content %}
+{{message}}
+
+<div id="main2" class="span-24 last">
+	<div id="userToolModule" class="span-6">
+		<h1>Your Setup</h1>
+        {% include "display_toolboxes.html" %}
+
+	</div>
+	<div id="createToolModule" class="span-12">
+		<form method="post" action =".">
+	        <div id="create" class="span-10 last">
+		            <h1>New Tool Set</h1>
+					<table>
+						<tr>
+							<td> 
+							     <label for="id_toolbox_name">
+                                    ToolBox Name.
+									<br/> 
+									<span class="form-helper">
+									 {{ toolBoxForm.toolbox_name.help_text }}
+									 </span>
+                                 </label>
+								 <br />
+								 {{ toolBoxForm.toolbox_name }}
+						    </td>
+							<td>
+				                {% if toolBoxForm.toolbox_name.errors %}
+				                <span class="error">
+				                    {{toolBoxForm.toolbox_name.errors|join:", " }}
+				                </span>
+				                {% endif %}
+				            </td>
+						</tr>
+						
+						<tr>
+                            <td>
+                            	<label for="id_tools">
+			                        Tools.
+									<br/>
+									<span class="form-helper">
+										 {{ toolBoxForm.tools.help_text }}
+									</span>
+			                    </label>
+                                 <br/>
+								 <div class="ui-widget">
+                                    {{ toolBoxForm.tools }} 
+								 </div> 
+                            </td>
+                            <td>
+                            	 {% if toolBoxForm.tools.errors %}
+                                <span class="error">
+                                    {{toolBoxForm.tools.errors|join:", " }}
+                                </span>
+                                {% endif %}
+                            </td>
+                        </tr>
+					   
+					</table>
+					<input type = "submit" name="submit" value="Save" />
+					
+			</div>
+		    <hr/>
+			<div id="edit" class ="span-10 last">
+		    	<h1>Newest ToolBox</h1>
+				 {% include "display_toolbox.html" %}
+		    </div>
+		 </form>		
+	</div>
+	
+	<div id="userImageModule" class="span-5 last">
+		<img src="/media_rsc/images/khoi_medium.png"/>
+		<h1>{{userProfile.user.first_name}}</h1>
+	</div>
+	  
+	
+</div>
+
+<script type="text/javascript">
+$(function() {
+                
+    function split(val) {
+        return val.split(/,\s*/);
+    }
+    function extractLast(term) {
+        return split(term).pop();
+    }
+    
+    $("#id_tools").autocomplete({
+        minLength: 1,
+    		delay: 0,
+        source: function(request, response) {
+            $.getJSON(
+              "/colorific/get_suggestions/",
+              {term : extractLast(request.term)},
+               response);
+        },
+        search: function() {
+            // custom minLength
+            var term = extractLast(this.value);
+            if (term.length < 2) {
+                return false;
+            }
+        },
+        focus: function() {
+            // prevent value inserted on focus
+            return false;
+        },
+        select: function(event, ui) {
+            var terms = split( this.value );
+            // remove the current input
+            terms.pop();
+            // add the selected item
+            terms.push( ui.item.value );
+            // add placeholder to get the comma-and-space at the end
+            this.value = terms.join(", ");
+            return false;
+        },
+    });
+});
+</script>
+
+{% endblock %}

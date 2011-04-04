@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/print.css" type="text/css" media="print" />
     <!--[if IE]><link rel="stylesheet" href="/media_rsc/css/blueprint-css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif] --> 
     <link rel="stylesheet" href="/media_rsc/css/global.lib.css?{% now "U" %}" type="text/css" media="screen,projection" />
-    {% block css %}
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+		{% block css %}
     {% endblock %}
   </head>
   <body>
@@ -25,7 +26,7 @@
             <li><a href="/colorific/tools/">#Tools</a></li>
             <li><a href="/colorific/people/">@People</a></li>
             {% if request.user.username %}
-            <li><a href="/colorific/create_toolbox/" >Add Toolbox</a></li>
+            <li><a href="/colorific/people_by_tag/" >People Tags</a></li>
             <li><a href="/colorific/user_toolbox_list/" >MyToolboxes</a></li>
 						<li><a href="/colorific/user_detail/{{request.user.username}}">Me</a></li>
 							{% if request.facebook.uid %}
@@ -40,11 +41,13 @@
             
           </ul>
         </div>
+				<!--
         <div class="ui-widget searchModule span-4 last">
         	<form method="get" action="/colorific/search">
         		<input type="text" name="q" id="id_search_term" maxlength="50" placeholder="Find a topic" />
           </form>
 				</div>
+				-->
       </div>
       <!-- End header -->
     			
@@ -64,16 +67,13 @@
     </div>
 
     {% load facebook_tags %}
-    {% facebook_js %}		
-    <script src="/media_rsc/js/jquery/js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="/media_rsc/js/jquery/js/jquery-ui-1.8.4.custom.min.js"></script>
-    <script src="/media_rsc/js/base.js"></script>
+    {% facebook_js %} 
 		<!-- Google Analytics -->
 		<script type="text/javascript">
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 		</script>
-		<!-- end of Google Analytics --> 
+		<!-- end of Google Analytics -->
     {% block js %}
 		{% endblock %}
   </body>

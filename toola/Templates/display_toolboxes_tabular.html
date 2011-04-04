@@ -1,0 +1,19 @@
+<div id="toolboxes">
+{% for toolBox in toolboxes %}
+	<div class="toolBoxModuleTabular span-14 last">
+	    <div id="stats" class="span-2">
+	    	100
+	      <br/>
+	      TIGS
+	    </div>
+	    <div id="toolbox" class="span-11 last">
+	      <span class="toolBoxTitleSmall">{{toolBox.toolbox_name}}</span>
+	      <div>
+	        {% for tool in toolBox.tools.all %}
+	          {{tool.tool_name}}{% if not forloop.last %},{% endif %}
+	        {% endfor %}
+	      </div>
+	    </div>     
+	</div>  
+{% endfor %}
+</div>

@@ -1,0 +1,2 @@
+127.0.0.1 -  -  [02/04/2011:02:00:46 +0000] "POST /solr/update/?commit=true HTTP/1.1" 200 150 
+127.0.0.1 -  -  [02/04/2011:02:00:48 +0000] "POST /solr/update/?commit=true HTTP/1.1" 200 149 

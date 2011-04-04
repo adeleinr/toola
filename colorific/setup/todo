@@ -7,7 +7,6 @@ user_home (new page)
 
 user_detail (public)
 ---------------------
--Make profile pic much smaller
 -Graceful degradation of facebook/twitter
 -When click on tags show other users with same tags.
 -Page for showing all pictures for a user
@@ -22,12 +21,12 @@ user_detail (private)
 
 toolbox_index (public)
 ----------------------
+-Fix search, make it case insensitive
 
 
 toolbox_detail (public)
 -----------------------
 
--Fix
 
 toolbox_detail (private)
 -----------------------

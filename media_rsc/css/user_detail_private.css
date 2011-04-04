@@ -11,3 +11,69 @@ div.title {
 	height: 120px;
 	overflow:hidden;
 }
+
+#userToolboxModule{
+
+  margin-top:-20px;
+  font-size: 12px;
+
+}
+
+#userInfoModule{
+
+  margin-top:-10px;
+}
+
+#setup-pics{
+	margin-bottom: 10px;
+	-moz-border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -webkit-box-shadow:#F0F0F0  -2px 0px 6px -1px;
+  -moz-box-shadow:#F0F0F0  -2px 0px 6px -1px;
+}
+
+#imageUpload-form{  
+  padding: 0px 10px 5px 15px;
+	 -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  font-size: 20px;
+
+}
+
+#imageUpload-fields{
+  margin-left:0px;
+
+}
+
+#show-pics{
+  margin-bottom: 5px;
+	padding: 5px 10px 10px 15px;
+}
+
+#show-pics img{
+  border: 1px solid #E0E0E0;
+  padding: 2px;
+}
+
+
+#add-toolbox{
+  margin-bottom: 15px;
+	-moz-border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -webkit-box-shadow:#F0F0F0  -2px 0px 6px -1px;
+  -moz-box-shadow:#F0F0F0  -2px 0px 6px -1px;
+}
+
+#add-toolbox-form{
+  padding: 10px 10px 10px 15px;
+
+}
+
+#list-toolboxes{
+  -moz-border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -webkit-box-shadow:#F0F0F0  -2px 0px 6px -1px;
+  -moz-box-shadow:#F0F0F0  -2px 0px 6px -1px;
+
+}
+

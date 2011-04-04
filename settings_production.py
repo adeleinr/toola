@@ -4,6 +4,7 @@ from settings import HOSTNAME
 
 HOST_IP = '184.106.152.183'
 
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 

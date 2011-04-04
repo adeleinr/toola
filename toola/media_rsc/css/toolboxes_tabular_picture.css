@@ -1,0 +1,73 @@
+#toolboxTab{
+    background-color: #ffffff;
+    height: 100px;
+    border-bottom: 1px solid #EEF0F3;
+    padding-top: 10px;
+    font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif
+}
+
+#toolboxTab:hover{
+    background-color: #EEF0F3;
+}
+
+#toolboxTab ul {
+  height:39px;
+  list-style:none outside none;
+  margin-bottom:5px;
+  margin-top:15px;
+  overflow:hidden;
+  padding-left: 0px;
+}
+
+#toolboxTab ul li{
+  padding-left: 1px;  
+  
+}
+
+#toolboxTab h5{
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+#userPicture{
+    margin-left: 10px;
+    margin-top:10px;
+}
+#score{
+    text-align: center;
+    font-size: 12px;
+    color: #85898F;
+    margin-top: 6px;
+    padding-left: 0px;
+}
+#scoreNumber{
+    font-size: 20px;
+    color: #85898F;
+}
+
+#tools{
+    margin-right: 0px;
+}
+
+#tools li{
+    display: inline;
+    padding-right: 5px;
+}
+#tools a{
+    text-decoration: none;
+}
+
+#author{
+    color: #85898F
+}
+
+#social-links{
+	margin-left: 400px;
+    color: #85898F
+	padding-bottom: 5px;
+}
+#thumbUp{
+    float:right;
+    margin-left:0px;
+    padding-left:0px;
+}

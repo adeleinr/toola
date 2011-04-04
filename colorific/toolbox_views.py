@@ -19,15 +19,17 @@ def toolbox_index(request):
   toolboxes = simplejson.load(res)
   
   people = ''
+  limit_people = 6
   user = request.user
+  
   # If the user is authenticated we do not want
-  # to show the user as part of the people
-  # cloud
+  # to show the user as part of the people cloud
   if user.is_authenticated() : 
     userProfile = user.get_profile()  
-    url = "%s?exclude=%d" % (APIConfig.USERPROFILE_API_URL, userProfile.id)
+    url = "%s?exclude=%d&limit=%d" % (APIConfig.USERPROFILE_API_URL, userProfile.id, limit_people)
     res = urllib.urlopen(url)
-  # Else get all the users
+   
+  # Else get all the users 
   else:
     res = urllib.urlopen(APIConfig.USERPROFILE_API_URL)
     

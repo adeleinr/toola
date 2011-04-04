@@ -1,0 +1,2039 @@
+[184.106.152.183] Executing task 'setup'
+[184.106.152.183] sudo: apt-get install -y python-setuptools
+[184.106.152.183] out: Reading package lists...
+[184.106.152.183] out: Building dependency tree...
+[184.106.152.183] out: Reading state information...
+[184.106.152.183] out: python-setuptools is already the newest version.
+[184.106.152.183] out: 0 upgraded, 0 newly installed, 0 to remove and 63 not upgraded.
+[184.106.152.183] sudo: easy_install pip
+[184.106.152.183] out: Searching for pip
+[184.106.152.183] out: Best match: pip 0.8.1
+[184.106.152.183] out: Processing pip-0.8.1-py2.6.egg
+[184.106.152.183] out: pip 0.8.1 is already the active version in easy-install.pth
+[184.106.152.183] out: Installing pip script to /usr/local/bin
+[184.106.152.183] out: Installing pip-2.6 script to /usr/local/bin
+[184.106.152.183] out: 
+[184.106.152.183] out: Using /usr/local/lib/python2.6/dist-packages/pip-0.8.1-py2.6.egg
+[184.106.152.183] out: Processing dependencies for pip
+[184.106.152.183] out: Finished processing dependencies for pip
+[184.106.152.183] sudo: pip install virtualenv
+[184.106.152.183] out: Requirement already satisfied (use --upgrade to upgrade): virtualenv in /usr/local/lib/python2.6/dist-packages
+[184.106.152.183] out: Cleaning up...
+[184.106.152.183] sudo: apt-get -y install git-core
+[184.106.152.183] out: Reading package lists...
+[184.106.152.183] out: Building dependency tree...
+[184.106.152.183] out: Reading state information...
+[184.106.152.183] out: git-core is already the newest version.
+[184.106.152.183] out: 0 upgraded, 0 newly installed, 0 to remove and 63 not upgraded.
+[184.106.152.183] sudo: aptitude install -y apache2
+[184.106.152.183] out: Reading package lists...
+[184.106.152.183] out: Building dependency tree...
+[184.106.152.183] out: Reading state information...
+[184.106.152.183] out: Reading extended state information...
+[184.106.152.183] out: Initializing package states...
+[184.106.152.183] out: The following packages will be upgraded:
+[184.106.152.183] out:   apache2 apache2-mpm-worker apache2.2-bin apache2.2-common libssl0.9.8 
+[184.106.152.183] out: 5 packages upgraded, 0 newly installed, 0 to remove and 58 not upgraded.
+[184.106.152.183] out: Need to get 979kB/4003kB of archives. After unpacking 4096B will be used.
+[184.106.152.183] out: Writing extended state information...
+[184.106.152.183] out: Err http://archive.ubuntu.com/ubuntu/ lucid-updates/main libssl0.9.8 0.9.8k-7ubuntu8.3
+[184.106.152.183] out:   404  Not Found [IP: 91.189.92.170 80]
+[184.106.152.183] out: Err http://security.ubuntu.com/ubuntu/ lucid-security/main libssl0.9.8 0.9.8k-7ubuntu8.3
+[184.106.152.183] out:   404  Not Found [IP: 91.189.92.166 80]
+[184.106.152.183] out: Reading package lists...
+[184.106.152.183] out: Building dependency tree...
+[184.106.152.183] out: Reading state information...
+[184.106.152.183] out: Reading extended state information...
+[184.106.152.183] out: Initializing package states...
+[184.106.152.183] sudo: aptitude install -y libapache2-mod-wsgi
+[184.106.152.183] out: Reading package lists...
+[184.106.152.183] out: Building dependency tree...
+[184.106.152.183] out: Reading state information...
+[184.106.152.183] out: Reading extended state information...
+[184.106.152.183] out: Initializing package states...
+[184.106.152.183] out: No packages will be installed, upgraded, or removed.
+[184.106.152.183] out: 0 packages upgraded, 0 newly installed, 0 to remove and 63 not upgraded.
+[184.106.152.183] out: Need to get 0B of archives. After unpacking 0B will be used.
+[184.106.152.183] out: Writing extended state information...
+[184.106.152.183] out: Reading package lists...
+[184.106.152.183] out: Building dependency tree...
+[184.106.152.183] out: Reading state information...
+[184.106.152.183] out: Reading extended state information...
+[184.106.152.183] out: Initializing package states...
+[184.106.152.183] sudo: apt-get install libjpeg-dev zlib1g-dev
+[184.106.152.183] out: Reading package lists...
+[184.106.152.183] out: Building dependency tree...
+[184.106.152.183] out: Reading state information...
+[184.106.152.183] out: Note, selecting libjpeg62-dev instead of libjpeg-dev
+[184.106.152.183] out: libjpeg62-dev is already the newest version.
+[184.106.152.183] out: zlib1g-dev is already the newest version.
+[184.106.152.183] out: 0 upgraded, 0 newly installed, 0 to remove and 63 not upgraded.
+[184.106.152.183] sudo: cd /etc/apache2/sites-available/; a2dissite default;
+[184.106.152.183] out: Site default already disabled
+[184.106.152.183] sudo: mkdir -p /web/webme; cd /web/webme; virtualenv .;source ./bin/activate
+[184.106.152.183] out: New python executable in ./bin/python
+[184.106.152.183] out: Installing setuptools............done.
+[184.106.152.183] sudo: cd /web/webme; mkdir releases; mkdir shared; mkdir packages;
+[184.106.152.183] sudo: chown webme -R /web
+[184.106.152.183] sudo: chgrp webme -R /web
+[localhost] run: git archive --format=tar master | gzip > 20110403222018.tar.gz
+[184.106.152.183] sudo: mkdir -p /web/webme/releases/20110403222018/webme
+[184.106.152.183] put: 20110403222018.tar.gz -> /tmp/20110403222018.tar.gz
+[184.106.152.183] sudo: mv /tmp/20110403222018.tar.gz /web/webme/packages/
+[184.106.152.183] sudo: cd /web/webme/releases/20110403222018/webme && tar zxf ../../../packages/20110403222018.tar.gz
+[184.106.152.183] sudo: chown webme -R /web/webme/releases/20110403222018/webme
+[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/20110403222018/webme
+[localhost] run: rm 20110403222018.tar.gz
+[184.106.152.183] sudo: cd /web/webme; pip install -E . -r /web/webme/releases/20110403222018/webme/requirements.txt
+[184.106.152.183] out: Downloading/unpacking django-haystack==1.1.0 (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 7))
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb): 
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   0%  4.1Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   1%  8.2Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   2%  12Kb 
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   2%  16Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   3%  20Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   4%  24Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   4%  28Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   5%  32Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   6%  36Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   6%  40Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   7%  45Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   8%  49Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   8%  53Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):   9%  57Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  10%  61Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  10%  65Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  11%  69Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  12%  73Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  12%  77Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  13%  81Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  14%  86Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  14%  90Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  15%  94Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  16%  98Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  16%  102Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  17%  106Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  18%  110Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  18%  114Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  19%  118Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  20%  122Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  20%  126Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  21%  131Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  22%  135Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  22%  139Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  23%  143Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  24%  147Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  24%  151Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  25%  155Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  26%  159Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  26%  163Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  27%  167Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  28%  172Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  28%  176Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  29%  180Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  30%  184Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  30%  188Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  31%  192Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  32%  196Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  32%  200Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  33%  204Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  34%  208Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  34%  212Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  35%  217Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  36%  221Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  36%  225Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  37%  229Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  38%  233Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  38%  237Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  39%  241Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  40%  245Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  40%  249Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  41%  253Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  42%  258Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  42%  262Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  43%  266Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  44%  270Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  44%  274Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  45%  278Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  46%  282Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  46%  286Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  47%  290Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  48%  294Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  49%  299Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  49%  303Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  50%  307Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  51%  311Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  51%  315Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  52%  319Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  53%  323Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  53%  327Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  54%  331Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  55%  335Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  55%  339Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  56%  344Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  57%  348Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  57%  352Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  58%  356Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  59%  360Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  59%  364Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  60%  368Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  61%  372Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  61%  376Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  62%  380Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  63%  385Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  63%  389Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  64%  393Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  65%  397Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  65%  401Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  66%  405Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  67%  409Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  67%  413Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  68%  417Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  69%  421Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  69%  425Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  70%  430Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  71%  434Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  71%  438Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  72%  442Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  73%  446Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  73%  450Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  74%  454Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  75%  458Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  75%  462Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  76%  466Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  77%  471Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  77%  475Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  78%  479Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  79%  483Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  79%  487Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  80%  491Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  81%  495Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  81%  499Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  82%  503Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  83%  507Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  83%  512Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  84%  516Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  85%  520Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  85%  524Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  86%  528Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  87%  532Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  87%  536Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  88%  540Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  89%  544Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  89%  548Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  90%  552Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  91%  557Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  91%  561Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  92%  565Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  93%  569Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  93%  573Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  94%  577Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  95%  581Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  95%  585Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  96%  589Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  97%  593Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  98%  598Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  98%  602Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):  99%  606Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb): 100%  610Kb
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb):            
+[184.106.152.183] out:   Downloading django-haystack-1.1.0.tar.gz (610Kb): 610Kb downloaded
+[184.106.152.183] out:   Running setup.py egg_info for package django-haystack
+[184.106.152.183] out: Downloading/unpacking pil (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 6))
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb): 
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   0%  4.1Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   1%  8.2Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   2%  12Kb 
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   3%  16Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   4%  20Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   4%  24Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   5%  28Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   6%  32Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   7%  36Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   8%  40Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   8%  45Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):   9%  49Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  10%  53Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  11%  57Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  12%  61Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  12%  65Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  13%  69Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  14%  73Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  15%  77Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  16%  81Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  16%  86Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  17%  90Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  18%  94Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  19%  98Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  20%  102Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  21%  106Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  21%  110Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  22%  114Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  23%  118Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  24%  122Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  25%  126Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  25%  131Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  26%  135Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  27%  139Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  28%  143Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  29%  147Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  29%  151Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  30%  155Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  31%  159Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  32%  163Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  33%  167Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  33%  172Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  34%  176Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  35%  180Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  36%  184Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  37%  188Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  38%  192Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  38%  196Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  39%  200Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  40%  204Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  41%  208Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  42%  212Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  42%  217Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  43%  221Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  44%  225Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  45%  229Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  46%  233Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  46%  237Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  47%  241Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  48%  245Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  49%  249Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  50%  253Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  50%  258Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  51%  262Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  52%  266Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  53%  270Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  54%  274Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  55%  278Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  55%  282Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  56%  286Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  57%  290Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  58%  294Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  59%  299Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  59%  303Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  60%  307Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  61%  311Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  62%  315Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  63%  319Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  63%  323Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  64%  327Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  65%  331Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  66%  335Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  67%  339Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  67%  344Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  68%  348Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  69%  352Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  70%  356Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  71%  360Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  71%  364Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  72%  368Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  73%  372Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  74%  376Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  75%  380Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  76%  385Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  76%  389Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  77%  393Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  78%  397Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  79%  401Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  80%  405Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  80%  409Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  81%  413Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  82%  417Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  83%  421Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  84%  425Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  84%  430Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  85%  434Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  86%  438Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  87%  442Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  88%  446Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  88%  450Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  89%  454Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  90%  458Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  91%  462Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  92%  466Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  93%  471Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  93%  475Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  94%  479Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  95%  483Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  96%  487Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  97%  491Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  97%  495Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  98%  499Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):  99%  503Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb): 100%  506Kb
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb):            
+[184.106.152.183] out:   Downloading PIL-1.1.7.tar.gz (506Kb): 506Kb downloaded
+[184.106.152.183] out:   Running setup.py egg_info for package pil
+[184.106.152.183] out:     WARNING: '' not a valid package name; please use only.-separated package names in setup.py
+[184.106.152.183] out:     WARNING: '' not a valid package name; please use only.-separated package names in setup.py
+[184.106.152.183] out: Obtaining socialregistration from git+git://github.com/flashingpumpkin/django-socialregistration.git#egg=socialregistration (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 10))
+[184.106.152.183] out:   Cloning git://github.com/flashingpumpkin/django-socialregistration.git to ./src/socialregistration
+[184.106.152.183] out:   Running setup.py egg_info for package socialregistration
+[184.106.152.183] out: Downloading/unpacking Django==1.1.1 (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 1))
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb): 
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  4.1Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  8.2Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  12Kb 
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  16Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  20Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  24Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  28Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  32Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  36Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  40Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  45Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  49Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   0%  53Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  57Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  61Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  65Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  69Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  73Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  77Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  81Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  86Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  90Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  94Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  98Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  102Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  106Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   1%  110Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  114Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  118Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  122Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  126Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  131Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  135Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  139Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  143Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  147Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  151Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  155Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  159Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  163Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   2%  167Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  172Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  176Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  180Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  184Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  188Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  192Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  196Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  200Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  204Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  208Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  212Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  217Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   3%  221Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  225Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  229Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  233Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  237Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  241Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  245Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  249Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  253Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  258Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  262Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  266Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  270Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  274Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   4%  278Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  282Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  286Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  290Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  294Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  299Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  303Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  307Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  311Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  315Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  319Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  323Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  327Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  331Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   5%  335Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  339Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  344Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  348Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  352Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  356Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  360Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  364Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  368Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  372Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  376Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  380Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  385Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   6%  389Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  393Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  397Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  401Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  405Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  409Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  413Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  417Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  421Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  425Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  430Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  434Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  438Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  442Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   7%  446Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  450Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  454Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  458Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  462Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  466Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  471Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  475Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  479Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  483Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  487Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  491Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  495Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  499Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   8%  503Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  507Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  512Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  516Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  520Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  524Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  528Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  532Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  536Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  540Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  544Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  548Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  552Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  557Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):   9%  561Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  565Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  569Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  573Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  577Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  581Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  585Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  589Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  593Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  598Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  602Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  606Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  610Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  10%  614Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  618Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  622Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  626Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  630Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  634Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  638Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  643Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  647Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  651Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  655Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  659Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  663Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  667Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  11%  671Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  675Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  679Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  684Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  688Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  692Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  696Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  700Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  704Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  708Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  712Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  716Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  720Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  724Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  12%  729Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  733Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  737Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  741Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  745Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  749Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  753Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  757Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  761Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  765Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  770Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  774Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  778Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  13%  782Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  786Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  790Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  794Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  798Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  802Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  806Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  811Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  815Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  819Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  823Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  827Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  831Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  835Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  14%  839Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  843Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  847Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  851Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  856Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  860Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  864Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  868Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  872Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  876Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  880Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  884Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  888Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  892Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  15%  897Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  901Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  905Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  909Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  913Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  917Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  921Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  925Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  929Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  933Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  937Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  942Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  946Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  950Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  16%  954Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  958Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  962Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  966Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  970Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  974Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  978Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  983Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  987Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  991Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  995Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  999Kb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  17%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  18%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  19%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  20%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  21%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  22%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  23%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  24%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  25%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  26%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  27%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  28%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  29%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  30%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  31%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  32%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  33%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  1.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  34%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  35%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  36%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  37%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  38%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  39%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  40%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  41%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  42%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  43%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  44%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  45%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  46%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  47%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  48%  2.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  49%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  50%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  51%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  2.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  52%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  53%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  54%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  55%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  56%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  57%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  58%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  59%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  60%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  61%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  62%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  63%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  64%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  65%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  66%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  67%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  68%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  69%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  3.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  70%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  71%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  72%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  73%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  74%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  75%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  76%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  77%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  78%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  79%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  80%  4.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  81%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  82%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  83%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.7Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  84%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  85%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.8Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  86%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  87%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  4.9Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  88%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.0Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  89%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  90%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.1Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  91%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  92%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.2Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  93%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  94%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.3Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  95%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  96%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.4Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  97%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.5Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  98%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):  99%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb): 100%  5.6Mb
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb):            
+[184.106.152.183] out:   Downloading Django-1.1.1.tar.gz (5.6Mb): 5.6Mb downloaded
+[184.106.152.183] out:   Running setup.py egg_info for package Django
+[184.106.152.183] out: Requirement already satisfied (use --upgrade to upgrade): django-extensions in /usr/local/lib/python2.6/dist-packages (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 2))
+[184.106.152.183] out: Obtaining debug-toolbar from git+git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 12))
+[184.106.152.183] out:   Cloning git://github.com/robhudson/django-debug-toolbar.git to ./src/debug-toolbar
+[184.106.152.183] out:   Running setup.py egg_info for package debug-toolbar
+[184.106.152.183] out: Downloading/unpacking django-taggit (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 3))
+[184.106.152.183] out:   Downloading django-taggit-0.9.3.tar.gz
+[184.106.152.183] out:   Running setup.py egg_info for package django-taggit
+[184.106.152.183] out: Obtaining facebook from git+git://github.com/facebook/python-sdk#egg=facebook (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 11))
+[184.106.152.183] out:   Cloning git://github.com/facebook/python-sdk to ./src/facebook
+[184.106.152.183] out:   Running setup.py egg_info for package facebook
+[184.106.152.183] out: Downloading/unpacking sorl-thumbnail==3.2.5 (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 4))
+[184.106.152.183] out:   Downloading sorl-thumbnail-3.2.5.tar.gz
+[184.106.152.183] out:   Running setup.py egg_info for package sorl-thumbnail
+[184.106.152.183] out: Obtaining pysorl from git+git://github.com/toastdriven/pysolr.git#egg=pysorl # 2.0.13 (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 14))
+[184.106.152.183] out:   Cloning git://github.com/toastdriven/pysolr.git to ./src/pysorl
+[184.106.152.183] out:   Running setup.py egg_info for package pysorl
+[184.106.152.183] out: Downloading/unpacking django-piston (from -r /web/webme/releases/20110403222018/webme/requirements.txt (line 5))
+[184.106.152.183] out:   Downloading django-piston-0.2.2.tar.gz
+[184.106.152.183] out:   Running setup.py egg_info for package django-piston
+[184.106.152.183] out: Downloading/unpacking oauth2 (from socialregistration->-r /web/webme/releases/20110403222018/webme/requirements.txt (line 10))
+[184.106.152.183] out:   Downloading oauth2-1.5.167.tar.gz
+[184.106.152.183] out:   Running setup.py egg_info for package oauth2
+[184.106.152.183] out: Downloading/unpacking python-openid (from socialregistration->-r /web/webme/releases/20110403222018/webme/requirements.txt (line 10))
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb): 
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   1%  4.1Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   2%  8.2Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   3%  12Kb 
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   4%  16Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   5%  20Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   6%  24Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   8%  28Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):   9%  32Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  10%  36Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  11%  40Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  12%  45Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  13%  49Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  14%  53Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  16%  57Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  17%  61Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  18%  65Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  19%  69Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  20%  73Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  21%  77Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  22%  81Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  24%  86Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  25%  90Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  26%  94Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  27%  98Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  28%  102Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  29%  106Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  30%  110Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  32%  114Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  33%  118Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  34%  122Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  35%  126Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  36%  131Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  37%  135Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  38%  139Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  40%  143Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  41%  147Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  42%  151Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  43%  155Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  44%  159Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  45%  163Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  46%  167Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  48%  172Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  49%  176Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  50%  180Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  51%  184Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  52%  188Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  53%  192Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  54%  196Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  56%  200Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  57%  204Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  58%  208Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  59%  212Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  60%  217Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  61%  221Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  62%  225Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  64%  229Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  65%  233Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  66%  237Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  67%  241Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  68%  245Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  69%  249Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  70%  253Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  72%  258Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  73%  262Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  74%  266Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  75%  270Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  76%  274Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  77%  278Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  78%  282Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  80%  286Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  81%  290Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  82%  294Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  83%  299Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  84%  303Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  85%  307Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  86%  311Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  88%  315Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  89%  319Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  90%  323Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  91%  327Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  92%  331Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  93%  335Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  94%  339Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  96%  344Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  97%  348Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  98%  352Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):  99%  356Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb): 100%  358Kb
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb):            
+[184.106.152.183] out:   Downloading python-openid-2.2.5.zip (358Kb): 358Kb downloaded
+[184.106.152.183] out:   Running setup.py egg_info for package python-openid
+[184.106.152.183] out:     warning: no files found matching 'CHANGELOG'
+[184.106.152.183] out:     warning: no files found matching '*.css' under directory 'doc'
+[184.106.152.183] out:     warning: no files found matching '*.html' under directory 'doc'
+[184.106.152.183] out: Downloading/unpacking httplib2 (from oauth2->socialregistration->-r /web/webme/releases/20110403222018/webme/requirements.txt (line 10))
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb): 
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):   7%  4.1Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  15%  8.2Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  22%  12Kb 
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  30%  16Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  38%  20Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  45%  24Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  53%  28Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  60%  32Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  68%  36Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  76%  40Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  83%  45Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  91%  49Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):  98%  53Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb): 100%  53Kb
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb):           
+[184.106.152.183] out:   Downloading httplib2-0.6.0.tar.gz (53Kb): 53Kb downloaded
+[184.106.152.183] out:   Running setup.py egg_info for package httplib2
+[184.106.152.183] out: Installing collected packages: debug-toolbar, Django, django-haystack, django-piston, django-taggit, facebook, httplib2, oauth2, pil, pysorl, python-openid, socialregistration, sorl-thumbnail
+[184.106.152.183] out:   Running setup.py develop for debug-toolbar
+[184.106.152.183] out:     Creating /web/webme/lib/python2.6/site-packages/django-debug-toolbar.egg-link (link to .)
+[184.106.152.183] out:     Adding django-debug-toolbar 0.8.4 to easy-install.pth file
+[184.106.152.183] out:     
+[184.106.152.183] out:     Installed /web/webme/src/debug-toolbar
+[184.106.152.183] out:   Running setup.py install for Django
+[184.106.152.183] out:     changing mode of build/scripts-2.6/django-admin.py from 644 to 755
+[184.106.152.183] out:     changing mode of /web/webme/bin/django-admin.py to 755
+[184.106.152.183] out:   Running setup.py install for django-haystack
+[184.106.152.183] out:   Running setup.py install for django-piston
+[184.106.152.183] out:   Running setup.py install for django-taggit
+[184.106.152.183] out:   Running setup.py develop for facebook
+[184.106.152.183] out:     Creating /web/webme/lib/python2.6/site-packages/facebook-python-sdk.egg-link (link to src)
+[184.106.152.183] out:     Adding facebook-python-sdk 0.1 to easy-install.pth file
+[184.106.152.183] out:     
+[184.106.152.183] out:     Installed /web/webme/src/facebook/src
+[184.106.152.183] out:   Running setup.py install for httplib2
+[184.106.152.183] out:   Running setup.py install for oauth2
+[184.106.152.183] out:   Running setup.py install for pil
+[184.106.152.183] out:     WARNING: '' not a valid package name; please use only.-separated package names in setup.py
+[184.106.152.183] out:     WARNING: '' not a valid package name; please use only.-separated package names in setup.py
+[184.106.152.183] out:     building '_imaging' extension
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c _imaging.c -o build/temp.linux-x86_64-2.6/_imaging.o
+[184.106.152.183] out:     _imaging.c:3017: warning: initialization from incompatible pointer type
+[184.106.152.183] out:     _imaging.c:3077: warning: initialization from incompatible pointer type
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c decode.c -o build/temp.linux-x86_64-2.6/decode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c encode.c -o build/temp.linux-x86_64-2.6/encode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c map.c -o build/temp.linux-x86_64-2.6/map.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c display.c -o build/temp.linux-x86_64-2.6/display.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c outline.c -o build/temp.linux-x86_64-2.6/outline.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c path.c -o build/temp.linux-x86_64-2.6/path.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Access.c -o build/temp.linux-x86_64-2.6/libImaging/Access.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Antialias.c -o build/temp.linux-x86_64-2.6/libImaging/Antialias.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Bands.c -o build/temp.linux-x86_64-2.6/libImaging/Bands.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/BitDecode.c -o build/temp.linux-x86_64-2.6/libImaging/BitDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Blend.c -o build/temp.linux-x86_64-2.6/libImaging/Blend.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Chops.c -o build/temp.linux-x86_64-2.6/libImaging/Chops.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Convert.c -o build/temp.linux-x86_64-2.6/libImaging/Convert.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/ConvertYCbCr.c -o build/temp.linux-x86_64-2.6/libImaging/ConvertYCbCr.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Copy.c -o build/temp.linux-x86_64-2.6/libImaging/Copy.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Crc32.c -o build/temp.linux-x86_64-2.6/libImaging/Crc32.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Crop.c -o build/temp.linux-x86_64-2.6/libImaging/Crop.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Dib.c -o build/temp.linux-x86_64-2.6/libImaging/Dib.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Draw.c -o build/temp.linux-x86_64-2.6/libImaging/Draw.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Effects.c -o build/temp.linux-x86_64-2.6/libImaging/Effects.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/EpsEncode.c -o build/temp.linux-x86_64-2.6/libImaging/EpsEncode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/File.c -o build/temp.linux-x86_64-2.6/libImaging/File.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Fill.c -o build/temp.linux-x86_64-2.6/libImaging/Fill.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Filter.c -o build/temp.linux-x86_64-2.6/libImaging/Filter.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/FliDecode.c -o build/temp.linux-x86_64-2.6/libImaging/FliDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Geometry.c -o build/temp.linux-x86_64-2.6/libImaging/Geometry.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/GetBBox.c -o build/temp.linux-x86_64-2.6/libImaging/GetBBox.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/GifDecode.c -o build/temp.linux-x86_64-2.6/libImaging/GifDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/GifEncode.c -o build/temp.linux-x86_64-2.6/libImaging/GifEncode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/HexDecode.c -o build/temp.linux-x86_64-2.6/libImaging/HexDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Histo.c -o build/temp.linux-x86_64-2.6/libImaging/Histo.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/JpegDecode.c -o build/temp.linux-x86_64-2.6/libImaging/JpegDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/JpegEncode.c -o build/temp.linux-x86_64-2.6/libImaging/JpegEncode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/LzwDecode.c -o build/temp.linux-x86_64-2.6/libImaging/LzwDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Matrix.c -o build/temp.linux-x86_64-2.6/libImaging/Matrix.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/ModeFilter.c -o build/temp.linux-x86_64-2.6/libImaging/ModeFilter.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/MspDecode.c -o build/temp.linux-x86_64-2.6/libImaging/MspDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Negative.c -o build/temp.linux-x86_64-2.6/libImaging/Negative.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Offset.c -o build/temp.linux-x86_64-2.6/libImaging/Offset.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Pack.c -o build/temp.linux-x86_64-2.6/libImaging/Pack.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/PackDecode.c -o build/temp.linux-x86_64-2.6/libImaging/PackDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Palette.c -o build/temp.linux-x86_64-2.6/libImaging/Palette.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Paste.c -o build/temp.linux-x86_64-2.6/libImaging/Paste.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Quant.c -o build/temp.linux-x86_64-2.6/libImaging/Quant.o
+[184.106.152.183] out:     libImaging/Quant.c: In function 'rehash_collide':
+[184.106.152.183] out:     libImaging/Quant.c:154: warning: cast to pointer from integer of different size
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/QuantHash.c -o build/temp.linux-x86_64-2.6/libImaging/QuantHash.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/QuantHeap.c -o build/temp.linux-x86_64-2.6/libImaging/QuantHeap.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/PcdDecode.c -o build/temp.linux-x86_64-2.6/libImaging/PcdDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/PcxDecode.c -o build/temp.linux-x86_64-2.6/libImaging/PcxDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/PcxEncode.c -o build/temp.linux-x86_64-2.6/libImaging/PcxEncode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Point.c -o build/temp.linux-x86_64-2.6/libImaging/Point.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/RankFilter.c -o build/temp.linux-x86_64-2.6/libImaging/RankFilter.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/RawDecode.c -o build/temp.linux-x86_64-2.6/libImaging/RawDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/RawEncode.c -o build/temp.linux-x86_64-2.6/libImaging/RawEncode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Storage.c -o build/temp.linux-x86_64-2.6/libImaging/Storage.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/SunRleDecode.c -o build/temp.linux-x86_64-2.6/libImaging/SunRleDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/TgaRleDecode.c -o build/temp.linux-x86_64-2.6/libImaging/TgaRleDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/Unpack.c -o build/temp.linux-x86_64-2.6/libImaging/Unpack.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/UnpackYCC.c -o build/temp.linux-x86_64-2.6/libImaging/UnpackYCC.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/UnsharpMask.c -o build/temp.linux-x86_64-2.6/libImaging/UnsharpMask.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/XbmDecode.c -o build/temp.linux-x86_64-2.6/libImaging/XbmDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/XbmEncode.c -o build/temp.linux-x86_64-2.6/libImaging/XbmEncode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/ZipDecode.c -o build/temp.linux-x86_64-2.6/libImaging/ZipDecode.o
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_LIBJPEG -DHAVE_LIBZ -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c libImaging/ZipEncode.c -o build/temp.linux-x86_64-2.6/libImaging/ZipEncode.o
+[184.106.152.183] out:     gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions build/temp.linux-x86_64-2.6/_imaging.o build/temp.linux-x86_64-2.6/decode.o build/temp.linux-x86_64-2.6/encode.o build/temp.linux-x86_64-2.6/map.o build/temp.linux-x86_64-2.6/display.o build/temp.linux-x86_64-2.6/outline.o build/temp.linux-x86_64-2.6/path.o build/temp.linux-x86_64-2.6/libImaging/Access.o build/temp.linux-x86_64-2.6/libImaging/Antialias.o build/temp.linux-x86_64-2.6/libImaging/Bands.o build/temp.linux-x86_64-2.6/libImaging/BitDecode.o build/temp.linux-x86_64-2.6/libImaging/Blend.o build/temp.linux-x86_64-2.6/libImaging/Chops.o build/temp.linux-x86_64-2.6/libImaging/Convert.o build/temp.linux-x86_64-2.6/libImaging/ConvertYCbCr.o build/temp.linux-x86_64-2.6/libImaging/Copy.o build/temp.linux-x86_64-2.6/libImaging/Crc32.o build/temp.linux-x86_64-2.6/libImaging/Crop.o build/temp.linux-x86_64-2.6/libImaging/Dib.o build/temp.linux-x86_64-2.6/libImaging/Draw.o build/temp.linux-x86_64-2.6/libImaging/Effects.o build/temp.linux-x86_64-2.6/libImaging/EpsEncode.o build/temp.linux-x86_64-2.6/libImaging/File.o build/temp.linux-x86_64-2.6/libImaging/Fill.o build/temp.linux-x86_64-2.6/libImaging/Filter.o build/temp.linux-x86_64-2.6/libImaging/FliDecode.o build/temp.linux-x86_64-2.6/libImaging/Geometry.o build/temp.linux-x86_64-2.6/libImaging/GetBBox.o build/temp.linux-x86_64-2.6/libImaging/GifDecode.o build/temp.linux-x86_64-2.6/libImaging/GifEncode.o build/temp.linux-x86_64-2.6/libImaging/HexDecode.o build/temp.linux-x86_64-2.6/libImaging/Histo.o build/temp.linux-x86_64-2.6/libImaging/JpegDecode.o build/temp.linux-x86_64-2.6/libImaging/JpegEncode.o build/temp.linux-x86_64-2.6/libImaging/LzwDecode.o build/temp.linux-x86_64-2.6/libImaging/Matrix.o build/temp.linux-x86_64-2.6/libImaging/ModeFilter.o build/temp.linux-x86_64-2.6/libImaging/MspDecode.o build/temp.linux-x86_64-2.6/libImaging/Negative.o build/temp.linux-x86_64-2.6/libImaging/Offset.o build/temp.linux-x86_64-2.6/libImaging/Pack.o build/temp.linux-x86_64-2.6/libImaging/PackDecode.o build/temp.linux-x86_64-2.6/libImaging/Palette.o build/temp.linux-x86_64-2.6/libImaging/Paste.o build/temp.linux-x86_64-2.6/libImaging/Quant.o build/temp.linux-x86_64-2.6/libImaging/QuantHash.o build/temp.linux-x86_64-2.6/libImaging/QuantHeap.o build/temp.linux-x86_64-2.6/libImaging/PcdDecode.o build/temp.linux-x86_64-2.6/libImaging/PcxDecode.o build/temp.linux-x86_64-2.6/libImaging/PcxEncode.o build/temp.linux-x86_64-2.6/libImaging/Point.o build/temp.linux-x86_64-2.6/libImaging/RankFilter.o build/temp.linux-x86_64-2.6/libImaging/RawDecode.o build/temp.linux-x86_64-2.6/libImaging/RawEncode.o build/temp.linux-x86_64-2.6/libImaging/Storage.o build/temp.linux-x86_64-2.6/libImaging/SunRleDecode.o build/temp.linux-x86_64-2.6/libImaging/TgaRleDecode.o build/temp.linux-x86_64-2.6/libImaging/Unpack.o build/temp.linux-x86_64-2.6/libImaging/UnpackYCC.o build/temp.linux-x86_64-2.6/libImaging/UnsharpMask.o build/temp.linux-x86_64-2.6/libImaging/XbmDecode.o build/temp.linux-x86_64-2.6/libImaging/XbmEncode.o build/temp.linux-x86_64-2.6/libImaging/ZipDecode.o build/temp.linux-x86_64-2.6/libImaging/ZipEncode.o -L/usr/local/lib -L/web/webme/lib -ljpeg -lz -o build/lib.linux-x86_64-2.6/_imaging.so
+[184.106.152.183] out:     building '_imagingmath' extension
+[184.106.152.183] out:     gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -IlibImaging -I/web/webme/include -I/usr/local/include -I/usr/include -I/usr/include/python2.6 -c _imagingmath.c -o build/temp.linux-x86_64-2.6/_imagingmath.o
+[184.106.152.183] out:     gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions build/temp.linux-x86_64-2.6/_imagingmath.o -L/usr/local/lib -L/web/webme/lib -o build/lib.linux-x86_64-2.6/_imagingmath.so
+[184.106.152.183] out:     --------------------------------------------------------------------
+[184.106.152.183] out:     PIL 1.1.7 SETUP SUMMARY
+[184.106.152.183] out:     --------------------------------------------------------------------
+[184.106.152.183] out:     version       1.1.7
+[184.106.152.183] out:     platform      linux2 2.6.5 (r265:79063, Apr 16 2010, 13:57:41)
+[184.106.152.183] out:                   [GCC 4.4.3]
+[184.106.152.183] out:     --------------------------------------------------------------------
+[184.106.152.183] out:     *** TKINTER support not available
+[184.106.152.183] out:     --- JPEG support available
+[184.106.152.183] out:     --- ZLIB (PNG/ZIP) support available
+[184.106.152.183] out:     *** FREETYPE2 support not available
+[184.106.152.183] out:     *** LITTLECMS support not available
+[184.106.152.183] out:     --------------------------------------------------------------------
+[184.106.152.183] out:     To add a missing option, make sure you have the required
+[184.106.152.183] out:     library, and set the corresponding ROOT variable in the
+[184.106.152.183] out:     setup.py script.
+[184.106.152.183] out:     
+[184.106.152.183] out:     To check the build, run the selftest.py script.
+[184.106.152.183] out:     changing mode of build/scripts-2.6/pilfile.py from 644 to 755
+[184.106.152.183] out:     changing mode of build/scripts-2.6/pilfont.py from 644 to 755
+[184.106.152.183] out:     changing mode of build/scripts-2.6/pilconvert.py from 644 to 755
+[184.106.152.183] out:     changing mode of build/scripts-2.6/pildriver.py from 644 to 755
+[184.106.152.183] out:     changing mode of build/scripts-2.6/pilprint.py from 644 to 755
+[184.106.152.183] out:     changing mode of /web/webme/bin/pilfile.py to 755
+[184.106.152.183] out:     changing mode of /web/webme/bin/pilfont.py to 755
+[184.106.152.183] out:     changing mode of /web/webme/bin/pilconvert.py to 755
+[184.106.152.183] out:     changing mode of /web/webme/bin/pildriver.py to 755
+[184.106.152.183] out:     changing mode of /web/webme/bin/pilprint.py to 755
+[184.106.152.183] out:   Running setup.py develop for pysorl
+[184.106.152.183] out:     Creating /web/webme/lib/python2.6/site-packages/pysolr.egg-link (link to .)
+[184.106.152.183] out:     Adding pysolr 2.0.14-beta to easy-install.pth file
+[184.106.152.183] out:     
+[184.106.152.183] out:     Installed /web/webme/src/pysorl
+[184.106.152.183] out:   Running setup.py install for python-openid
+[184.106.152.183] out:     warning: no files found matching 'CHANGELOG'
+[184.106.152.183] out:     warning: no files found matching '*.css' under directory 'doc'
+[184.106.152.183] out:     warning: no files found matching '*.html' under directory 'doc'
+[184.106.152.183] out:   Running setup.py develop for socialregistration
+[184.106.152.183] out:     Creating /web/webme/lib/python2.6/site-packages/django-socialregistration.egg-link (link to .)
+[184.106.152.183] out:     Adding django-socialregistration 0.4.3 to easy-install.pth file
+[184.106.152.183] out:     
+[184.106.152.183] out:     Installed /web/webme/src/socialregistration
+[184.106.152.183] out:   Found existing installation: sorl-thumbnail 10.12-alpha
+[184.106.152.183] out:     Not uninstalling sorl-thumbnail at /usr/local/lib/python2.6/dist-packages, outside environment /web/webme
+[184.106.152.183] out:   Running setup.py install for sorl-thumbnail
+[184.106.152.183] out: Successfully installed debug-toolbar Django django-haystack django-piston django-taggit facebook httplib2 oauth2 pil pysorl python-openid socialregistration sorl-thumbnail
+[184.106.152.183] out: Cleaning up...
+[184.106.152.183] sudo: chown webme -R /web
+[184.106.152.183] sudo: chgrp webme -R /web
+[184.106.152.183] sudo: cd /web/webme/releases/20110403222018/webme/media_rsc/css; git clone git://github.com/joshuaclayton/blueprint-css.git
+[184.106.152.183] out: Initialized empty Git repository in /web/webme/releases/20110403222018/webme/media_rsc/css/blueprint-css/.git/
+[184.106.152.183] sudo: chown webme -R /web/webme/releases/20110403222018/webme
+[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/20110403222018/webme
+[184.106.152.183] sudo: cd /web/webme/releases/20110403222018/webme/lib; curl -O http://apache.mirrors.tds.net/lucene/solr/1.3.0/apache-solr-1.3.0.tgz
+[184.106.152.183] sudo: cd /web/webme/releases/20110403222018/webme/lib; tar xvzf apache-solr-1.3.0.tgz
+Disconnecting from 184.106.152.183... done.

@@ -34,5 +34,18 @@
 	
 }
 
+#search-autocomplete-desc{
+	font-size: 0.9em;
+	font-weight: bold;
+}
 
+#search-autocomplete-type{
+	font-size: 0.7em;
+  color: #cccccc;
+	font-weight: bold;
+}
+
+.search-autocomplete-item{
+  font-size: 14pt;
+}
 

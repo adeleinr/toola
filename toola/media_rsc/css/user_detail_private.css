@@ -1,0 +1,13 @@
+div.title {
+  border-bottom: 1px solid #EEEEEE;
+  color: #B5B9C0;
+  padding: 3px;
+  font-weight: bold;
+  width: 150px;
+}
+
+
+.short_content {
+	height: 120px;
+	overflow:hidden;
+}

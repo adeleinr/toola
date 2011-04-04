@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Search Toolboxes{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/media_rsc/css/search.css" type="text/css" media="screen,projection" />
+{% endblock %}
+
+{% block content %}
+
+<div id="box-top" class="span-24 last">
+    <div class="ui-widget span-24 prepend-2 last">
+      <form method="get" action="/colorific/search">
+          <div id="search-box" class="span-17">
+            <input type="text" name="q" id="" maxlength="50" size="60" placeholder="Search by topic or name. Eg: Web Development, Joe Smith, Yelp"/>
+          </div>
+          <div id="search-button" class="span-6 last">
+            <input type="submit" value="Search"/>
+          </div>
+      </form>
+    </div>
+</div>
+
+<div id="box-bottom" class="span-24 last">
+  <div id="people-cloud" class="span-5 prepend-2">
+    <h2>Who's here</h2>
+    <ul>
+      {%for userProfile in people %}
+         <li>
+          {% if userProfile.picture_thumbnail %}
+             <a href="{{userProfile.absolute_public_url}}"><img src="{{ userProfile.picture_thumbnail }}" title="{{userProfile.user.username}}" alt="{{userProfile.user.username}}"/></a>
+          {% else %}
+             <a href="{{userProfile.absolute_public_url}}"><img src="/media_rsc/images/avatar_tiny.png" title="{{userProfile.user.username}}" alt="{{userProfile.user.username}}"/></a>
+          {% endif %}
+         </li>
+      {%endfor%}
+    </ul>
+    <div id="people-cloud-desc">
+      <p>Find people who know their stuff. See how they get their work done.</p>
+    </div>
+    
+  </div>
+  <div id="toolboxes" class="span-13 last">
+    <h2>Featured Toolboxes</h2>
+       {% include "display_toolboxes_tabular_picture.html" %}
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
