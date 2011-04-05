@@ -23,6 +23,7 @@ def environment():
     env.user = 'webme'
     env.deploy_user = 'webme'   
     env.activate = 'source %s/bin/activate' %(env.code_root)
+    env.version = 1
     
     
 def virtualenv(command):
@@ -70,7 +71,7 @@ def deploy():
     require('hosts', provided_by=[environment])
     require('code_root')
     import time
-    env.release = time.strftime('%Y%m%d%H%M%S')
+    env.release = env.version #time.strftime('%Y%m%d%H%M%S')
     # whole_path looks like /web/webme/releases/20202020202/webme
     env.whole_path = "%s/releases/%s/%s"%(env.code_root, env.release, env.project_name)
     upload_tar_from_git()
@@ -115,9 +116,8 @@ def install_nonpython_requirements():
     sudo('cd %s/media_rsc/css; git clone git://github.com/joshuaclayton/blueprint-css.git'% (env.whole_path))
     sudo('chown %s -R %s'% (env.user,env.whole_path))
     sudo('chgrp %s -R %s'% (env.user,env.whole_path))
-    
-    sudo('cd %s/lib; curl -O http://apache.mirrors.tds.net/lucene/solr/3.1.0/apache-solr-3.1.0.tgz' % (env.whole_path))
-    #sudo('cd %s/lib; tar xvzf apache-solr-3.1.0.tgz' % (env.whole_path))
+    sudo('mkdir %s/lib; cd %s/lib; curl -O http://apache.mirrors.tds.net/lucene/solr/3.1.0/apache-solr-3.1.0.tgz' % (env.whole_path, env.whole_path))
+    sudo('cd %s/lib; tar xvzf apache-solr-3.1.0.tgz' % (env.whole_path))
     sudo('chown %s -R %s/lib'% (env.user,env.whole_path))
     sudo('chgrp %s -R %s/lib'% (env.user,env.whole_path))
 
