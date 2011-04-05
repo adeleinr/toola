@@ -37,7 +37,7 @@
 [184.106.152.183] out: Need to get 979kB/4003kB of archives. After unpacking 4096B will be used.
 [184.106.152.183] out: Writing extended state information...
 [184.106.152.183] out: Err http://archive.ubuntu.com/ubuntu/ lucid-updates/main libssl0.9.8 0.9.8k-7ubuntu8.3
-[184.106.152.183] out:   404  Not Found [IP: 91.189.92.169 80]
+[184.106.152.183] out:   404  Not Found [IP: 91.189.88.40 80]
 [184.106.152.183] out: Err http://security.ubuntu.com/ubuntu/ lucid-security/main libssl0.9.8 0.9.8k-7ubuntu8.3
 [184.106.152.183] out:   404  Not Found [IP: 91.189.92.167 80]
 [184.106.152.183] out: Reading package lists...
