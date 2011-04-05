@@ -10,5 +10,4 @@ django-haystack==1.1.0
 -e git://github.com/flashingpumpkin/django-socialregistration.git#egg=socialregistration
 -e git://github.com/facebook/python-sdk#egg=facebook
 -e git://github.com/robhudson/django-debug-toolbar.git#egg=debug_toolbar
-
 -e git://github.com/toastdriven/pysolr.git#egg=pysorl # 2.0.13
