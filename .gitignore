@@ -8,5 +8,7 @@ media_rsc/uploads/images/profiles/*
 media_rsc/images/icons_big/
 private_remote.sh
 lib/*
+!lib
 media_rsc/css/blueprint-css/
 data/*
+!data
