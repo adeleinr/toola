@@ -12,11 +12,14 @@
 2) mysql -u root -p
 3) create database webme;
 
+4) Dump Current Data
+python manage.py dumpdata > data/data.webme.json
+
 # Copy all the private (outside of Git)  files
 # to the remote host
-4) run.sh
+5) run.sh
    -> calls private_local.sh
 
 # This loads all the init data in the DB
 # and preprocess JavaScript Files
-5) private_remote.sh
+6) private_remote.sh

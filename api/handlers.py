@@ -42,7 +42,6 @@ class UserProfileHandler(BaseHandler):
         
       if 'tag' in request.GET:
         users = UserProfile.objects.filter(tags__slug__in=request.GET['tag'])
-        print users
     
       if not users:
         ''' Or get all users '''  
@@ -224,7 +223,6 @@ class SearchSuggestionsHandler(BaseHandler):
 
     for item in results:  
       if (isinstance(item.object, ToolBoxToolRelation)):
-        print item.object.toolbox
         item_dict = { 'id': item.object.toolbox.id , 'value':item.object.tool.tool_name, 'type': 'Tool','desc': item.object.toolbox.toolbox_name}
       elif (isinstance(item.object, ToolBox)):
         item_dict = { 'id': item.object.id , 'value':item.object.toolbox_name, 'type':'Toolbox', 'desc':''}
@@ -334,7 +332,6 @@ class ToolboxesHandler(BaseHandler):
                                                user = userProfile)
       tools = simplejson.loads(request.POST['tools'])
       
-      print  tools.items()
       
       # Tools list look like this:
       # [(u'1', [u'Aptana IDE', u'/en/aptana_ide']),

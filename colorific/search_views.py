@@ -25,7 +25,6 @@ def search(request):
       term = request.POST.get('q')
       toolbox_id = request.POST.get('toolbox_id')
       
-      print toolbox_id
       
       # If have information about the toolbox
       # it means the user used the search suggestion
@@ -33,7 +32,6 @@ def search(request):
       # So we retrieve this toolbox only
       if toolbox_id:
         url = "%s%s" % (APIConfig.TOOLBOX_API_URL, toolbox_id)
-        print url
         res = urllib.urlopen(url)
         items.append(simplejson.load(res))
         

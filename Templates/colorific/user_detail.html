@@ -78,7 +78,7 @@
 			<div class="header1">What does your workspace look like?</div>
       <div id="show-pics" class="span-17 last">
 				{% for picture in workspace_pictures %}
-	         {{ picture.picture.extra_thumbnails_tag.medium }}
+	         <img src="{{ picture.picture.extra_thumbnails_tag.medium }}"/>
 				{% empty %}
 				   No pictures
 	      {% endfor %}
