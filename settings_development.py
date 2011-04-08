@@ -2,6 +2,7 @@ import os
 from settings_local import *
 
 HOST_IP = 'localhost'
+PORT = '80'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -39,7 +40,7 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media_rsc')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://localhost:80/media_rsc/'
+MEDIA_URL = 'http://'+HOST_IP+':'+PORT+'/media_rsc/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
