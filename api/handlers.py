@@ -41,7 +41,7 @@ class UserProfileHandler(BaseHandler):
         users = UserProfile.objects.exclude(pk = request.GET['exclude'])
         
       if 'tag' in request.GET:
-        users = UserProfile.objects.filter(tags__slug__in=request.GET['tag'])
+        users = UserProfile.objects.filter(tags__slug__in=[request.GET['tag']])
     
       if not users:
         ''' Or get all users '''  
@@ -49,11 +49,10 @@ class UserProfileHandler(BaseHandler):
         
       
       ''' Now truncate list if limit specified ''' 
-      if 'limit' in request.GET: 
+      if 'limit' and users in request.GET: 
         limit = int(request.GET['limit'])
         users = users[:limit]  
       
-      return users
   
   @classmethod
   def absolute_url(cls, myinstance):

@@ -110,8 +110,9 @@ def upload_tar_from_git():
     sudo('mkdir -p %s'% (env.whole_path))
     put('%s.tar.gz'%(env.release), '/tmp', mode=0755)
     sudo('mv /tmp/%s.tar.gz %s/packages/'%(env.release, env.code_root))
+    
     # After this last step the project is at:
-    #   /web/webme/releases/20202020202/webme
+    # /web/webme/releases/20202020202/webme
     sudo('cd %s && tar zxf ../../../packages/%s.tar.gz'% (env.whole_path, env.release))
     sudo('chown %s -R %s'% (env.user,env.whole_path))
     sudo('chgrp %s -R %s'% (env.user,env.whole_path))
