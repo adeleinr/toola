@@ -91,6 +91,7 @@ def redeploy():
     required third party modules, install the virtual host and 
     then restart the webserver
     """
+    #Test
     require('hosts', provided_by=[environment])
     require('code_root')
     env.whole_path = "%s/releases/%s/%s"%(env.code_root, env.release, env.project_name)
@@ -148,7 +149,7 @@ def configure_project_specific_stuff():
 
 def symlink_current_release():
     "Symlink our current release"
-    require('release', provided_by=[deploy, setup])
+    require('release', provided_by=[environment])
     #sudo('cd %s; rm releases/previous; mv releases/current releases/previous;' % (env.code_root))
     sudo('cd %s; ln -s %s releases/current; chown %s -R releases/current; chgrp %s -R releases/current'% (env.code_root, env.release, env.user, env.user))
 
