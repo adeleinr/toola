@@ -106,7 +106,8 @@ $("#id_tools")
 		this.openDialogWindow();
 		
 	}
-	
+	                          
+
 	FreebaseModalBox.prototype.createDialogWindow = function(){
 				  
     var Ids = FreebaseAutocomplete._Ids; // Local var
@@ -218,7 +219,7 @@ $("#id_tools")
 		alert($("#get-toolboxes-username").val)
 		
     $.ajax({
-      url: 'http://HOST_IP_TAG:80/colorific/proxy/toolboxes/',
+      url: 'http://HOST_IP_TAG/colorific/proxy/toolboxes/',
       type: "GET",
       success: function(json) {
         json = $.parseJSON(json);
