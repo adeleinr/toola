@@ -24,6 +24,7 @@ def environment():
     env.deploy_user = 'webme'   
     env.activate = 'source %s/bin/activate' %(env.code_root)
     env.version = 1
+    env.release = env.version
     
     
 def virtualenv(command):
@@ -70,7 +71,7 @@ def deploy():
     """
     require('hosts', provided_by=[environment])
     require('code_root')
-    import time
+    #import time
     env.release = env.version #time.strftime('%Y%m%d%H%M%S')
     # whole_path looks like /web/webme/releases/20202020202/webme
     env.whole_path = "%s/releases/%s/%s"%(env.code_root, env.release, env.project_name)
@@ -78,6 +79,22 @@ def deploy():
     install_requirements()
     install_nonpython_requirements()
     configure_project_specific_stuff()
+    symlink_current_release()
+    install_site()
+
+    #migrate()
+    restart_webserver()
+    
+def redeploy():
+    """
+    Redeploy the latest version of the site to the servers, install any
+    required third party modules, install the virtual host and 
+    then restart the webserver
+    """
+    require('hosts', provided_by=[environment])
+    require('code_root')
+    env.whole_path = "%s/releases/%s/%s"%(env.code_root, env.release, env.project_name)
+    upload_tar_from_git()
     symlink_current_release()
     install_site()
 
