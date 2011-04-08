@@ -46,12 +46,13 @@ class UserProfileHandler(BaseHandler):
       if not users:
         ''' Or get all users '''  
         users = UserProfile.objects.all()
-        
       
       ''' Now truncate list if limit specified ''' 
-      if 'limit' and users in request.GET: 
+      if 'limit' in request.GET: 
         limit = int(request.GET['limit'])
         users = users[:limit]  
+        
+      return users
       
   
   @classmethod

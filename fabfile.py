@@ -17,14 +17,18 @@ env.project_name = 'webme'
 def environment():
     "Use the local virtual server"
     env.hosts = ['184.106.152.183']
-    env.code_root = '/web/webme'
-    # This is used to change permissions
-    env.code_root_parent = "/web" 
     env.user = 'webme'
     env.deploy_user = 'webme'   
     env.activate = 'source %s/bin/activate' %(env.code_root)
     env.version = 1
     env.release = env.version
+    env.code_root = '/web/webme'
+    # This path is used to change permissions
+    env.code_root_parent = "/web" 
+    # whole_path looks like /web/webme/releases/1/webme
+    env.whole_path = "%s/releases/%s/%s"%(env.code_root, env.release, env.project_name)
+    # whole_path looks like /web/webme/releases/current/webme
+    env.whole_path_symlinked = "%s/releases/current/%s"%(env.code_root, env.project_name)
     
     
 def virtualenv(command):
@@ -70,12 +74,10 @@ def deploy():
     then restart the webserver
     """
     require('hosts', provided_by=[environment])
+    require('whole_path', provided_by=[environment])
     require('code_root')
-    #import time
-    env.release = env.version #time.strftime('%Y%m%d%H%M%S')
-    # whole_path looks like /web/webme/releases/20202020202/webme
-    env.whole_path = "%s/releases/%s/%s"%(env.code_root, env.release, env.project_name)
-    upload_tar_from_git()
+    # whole_path looks like /web/webme/releases/1/webme
+    upload_tar_from_git(env.whole_path)
     install_requirements()
     install_nonpython_requirements()
     configure_project_specific_stuff()
@@ -91,23 +93,20 @@ def redeploy():
     required third party modules, install the virtual host and 
     then restart the webserver
     """
-    #Test
-    require('hosts', provided_by=[environment])
-    require('code_root')
-    env.whole_path = "%s/releases/%s/%s"%(env.code_root, env.release, env.project_name)
-    upload_tar_from_git()
+    #Test1
+    upload_tar_from_git('cd %sreleases/current/%s'% (env.code_root, env.project_name))
     symlink_current_release()
     install_site()
 
     #migrate()
     restart_webserver()
 
-def upload_tar_from_git():
-    require('release', provided_by=[deploy, setup])
-    require('whole_path', provided_by=[deploy, setup])
+def upload_tar_from_git(path):
+    require('release', provided_by=[environment])
+    require('whole_path', provided_by=[environment])
     "Create an archive from the current Git master branch and upload it"
     local('git archive --format=tar master | gzip > %s.tar.gz'% (env.release))
-    sudo('mkdir -p %s'% (env.whole_path))
+    sudo('mkdir -p %s'% (path))
     put('%s.tar.gz'%(env.release), '/tmp', mode=0755)
     sudo('mv /tmp/%s.tar.gz %s/packages/'%(env.release, env.code_root))
     
@@ -152,7 +151,7 @@ def symlink_current_release():
     "Symlink our current release"
     require('release', provided_by=[environment])
     #sudo('cd %s; rm releases/previous; mv releases/current releases/previous;' % (env.code_root))
-    sudo('cd %s; ln -s %s releases/current; chown %s -R releases/current; chgrp %s -R releases/current'% (env.code_root, env.release, env.user, env.user))
+    sudo('cd %s;ln -s %s releases/current; chown %s -R releases/current; chgrp %s -R releases/current'% (env.code_root, env.release, env.user, env.user))
 
 
 def install_site():
