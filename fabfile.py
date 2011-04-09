@@ -19,10 +19,11 @@ def environment():
     env.hosts = ['184.106.152.183']
     env.user = 'webme'
     env.deploy_user = 'webme'   
-    env.activate = 'source %s/bin/activate' %(env.code_root)
     env.version = 1
     env.release = env.version
     env.code_root = '/web/webme'
+    # This path is for activating the virtual env
+    env.activate = 'source %s/bin/activate' %(env.code_root)
     # This path is used to change permissions
     env.code_root_parent = "/web" 
     # whole_path looks like /web/webme/releases/1/webme
@@ -95,7 +96,7 @@ def redeploy():
     """
     #Test1
     upload_tar_from_git('cd %sreleases/current/%s'% (env.code_root, env.project_name))
-    symlink_current_release()
+    #symlink_current_release()
     install_site()
 
     #migrate()
