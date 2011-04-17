@@ -149,6 +149,8 @@ $("#id_tools")
                       console.log(obj.status + " => " + obj.statusText)
                   }
               });
+							// Force cache to expire and reload page
+							window.location.href = window.location.href + "#" + parseInt(Math.random() * 12345);
   
             }
           },
@@ -206,20 +208,16 @@ $("#id_tools")
 	    return true;
 	  }
 	};
-  
-  new FreebaseModalBox();
-
+ 
+ /*
+  FreebaseModalBox.prototype.updatelistToolbox = function() {
 	
-	
-	/************************************************************/
-	/*
-    Ids = FreebaseAutocomplete._Ids;
-	UserDetail.updatelistToolbox = function() {
+	  Ids = FreebaseAutocomplete._Ids;
 		
 		alert($("#get-toolboxes-username").val)
 		
     $.ajax({
-      url: 'http://HOST_IP_TAG/colorific/proxy/toolboxes/',
+      url: 'http://localhost/colorific/proxy/toolboxes/',
       type: "GET",
       success: function(json) {
         json = $.parseJSON(json);
@@ -227,9 +225,12 @@ $("#id_tools")
         var toolboxesList = [];
         for (key in json) {
           var toolList = [];
-          toolboxesList.push('<div class="toolBoxModuleTabular span-14 last">');
-          toolboxesList.push('<div id="stats" class="span-2">');
-          toolboxesList.push('100');
+          toolboxesList.push('<div class="clickable span-15 last"id="toolboxTab"  url="{{toolBox.absolute_url}}">');
+          toolboxesList.push('<div id="main" class="span-15 last">');
+					toolboxesList.push('<div id="tools" class="span-12">');
+          toolboxesList.push('<h5>{{toolBox.toolbox_name}}'+
+                                  '<span id="author"> '+
+                                  '<a href="{{toolBox.user.absolute_url}}"> by+ {{toolBox.user.user.username}}</a></span></h5>')';
           toolboxesList.push('<br />');
           toolboxesList.push('TIGS');
           toolboxesList.push('</div>');
@@ -255,4 +256,7 @@ $("#id_tools")
         alert(obj.status + " => " + obj.statusText)
       }
     });
-  }*/
+  }
+	*/
+	
+	new FreebaseModalBox();

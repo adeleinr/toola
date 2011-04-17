@@ -37,6 +37,10 @@ class ToolBoxToolRelationIndex(RealTimeSearchIndex):
     text = CharField(document=True, use_template=True, model_attr='tool.tool_name')
     #tool = CharField(model_attr='tool')
     #toolbox = CharField(model_attr='toolbox')
+    
+class UserProfileIndex(RealTimeSearchIndex):
+    text = CharField(document=True, use_template=True, model_attr='user.get_full_name()')
+
       
 site.register(ToolBox, ToolBoxIndex)
 site.register(ToolBoxToolRelation, ToolBoxToolRelationIndex)

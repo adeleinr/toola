@@ -20,7 +20,7 @@
    <div id="userInfoModule" class="span-4 colborder">   	
 			{% if userProfile.picture_url %}
 			    <div id="userPicture editButton" class="prepend-1 span-4 append-1 last">
-			        <img width="40%" src="{{ userProfile.picture_url }}"/>
+			        <a href="/colorific/people/{{userProfile.user.username}}"><img width="60%" src="{{ userProfile.picture_url }}"/></a>
 			    </div>
 			{% else %}
 			    <div id="userPicture editButton">

@@ -278,7 +278,11 @@ def people_by_tag(request, tag = None):
     limit_people = 10  
     
     for tag in tags:
-      tag_userprofile_map[tag] = UserProfile.objects.filter(tags__name__in=[tag])[:limit_people]
+      url = "%s?tag=%s&limit=%d" % (APIConfig.USERPROFILE_API_URL, tag.slug, limit_people)
+      res = urllib.urlopen(url)
+      people = simplejson.load(res)
+      
+      tag_userprofile_map[tag] = people
       
     return render_to_response('colorific/people_by_tag.html',
                                { 'tag_userprofile_map': tag_userprofile_map},

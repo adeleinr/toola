@@ -90,13 +90,13 @@ def deploy():
     
 def redeploy():
     """
-    Redeploy the latest version of the site to the servers, install any
-    required third party modules, install the virtual host and 
-    then restart the webserver
+    Redeploy reusing the current version, 
+    this basically overwrites the code, but does not install
+    any packages. Used for small changes.
+    It also reuploads data from database and static files in
+    media directory
     """
-    #Test1
     upload_tar_from_git('cd %sreleases/current/%s'% (env.code_root, env.project_name))
-    #symlink_current_release()
     install_site()
 
     #migrate()

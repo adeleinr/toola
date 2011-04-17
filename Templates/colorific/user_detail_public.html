@@ -22,7 +22,7 @@
           </div>
       {% endif %}
       <h2>{{userProfile.user.first_name}} {{userProfile.user.last_name}}</h2>
-      <div class="title">TOPICS</div>
+      <div class="title">TAGS</div>
       <div  class="tool content">
           {% for tag in userProfile.tags.all %}
            <a href="/colorific/people_by_tag/{{tag.slug}}">{{tag.name}}</a>
@@ -55,7 +55,7 @@
   </div>
 
   <div id="userPanel2" class="span-12">
-  	<div class="header1">Tools & Setup</div>
+  	<div class="header1">Tools</div>
 		{% include "display_toolboxes_tabular_nopicture_noteditable.html" %}
     <a href="">View All Toolboxes</a>
   </div>
