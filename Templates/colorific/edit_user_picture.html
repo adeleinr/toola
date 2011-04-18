@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/media_rsc/css/edit_user.css" type="text/css" media="screen,projection" />
+
+{% endblock %}
+
+{% block title %}Edit Profile Picture{% endblock %}
+
+{% block content %}
+<div id="main2" class="span-24 last">
+  {{message}}
+	   <div class="span-6"><h2>Change Picture</h2></div>
+		 <div class="span-10 last" style="margin-top:30px;">
+        <a href="{{userProfile.absolute_url}}">View Profile</a>
+     </div> 
+		 <div class="span-24 last">
+			 <div class="span-4">
+			   {% if userProfile.picture_url %}
+		        <div id="userPicture editButton" class="prepend-1 span-4 append-1 last">
+		            <a href="/colorific/people/{{userProfile.user.username}}"><img width="60%" src="{{ userProfile.picture_url }}"/></a>
+		        </div>
+			   {% else %}
+		        <div id="userPicture editButton">
+		            <a href="/colorific/people/{{userProfile.user.username}}"><img width="40%" class="blank-avatar" src="/media_rsc/images/avatar.png"/></a>
+		        </div>
+			   {% endif %}
+			 </div>
+	     <div id="imageUpload-form" class="abutton span-16 last">
+	       <style>
+	          .file_input_hidden
+	          {
+	            opacity: 0;         
+	            filter: alpha(opacity=0); 
+	            -ms-filter: "alpha(opacity=0)"; 
+	            -khtml-opacity: 0; 
+	            -moz-opacity: 0;
+	            width: 52px;
+	            position: absolute; top:0; left:0;
+	           
+	          }
+	
+	       </style>
+	       <form enctype="multipart/form-data" action="" method="post">
+	            {{ formset.management_form }}
+	<!--
+	            <table>
+	                {% for form in formset.forms %}
+	                {{ form }}
+	                {% endfor %}
+	            </table>
+							
+							<div class="span-3 last" style="clear:left">
+	                <input type = "submit" name="imageSubmit" value="+ Add Photo" />
+	            </div>
+	-->
+	            <div id="imageUpload-fields" class="span-13 last">
+		              <div class="span-6">
+		                <input type="text" id="fileName" size="30" class="file_input_textbox" readonly="readonly"> 
+		              </div>
+		              <div class="span-3 last" style="position: relative;">
+		                 <input type="button" style="background: transparent url(/media_rsc/images/icons_big/camera.png);text-decoration: none;border:none;background-repeat: no-repeat;width: 52px;height: 52px;position: relative;"/>
+		
+		                <input type="file" name="form-0-picture" id="id_form-0-picture"  class="file_input_hidden" onchange="javascript: document.getElementById('fileName').value = this.value" />
+		                <input type="hidden" name="form-0-id" id="id_form-0-id" />
+		              </div>
+		
+		              <div class="span-3 last" style="clear:left">
+		                <input type = "submit" name="imageSubmit" value="+ Change Photo" />
+		              </div>
+							</div>                       
+	        </form>				
+	   </div>
+     </div>
+</div>
+{% endblock %}

@@ -83,9 +83,46 @@ class UserProfile(models.Model):
       
     def get_absolute_public_url(self):
         return "/colorific/people/%s" % (self.user.username)
+    
+    def absolute_url(self):
+        return "/colorific/user_detail/%s" % (self.user.username)
+      
+    def absolute_public_url(self):
+        return "/colorific/people/%s" % (self.user.username)
 
 
+    
+'''
+   This class is used only for a profile (avatar) image
+   If not a Social User (Ie. Facebook user) the
+   ProfileImage class will upload the image in different
+   sizes, so we use the large thumbnail format which is 200x200 pixels
+   If a a Social User then his/her picture will
+   be pulled from facebook and will be equivalent to this
+   200x200 pixels picture               
+'''
+class ProfileImage(models.Model):
+    def get_image_path(instance, filename):
+      print "create path"
+      val="uploads/images/avatars/" + str(instance.user.id)+"_"+filename
+      print val
+      return val 
+    user = models.ForeignKey(UserProfile, editable=False, related_name='profile_picture')
+    #picture = models.ImageField(upload_to=get_image_path, null=True, blank=True)
+    picture = ImageWithThumbnailsField(upload_to='uploads/images/avatars/',
+                                       null=True, blank=True,
+                                       thumbnail={'size': (50, 50), 'options': ('crop',)},
+                                       extra_thumbnails={
+                                                      'medium': {'size': (100, 100), 'options': ['crop', 'upscale']},
+                                                      'large': {'size': (200, 400)},
+                                       },
+    )  
+    
 
+'''
+  This class is used for all pictures associated with
+  a user, except the profile picture
+'''
 class Image(models.Model):
     def get_image_path(instance, filename):
       print "create path"
@@ -101,9 +138,9 @@ class Image(models.Model):
                                                       'medium': {'size': (100, 100), 'options': ['crop', 'upscale']},
                                                       'large': {'size': (200, 400)},
                                        },
-    )  
+    )
     
-
+   
 class Tool(models.Model):
     tool_name = models.CharField(max_length=150, help_text="Eg. PyDev")
     active = models.BooleanField()

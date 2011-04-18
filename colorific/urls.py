@@ -21,6 +21,7 @@ urlpatterns += patterns('',
   url(r'^logout_user/$', 'django.contrib.auth.views.logout_then_login',
       {'login_url':'/colorific/login_user'}),
   url(r'^edit_user/$', user_views.edit_user),
+  url(r'^edit_user_picture/$', user_views.edit_user_picture),
   url(r'^people_by_tag/(?P<tag>[-\w]+)/$', user_views.people_by_tag),
   url(r'^people_by_tag/$', user_views.people_by_tag),
 )

@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from colorific.models import UserProfile, Tool, ToolBox, ToolBoxToolRelation, Image
+from colorific.models import UserProfile, Tool, ToolBox, ToolBoxToolRelation, Image, ProfileImage
 from django.contrib.auth.models import User
 
 
@@ -51,11 +51,18 @@ class RegistrationForm(ModelForm):
 # This is a simplified version of the edit form
 # since a facebook user for example does not
 # have to edit stuff here
+
 class EditSocialUserForm(ModelForm):
 		
 	class Meta:
 		model = UserProfile
 		fields = ('tags',)
+
+class EditProfilePictureUserForm(ModelForm):
+		
+	class Meta:
+		model = UserProfile
+		fields = ('picture',)
 
 class EditUserForm(ModelForm):
 	# user object fields
@@ -99,6 +106,15 @@ class ImageForm(ModelForm):
 	        model = Image
 	    def __init__(self, user, *args, **kwargs):
 					super(ImageForm, self).__init__(*args, **kwargs)
+					self._user = user
+					
+					
+					
+class ProfileImageForm(ModelForm):
+	    class Meta:
+	        model = ProfileImage
+	    def __init__(self, user, *args, **kwargs):
+					super(ProfileImageForm, self).__init__(*args, **kwargs)
 					self._user = user
 
 

@@ -19,16 +19,21 @@
    {{message}}
    <div id="userInfoModule" class="span-4 colborder">   	
 			{% if userProfile.picture_url %}
-			    <div id="userPicture editButton" class="prepend-1 span-4 append-1 last">
-			        <a href="/colorific/people/{{userProfile.user.username}}"><img width="60%" src="{{ userProfile.picture_url }}"/></a>
+			    <div id="userPicture editButton">
+			    	  <div class="editButton">
+			    	  	<a href="/colorific/edit_user_picture"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/></a>
+							</div>
+			        <br/>
+							<a href="/colorific/people/{{userProfile.user.username}}"><img width="60%" src="{{ userProfile.picture_url }}"/></a>
 			    </div>
 			{% else %}
 			    <div id="userPicture editButton">
-			        <img width="40%" class="blank-avatar" src="/media_rsc/images/avatar.png"/>
+			    	  <div class="editButton"><a href="/colorific/edit_user_picture"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/></a></div>
+			        <a href="/colorific/people/{{userProfile.user.username}}"><img width="40%" class="blank-avatar" src="/media_rsc/images/avatar.png"/></a>
 			    </div>
 			{% endif %}
 			<div class="title editButton">TAGS
-		    <a href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/> EDIT TAGS</a>
+		    <a href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/></a>
 		  </div>
 		  <div id="toolBoxModuleBig" class="tool content">
 		    	{% for tag in userProfile.tags.all %}
@@ -39,10 +44,10 @@
 					
 		  </div>
 		
-			<div class="title">EDIT INFO</div>
+			<div class="title editButton">INFO
+			  <a href="/colorific/edit_user"><img src="/media_rsc/images/icons_tiny/pencilangled.png"/></a>
+			</div>
 	      <div id="toolBoxModuleBig" class="content">
-						<a href="">Tools</a><br/>
-						<a href="">Workspace Pics</a><br/>
 						<a href="">Basic Info</a> <br/>
             <a href="">Links</a><br/>
       </div>
