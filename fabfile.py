@@ -4,18 +4,18 @@ Description:	Ubuntu 10.04 LTS
 Release:	        10.04
 Codename:	lucid
 Author:             Adelein Rodriguez, adeleinr@gmail.com
-Note:                This is an adaptation from a fabric script presented here:
-                        http://morethanseven.net/2009/07/27/fabric-django-git-apache-mod_wsgi-virtualenv-and-p.html
+Note:               This is an adaptation from a fabric script presented here:
+                       http://morethanseven.net/2009/07/27/fabric-django-git-apache-mod_wsgi-virtualenv-and-p.html
 
-Summary:         This script: 
+Summary:        This script: 
                         1) Installs all linux and python packages FROM SCRATCH needed to get your Django project
                         up and running in an Ubuntu remote server. 
                         2) Or deploys your local changes to the existing code version in the remote server
 
 Description:       This script requires that you have fabric installed => (http://docs.fabfile.org/en/1.0.1/index.html)
-                         Fabric is a tool that lets you run local and remote commands in the same script, thus used for 
-                         deployment scripts
-                         This script (fabric.py) is placed in the root folder where your code resides and once run it will do the following:
+                        Fabric is a tool that lets you run local and remote commands in the same script, thus used for 
+                        deployment scripts
+                        This script (fabric.py) is placed in the root folder where your code resides and once run it will do the following:
                         1) Connect to a remote server and prepare an Ubuntu system from scratch for the deployment
                            of you Django project. It installs package dependencies you have listed.
                            ==> Python packages are installed thourhg PIP installer (http://www.pip-installer.org/) in a virtualenv
