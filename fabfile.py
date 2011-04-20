@@ -1,50 +1,49 @@
 """
-Distributor ID:	Ubuntu
-Description:	Ubuntu 10.04 LTS
-Release:	        10.04
+Distributor ID: Ubuntu
+Description:    Ubuntu 10.04 LTS
+Release:        10.04
 Codename:       lucid
-Author:             Adelein Rodriguez, adeleinr@gmail.com
-Note:               This is an adaptation from a fabric script presented here:
-                       http://morethanseven.net/2009/07/27/fabric-django-git-apache-mod_wsgi-virtualenv-and-p.html
+Author:         Adelein Rodriguez, adeleinr@gmail.com
+Note:           This is an adaptation from a fabric script presented here:
+                http://morethanseven.net/2009/07/27/fabric-django-git-apache-mod_wsgi-virtualenv-and-p.html
 
-Summary:        This script: 
-                        1) Installs all linux and python packages FROM SCRATCH needed to get your Django project
-                        up and running in an Ubuntu remote server. 
-                        2) Or deploys your local changes to the existing code version in the remote server
+Summary:     This script: 
+             1) Installs all linux and python packages FROM SCRATCH needed to get your Django project
+                up and running in an Ubuntu remote server. 
+             2) Or deploys your local changes to the existing code version in the remote server
 
-Description:      This script requires that you have fabric installed => (http://docs.fabfile.org/en/1.0.1/index.html)
-                       Fabric is a tool that lets you run local and remote commands in the same script, thus used for 
-                       deployment scripts
-                       This script (fabric.py) is placed in the root folder where your code resides and once run it will do the following:
-                        1) Connect to a remote server and prepare an Ubuntu system from scratch for the deployment
-                           of you Django project. It installs package dependencies you have listed.
-                           ==> Python packages are installed thourhg PIP installer (http://www.pip-installer.org/) in a virtualenv
-                                  PIP knows what files to install through a requirements.txt file you write in the same directory
-                                  code root directory (where fabric.py is)
-                           ==> Non Python packages are installed as usual in the Ubuntu server
+Description: This script requires that you have fabric installed => (http://docs.fabfile.org/en/1.0.1/index.html)
+             Fabric is a tool that lets you run local and remote commands in the same script, thus used for 
+             deployment scripts
+             This script (fabric.py) is placed in the root folder where your code resides and once run it will do the following:
+              1) Connect to a remote server and prepare an Ubuntu system from scratch for the deployment
+                 of you Django project. It installs package dependencies you have listed.
+                 ==> Python packages are installed thourhg PIP installer (http://www.pip-installer.org/) in a virtualenv
+                        PIP knows what files to install through a requirements.txt file you write in the same directory
+                        code root directory (where fabric.py is)
+                 ==> Non Python packages are installed as usual in the Ubuntu server
 
-                        2) Zip your git project and copy it to the remote server, create a "version" folder and unpack code there.
-                            Remote  folder must not exist already or it will fail.
-                        3) Install your application in the Apache Server
+              2) Zip your git project and copy it to the remote server, create a "version" folder and unpack code there.
+                  Remote  folder must not exist already or it will fail.
+              3) Install your application in the Apache Server
 
-How to run:        1) First time setting up the remote Ubuntu server
-                            ==> fab environment setup > deploy.log
-                            ==> If it is the first time deploying this project
-                                   then need to create a DB, Django does not create the DB
-                                   mysql -u root -p
-                                  create database webme
-
-                            ==> Dump Current Data as JSON
-                                   python manage.py dumpdata > data/data.webme.json
-
-                            ==> Copy all the private (outside of Git)  files you have added in the .gitignore
-                                   but that are still needed to deploy (eg. settings files with passwords)
-
-                            ==> Load JSON Dumped data into the remote DB
-            
-
-                            For details on how I use it for my project see
-                            (https://github.com/adeleinr/toola/blob/master/README.txt) 
+How to run:   1) First time setting up the remote Ubuntu server
+                  ==> fab environment setup > deploy.log
+                  ==> If it is the first time deploying this project
+                         then need to create a DB, Django does not create the DB
+                         mysql -u root -p
+                        create database webme
+  
+                  ==> Dump Current Data as JSON
+                         python manage.py dumpdata > data/data.webme.json
+  
+                  ==> Copy all the private (outside of Git)  files you have
+                      added in the .gitignore but that are still needed to deploy (eg. settings files with passwords)
+  
+                  ==> Load JSON Dumped data into the remote DB
+   
+                  For details on how I use it for my project see
+                  (https://github.com/adeleinr/toola/blob/master/README.txt) 
                                  
 """
 
@@ -246,4 +245,3 @@ def rollback():
     restart_webserver()    
 # Helpers. These are called by other functions rather than directly
     
-
