@@ -2,7 +2,7 @@
 Distributor ID:	Ubuntu
 Description:	Ubuntu 10.04 LTS
 Release:	        10.04
-Codename:	lucid
+Codename:       lucid
 Author:             Adelein Rodriguez, adeleinr@gmail.com
 Note:               This is an adaptation from a fabric script presented here:
                        http://morethanseven.net/2009/07/27/fabric-django-git-apache-mod_wsgi-virtualenv-and-p.html
