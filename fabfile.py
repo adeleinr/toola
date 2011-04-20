@@ -12,10 +12,10 @@ Summary:        This script:
                         up and running in an Ubuntu remote server. 
                         2) Or deploys your local changes to the existing code version in the remote server
 
-Description:       This script requires that you have fabric installed => (http://docs.fabfile.org/en/1.0.1/index.html)
-                        Fabric is a tool that lets you run local and remote commands in the same script, thus used for 
-                        deployment scripts
-                        This script (fabric.py) is placed in the root folder where your code resides and once run it will do the following:
+Description:      This script requires that you have fabric installed => (http://docs.fabfile.org/en/1.0.1/index.html)
+                       Fabric is a tool that lets you run local and remote commands in the same script, thus used for 
+                       deployment scripts
+                       This script (fabric.py) is placed in the root folder where your code resides and once run it will do the following:
                         1) Connect to a remote server and prepare an Ubuntu system from scratch for the deployment
                            of you Django project. It installs package dependencies you have listed.
                            ==> Python packages are installed thourhg PIP installer (http://www.pip-installer.org/) in a virtualenv
