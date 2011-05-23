@@ -1,8 +1,50 @@
 """
-Distributor ID:	Ubuntu
-Description:	Ubuntu 10.04 LTS
-Release:	10.04
-Codename:	lucid
+Distributor ID: Ubuntu
+Description:    Ubuntu 10.04 LTS
+Release:        10.04
+Codename:       lucid
+Author:         Adelein Rodriguez, adeleinr@gmail.com
+Note:           This is an adaptation from a fabric script presented here:
+                http://morethanseven.net/2009/07/27/fabric-django-git-apache-mod_wsgi-virtualenv-and-p.html
+
+Summary:     This script: 
+             1) Installs all linux and python packages FROM SCRATCH needed to get your Django project
+                up and running in an Ubuntu remote server. 
+             2) Or deploys your local changes to the existing code version in the remote server
+
+Description: This script requires that you have fabric installed => (http://docs.fabfile.org/en/1.0.1/index.html)
+             Fabric is a tool that lets you run local and remote commands in the same script, thus used for 
+             deployment scripts
+             This script (fabric.py) is placed in the root folder where your code resides and once run it will do the following:
+              1) Connect to a remote server and prepare an Ubuntu system from scratch for the deployment
+                 of you Django project. It installs package dependencies you have listed.
+                 ==> Python packages are installed thourhg PIP installer (http://www.pip-installer.org/) in a virtualenv
+                        PIP knows what files to install through a requirements.txt file you write in the same directory
+                        code root directory (where fabric.py is)
+                 ==> Non Python packages are installed as usual in the Ubuntu server
+
+              2) Zip your git project and copy it to the remote server, create a "version" folder and unpack code there.
+                  Remote  folder must not exist already or it will fail.
+              3) Install your application in the Apache Server
+
+How to run:   1) First time setting up the remote Ubuntu server
+                  ==> fab environment setup > deploy.log
+                  ==> If it is the first time deploying this project
+                         then need to create a DB, Django does not create the DB
+                         mysql -u root -p
+                        create database webme
+  
+                  ==> Dump Current Data as JSON
+                         python manage.py dumpdata > data/data.webme.json
+  
+                  ==> Copy all the private (outside of Git)  files you have
+                      added in the .gitignore but that are still needed to deploy (eg. settings files with passwords)
+  
+                  ==> Load JSON Dumped data into the remote DB
+   
+                  For details on how I use it for my project see
+                  (https://github.com/adeleinr/toola/blob/master/README.txt) 
+                                 
 """
 
 from fabric.api import *
@@ -15,26 +57,31 @@ from fabric.operations import *
 env.project_name = 'webme'
 
 def environment():
-    "Use the local virtual server"
-    env.hosts = ['184.106.152.183']
+    # Local user, same as remote for ease
     env.user = 'webme'
-    env.deploy_user = 'webme'   
+    #     Remote Info
+    env.hosts = ['184.106.152.183']
+    env.deploy_user = 'webme' 
+    #     Make the version any number you want  
     env.version = 1
     env.release = env.version
+    #     This is where the virtual env is created
     env.code_root = '/web/webme'
-    # This path is for activating the virtual env
+    #     This path is for activating the virtual env
     env.activate = 'source %s/bin/activate' %(env.code_root)
-    # This path is used to change permissions
+    #     This path is used to change permissions
     env.code_root_parent = "/web" 
-    # whole_path looks like /web/webme/releases/1/webme
+    #     whole_path looks like /web/webme/releases/1/webme
+    #     This is where the code really is
     env.whole_path = "%s/releases/%s/%s"%(env.code_root, env.release, env.project_name)
-    # whole_path looks like /web/webme/releases/current/webme
+    #     whole_path_symlinked looks like /web/webme/releases/current/webme
     env.whole_path_symlinked = "%s/releases/current/%s"%(env.code_root, env.project_name)
     
     
 def virtualenv(command):
     with cd(env.code_root):
         sudo(env.activate + '&&' + command, user=env.deploy_user)
+
 # tasks
 def test():
     "Run the test suite and bail out if it fails"
@@ -66,7 +113,6 @@ def setup():
     reset_permissions()    
     deploy()
                                                                         
-
     
 def deploy():
     """
@@ -98,8 +144,6 @@ def redeploy():
     """
     upload_tar_from_git('cd %sreleases/current/%s'% (env.code_root, env.project_name))
     install_site()
-
-    #migrate()
     restart_webserver()
 
 def upload_tar_from_git(path):
@@ -176,7 +220,7 @@ def migrate():
     
     
 '''=========================================================='''
-'''                    Unused Functions                      '''
+'''                    TODO Functions                      '''
 '''=========================================================='''
     
 def deploy_version(version):
@@ -201,4 +245,3 @@ def rollback():
     restart_webserver()    
 # Helpers. These are called by other functions rather than directly
     
-
