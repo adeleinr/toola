@@ -14,25 +14,27 @@
       </p>
 		</div>
 		<div id="pictures">
-            <img src="/media_rsc/images/1.jpg"/>
-            <img src="/media_rsc/images/2.jpg"/>
     </div>
 
 	</div>
 	<div id="toolBoxContent" class="span-15 last">
 		{% for toolentry in toolbox.toolboxtoolrelations %}		    
 		<div class="span-10 last"id="toolboxTab" url="{{toolentry.tool.absolute_url}}">
-	            <div id="main" class="span-10 last">
-		            <div id="toolNumber" class="span-2">
-		                {{forloop.counter}}
-		            </div>
-		            <div id="tools" class="span-7 last">
-		                <h5>{{toolentry.tool.tool_name}}</h5>
-						<p>{{toolentry.note}}</p>
-		            </div>
-	            </div>  
-	     </div>
-		 {% endfor %}
+            <div id="main" class="span-10 last">
+	            <div id="toolNumber" class="span-2">
+	                {{forloop.counter}}
+	            </div>
+	            <div id="tools" class="span-7 last">
+	            	  {% if toolentry.tool.tool_semantic_id %}
+                     <h5><a href="http://freebase.com/view{{toolentry.tool.tool_semantic_id}}">{{toolentry.tool.tool_name}}</a></h5>
+                  {% else %}
+                     <h5>{{toolentry.tool.tool_name}}</h5>
+                  {% endif %}
+					        <p>{{toolentry.note}}</p>
+	            </div>
+            </div>  
+	  </div>
+		{% endfor %}
     </div>
 </div>
  
