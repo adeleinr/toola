@@ -6,12 +6,12 @@ FreebaseAutocomplete.hiddenValues = [];
 
 /* IDS Enum */
 FreebaseAutocomplete._Ids = {
-	 'ID_TOOLIDS':'#id_toolIDs', 
-	 'ID_TOOLS':'#id_tools',
-	 'ID_TOOLBOX_NAME':'#id_toolbox_name',
-	 'USER_PROFILE_ID':'#user-profile-id',
-	 'CREATE_TOOLBOX': '#create-toolbox',
-	 'DIALOG_FORM':'#dialog-form'
+  'ID_TOOLIDS':'#id_toolIDs', 
+  'ID_TOOLS':'#id_tools',
+  'ID_TOOLBOX_NAME':'#id_toolbox_name',
+  'USER_PROFILE_ID':'#user-profile-id',
+  'CREATE_TOOLBOX': '#create-toolbox',
+  'DIALOG_FORM':'#dialog-form'
 }
 /* Dont remove any element from the hidden field
 * even if the user removes from the input field.
@@ -21,11 +21,11 @@ FreebaseAutocomplete._Ids = {
 * the hidden field.
 */
 FreebaseAutocomplete.filterItems = function (){
-	
-	 var Ids = FreebaseAutocomplete._Ids;
-	 var hiddenValues = FreebaseAutocomplete.hiddenValues;
-	
-	/* This is to deal with cases when the user deletes
+  
+  var Ids = FreebaseAutocomplete._Ids;
+  var hiddenValues = FreebaseAutocomplete.hiddenValues;
+  
+  /* This is to deal with cases when the user deletes
    * an element from the input field array but the
    * hidden field array remains unchanged (and outdated)
    * So go through each element in the input field array
@@ -69,7 +69,7 @@ FreebaseAutocomplete.filterItems = function (){
     
   }
   $(Ids.ID_TOOLIDS).val(JSON.stringify(resultValues))
-	
+  
 }
 
 
@@ -95,26 +95,26 @@ $("#id_tools")
     console.log(FreebaseAutocomplete.hiddenValues)
   });
 
-	var FreebaseModalBox = function(){	
+  var FreebaseModalBox = function(){  
 
     var Ids = FreebaseAutocomplete._Ids;
-		this.toolbox_name = $( Ids.ID_TOOLBOX_NAME );          // Instance var
-		this.tools = $( Ids.ID_TOOLS );                        
-	  this.tips = $( ".validateTips" );                      
-	  this.userProfile_id = $( Ids.USER_PROFILE_ID ).val(); 
-		this.createDialogWindow();
-		this.openDialogWindow();
-		
-	}
-	                          
+    this.toolbox_name = $( Ids.ID_TOOLBOX_NAME );          // Instance var
+    this.tools = $( Ids.ID_TOOLS );                        
+   this.tips = $( ".validateTips" );                      
+   this.userProfile_id = $( Ids.USER_PROFILE_ID ).val(); 
+    this.createDialogWindow();
+    this.openDialogWindow();
+    
+  }
+                           
 
-	FreebaseModalBox.prototype.createDialogWindow = function(){
-				  
+  FreebaseModalBox.prototype.createDialogWindow = function(){
+         
     var Ids = FreebaseAutocomplete._Ids; // Local var
-		var that = this;
-		var allFields = $( [] ).add( this.toolbox_name ).add( this.tools );
-				
-		$( Ids.DIALOG_FORM ).dialog({
+    var that = this;
+    var allFields = $( [] ).add( this.toolbox_name ).add( this.tools );
+        
+    $( Ids.DIALOG_FORM ).dialog({
         draggable: false,
         resizable: false,
         autoOpen: false,
@@ -149,8 +149,8 @@ $("#id_tools")
                       console.log(obj.status + " => " + obj.statusText)
                   }
               });
-							// Force cache to expire and reload page
-							window.location.href = window.location.href + "#" + parseInt(Math.random() * 12345);
+              // Force cache to expire and reload page
+              window.location.href = window.location.href + "#" + parseInt(Math.random() * 12345);
   
             }
           },
@@ -162,12 +162,12 @@ $("#id_tools")
           allFields.val( "" ).removeClass( "ui-state-error" );
         }
       });
-		
-		
-	}
-	
-	FreebaseModalBox.prototype.openDialogWindow = function(){
-		var Ids = FreebaseAutocomplete._Ids;
+    
+    
+  }
+  
+  FreebaseModalBox.prototype.openDialogWindow = function(){
+    var Ids = FreebaseAutocomplete._Ids;
     $( Ids.CREATE_TOOLBOX )
       .button()
       .click(function() {
@@ -175,47 +175,47 @@ $("#id_tools")
     });
   
   }
-	
-	FreebaseModalBox.prototype.updateTips = function ( t ){	
-		this.tips
-	    .text( t )
-	    .addClass( "ui-state-highlight" );
-	  setTimeout(function() {
-	    tips.removeClass( "ui-state-highlight", 1500 );
-	  }, 500 );	
-	}
-	
-	FreebaseModalBox.prototype.checkLength = function ( o, n, min, max ){
-		if ( o.val().length > max || o.val().length < min ) {
-	    o.addClass( "ui-state-error" );
-	    if (min > 1){
-	      this.updateTips( "You need at least " + min + " " + n +" , and max "+max);
-	    }else{
-	      this.updateTips( "You need a " + n);
-	    }
-	    return false;
-	  } else {
-	    return true;
-	  }
-	}
-	
-	FreebaseModalBox.prototype.checkRegexp = function( o, regexp, n ){
-		if ( !( regexp.test( o.val() ) ) ) {
-	    o.addClass( "ui-state-error" );
-	    this.updateTips( n );
-	    return false;
-	  } else {
-	    return true;
-	  }
-	};
+  
+  FreebaseModalBox.prototype.updateTips = function ( t ){ 
+    this.tips
+     .text( t )
+     .addClass( "ui-state-highlight" );
+   setTimeout(function() {
+     tips.removeClass( "ui-state-highlight", 1500 );
+   }, 500 );  
+  }
+  
+  FreebaseModalBox.prototype.checkLength = function ( o, n, min, max ){
+    if ( o.val().length > max || o.val().length < min ) {
+     o.addClass( "ui-state-error" );
+     if (min > 1){
+       this.updateTips( "You need at least " + min + " " + n +" , and max "+max);
+     }else{
+       this.updateTips( "You need a " + n);
+     }
+     return false;
+   } else {
+     return true;
+   }
+  }
+  
+  FreebaseModalBox.prototype.checkRegexp = function( o, regexp, n ){
+    if ( !( regexp.test( o.val() ) ) ) {
+     o.addClass( "ui-state-error" );
+     this.updateTips( n );
+     return false;
+   } else {
+     return true;
+   }
+  };
  
  /*
   FreebaseModalBox.prototype.updatelistToolbox = function() {
-	
-	  Ids = FreebaseAutocomplete._Ids;
-		
-		alert($("#get-toolboxes-username").val)
-		
+  
+   Ids = FreebaseAutocomplete._Ids;
+    
+    alert($("#get-toolboxes-username").val)
+    
     $.ajax({
       url: 'http://localhost/colorific/proxy/toolboxes/',
       type: "GET",
@@ -227,7 +227,7 @@ $("#id_tools")
           var toolList = [];
           toolboxesList.push('<div class="clickable span-15 last"id="toolboxTab"  url="{{toolBox.absolute_url}}">');
           toolboxesList.push('<div id="main" class="span-15 last">');
-					toolboxesList.push('<div id="tools" class="span-12">');
+          toolboxesList.push('<div id="tools" class="span-12">');
           toolboxesList.push('<h5>{{toolBox.toolbox_name}}'+
                                   '<span id="author"> '+
                                   '<a href="{{toolBox.user.absolute_url}}"> by+ {{toolBox.user.user.username}}</a></span></h5>')';
@@ -257,6 +257,6 @@ $("#id_tools")
       }
     });
   }
-	*/
-	
-	new FreebaseModalBox();
+  */
+  
+  new FreebaseModalBox();
