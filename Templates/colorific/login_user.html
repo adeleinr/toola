@@ -11,6 +11,33 @@
 		<h1>Sign In</h1>
 		
 		<form method="post" action =".">
+      <div class="span-2" style="margin-top:5px">
+        <label for="id_username">Username:</label>
+      </div>
+			<div class="span-5">
+			  {{ loginForm.username }}
+			</div>
+			<div class="span-6 last">				
+					{% if loginForm.username.errors %}
+					<span class="error">
+					{{ loginForm.username.errors|join:", " }}
+					</span>
+					{% endif %}
+			</div>
+			<div class="span-2" style="margin-top:5px">
+        <label for="id_password">Password:</label>
+      </div>
+      <div class="span-5">
+      	{{ loginForm.password }}
+      </div>
+			<div class="span-6 last">
+				  {% if loginForm.password.errors %}
+				  <span class="error">
+				    {{ loginForm.password.errors|join:", " }}
+				  </span>
+				  {% endif %}
+			</div>
+			<!--
 			<table>
 			<tr>
 				<td>
@@ -44,12 +71,13 @@
 			</tr>
 			<tr>
 		 	</table>
+			-->
 			<div align="left">
 				<input type = "submit" name="submit" value="Submit" />
 			</div>
 		</form>	
 	</div>
-	<div id="adBox" class="span-15 last">
+	<div id="adBox" class="span-6 last">
 		{% load facebook_tags %}
     {% facebook_button %}
     {% facebook_js %}
