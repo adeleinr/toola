@@ -144,13 +144,14 @@ $("#id_tools")
                         '&userprofile_id=' + that.userProfile_id,
                   success: function(data) {
                       $( Ids.DIALOG_FORM ).dialog( "close" );
+                      // Force cache to expire and reload page
+                      window.location.reload();
                   },
                   error: function(obj, a, b) {
                       console.log(obj.status + " => " + obj.statusText)
                   }
               });
-              // Force cache to expire and reload page
-              window.location.href = window.location.href + "#" + parseInt(Math.random() * 12345);
+              
   
             }
           },

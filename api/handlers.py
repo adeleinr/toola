@@ -11,12 +11,18 @@ import haystack
 from haystack.indexes import *
 from haystack.query import SearchQuerySet
 
-# List the users  => http://localhost:8084/api/people
-# Get a user      => http://localhost:8084/api/people/1
-# Get all users but this one  => http://localhost:8084/api/people/?exclude=1
-# Get users, limit      => http://localhost:8084/api/people/?limit=3
-# Get users, exclude and limit      => http://localhost:8084/api/people/?exclude=1&limit=3
-# Get users, tag and limit      => http://localhost:8084/api/people/?tag=web-dev&limit=3
+# List the users               =>
+#      http://localhost:8084/api/people
+# Get a user                   =>
+#      http://localhost:8084/api/people/1
+# Get all users but this one   =>
+#      http://localhost:8084/api/people/?exclude=1
+# Get users, limit             =>
+#      http://localhost:8084/api/people/?limit=3
+# Get users, exclude and limit =>
+#      http://localhost:8084/api/people/?exclude=1&limit=3
+# Get users, tag and limit     =>
+#      http://localhost:8084/api/people/?tag=web-dev&limit=3
 class UserProfileHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = UserProfile
@@ -69,19 +75,26 @@ class UserProfileHandler(BaseHandler):
   def pictures(cls, myinstance):
     return myinstance.pictures.all()
 
-# List the users  => http://localhost:8000/api/people
-# Get a user      => http://localhost:8000/api/people/1
+# List the users  =>
+#                 http://localhost:8000/api/people
+# Get a user      =>
+#                 http://localhost:8000/api/people/1
 class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
   #fields = ('toolbox', 'id', ('user', ('username', 'first_name')),'home_zipcode', 'gender', 'occupation', 'self_description', 'twitter', 'absolute_url')
   fields = ('id', ('user', ('username', 'first_name')),
             'home_zipcode', 'absolute_url', 'absolute_public_url',
             'tags', ('pictures',()), 'picture_url', 'picture_thumbnail')   
 
-# List the tools  => http://localhost:8084/api/tools
-# Get a tool      => http://localhost:8084/api/tools/15/2003
-# Create a tool   => curl -i -X POST -d "tool_name=mycooltool&toolbox_id=15" http://localhost:8084/api/tools
-# Delete a tool   => curl -i -X DELETE  http://localhost:8084/api/tools/14/1
-# Update a tool   => curl -i -X PUT -d "note=Testing api" http://localhst:8084/api/tools/15/2008/
+# List the tools  => 
+#                http://localhost:8084/api/tools
+# Get a tool      =>
+#                http://localhost:8084/api/tools/15/2003
+# Create a tool   =>
+#                curl -i -X POST -d "tool_name=mycooltool&toolbox_id=15" http://localhost:8084/api/tools
+# Delete a tool   =>
+#                curl -i -X DELETE  http://localhost:8084/api/tools/14/1
+# Update a tool   =>
+#                curl -i -X PUT -d "note=Testing api" http://localhst:8084/api/tools/15/2008/
 
 class ToolsHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
@@ -158,8 +171,7 @@ class ToolsHandler(BaseHandler):
     toolBoxToolRelation = ToolBoxToolRelation.objects.get(toolbox = toolbox_id, 
                                                           tool = tool_id) 
     toolBoxToolRelation.note = request.POST.get('note')
-    
-    
+       
     # If the user is changing the name of the tool
     # we actually create a new tool and replace it in
     # the relation. This is because we want to keep all the
@@ -171,13 +183,13 @@ class ToolsHandler(BaseHandler):
         toolBoxToolRelation.tool = newtool
         return newtool
         
-
     tool.save()
     toolBoxToolRelation.save()
     return toolBoxToolRelation
 
 
-# Get a suggestion for a tool => http://localhost:8084/api/tool_suggestions/?term=eclipse
+# Get a suggestion for a tool =>
+#                      http://localhost:8084/api/tool_suggestions/?term=eclipse
 
 class ToolSuggestionsHandler(BaseHandler):
   allowed_methods = ('GET')
@@ -197,9 +209,10 @@ class ToolSuggestionsHandler(BaseHandler):
   
   
 # Get a search suggestion for 
-# a tool or toolbox => http://localhost:8084/api/search_suggestions/?term=eclipse
-# Get a partial suggestion for
-# a tool => http://localhost:8084/api/search_suggestions/?term=eclip
+# a tool or toolbox                   => 
+#                   http://localhost:8084/api/search_suggestions/?term=eclipse
+# Get a partial suggestion for a tool =>
+#                   http://localhost:8084/api/search_suggestions/?term=eclip
 class SearchSuggestionsHandler(BaseHandler):
   allowed_methods = ('GET')
   
@@ -231,8 +244,8 @@ class SearchSuggestionsHandler(BaseHandler):
 
     return result_list
   
-# Search for tools or toolboxes
-# => http://localhost:8084/api/search/?term=eclipse
+# Search for tools or toolboxes => 
+#                              http://localhost:8084/api/search/?term=eclipse
 class SearchHandler(BaseHandler):
   allowed_methods = ('GET')
   
@@ -263,12 +276,16 @@ class SearchHandler(BaseHandler):
 # List the toolboxes     => http://localhost:8084/api/toolboxes
 # Get a toolbox          => http://localhost:8084/api/toolboxes/15
 # Get a user's toolboxes => http://localhost:8084/api/toolboxes/adeleinr
-# Create a toolbox   => curl -i -X POST -d "toolbox_name=Django%20Tools&
-#                                           tools={%220%22:[%22Eclipse%22,%22/en/eclipse%22],%221%22:[%22Aptana%20IDE%22,%22/en/aptana_ide%22]}&
-#                                           userprofile_id=1" http://localhost:8084/api/toolboxes
-#                    => curl -i -X POST -H 'Content-Type: application/json' -d '{"toolbox_name": "mytoolbox", "userprofile_id":1, "tools": [{"tool_name": "test1", "note":"my note"},{"tool_name": "test2", "note":"my note"},{"tool_name": "test3", "note":"my note"}]}' http://localhost:8084/api/toolboxes
-# Delete a toolbox   => curl -i -X DELETE  http://localhost:8084/api/toolboxes/14/
-# Update a toolbox   => curl -i -X PUT -d "toolbox_name=New name" http://localhost:8084/api/toolboxes/15/    
+# Create a toolbox       => 
+# curl -i -X POST -d "toolbox_name=Django%20Tools&tools={%220%22:[%22Eclipse%22,%22/en/eclipse%22],%221%22:[%22Aptana%20IDE%22,%22/en/aptana_ide%22]}&userprofile_id=1" http://localhost:8084/api/toolboxes
+#
+# curl -i -X POST -H 'Content-Type: application/json' -d '{"toolbox_name": "mytoolbox", "userprofile_id":1, "tools": [{"tool_name": "test1", "note":"my note"},{"tool_name": "test2", "note":"my note"},{"tool_name": "test3", "note":"my note"}]}' http://localhost:8084/api/toolboxes
+
+# Delete a toolbox       => 
+#  curl -i -X DELETE  http://localhost:8084/api/toolboxes/14/
+
+# Update a toolbox       =>
+# curl -i -X PUT -d "toolbox_name=New name" http://localhost:8084/api/toolboxes/15/    
 class ToolboxesHandler(BaseHandler):
   allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
   model = ToolBox
@@ -359,7 +376,7 @@ class ToolboxesHandler(BaseHandler):
             newTool.save()
  
           # toolBox.tools.add(newTool) -> Does not work
-          # because we are specifying the 'though' table 
+          # because we are specifying the 'through' table 
           # Instead we need to create every relation entry
           toolBoxToolRelation = ToolBoxToolRelation.objects.create(toolbox = toolBox,
                                                                   tool= newTool) 
