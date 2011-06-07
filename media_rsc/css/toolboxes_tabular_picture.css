@@ -8,6 +8,7 @@
 
 #toolboxTab:hover{
     background-color: #EEF0F3;
+    cursor:pointer;
 }
 
 #toolboxTab ul {
