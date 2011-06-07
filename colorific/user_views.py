@@ -47,19 +47,18 @@ def user_detail_public(request, username):
                                'similar_users':similar_users},
                                context_instance=RequestContext(request))
    
-# TODO: Remove username from request
 
 @login_required(redirect_field_name='colorific/login_user')
 #TODO Need to remove this function
 #TODO Need to use API
+#TODO: Remove username from request
 def user_detail(request, username):
     user = request.user
     userProfile = user.get_profile()
     
     if request.user.username != username:
       return HttpResponseRedirect(userProfile.get_absolute_public_url())
-      
-    
+
     user_count = 0
 
     toolBoxForm = ToolBoxForm()
@@ -102,13 +101,11 @@ def user_detail(request, username):
 
 
 #TODO Need to use API
-
 @login_required(redirect_field_name='colorific/login_user')
 def user_detail2(request):
     user = request.user
     userProfile = user.get_profile()
-    
-      
+     
     #user_count = UserProfile.objects.filter(self_description=userProfile.self_description).count()
     user_count = 0
 
@@ -156,41 +153,33 @@ def signup_user(request):
   user = request.user
       
   if user is not None and user.is_authenticated():
-      return HttpResponseRedirect('/colorific/user_detail/'  + user.username)
+    return HttpResponseRedirect('/colorific/user_detail/'  + user.username)
     
   else:
    
     if request.method == 'POST':
-          # Create a form with data to validate form
-          testUserForm = RegistrationForm(request.POST)
-            
-          if testUserForm.is_valid():
-              # Use the form data
-            try:
-                  # Save user to db            
-                  new_user = testUserForm.save()
-                  
-                  '''
-                  new_user_profile = UserProfile.objects.create(user=new_user,
-                                                 home_zipcode = request.POST['home_zipcode'],
-                                                 gender = request.POST['gender'],
-                                                 occupation = request.POST['occupation'],
-                                                 self_description = request.POST['self_description'],
-                                                 twitter = request.POST['twitter'])
-                  '''
-                  new_user_profile = UserProfile.objects.create(user=new_user,
-                                     home_zipcode = request.POST['home_zipcode'])
+      # Create a form with data to validate form
+      testUserForm = RegistrationForm(request.POST)
+        
+      if testUserForm.is_valid():
+        # Use the form data
+        try:
+          # Save user to db            
+          new_user = testUserForm.save()
+          
+          new_user_profile = UserProfile.objects.create(user=new_user,
+                             home_zipcode = request.POST['home_zipcode'])
 
-                  user = authenticate(username=request.POST['username'], password=request.POST['password'])
-                  login(request, user)
-                  
-                  return HttpResponseRedirect('/colorific/user_detail/'  + user.username)
-            except Exception, e:    
-                      message = e
-          else:
-              #User needs to try again
-              userForm = testUserForm
-              message = 'Invalid form data' 
+          user = authenticate(username=request.POST['username'], password=request.POST['password'])
+          login(request, user)
+          
+          return HttpResponseRedirect('/colorific/user_detail/'  + user.username)
+        except Exception, e:    
+                  message = e
+      else:
+          #User needs to try again
+          userForm = testUserForm
+          message = 'Invalid form data' 
   
   return render_to_response('colorific/signup_user.html', {'message': message, 'userForm': userForm },
         context_instance=RequestContext(request))
@@ -255,8 +244,8 @@ def edit_user(request):
           #User needs to try again)
           message = 'Invalid form data' 
   
-  return render_to_response('colorific/edit_user.html', {'message': message, 'editUserForm': editUserForm,'userProfile':userProfile },
-        context_instance=RequestContext(request))
+  return render_to_response('colorific/edit_user.html', {'message': message, 'editUserForm':editUserForm,'userProfile':userProfile },
+         context_instance=RequestContext(request))
 
 
 @login_required(redirect_field_name='colorific/login_user')    
@@ -290,7 +279,7 @@ def edit_user_picture(request):
                sizes, so we use the large thumbnail format which is 200x200 pixels
                If a a Social User then his/her picture will
                be pulled from facebook and will be equivalent to this
-               200x200 pixels picture               
+               200x200 pixels picture
                '''
                # 200x200 pixes
                userProfile.picture_url = image.picture.extra_thumbnails['large'].absolute_url

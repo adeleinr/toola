@@ -12,7 +12,11 @@ from colorific.forms import ToolBoxForm, ToolForm
 from colorific.models import UserProfile, ToolBox, Tool, ToolBoxToolRelation
 from colorific.APIConfig import APIConfig
 
-
+'''
+============================================================
+===================   TOOLBOX VIEWS     ====================
+============================================================
+'''
 
 def toolbox_index(request):
   res = urllib.urlopen(APIConfig.TOOLBOX_API_URL)
@@ -143,7 +147,9 @@ def create_toolbox(request):
     return render_to_response('colorific/create_toolbox.html',
                                {'message':message,
                                 'toolBoxForm':toolBoxForm,
-                                'toolBoxes':ToolBox.objects.filter(user__user__username = userProfile.user.username)[:5],
+                                'toolBoxes':
+                                ToolBox.objects.filter(user__user__username =
+                                                 userProfile.user.username)[:5],
                                 'toolBox':newest_toolBox,
                                 'userProfile':userProfile
                                }, 
@@ -171,23 +177,23 @@ def edit_toolbox(request, toolbox_id):
     
     #Check that this users owns this toolbox
     if toolBox.user.id ==  userProfile.id:
-        return render_to_response('colorific/edit_toolbox.html', {'toolBox': toolBox}, 
-                              context_instance=RequestContext(request))
+        return render_to_response('colorific/edit_toolbox.html',
+                                  {'toolBox': toolBox}, 
+                                  context_instance=RequestContext(request))
           
     else:
         message = 'You do not own this toolbox'
         return render_to_response('colorific/edit_toolbox.html',
-                               {'message':message,
-                               }, 
-                               context_instance=RequestContext(request))
+                                  {'message':message,}, 
+                                  context_instance=RequestContext(request))
 
 # TODO No used yet
 def delete_toolbox(request):
     toolForm = ToolForm()
     message = ''
-    return render_to_response('/colorific/delete_toolbox.html', {'message':message,
-                                                                'toolForm':toolForm}, 
-                                 context_instance=RequestContext(request))
+    return render_to_response('/colorific/delete_toolbox.html',
+                              {'message':message,'toolForm':toolForm}, 
+                              context_instance=RequestContext(request))
     
 
 '''

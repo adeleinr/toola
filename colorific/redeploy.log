@@ -1,0 +1,18 @@
+[184.106.152.183] Executing task 'redeploy'
+[localhost] run: git archive --format=tar master | gzip > 1.tar.gz
+[184.106.152.183] sudo: mkdir -p cd /web/webmereleases/current/webme
+[184.106.152.183] put: 1.tar.gz -> /tmp/1.tar.gz
+[184.106.152.183] sudo: mv /tmp/1.tar.gz /web/webme/packages/
+[184.106.152.183] sudo: cd /web/webme/releases/1/webme && tar zxf ../../../packages/1.tar.gz
+[184.106.152.183] sudo: chown webme -R /web/webme/releases/1/webme
+[184.106.152.183] sudo: chgrp webme -R /web/webme/releases/1/webme
+[localhost] run: rm 1.tar.gz
+[184.106.152.183] sudo: cd /web/webme/releases/current/webme; cp webme /etc/apache2/sites-available/
+[184.106.152.183] sudo: cd /etc/apache2/sites-available/; a2ensite webme
+[184.106.152.183] out: Site webme already enabled
+[184.106.152.183] sudo: /etc/init.d/apache2 restart
+[184.106.152.183] out:  * Restarting web server apache2
+[184.106.152.183] out:  ... waiting    ...done.
+
+Done.
+Disconnecting from 184.106.152.183... done.

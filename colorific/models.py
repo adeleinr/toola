@@ -113,12 +113,10 @@ class ProfileImage(models.Model):
                                        null=True, blank=True,
                                        thumbnail={'size': (50, 50), 'options': ('crop',)},
                                        extra_thumbnails={
-                                                      'medium': {'size': (100, 100), 'options': ['crop', 'upscale']},
-                                                      'large': {'size': (200, 400)},
-                                       },
-    )  
-    
-
+                                       'medium': {'size': (100, 100),
+                                                  'options': ['crop', 'upscale']},
+                                                  'large': {'size': (200, 400)},
+                                       },)
 '''
   This class is used for all pictures associated with
   a user, except the profile picture
@@ -133,14 +131,14 @@ class Image(models.Model):
     #picture = models.ImageField(upload_to=get_image_path, null=True, blank=True)
     picture = ImageWithThumbnailsField(upload_to='uploads/images/profiles/',
                                        null=True, blank=True,
-                                       thumbnail={'size': (80, 80), 'options': ('crop',)},
+                                       thumbnail={'size': (80, 80),
+                                                  'options': ('crop',)},
                                        extra_thumbnails={
-                                                      'medium': {'size': (100, 100), 'options': ['crop', 'upscale']},
-                                                      'large': {'size': (200, 400)},
-                                       },
-    )
-    
-   
+                                          'medium': {'size': (100, 100),
+                                          'options': ['crop', 'upscale']},
+                                          'large': {'size': (200, 400)},
+                                       },)
+
 class Tool(models.Model):
     tool_name = models.CharField(max_length=150, help_text="Eg. PyDev")
     active = models.BooleanField()
@@ -154,8 +152,7 @@ class Tool(models.Model):
 
     def get_absolute_url(self):
         return "/colorific/tool/%s" % (self.tool_name)
-    
-    
+
 class ToolBox(models.Model):
     toolbox_name = models.CharField(max_length=100, help_text="Example: Django Setup.")
     user = models.ForeignKey(UserProfile)    
