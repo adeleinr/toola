@@ -26,9 +26,13 @@
 	            </div>
 	            <div id="tools" class="span-7 last">
 	            	  {% if toolentry.tool.tool_semantic_id %}
-                     <h5><a href="http://freebase.com/view{{toolentry.tool.tool_semantic_id}}">{{toolentry.tool.tool_name}}</a></h5>
+                     <h5>
+                        <a href="http://freebase.com/view{{toolentry.tool.tool_semantic_id}}">
+                            {{toolentry.tool.tool_name}}
+                        </a>
+                     </h5>
                   {% else %}
-                     <h5>{{toolentry.tool.tool_name}}</h5>
+                     <h5>{{toolentry.tool.tool_name|urlizetrunc:50}}</h5>
                   {% endif %}
 					        <p>{{toolentry.note}}</p>
 	            </div>

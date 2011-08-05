@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Setup Account{% endblock %}
+{% block css %}
+{% endblock %}
+{% block content %}
+{{message}}
+
+{% load socialregistration_tags %}
+<div id="main2" class="span-24 last">
+  <h1>Setup</h1>
+
+  {% if error %}
+          <p>Your session timed out. Please try again.</p>
+  {% else %}
+          <form action="." method="post">
+              <table>
+                  {{ form }}
+              </table>
+              {% social_csrf_token %}
+              <input type="submit" value="save" />
+          </form>
+  {% endif %}
+</div>
+
+{% endblock %}
