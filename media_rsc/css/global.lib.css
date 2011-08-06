@@ -228,8 +228,9 @@ input[type="submit"], input[type="button"], input[type="file"] {
   font-weight:normal;
   font-size:14px;
   text-transform:uppercase;
-  font: "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif;!important
-}
+  font: "Lucida Grande","Lucida Sans Unicode",Verdana,"Jamrul",sans-serif;
+  cursor:pointer;
+ }
 
 .header1{
 

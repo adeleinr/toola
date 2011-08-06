@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Setup Account{% endblock %}
+{% block css %}
+{% endblock %}
+{% block content %}
+{{message}}
+
+{% load socialregistration_tags %}
+<div id="main2" class="span-24 last">
+  <div id="loginBox" class="span-8">
+  <h1>Setup a Toola username</h1>
+
+  {% if error %}
+          <p>Your session timed out. Please try again.</p>
+  {% else %}
+          <form action="." method="post">
+            <div class="span-2" style="margin-top:5px">
+               <label for="id_username">Username:</label>
+            </div>
+            <div class="span-5">
+               <input id="id_username" type="text" name="username" maxlength="32" />
+            </div>
+            <div class="span-2" style="margin-top:5px">
+              <label for="id_email">Email:</label>
+            </div>
+            <div class="span-5">
+      	      <input type="text" name="email" id="id_email" />
+            </div>
+            {% social_csrf_token %}
+            <input type="submit" value="save" />
+          </form>
+  {% endif %}
+ </div>
+</div>
+
+{% endblock %}

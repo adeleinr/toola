@@ -189,6 +189,7 @@ def configure_project_specific_stuff():
     require('code_root')
     require('whole_path', provided_by=[deploy, setup])
     put('/usr/local/lib/python2.6/dist-packages/django_socialregistration-0.4.2-py2.6.egg/socialregistration/views.py', '%s/src/socialregistration/socialregistration'% (env.code_root))
+    put('/usr/local/lib/python2.6/dist-packages/django_socialregistration-0.4.2-py2.6.egg/socialregistration/templates/socialregistration', '%s/src/socialregistration/socialregistration/templates'% (env.code_root))
     sudo('chown %s -R %s'% (env.user,env.whole_path))
     sudo('chgrp %s -R %s'% (env.user,env.whole_path))
 

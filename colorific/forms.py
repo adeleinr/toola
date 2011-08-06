@@ -111,7 +111,8 @@ class ImageForm(ModelForm):
       def __init__(self, user, *args, **kwargs):
           super(ImageForm, self).__init__(*args, **kwargs)
           self._user = user
-
+          
+          
           
 class ProfileImageForm(ModelForm):
       class Meta:
@@ -119,4 +120,5 @@ class ProfileImageForm(ModelForm):
       def __init__(self, user, *args, **kwargs):
           super(ProfileImageForm, self).__init__(*args, **kwargs)
           self._user = user
+
 
