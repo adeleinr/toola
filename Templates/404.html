@@ -1,2 +1,14 @@
-Oops, need to fix this 404 page!
-Look in http://docs.djangoproject.com/en/dev/intro/tutorial03/
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block css %}
+{% endblock %}
+{% block content %}
+{{message}}
+<div class="span-24 last">
+<div id="errorpage404" class="prepend-2 span-15 append-2">
+   <h2> Oops. Page not found.</h2>
+   <img src="/media_rsc/images/404.png"/>
+</div>
+</div>
+
+{% endblock %}

@@ -187,14 +187,32 @@ def edit_toolbox(request, toolbox_id):
                                   {'message':message,}, 
                                   context_instance=RequestContext(request))
 
-# TODO No used yet
-def delete_toolbox(request):
-    toolForm = ToolForm()
+@login_required(redirect_field_name='colorific/login_user')
+def delete_toolbox(request, toolbox_id):
     message = ''
-    return render_to_response('/colorific/delete_toolbox.html',
-                              {'message':message,'toolForm':toolForm}, 
-                              context_instance=RequestContext(request))
     
+    #Get toolbox if it exists
+    toolBox = get_object_or_404(ToolBox, pk=toolbox_id)
+    
+    #Get user from session
+    user = request.user
+    userProfile = user.get_profile()
+    
+    #Check that this users owns this toolbox
+    if toolBox.user.id ==  userProfile.id:
+      userProfile = user.get_profile()  
+      opener = urllib2.build_opener(urllib2.HTTPHandler)
+      request = urllib2.Request(APIConfig.TOOLBOX_API_URL+str(toolbox_id)+"/")
+      request.add_header('Content-Type', 'your/contenttype')
+      request.get_method = lambda: 'DELETE'
+      url = opener.open(request)
+
+      return HttpResponseRedirect('/colorific/user_detail/')
+
+    else:
+      #TODO need to show inline error to user
+      return HttpResponseRedirect('/colorific/user_detail/')
+
 
 '''
 ============================================================
@@ -238,23 +256,38 @@ def edit_tool(request, toolbox_id, tool_id):
                                   'toolBoxToolRelation':toolBoxToolRelation,
                                  }, 
                                  context_instance=RequestContext(request))
-             
-    
+                 
 
 #TODO Since this is a GET we need to confirm if the user
 # wants to delete. Or else we would need to change this to be a POST
 @login_required(redirect_field_name='colorific/login_user')
 def delete_tool(request, toolbox_id, tool_id):
-    tool = get_object_or_404(Tool, pk=tool_id)
-    #if request.method == 'POST':
-    toolBoxToolRelations = ToolBoxToolRelation.objects.filter(tool=tool_id, toolbox=toolbox_id)
-    if toolBoxToolRelations[0].toolbox.user.id == request.user.id:
-            toolBoxToolRelations[0].delete()
-            return HttpResponseRedirect('/colorific/edit_toolbox/'+str(toolbox_id))
-        
-    '''
+
+    #Get toolbox if it exists
+    toolBox = get_object_or_404(ToolBox, pk=toolbox_id)
+    
+    #Get user from session
+    user = request.user
+    userProfile = user.get_profile()
+    
+    #Check that this users owns this toolbox
+    if toolBox.user.id ==  userProfile.id:
+      userProfile = user.get_profile()  
+      opener = urllib2.build_opener(urllib2.HTTPHandler)
+      request = urllib2.Request(APIConfig.TOOL_API_URL+str(toolbox_id)+"/"+str(tool_id)+"/")
+      print APIConfig.TOOLBOX_API_URL+str(toolbox_id)+"/"+str(tool_id)+"/"
+
+      request.add_header('Content-Type', 'your/contenttype')
+      request.get_method = lambda: 'DELETE'
+      url = opener.open(request)
+
+      try:
+        toolBox = ToolBox.objects.get(pk=toolbox_id)
+        return HttpResponseRedirect('/colorific/edit_toolbox/'+str(toolbox_id)+'/')        
+      except ToolBox.DoesNotExist:
+        return HttpResponseRedirect('/colorific/user_toolbox_list/')
+
     else:
-        
-        return HttpResponseRedirect('/colorific/edit_tool/'+str(toolbox_id)+'/'+str(tool_id))
-    '''
+      #TODO need to show inline error to user
+      return HttpResponseRedirect('/colorific/edit_toolbox/'+str(toolbox_id)+'/')
 

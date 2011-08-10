@@ -11,6 +11,13 @@ body a {
 	color: #19558D;
 }
 
+#errorpage404 {
+  background-color: #FFFFFF;
+  padding:5px 5px 5px 9px;
+  text-align:center;
+  margin-left: 170px;
+}
+
 .menuModule  { 
 	padding: 3px 10px 10px 5px;
 }

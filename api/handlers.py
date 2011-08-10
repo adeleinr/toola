@@ -93,6 +93,7 @@ class AnonymousUserProfileHandler(UserProfileHandler, AnonymousBaseHandler):
 #                curl -i -X POST -d "tool_name=mycooltool&toolbox_id=15" http://localhost:8084/api/tools
 # Delete a tool   =>
 #                curl -i -X DELETE  http://localhost:8084/api/tools/14/1
+#                where 14 is the toolbox_id and 1 is tool_id
 # Update a tool   =>
 #                curl -i -X PUT -d "note=Testing api" http://localhst:8084/api/tools/15/2008/
 
@@ -161,6 +162,14 @@ class ToolsHandler(BaseHandler):
         return rc.FORBIDDEN # returns HTTP 401
     '''
     toolBoxToolRelations[0].delete()
+
+    toolBoxToolRelations = ToolBoxToolRelation.objects.filter(toolbox=toolbox_id)
+
+    #Delete toolbox if empty
+    if not toolBoxToolRelations:
+
+      toolbox = ToolBox.objects.get(pk=toolbox_id)
+      toolbox.delete()
 
     
     return rc.DELETED # returns HTTP 204

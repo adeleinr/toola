@@ -4,18 +4,17 @@
 {% endblock %}
  <div id="toolBoxModuleEdit" class="span-24 last">
  	<h1>{{toolBox.toolbox_name}}</h1>
-        {% for toolEntry in toolBox.get_toolbox_tools %}   
-		 	<div id="toolEntry" class="span-24">
+      {% for toolEntry in toolBox.get_toolbox_tools %}   
+		 	<div id="toolEntry" class="span-24 last">
 		 		<div id="toolMeta" class="span-6">
 		 			<h2>{{ toolEntry.tool.tool_name }}</h2>	
 					<a href="/colorific/edit_tool/{{toolBox.id }}/{{ toolEntry.tool.id }}">EDIT</a>
 					<a href="/colorific/delete_tool/{{toolBox.id }}/{{ toolEntry.tool.id }}">DELETE</a>		
 		 		</div>
-				<div id="toolNote" class="span-14 last">
+				<div id="toolNote" class="span-12 last">
 					{{ toolEntry.note }}
 				</div>
 		 	</div>
 		{% endfor %}
  </div>
 
-</div> 

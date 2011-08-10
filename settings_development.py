@@ -4,7 +4,7 @@ from settings_local import *
 HOST_IP = 'localhost'
 PORT = '80'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
