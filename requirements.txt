@@ -5,7 +5,7 @@ sorl-thumbnail==3.2.5
 django-piston
 pil
 django-haystack==1.1.0
-
+MySQL-python
 
 -e git://github.com/flashingpumpkin/django-socialregistration.git#egg=socialregistration
 -e git://github.com/facebook/python-sdk#egg=facebook
